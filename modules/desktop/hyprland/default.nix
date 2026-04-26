@@ -387,16 +387,10 @@ in
             ];
             binde = [
               # Resize windows
-              "$mainMod SHIFT, right, resizeactive, 30 0"
-              "$mainMod SHIFT, left, resizeactive, -30 0"
-              "$mainMod SHIFT, up, resizeactive, 0 -30"
-              "$mainMod SHIFT, down, resizeactive, 0 30"
-
-              # Resize windows with hjkl keys
-              "$mainMod SHIFT, l, resizeactive, 30 0"
-              "$mainMod SHIFT, h, resizeactive, -30 0"
-              "$mainMod SHIFT, k, resizeactive, 0 -30"
-              "$mainMod SHIFT, j, resizeactive, 0 30"
+              "$mainMod equals, resizeactive, 30 0"
+              "$mainMod minus, resizeactive, -30 0"
+              "$mainMod SHIFT, equals, resizeactive, 0 -30"
+              "$mainMod SHIFT, minus, resizeactive, 0 30"
 
               # Functional keybinds
               ",XF86MonBrightnessDown,exec,${pkgs.brightnessctl}/bin/brightnessctl set 2%-"
@@ -405,6 +399,9 @@ in
               ",XF86AudioRaiseVolume,exec,${pkgs.pamixer}/bin/pamixer -i 2"
             ];
             bind = [
+              # Rebuild NixOS with a KeyBind
+              "$mainMod, U, exec, $term -e rebuild"
+
               # Keybinds help menu
               "$mainMod, question, exec, ${getExe keybinds-yad}"
               "$mainMod, slash, exec, ${getExe keybinds-yad}"
@@ -486,6 +483,8 @@ in
               # Switch workspaces relative to the active workspace with mainMod + CTRL + [←→]
               "$mainMod CTRL, right, workspace, r+1"
               "$mainMod CTRL, left, workspace, r-1"
+              "$mainMod CTRL, L, workspace, r+1"
+              "$mainMod CTRL, H, workspace, r-1"
 
               # move to the first empty workspace instantly with mainMod + CTRL + [↓]
               "$mainMod CTRL, down, workspace, empty"
@@ -507,20 +506,6 @@ in
               "$mainMod, period, layoutmsg, move +col"
               "$mainMod, comma, layoutmsg, move -col"
 
-              # Go to workspace 5, 6 and 7 with mouse side buttons
-              "$mainMod, mouse:276, workspace, 5"
-              "$mainMod, mouse:275, workspace, 6"
-              "$mainMod ALT, mouse:275, workspace, 7"
-              "$mainMod SHIFT, mouse:276, movetoworkspace, 5"
-              "$mainMod SHIFT, mouse:275, movetoworkspace, 6"
-              "$mainMod SHIFT ALT, mouse:275, movetoworkspace, 7"
-              "$mainMod CTRL, mouse:276, movetoworkspacesilent, 5"
-              "$mainMod CTRL, mouse:275, movetoworkspacesilent, 6"
-              "$mainMod CTRL ALT, mouse:275, movetoworkspacesilent, 7"
-
-              # Rebuild NixOS with a KeyBind
-              "$mainMod, U, exec, $term -e rebuild"
-
               # Scroll through existing workspaces with mainMod + scroll
               "$mainMod, mouse_down, workspace, e+1"
               "$mainMod, mouse_up, workspace, e-1"
@@ -530,16 +515,16 @@ in
               "$mainMod CTRL ALT, left, movetoworkspace, r-1"
 
               # Move active window around current workspace with mainMod + SHIFT + CTRL [←→↑↓]
-              "$mainMod SHIFT $CONTROL, left, movewindow, l"
-              "$mainMod SHIFT $CONTROL, right, movewindow, r"
-              "$mainMod SHIFT $CONTROL, up, movewindow, u"
-              "$mainMod SHIFT $CONTROL, down, movewindow, d"
+              "$mainMod SHIFT, left, movewindow, l"
+              "$mainMod SHIFT, right, movewindow, r"
+              "$mainMod SHIFT, up, movewindow, u"
+              "$mainMod SHIFT, down, movewindow, d"
 
               # Move active window around current workspace with mainMod + SHIFT + CTRL [HLJK]
-              "$mainMod SHIFT $CONTROL, H, movewindow, l"
-              "$mainMod SHIFT $CONTROL, L, movewindow, r"
-              "$mainMod SHIFT $CONTROL, K, movewindow, u"
-              "$mainMod SHIFT $CONTROL, J, movewindow, d"
+              "$mainMod SHIFT, H, movewindow, l"
+              "$mainMod SHIFT, L, movewindow, r"
+              "$mainMod SHIFT, K, movewindow, u"
+              "$mainMod SHIFT, J, movewindow, d"
 
               # Special workspaces (scratchpad)
               "$mainMod CTRL, S, movetoworkspacesilent, special"
