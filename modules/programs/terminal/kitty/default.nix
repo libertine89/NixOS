@@ -58,6 +58,15 @@
           "ctrl+shift+right" = "no_op";
         };
       };
+      xdg.configFile."kitty/quick-access-terminal.conf".text = ''
+      edge top
+      lines 24
+      columns 140
+      background_opacity 0.88
+      hide_on_focus_loss yes
+      mouse_hide_wait 1
+      enable_audio_bell no
+    '';
     })
   ];
 }
