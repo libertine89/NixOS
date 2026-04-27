@@ -393,7 +393,13 @@ in
               "float on, match:class ^(nm-applet)$"
               "float on, match:class ^(nm-connection-editor)$"
               "float on, match:class ^(org.kde.polkit-kde-authentication-agent-1)$"
+
+              "float on, match:class ^(kitty-quake)$"
+              "size 800 500, match:class ^(kitty-quake)$"
+              "move 10 50, match:class ^(kitty-quake)$"
+              "workspace special:quake, match:class ^(kitty-quake)"
             ];
+
             binde = [
               # Resize windows Tiling
               #"$mainMod equals, resizeactive, 10 0"
@@ -446,6 +452,7 @@ in
 
               # Applications/Programs
               "$mainMod, Return, exec, $term"
+              "$mainMod CTRL, return, exec, kitty --class kitty-quake"
               "$mainMod, E, exec, ${getExe fileManagerScript} ${fileManager}"
               "$mainMod, C, exec, $editor"
               "$mainMod, B, exec, $browser"

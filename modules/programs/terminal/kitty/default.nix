@@ -59,9 +59,9 @@
         };
       };
       xdg.configFile."kitty/quick-access-terminal.conf".text = ''
-      edge top
+      edge center
       lines 24
-      columns 140
+      columns 70
       background_opacity 0.88
       hide_on_focus_loss yes
       mouse_hide_wait 1
