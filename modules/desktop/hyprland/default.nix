@@ -184,7 +184,7 @@ in
               "col.active_border" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
               "col.inactive_border" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
               resize_on_border = true;
-              layout = "scrolling"; # dwindle, master, scrolling, monocle
+              #layout = "scrolling"; # dwindle, master, scrolling, monocle
               # allow_tearing = true; # Allow tearing for games (use immediate window rules for specific games or all titles)
             };
             
@@ -435,7 +435,7 @@ in
               "$mainMod, delete, exit" # kill hyperland session
               "$mainMod, W, togglefloating" # toggle the window on focus to float
               "$mainMod SHIFT, G, togglegroup" # toggle the window on focus to float
-              "$mainMod, F1, exec, ${getExe toggle-layout}"
+              "$mainMod, T, exec, ${getExe toggle-layout}"
               "$mainMod, F, fullscreen" # toggle the window on focus to fullscreen
               "$mainMod, M, fullscreen, 1" # Set focus maximised
               "$CTRL, L, exec, hyprlock" # lock screen
@@ -446,7 +446,6 @@ in
 
               # Applications/Programs
               "$mainMod, Return, exec, $term"
-              "$mainMod, T, exec, $term"
               "$mainMod, E, exec, ${getExe fileManagerScript} ${fileManager}"
               "$mainMod, C, exec, $editor"
               "$mainMod, B, exec, $browser"
