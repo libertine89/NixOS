@@ -34,6 +34,7 @@ let
   zoom = pkgs.callPackage ./scripts/zoom.nix { };
   wrap-workspaces-next = pkgs.callPackage ./scripts/wrap-workspaces-next.nix {};
   wrap-workspaces-prev = pkgs.callPackage ./scripts/wrap-workspaces-prev.nix {};
+  toggle-layout = pkgs.callPackage ./scripts/toggle-layout.nix {};
 in
 {
   imports = [
@@ -434,6 +435,7 @@ in
               "$mainMod, delete, exit" # kill hyperland session
               "$mainMod, W, togglefloating" # toggle the window on focus to float
               "$mainMod SHIFT, G, togglegroup" # toggle the window on focus to float
+              "$mainMod, F1, exec, ${getExe toggle-layout}"
               "$mainMod, F, fullscreen" # toggle the window on focus to fullscreen
               "$mainMod, M, fullscreen, 1" # Set focus maximised
               "$CTRL, L, exec, hyprlock" # lock screen
