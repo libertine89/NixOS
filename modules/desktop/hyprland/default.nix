@@ -32,6 +32,8 @@ let
   screenshot = pkgs.callPackage ./scripts/screenshot.nix { };
   wallpaper = pkgs.callPackage ./scripts/wallpaper.nix { inherit defaultWallpaper; };
   zoom = pkgs.callPackage ./scripts/zoom.nix { };
+  wrap-workspaces-next = pkgs.callPackage ./scripts/wrap-workspaces-next.nix {};
+  wrap-workspaces-prev = pkgs.callPackage ./scripts/wrap-workspaces-prev.nix {};
 in
 {
   imports = [
@@ -493,10 +495,10 @@ in
               "$mainMod, Tab, bringactivetotop"
 
               # Switch workspaces relative to the active workspace with mainMod + CTRL + [←→]
-              "$mainMod CTRL, right, workspace, r+1"
-              "$mainMod CTRL, left, workspace, r-1"
-              "$mainMod CTRL, L, workspace, r+1"
-              "$mainMod CTRL, H, workspace, r-1"
+              "$mainMod CTRL, right, exec, ${wrap-workspaces-next}"
+              "$mainMod CTRL, left, exec, ${wrap-workspaces-prev}"
+              "$mainMod CTRL, L, exec, ${wrap-workspaces-next}"
+              "$mainMod CTRL, H, exec, ${wrap-workspaces-prev}"
 
               # move to the first empty workspace instantly with mainMod + CTRL + [↓]
               "$mainMod CTRL, down, workspace, empty"

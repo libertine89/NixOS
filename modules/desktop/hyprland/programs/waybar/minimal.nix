@@ -148,11 +148,6 @@ in
             };
             "hyprland/language" = {
               format = "{short}"; # can use {short} and {variant}
-              on-click = "${keyboardswitch}/bin/keyboardswitch";
-            };
-            "hyprland/workspaces" = {
-              all-outputs = true;
-              active-only = false;
               on-click = "activate";
               persistent-workspaces = {
                 "*" = [
@@ -161,17 +156,12 @@ in
                   3
                   4
                   5
-                  6
-                  7
-                  8
-                  9
-                  10
                 ];
               };
             };
 
             "hyprland/window" = {
-              format = "{}";
+              format = "{id}";
               separate-outputs = true;
               rewrite = {
                 "" = "Desktop";
