@@ -184,6 +184,12 @@ in
               layout = "scrolling"; # dwindle, master, scrolling, monocle
               # allow_tearing = true; # Allow tearing for games (use immediate window rules for specific games or all titles)
             };
+            
+              scrolling = {
+                explicit_column_widths = "0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0";              
+              };
+          
+
             decoration = {
               shadow.enabled = false;
               rounding = 10;
@@ -386,11 +392,17 @@ in
               "float on, match:class ^(org.kde.polkit-kde-authentication-agent-1)$"
             ];
             binde = [
-              # Resize windows
-              "$mainMod equals, resizeactive, 30 0"
-              "$mainMod minus, resizeactive, -30 0"
-              "$mainMod SHIFT, equals, resizeactive, 0 -30"
-              "$mainMod SHIFT, minus, resizeactive, 0 30"
+              # Resize windows Tiling
+              #"$mainMod equals, resizeactive, 10 0"
+              #"$mainMod minus, resizeactive, -10 0"
+              #"$mainMod SHIFT, equals, resizeactive, 0 -10"
+              #"$mainMod SHIFT, minus, resizeactive, 0 10"
+
+              # Resize windows Scrolling
+              "$mainMod, equal, layoutmsg, colresize +conf"
+              "$mainMod, minus, layoutmsg, colresize -conf"
+              "$mainMod SHIFT, equal, resizeactive, 0 10"
+              "$mainMod SHIFT, minus, resizeactive, 0 -10"
 
               # Functional keybinds
               ",XF86MonBrightnessDown,exec,${pkgs.brightnessctl}/bin/brightnessctl set 2%-"
@@ -420,8 +432,9 @@ in
               "$mainMod, delete, exit" # kill hyperland session
               "$mainMod, W, togglefloating" # toggle the window on focus to float
               "$mainMod SHIFT, G, togglegroup" # toggle the window on focus to float
-              "ALT, return, fullscreen" # toggle the window on focus to fullscreen
-              "$mainMod ALT, L, exec, hyprlock" # lock screen
+              "$mainMod, F, fullscreen" # toggle the window on focus to fullscreen
+              "$mainMod, M, fullscreen, 1" # Set focus maximised
+              "$CTRL, L, exec, hyprlock" # lock screen
               "$mainMod, backspace, exec, pkill -x wlogout || wlogout -b 4" # logout menu
               "$CONTROL, ESCAPE, exec, pkill \"waybar|hyprpanel|noctalia-shell|caelestia-shell|.quickshell\" || ${bar}" # toggle bar
               "$mainMod CTRL, mouse_down, exec, ${getExe zoom} in" # zoom in
@@ -432,7 +445,7 @@ in
               "$mainMod, T, exec, $term"
               "$mainMod, E, exec, ${getExe fileManagerScript} ${fileManager}"
               "$mainMod, C, exec, $editor"
-              "$mainMod, F, exec, $browser"
+              "$mainMod, B, exec, $browser"
               "$mainMod SHIFT, S, exec, spotify"
               "$mainMod SHIFT, Y, exec, youtube-music"
               "$CONTROL ALT, DELETE, exec, $term -e '${getExe pkgs.btop}'" # System Monitor
@@ -452,8 +465,7 @@ in
               "$mainMod SHIFT, Q, exec, swaync-client -t -sw" # swayNC panel
               "$mainMod ALT, G, exec, ${getExe gamemode}" # disable hypr effects for gamemode
               "$mainMod, V, exec, ${getExe clipmanager}" # Clipboard Manager
-              "$mainMod, M, exec, ${getExe rofimusic}" # online music
-
+            
               # Screenshot/Screencapture
               "$mainMod SHIFT, R, exec, ${getExe screen-record} a" # Screen Record (area select)
               "$mainMod CTRL, R, exec, ${getExe screen-record} m" # Screen Record (monitor select)
@@ -514,13 +526,13 @@ in
               "$mainMod CTRL ALT, right, movetoworkspace, r+1"
               "$mainMod CTRL ALT, left, movetoworkspace, r-1"
 
-              # Move active window around current workspace with mainMod + SHIFT + CTRL [←→↑↓]
+              # Move active window around current workspace with mainMod + SHIFT [←→↑↓]
               "$mainMod SHIFT, left, movewindow, l"
               "$mainMod SHIFT, right, movewindow, r"
               "$mainMod SHIFT, up, movewindow, u"
               "$mainMod SHIFT, down, movewindow, d"
 
-              # Move active window around current workspace with mainMod + SHIFT + CTRL [HLJK]
+              # Move active window around current workspace with mainMod + SHIFT [HLJK]
               "$mainMod SHIFT, H, movewindow, l"
               "$mainMod SHIFT, L, movewindow, r"
               "$mainMod SHIFT, K, movewindow, u"
@@ -572,16 +584,11 @@ in
 
             workspace = [
               # Binds workspaces to my monitors (find desc with: hyprctl monitors)
-              "1, persistent:true, monitor:desc:BNQ BenQ EL2870U PCK00489SL0,default:true"
-              "2, persistent:true, monitor:desc:BNQ BenQ EL2870U PCK00489SL0"
-              "3, persistent:true, monitor:desc:BNQ BenQ EL2870U PCK00489SL0"
-              "4, persistent:true, monitor:desc:BNQ BenQ EL2870U PCK00489SL0"
-              "5, persistent:true, monitor:desc:BNQ BenQ EW277HDR 99J01861SL0,default:true"
-              "6, persistent:true, monitor:desc:BNQ BenQ EW277HDR 99J01861SL0"
-              "7, persistent:true, monitor:desc:BNQ BenQ EW277HDR 99J01861SL0"
-              "8, persistent:true, monitor:desc:BNQ BenQ xl2420t 99D06760SL0,default:true"
-              "9, persistent:true, monitor:desc:BNQ BenQ xl2420t 99D06760SL0"
-              "10, persistent:true, monitor:desc:BNQ BenQ EL2870U PCK00489SL0"
+              "1, persistent:true,default:true"
+              "2, persistent:true"
+              "3, persistent:true"
+              "4, persistent:true"
+              "5, persistent:true"
             ];
           };
         };
