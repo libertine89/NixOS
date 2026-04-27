@@ -495,10 +495,10 @@ in
               "$mainMod, Tab, bringactivetotop"
 
               # Switch workspaces relative to the active workspace with mainMod + CTRL + [←→]
-              "$mainMod CTRL, right, exec, ${wrap-workspaces-next}"
-              "$mainMod CTRL, left, exec, ${wrap-workspaces-prev}"
-              "$mainMod CTRL, L, exec, ${wrap-workspaces-next}"
-              "$mainMod CTRL, H, exec, ${wrap-workspaces-prev}"
+              "$mainMod CTRL, right, exec, ${getExe wrap-workspaces-next}"
+              "$mainMod CTRL, left, exec, ${getExe wrap-workspaces-prev}"
+              "$mainMod CTRL, L, exec, ${getExe wrap-workspaces-next}"
+              "$mainMod CTRL, H, exec, ${getExe wrap-workspaces-prev}"
 
               # move to the first empty workspace instantly with mainMod + CTRL + [↓]
               "$mainMod CTRL, down, workspace, empty"

@@ -1,7 +1,6 @@
-{pkgs, ...}:
+{ pkgs }:
 
-  let
-  wrap-workspaces-prev = pkgs.writeShellScriptBin "ws-prev" ''
+  pkgs.writeShellScriptBin "wrap-workspaces-prev" ''
     MIN=1
     MAX=5
 
@@ -14,10 +13,4 @@
     fi
 
     ${pkgs.hyprland}/bin/hyprctl dispatch workspace "$next"
-    '';
-
-in {
-  home.packages = [
-    wrap-workspaces-prev
-  ];
-}
+    ''
