@@ -2,6 +2,7 @@
   host,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -35,6 +36,13 @@ let
   wrap-workspaces-next = pkgs.callPackage ./scripts/wrap-workspaces-next.nix {};
   wrap-workspaces-prev = pkgs.callPackage ./scripts/wrap-workspaces-prev.nix {};
   toggle-layout = pkgs.callPackage ./scripts/toggle-layout.nix {};
+
+  # Set up scroll-overview plugin
+  hyprscrollOverview = pkgs.callPackage inputs.scroll-overview {
+    hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    hyprlandPlugins = inputs.hyprland.packages.${pkgs.system};
+  };
+
 in
 {
   imports = [
@@ -44,8 +52,7 @@ in
     ./programs/rofi
     ./programs/hypridle
     ./programs/hyprlock
-  ]
-  ++ lib.optional (bar != "hyprpanel") ./programs/swaync;
+  ];
 
   environment.systemPackages = with pkgs; [
     pavucontrol
@@ -71,7 +78,7 @@ in
 
   programs.hyprland = {
     enable = true;
-    package = pkgs.hyprland;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;# pkgs.hyprland;
     # withUWSM = true;
   };
 
@@ -108,8 +115,9 @@ in
         #test later systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
         wayland.windowManager.hyprland = {
           enable = true;
-          package = pkgs.hyprland;
+          package = inputs.hyprland.packages.${pkgs.system}.hyprland; #pkgs.hyprland;
           plugins = [
+            hyprscrollOverview 
             # inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprwinwrap
             # inputs.hyprsysteminfo.packages.${pkgs.stdenv.hostPlatform.system}.default
           ];
@@ -188,10 +196,15 @@ in
               # allow_tearing = true; # Allow tearing for games (use immediate window rules for specific games or all titles)
             };
             
-              scrolling = {
-                explicit_column_widths = "0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0";              
+            scrolling = {
+              explicit_column_widths = "0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0";              
+            };
+            
+            plugin = {
+              "scrolloverview" = {
+                enable = true;
               };
-          
+            };
 
             decoration = {
               shadow.enabled = false;
@@ -283,7 +296,6 @@ in
               mouse_move_focuses_monitor = true;
               swallow_regex = "^(Alacritty|kitty)$";
               enable_swallow = true;
-              vfr = true; # always keep on
               vrr = 2; # enable variable refresh rate (0=off, 1=on, 2=fullscreen only, 3 = fullscreen games/media)
             };
             xwayland.force_zero_scaling = false;
@@ -291,7 +303,6 @@ in
               "3, horizontal, workspace"
             ];
             dwindle = {
-              pseudotile = true;
               preserve_split = true;
             };
             master = {
@@ -402,10 +413,8 @@ in
 
             binde = [
               # Resize windows Tiling
-              #"$mainMod equals, resizeactive, 10 0"
-              #"$mainMod minus, resizeactive, -10 0"
-              #"$mainMod SHIFT, equals, resizeactive, 0 -10"
-              #"$mainMod SHIFT, minus, resizeactive, 0 10"
+              "$mainMod, equal, resizeactive, 10 0"
+              "$mainMod, minus, resizeactive, -10 0"
 
               # Resize windows Scrolling
               "$mainMod, equal, layoutmsg, colresize +conf"
