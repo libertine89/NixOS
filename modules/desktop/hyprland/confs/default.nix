@@ -1,27 +1,14 @@
-{ lib, pkgs, inputs, getExe, getExe', bar, browser, terminal, fileManager, kbdLayout, kbdVariant, ... }:
+{ ctx }:
 
 {
-  env = import ./enviroments.nix { inherit lib pkgs getExe getExe'; };
-
-  autostart = import ./autostart.nix { 
-    inherit lib pkgs getExe getExe' browser terminal fileManager;
-  };
-
-  animations = import ./animations.nix { inherit lib; };
-
-  decoration = import ./decorations.nix { };
-
-  keybindings = import ./keybindings.nix {
-    inherit lib pkgs getExe getExe' browser terminal fileManager;
-  };
-
-  monitors = import ./monitors.nix { };
-
-  windowrules = import ./windowrules.nix { };
-
-  windows = import ./windows.nix { };
-
-  workspaces = import ./workspaces.nix { };
-
-  layouts = import ./layouts.nix { };
+  env = import ./enviroments.nix { inherit ctx; };
+  autostart = import ./autostart.nix { inherit ctx; };
+  animations = import ./animations.nix { inherit ctx; };
+  decoration = import ./decorations.nix { ctx };
+  keybindings = import ./keybindings.nix { ctx; };
+  monitors = import ./monitors.nix { ctx };
+  windowrules = import ./windowrules.nix { ctx };
+  windows = import ./windows.nix { ctx };
+  workspaces = import ./workspaces.nix { ctx };
+  layouts = import ./layouts.nix { ctx };
 }
