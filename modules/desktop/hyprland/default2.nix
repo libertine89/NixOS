@@ -50,7 +50,7 @@ in
     ({ config, ... }:
     let
       # Import modular hyprland config pieces
-      hypr = import ./hyprland {
+      conf = import ./confs {
         inherit lib pkgs inputs getExe getExe'
           bar browser terminal fileManager kbdLayout kbdVariant;
       };
@@ -78,15 +78,16 @@ in
             "$editor" = "code --disable-gpu";
             "$browser" = browser;
           }
-          // hypr.env
-          // hypr.animations
-          // hypr.decoration
-          // hypr.keybindings
-          // hypr.monitors
-          // hypr.workspaces
-          // hypr.windowrules
-          // hypr.windows
-          // hypr.layouts;
+          // conf.env
+          // conf.autostart 
+          // conf.animations
+          // conf.decoration
+          // conf.keybindings
+          // conf.monitors
+          // conf.workspaces
+          // conf.windowrules
+          // conf.windows
+          // conf.layouts;
       };
     })
   ];

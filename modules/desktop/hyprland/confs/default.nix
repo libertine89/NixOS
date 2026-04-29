@@ -3,6 +3,10 @@
 {
   env = import ./enviroments.nix { inherit lib pkgs getExe getExe'; };
 
+  autostart = import ./autostart.nix { 
+    inherit lib pkgs getExe getExe' browser terminal fileManager;
+  };
+
   animations = import ./animations.nix { inherit lib; };
 
   decoration = import ./decorations.nix { };
