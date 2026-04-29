@@ -1,4 +1,4 @@
-{ lib, pkgs, getExe, getExe', browser, terminal, fileManager, ... }:
+{ ctx }:
 
 {
   ### === Singluar Binds === ###
