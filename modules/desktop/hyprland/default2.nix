@@ -35,6 +35,15 @@ let
   wrap-workspaces-next = pkgs.callPackage ./scripts/wrap-workspaces-next.nix {};
   wrap-workspaces-prev = pkgs.callPackage ./scripts/wrap-workspaces-prev.nix {};
   toggle-layout = pkgs.callPackage ./scripts/toggle-layout.nix {};
+
+  ctx = {
+    inherit pkgs lib getExe getExe'
+      browser terminal fileManager bar;
+
+    inherit keybinds-yad toggle-layout wrap-workspaces-next
+      wrap-workspaces-prev zoom gamemode clipmanager
+      screen-record screenshot keyboardswitch fileManagerScript;
+  };
 in
 {
   imports = [
@@ -50,10 +59,7 @@ in
     ({ config, ... }:
     let
       # Import modular hyprland config pieces
-      conf = import ./confs {
-        inherit lib pkgs inputs getExe getExe'
-          bar browser terminal fileManager kbdLayout kbdVariant;
-      };
+      conf = import ./confs { inherit ctx; };
     in
     {
       wayland.windowManager.hyprland = {
