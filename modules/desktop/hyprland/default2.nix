@@ -60,7 +60,15 @@ in
         enable = true;
         package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
-        systemd.enable = true;
+        plugins = [
+          # inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprwinwrap
+          # inputs.hyprsysteminfo.packages.${pkgs.stdenv.hostPlatform.system}.default
+        ];
+
+        systemd = {
+          enable = true;
+          variables = [ "--all" ];
+        };
 
         settings =
           {
