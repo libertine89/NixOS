@@ -1,8 +1,6 @@
 { lib, pkgs, getExe, getExe', browser, terminal, fileManager, ... }:
 
 {
-
-
   ### === Singluar Binds === ###
   bind = [
     # Rebuild NixOS with a KeyBind
