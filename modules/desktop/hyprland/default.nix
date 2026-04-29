@@ -36,13 +36,7 @@ let
   wrap-workspaces-next = pkgs.callPackage ./scripts/wrap-workspaces-next.nix {};
   wrap-workspaces-prev = pkgs.callPackage ./scripts/wrap-workspaces-prev.nix {};
   toggle-layout = pkgs.callPackage ./scripts/toggle-layout.nix {};
-
-  # Set up scroll-overview plugin
-  hyprscrollOverview = pkgs.callPackage inputs.scroll-overview {
-    hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    hyprlandPlugins = inputs.hyprland.packages.${pkgs.system};
-  };
-
+  toggle-kitty-quake = pkgs.callPackage ./scripts/toggle-kitty-quake.nix {};
 in
 {
   imports = [
@@ -117,7 +111,6 @@ in
           enable = true;
           package = inputs.hyprland.packages.${pkgs.system}.hyprland; #pkgs.hyprland;
           plugins = [
-            hyprscrollOverview 
             # inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprwinwrap
             # inputs.hyprsysteminfo.packages.${pkgs.stdenv.hostPlatform.system}.default
           ];
@@ -407,8 +400,7 @@ in
 
               "float on, match:class ^(kitty-quake)$"
               "size 800 500, match:class ^(kitty-quake)$"
-              "move 10 50, match:class ^(kitty-quake)$"
-              "workspace special:quake, match:class ^(kitty-quake)"
+              "move 12 -600, match:class ^(kitty-quake)$"
             ];
 
             binde = [
@@ -461,7 +453,7 @@ in
 
               # Applications/Programs
               "$mainMod, Return, exec, $term"
-              "$mainMod CTRL, return, exec, kitty --class kitty-quake"
+              "$mainMod CTRL, return, exec, ${getExe toggle-kitty-quake}" # kitty --class kitty-quake"
               "$mainMod, E, exec, ${getExe fileManagerScript} ${fileManager}"
               "$mainMod, C, exec, $editor"
               "$mainMod, B, exec, $browser"
