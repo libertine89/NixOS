@@ -1,14 +1,14 @@
 { ctx }:
 
 {
-  env = import ./enviroments.nix ctx;
-  autostart = import ./autostart.nix ctx;
-  animations = import ./animations.nix ctx;
-  decoration = import ./decorations.nix ctx;
-  keybindings = import ./keybindings.nix ctx;
-  monitors = import ./monitors.nix ctx;
-  windowrules = import ./windowrules.nix ctx;
-  windows = import ./windows.nix ctx;
-  workspaces = import ./workspaces.nix ctx;
-  layouts = import ./layouts.nix ctx;
+  env = import ./enviroments.nix { inherit ctx; };
+  autostart = import ./autostart.nix { inherit ctx; };
+  animations = import ./animations.nix { inherit ctx; };
+  decoration = import ./decorations.nix { inherit ctx; };
+  keybindings = import ./keybindings.nix { inherit ctx; };
+  monitors = import ./monitors.nix { inherit ctx; };
+  windowrules = import ./windowrules.nix { inherit ctx; };
+  windows = import ./windows.nix { inherit ctx; };
+  workspaces = import ./workspaces.nix { inherit ctx; };
+  layouts = import ./layouts.nix { inherit ctx; };
 }
