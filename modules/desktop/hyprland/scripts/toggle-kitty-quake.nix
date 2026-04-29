@@ -1,25 +1,28 @@
 { pkgs }:
 
 pkgs.writeShellScriptBin "toggle-kitty-quake" ''
-  #!/usr/bin/env bash
+  #!${pkgs.bash}/bin/env bash
 
   CLASS="kitty-quake"
 
-  WIN_ID=$(hyprctl clients -j | jq -r ".[] | select(.class==\"$CLASS\") | .address")
+  WIN_ID=$(hyprctl clients -j | ${pkgs.jq}/bin/jq -r \
+    '.[] | select(.initialClass=="'"$CLASS"'") | .address' | head -n1)
 
-  if [ -z "$WIN_ID" ] then
-    kitty --class $CLASS &
+  if [ -z "$WIN_ID" ]; then
+    hyprctl dispatch exec "kitty --class kitty-quake" &
     exit 0
   fi
 
-  POS_Y=$(hyprctl clients -j | jq -r ".[] | select(.class==\"$CLASS\") | .at[1]")
 
-  if [ "$POS_Y" -lt 0 ]; then 
-    hyprctl dispatch movewindowpixel exact 12 60,address:$WIN_ID
+  POS_Y=$(hyprctl clients -j | ${pkgs.jq}/bin/jq -r \
+    '.[] | select(.initialClass=="'"$CLASS"'") | .at[1]' | head -n1)
+  
     hyprctl dispatch focuswindow address:$WIN_ID
+    sleep 0.5
+
+  if [ "$POS_Y" -lt 50 ]; then 
+    hyprctl dispatch movewindowpixel exact 12 60 
   else
-    hyprctl dispatch movewindowpixel exact 12 -600,address:$WIN_ID
-    # sleep 0.25
-    # hyprctl dispatch closewindow address:$WIN_ID
+    hyprctl dispatch movewindowpixel exact 12 -600
   fi
 ''

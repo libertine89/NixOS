@@ -397,10 +397,11 @@ in
               "float on, match:class ^(nm-applet)$"
               "float on, match:class ^(nm-connection-editor)$"
               "float on, match:class ^(org.kde.polkit-kde-authentication-agent-1)$"
-
-              "float on, match:class ^(kitty-quake)$"
-              "size 800 500, match:class ^(kitty-quake)$"
-              "move 12 -600, match:class ^(kitty-quake)$"
+             
+              #"float on, match:class ^(kitty-quake)$"
+              #"size 800 500, match:class ^(kitty-quake)$"
+              #"move 12 60, match:class ^(kitty-quake)$"
+              #"workspace special:quake, ^(class:kitty-quake)$"
             ];
 
             binde = [
@@ -453,7 +454,7 @@ in
 
               # Applications/Programs
               "$mainMod, Return, exec, $term"
-              "$mainMod CTRL, return, exec, ${getExe toggle-kitty-quake}" # kitty --class kitty-quake"
+              "$mainMod CTRL, Return, togglespecialworkspace, quake" # kitty --class kitty-quake"
               "$mainMod, E, exec, ${getExe fileManagerScript} ${fileManager}"
               "$mainMod, C, exec, $editor"
               "$mainMod, B, exec, $browser"
