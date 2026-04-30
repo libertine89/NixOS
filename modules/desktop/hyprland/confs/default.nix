@@ -1,7 +1,7 @@
 { ctx }:
 
 {
-  env = import ./enviroments.nix { inherit ctx; };
+  env = import ./environments.nix { inherit ctx; };
   autostart = import ./autostart.nix { inherit ctx; };
   animations = import ./animations.nix { inherit ctx; };
   decorations = import ./decorations.nix { inherit ctx; };
