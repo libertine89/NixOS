@@ -3,7 +3,8 @@
 let
   inherit (ctx)
     pkgs lib getExe getExe'
-    browser terminal fileManager bar batterynotify;
+    browser terminal fileManager bar 
+    batterynotify wallpaper;
 in
 {
   exec-once = [
