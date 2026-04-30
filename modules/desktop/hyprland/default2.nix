@@ -39,7 +39,7 @@ let
   ctx = {
     inherit pkgs lib getExe getExe'
       browser terminal fileManager bar
-      kbdLayout, kbdVariant defaultWallpaper;
+      kbdLayout kbdVariant defaultWallpaper;
 
     inherit keybinds-yad toggle-layout wrap-workspaces-next
       wrap-workspaces-prev zoom gamemode clipmanager wallpaper
