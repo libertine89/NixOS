@@ -1,6 +1,6 @@
 { pkgs }:
  
-  pkgs.writeShellScriptBin "wrap-window-workspaces-next" ''
+  pkgs.writeShellScriptBin "wrap-window-workspace-next" ''
     MIN=1
     MAX=5
 
