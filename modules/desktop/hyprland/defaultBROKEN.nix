@@ -135,24 +135,8 @@ in
           variables = [ "--all" ];
         };
 
-        settings =
-          {
-            # base/global config still here
-            "$mainMod" = "SUPER";
-            "$term" = "${getExe pkgs.${terminal}}";
-            "$editor" = "code --disable-gpu";
-            "$browser" = browser;
-          }
-          // conf.env
-          // conf.autostart 
-          // conf.animations
-          // conf.decorations
-          // conf.keybindings
-          // conf.monitors
-          // conf.workspaces
-          // conf.windowrules
-          // conf.general
-          // conf.layerrules;
+        settings = conf.settings;
+
       };
     }
   )
