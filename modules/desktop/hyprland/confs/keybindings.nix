@@ -122,6 +122,18 @@ in
     "$mainMod SHIFT, K, movewindow, u"
     "$mainMod SHIFT, J, movewindow, d"
 
+    # Move window to workspace by number with mainMod + Shift + number
+    "$mainMod SHIFT, 1, workspace, 1"                                                            
+    "$mainMod SHIFT, 2, workspace, 2"                                                            
+    "$mainMod SHIFT, 3, workspace, 3"                                                            
+    "$mainMod SHIFT, 4, workspace, 4"                                                            
+    "$mainMod SHIFT, 5, workspace, 5"                                                           
+    "$mainMod SHIFT, 6, workspace, 6"                                                            
+    "$mainMod SHIFT, 7, workspace, 7"                                                            
+    "$mainMod SHIFT, 8, workspace, 8"                                                            
+    "$mainMod SHIFT, 9, workspace, 9"                                                            
+    "$mainMod SHIFT, 0, workspace, 10"   
+
     # Move window to workspaces relative to the active workspace with mainMod + CTRL + SHIFT + [←→]
     "$mainMod CTRL SHIFT, right, exec, ${getExe wrap-window-workspace-next}"
     "$mainMod CTRL SHIFT, left, exec, ${getExe wrap-window-workspace-prev}"
@@ -133,6 +145,18 @@ in
     "$mainMod, comma, layoutmsg, move -col"
 
     ### === Workspace Movement === ###
+    # Switch to workspace by number with mainMod + number
+    "$mainMod, 1, movetoworkspace, 1"                                                            
+    "$mainMod, 2, movetoworkspace, 2"                                                            
+    "$mainMod, 3, movetoworkspace, 3"                                                            
+    "$mainMod, 4, movetoworkspace, 4"                                                            
+    "$mainMod, 5, movetoworkspace, 5"                                                           
+    "$mainMod, 6, movetoworkspace, 6"                                                            
+    "$mainMod, 7, movetoworkspace, 7"                                                            
+    "$mainMod, 8, movetoworkspace, 8"                                                            
+    "$mainMod, 9, movetoworkspace, 9"                                                            
+    "$mainMod, 0, movetoworkspace, 10"                                                           
+    
     # Switch workspaces relative to the active workspace with mainMod + CTRL + [←→]
     "$mainMod CTRL, right, exec, ${getExe wrap-workspaces-next}"
     "$mainMod CTRL, left, exec, ${getExe wrap-workspaces-prev}"
