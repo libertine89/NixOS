@@ -1,11 +1,7 @@
 { ctx }:
 
-let
-  inherit (ctx)
-    pkgs lib getExe getExe';
-in
 {
-  decoration = {
+  decorations = {
     shadow.enabled = false;
     rounding = 10;
     dim_special = 0.3;
