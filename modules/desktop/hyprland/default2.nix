@@ -86,6 +86,10 @@ in
 
   home-manager.sharedModules = [
     ({ config, ... }:
+    let
+      # Import modular hyprland config pieces
+      conf = import ./confs { inherit ctx; };
+    in
       {
         xdg.portal = {
           enable = true;
@@ -113,11 +117,7 @@ in
       # Set wallpaper
       services.awww.enable = true;
 
-    let
-      # Import modular hyprland config pieces
-      conf = import ./confs { inherit ctx; };
-    in
-    {
+    
       wayland.windowManager.hyprland = {
         enable = true;
         package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -151,6 +151,7 @@ in
           // conf.general
           // conf.layerrules;
       };
-    })
-  ];
-}
+    }
+  )
+];
+
