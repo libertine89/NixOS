@@ -92,7 +92,7 @@ in
           // conf.monitors
           // conf.workspaces
           // conf.windowrules
-          // conf.windows
+          // conf.general
           // conf.layerrules;
       };
     })
