@@ -55,8 +55,63 @@ in
     ./programs/hyprlock
   ];
 
+  environment.systemPackages = with pkgs; [
+    pavucontrol
+    swappy
+    cliphist
+    wl-clipboard
+  ];
+
+  systemd.user.services.hyprpolkitagent = {
+    description = "Hyprpolkitagent - Polkit authentication agent";
+    wantedBy = [ "graphical-session.target" ];
+    wants = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.hyprpolkitagent}/libexec/hyprpolkitagent";
+      Restart = "on-failure";
+      RestartSec = 1;
+      TimeoutStopSec = 10;
+    };
+  };
+  services.displayManager.defaultSession = "hyprland";
+
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;# pkgs.hyprland;
+    # withUWSM = true;
+  };
+
   home-manager.sharedModules = [
     ({ config, ... }:
+      {
+        xdg.portal = {
+          enable = true;
+          extraPortals = with pkgs; [
+            xdg-desktop-portal-gtk
+          ];
+          xdgOpenUsePortal = true;
+          configPackages = [ config.wayland.windowManager.hyprland.package ];
+          config.hyprland = {
+            default = [
+              "hyprland"
+              "gtk"
+            ];
+            "org.freedesktop.impl.portal.OpenURI" = "gtk";
+            "org.freedesktop.impl.portal.FileChooser" = "gtk";
+            "org.freedesktop.impl.portal.Print" = "gtk";
+          };
+        };
+
+        xdg.configFile."hypr/icons" = {
+          source = ./icons;
+          recursive = true;
+        };
+
+      # Set wallpaper
+      services.awww.enable = true;
+
     let
       # Import modular hyprland config pieces
       conf = import ./confs { inherit ctx; };
