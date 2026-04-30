@@ -1,9 +1,5 @@
 { ctx }:
 
-let
-  inherit (ctx)
-    pkgs lib getExe getExe';
-in
 {
   env = [
     "XDG_CURRENT_DESKTOP,Hyprland"
