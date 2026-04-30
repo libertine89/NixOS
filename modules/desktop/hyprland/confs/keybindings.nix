@@ -33,13 +33,13 @@ in
     "$mainMod, T, exec, ${getExe toggle-layout}"
     "$mainMod, F, fullscreen" # toggle the window on focus to fullscreen
     "$mainMod, M, fullscreen, 1" # Set focus maximised
-    "$CTRL, L, exec, hyprlock" # lock screen
+    "$CONTROL, L, exec, hyprlock" # lock screen
     "$mainMod, backspace, exec, pkill -x wlogout || wlogout -b 4" # logout menu
     "$CONTROL, ESCAPE, exec, pkill \"waybar|hyprpanel|noctalia-shell|caelestia-shell|.quickshell\" || ${bar}" # toggle bar
     "$mainMod CTRL, mouse_down, exec, ${getExe zoom} in" # zoom in
     "$mainMod CTRL, mouse_up, exec, ${getExe zoom} out" # zoom out
-    "$CTRL, equal, exec, ${getExe zoom} in" # zoom in
-    "$CTRL, minus, exec, ${getExe zoom} out" # zoom out
+    "$CONTROL, equal, exec, ${getExe zoom} in" # zoom in
+    "$CONTROL, minus, exec, ${getExe zoom} out" # zoom out
 
     # Applications/Programs
     "$mainMod, Return, exec, $term"
