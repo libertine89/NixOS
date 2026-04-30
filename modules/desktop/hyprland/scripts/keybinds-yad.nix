@@ -34,81 +34,138 @@ pkgs.writeShellScriptBin "keybinds-yad" ''
     --column=Description: \
     --column=Command: \
     --timeout-indicator=bottom \
+
+    # === System ===
+    "SUPER CTRL SHIFT B" "Rebuild system" "$_terminal -e rebuild" \
+    "SUPER CTRL SHIFT U" "Update system" "$_terminal -e update" \
+    "SUPER CTRL SHIFT R" "Reload Hyprland" "hyprctl reload" \
+
+    # === Help ===
+    "SUPER /" "Keybinds menu" "keybinds-yad" \
+    "SUPER ?" "Keybinds menu" "keybinds-yad" \
+    "SUPER CTRL K" "Keybinds menu" "keybinds-yad" \
+
+    # === Applications ===
     "SUPER Return" "Launch terminal" "$_terminal" \
-    "SUPER T" "Launch terminal" "$_terminal" \
-    "SUPER E" "Launch file manager" "$_fileManager" \
-    "SUPER F" "Launch browser" "$_browser" \
-    "SUPER SHIFT S" "Launch spotify" "spotify" \
-    "CTRL ALT Delete" "Open system monitor" "$_terminal -e 'btop'" \
-    "SUPER A" "Launch application menu" "launcher drun" \
-    "SUPER SPACE" "Launch application menu" "launcher drun" \
-    "SUPER SHIFT W" "Launch wallpaper menu" "launcher wallpaper" \
-    "SUPER SHIFT T" "Launch tmux sessions" "launcher tmux" \
+    "SUPER CTRL Return" "Toggle quake terminal" "togglespecialworkspace quake" \
+    "SUPER E" "File manager" "$_fileManager" \
+    "SUPER C" "Editor" "$editor" \
+    "SUPER B" "Browser" "$_browser" \
+    "SUPER SHIFT S" "Spotify" "spotify" \
+    "SUPER SHIFT Y" "YouTube Music" "youtube-music" \
+    "CTRL ALT Delete" "System monitor" "$_terminal -e btop" \
+    "CTRL ALT M" "Microfetch" "$_terminal --class microfetch --hold -e microfetch" \
+    "SUPER CTRL C" "Colour picker" "hyprpicker --autocopy --format=hex" \
+
+    # === Launchers ===
+    "SUPER A" "App launcher" "launcher drun" \
+    "SUPER SPACE" "App launcher" "launcher drun" \
+    "SUPER SHIFT W" "Wallpaper menu" "launcher wallpaper" \
+    "SUPER Z" "Emoji picker" "launcher emoji" \
+    "SUPER SHIFT T" "Tmux sessions" "launcher tmux" \
     "SUPER G" "Game launcher" "launcher games" \
+
+    # === System Toggles ===
     "SUPER F9" "Enable night mode" "hyprsunset --temperature 2500" \
     "SUPER F10" "Disable night mode" "pkill hyprsunset" \
-    "SUPER CTRL C" "Colour picker" "hyprpicker --autocopy" \
-    "SUPER, Left Click" "Move window with mouse" "movewindow" \
-    "SUPER, Right Click" "Resize window with mouse" "resizewindow" \
-    "SUPER SHIFT →" "Resize window right" "resizeactive 30 0" \
-    "SUPER SHIFT ←" "Resize window left" "resizeactive -30 0" \
-    "SUPER SHIFT ↑" "Resize window up" "resizeactive 0 -30" \
-    "SUPER SHIFT ↓" "Resize window down" "resizeactive 0 30" \
-    "SUPER SHIFT L" "Resize window right (HJKL)" "resizeactive 30 0" \
-    "SUPER SHIFT H" "Resize window left (HJKL)" "resizeactive -30 0" \
-    "SUPER SHIFT K" "Resize window up (HJKL)" "resizeactive 0 -30" \
-    "SUPER SHIFT J" "Resize window down (HJKL)" "resizeactive 0 30" \
-    "XF86MonBrightnessDown" "Decrease brightness" "brightnessctl set 2%-" \
-    "XF86MonBrightnessUp" "Increase brightness" "brightnessctl set +2%" \
-    "XF86AudioLowerVolume" "Lower volume" "pamixer -d 2" \
-    "XF86AudioRaiseVolume" "Increase volume" "pamixer -i 2%" \
-    "XF86AudioMicMute" "Mute microphone" "pamixer --default-source -t" \
-    "SUPER M" "Mute microphone" "pamixer --default-source -t" \
-    "XF86AudioMute" "Mute audio" "pamixer -t" \
-    "XF86AudioPlay" "Play/Pause media" "playerctl play-pause" \
-    "XF86AudioNext" "Next media track" "playerctl next" \
-    "XF86AudioPrev" "Previous media track" "playerctl previous" \
-    "SUPER Delete" "Exit Hyprland session" "exit" \
-    "SUPER W" "Toggle floating window" "togglefloating" \
-    "SUPER SHIFT G" "Toggle window group" "togglegroup" \
-    "ALT Return" "Toggle fullscreen" "fullscreen" \
-    "SUPER ALT L" "Lock screen" "hyprlock" \
+    "CTRL L" "Lock screen" "hyprlock" \
     "SUPER Backspace" "Power menu" "wlogout -b 4" \
-    "CTRL Escape" "Toggle Bar" "pkill waybar|hyprpanel || waybar|hyprpanel" \
-    "SUPER CTRL mouse_down" "zoom in" "zoom in" \
-    "SUPER CTRL mouse_up" "zoom out" "zoom out" \
-    "SUPER SHIFT N" "Open notification panel" "swaync-client -t -sw" \
-    "SUPER SHIFT Q" "Open notification panel" "swaync-client -t -sw" \
-    "SUPER Q" "Close active window" "killactive" \
-    "ALT F4" "Force kill active window" "forcekillactive" \
-    "SUPER Z" "Launch emoji picker" "launcher emoji" \
-    "SUPER ALT K" "Change keyboard layout" "keyboardswitch" \
-    "SUPER U" "Rebuild system" "$_terminal -e rebuild" \
-    "SUPER ALT G" "Enable game mode" "gamemode" \
+    "CTRL Escape" "Toggle bar" "pkill waybar|hyprpanel|noctalia-shell|caelestia-shell|.quickshell || waybar" \
+
+    # === Window Actions ===
+    "SUPER Q" "Close window" "killactive" \
+    "ALT F4" "Force close window" "forcekillactive" \
+    "SUPER Delete" "Exit Hyprland" "exit" \
+    "SUPER W" "Toggle floating" "togglefloating" \
+    "SUPER SHIFT G" "Toggle group" "togglegroup" \
+    "SUPER T" "Toggle layout" "toggle-layout" \
+    "SUPER F" "Fullscreen" "fullscreen" \
+    "SUPER M" "Maximise window" "fullscreen 1" \
+
+    # === Zoom ===
+    "SUPER CTRL Mouse Down" "Zoom in" "zoom in" \
+    "SUPER CTRL Mouse Up" "Zoom out" "zoom out" \
+    "CTRL =" "Zoom in" "zoom in" \
+    "CTRL -" "Zoom out" "zoom out" \
+
+    # === Notifications / Utils ===
+    "SUPER SHIFT N" "Notifications panel" "swaync-client -t -sw" \
+    "SUPER SHIFT Q" "Notifications panel" "swaync-client -t -sw" \
+    "SUPER ALT K" "Keyboard layout" "keyboardswitch" \
+    "SUPER ALT G" "Game mode" "gamemode" \
     "SUPER V" "Clipboard manager" "clipmanager" \
-    "SUPER SHIFT M" "Online music" "rofimusic" \
-    "SUPER SHIFT R" "Screen record (select area)" "screen-record a" \
-    "SUPER CTRL R" "Screen record (select monitor)" "screen-record m" \
-    "SUPER P" "Screenshot (select area)" "screenshot s" \
-    "SUPER CTRL P" "Screenshot (frozen screen)" "screenshot sf" \
-    "SUPER Print" "Screenshot (current monitor)" "screenshot m" \
-    "SUPER ALT P" "Screenshot (all monitors)" "screenshot p" \
-    "SUPER SHIFT CTRL ←" "Move window left" "movewindow l" \
-    "SUPER SHIFT CTRL →" "Move window right" "movewindow r" \
-    "SUPER SHIFT CTRL ↑" "Move window up" "movewindow u" \
-    "SUPER SHIFT CTRL ↓" "Move window down" "movewindow d" \
-    "SUPER CTRL S" "Move to scratchpad" "movetoworkspacesilent special" \
-    "SUPER S" "Toggle scratchpad workspace" "togglespecialworkspace" \
-    "SUPER Tab" "Cycle next window" "cyclenext" \
-    "SUPER CTRL →" "Switch to next workspace" "workspace r+1" \
-    "SUPER CTRL ←" "Switch to previous workspace" "workspace r-1" \
-    "SUPER CTRL ↓" "Go to first empty workspace" "workspace empty" \
-    "SUPER ←" "Move focus left" "movefocus l" \
-    "SUPER →" "Move focus right" "movefocus r" \
-    "SUPER ↑" "Move focus up" "movefocus u" \
-    "SUPER ↓" "Move focus down" "movefocus d" \
-    "ALT Tab" "Move focus down" "movefocus d" \
+
+    # === Screenshots ===
+    "SUPER SHIFT R" "Record area" "screen-record a" \
+    "SUPER CTRL R" "Record monitor" "screen-record m" \
+    "SUPER P" "Screenshot area" "screenshot s" \
+    "SUPER CTRL P" "Screenshot frozen" "screenshot sf" \
+    "SUPER Print" "Screenshot monitor" "screenshot m" \
+    "SUPER ALT P" "Screenshot all" "screenshot p" \
+
+    # === Media Keys ===
+    "XF86AudioMicMute" "Mute mic" "pamixer --default-source -t" \
+    "XF86AudioMute" "Mute audio" "pamixer -t" \
+    "XF86AudioPlay" "Play/Pause" "playerctl play-pause" \
+    "XF86AudioPause" "Play/Pause" "playerctl play-pause" \
+    "XF86AudioNext" "Next track" "playerctl next" \
+    "XF86AudioPrev" "Previous track" "playerctl previous" \
+
+    # === Brightness / Volume (hold) ===
+    "XF86MonBrightnessDown" "Brightness -" "brightnessctl set 2%-" \
+    "XF86MonBrightnessUp" "Brightness +" "brightnessctl set +2%" \
+    "XF86AudioLowerVolume" "Volume -" "pamixer -d 2" \
+    "XF86AudioRaiseVolume" "Volume +" "pamixer -i 2" \
+
+    # === Focus Movement ===
+    "SUPER ←" "Focus left" "movefocus l" \
+    "SUPER →" "Focus right" "movefocus r" \
+    "SUPER ↑" "Focus up" "movefocus u" \
+    "SUPER ↓" "Focus down" "movefocus d" \
+    "SUPER H" "Focus left (vim)" "movefocus l" \
+    "SUPER L" "Focus right (vim)" "movefocus r" \
+    "SUPER K" "Focus up (vim)" "movefocus u" \
+    "SUPER J" "Focus down (vim)" "movefocus d" \
+    "ALT Tab" "Focus down" "movefocus d" \
+
+    # === Window Movement ===
+    "SUPER SHIFT ←" "Move window left" "movewindow l" \
+    "SUPER SHIFT →" "Move window right" "movewindow r" \
+    "SUPER SHIFT ↑" "Move window up" "movewindow u" \
+    "SUPER SHIFT ↓" "Move window down" "movewindow d" \
+    "SUPER SHIFT H" "Move window left (vim)" "movewindow l" \
+    "SUPER SHIFT L" "Move window right (vim)" "movewindow r" \
+    "SUPER SHIFT K" "Move window up (vim)" "movewindow u" \
+    "SUPER SHIFT J" "Move window down (vim)" "movewindow d" \
+
+    # === Workspace Movement ===
+    "SUPER CTRL →" "Next workspace" "wrap-workspaces-next" \
+    "SUPER CTRL ←" "Previous workspace" "wrap-workspaces-prev" \
+    "SUPER CTRL ↓" "Empty workspace" "workspace empty" \
     "SUPER 1-0" "Switch to workspace 1-10" "workspace 1-10" \
-    "SUPER ALT 10-20" "Switch to workspace 10-20" "workspace 10-20" \
+
+    # === Move Window Workspace ===
+    "SUPER CTRL SHIFT →" "Send window next workspace" "wrap-window-workspace-next" \
+    "SUPER CTRL SHIFT ←" "Send window prev workspace" "wrap-window-workspace-prev" \
     "SUPER SHIFT 1-0" "Move to workspace 1-10" "movetoworkspace 1-10"
+
+    # === Special Workspace ===
+    "SUPER CTRL S" "Send to scratchpad" "movetoworkspacesilent special" \
+    "SUPER ALT S" "Send to scratchpad" "movetoworkspacesilent special" \
+    "SUPER S" "Toggle scratchpad" "togglespecialworkspace" \
+
+    # === Layout / Misc ===
+    "SUPER ." "Move column right" "layoutmsg move +col" \
+    "SUPER ," "Move column left" "layoutmsg move -col" \
+
+    # === Window Cycling ===
+    "SUPER Tab" "Next window" "cyclenext" \
+    "SUPER Tab" "Bring to top" "bringactivetotop" \
+
+    # === Mouse ===
+    "SUPER + Left Click" "Move window" "movewindow" \
+    "SUPER + Right Click" "Resize window" "resizewindow"
 ''
+
+
+
