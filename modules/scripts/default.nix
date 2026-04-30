@@ -22,6 +22,7 @@ let
 
   scripts = [
     (import ./rebuild.nix scriptArgs)
+    (import ./update.nix scriptArgs)
     (import ./rollback.nix scriptArgs)
     (import ./launcher.nix scriptArgs)
     (import ./network.nix scriptArgs)
