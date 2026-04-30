@@ -5,7 +5,8 @@ let
     pkgs lib getExe getExe'
     browser terminal fileManager bar
     keybinds-yad toggle-layout wrap-workspaces-next
-    wrap-workspaces-prev zoom gamemode clipmanager
+    wrap-workspaces-prev wrap-window-workspace-next 
+    wrap-window-workspace-prev zoom gamemode clipmanager
     screen-record screenshot keyboardswitch fileManagerScript;
 in
 {
