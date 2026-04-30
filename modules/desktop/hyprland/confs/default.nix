@@ -10,5 +10,5 @@
   windowrules = import ./windowrules.nix { inherit ctx; };
   windows = import ./windows.nix { inherit ctx; };
   workspaces = import ./workspaces.nix { inherit ctx; };
-  layouts = import ./layouts.nix { inherit ctx; };
+  layers = import ./layers.nix { inherit ctx; };
 }
