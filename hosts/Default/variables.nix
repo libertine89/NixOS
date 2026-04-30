@@ -8,8 +8,8 @@
   bar = "waybar"; # waybar, hyprpanel, noctalia-shell, caelestia-shell
   waybarTheme = "minimal"; # stylish, minimal
   sddmTheme = "black_hole"; # astronaut, black_hole, purple_leaves, jake_the_dog, hyprland_kath
-  defaultWallpaper = "escape-velocity.webp"; # Change with SUPER + SHIFT + W (Hyprland)
-  hyprlockWallpaper = "escape-velocity.webp"; 
+  defaultWallpaper = "escape_velocity.webp"; # Change with SUPER + SHIFT + W (Hyprland)
+  hyprlockWallpaper = "escape_velocity.webp"; 
 
   # Default Applications
   terminal = "kitty"; # kitty, alacritty
