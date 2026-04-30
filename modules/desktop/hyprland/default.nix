@@ -515,7 +515,7 @@ in
               # Move window to workspaces relative to the active workspace with mainMod + CTRL + SHIFT + [←→]
               "$mainMod CTRL, SHIFT, right, exec, ${getExe wrap-window-workspace-next}"
               "$mainMod CTRL, SHIFT, left, exec, ${getExe wrap-window-workspace-prev}"
-              "$mainMod CTRL, SHIFT, L, exec, ${getExe wrap-window-workspace-next}
+              "$mainMod CTRL, SHIFT, L, exec, ${getExe wrap-window-workspace-next}"
               "$mainMod CTRL, SHIFT, H, exec, ${getExe wrap-window-workspace-prev}"
 
               # move to the first empty workspace instantly with mainMod + CTRL + [↓]
