@@ -1,7 +1,7 @@
 { ctx }:
 
 {
-  decorations = {
+  decoration = {
     shadow.enabled = false;
     rounding = 10;
     dim_special = 0.3;
