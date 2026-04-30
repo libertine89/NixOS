@@ -1,9 +1,5 @@
 { ctx }:
 
-let
-  inherit (ctx)
-    pkgs lib getExe getExe';
-in
 {
   workspace = [
     # Binds workspaces to my monitors (find desc with: hyprctl monitors)
