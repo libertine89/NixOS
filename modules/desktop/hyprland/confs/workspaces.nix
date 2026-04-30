@@ -2,11 +2,7 @@
 
 let
   inherit (ctx)
-    pkgs lib getExe getExe'
-    browser terminal fileManager bar
-    keybinds-yad toggle-layout wrap-workspaces-next
-    wrap-workspaces-prev zoom gamemode clipmanager
-    screen-record screenshot keyboardswitch fileManagerScript;
+    pkgs lib getExe getExe';
 in
 {
   workspace = [
