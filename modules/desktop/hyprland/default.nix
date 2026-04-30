@@ -35,7 +35,7 @@ let
   zoom = pkgs.callPackage ./scripts/zoom.nix { };
   wrap-workspaces-next = pkgs.callPackage ./scripts/wrap-workspaces-next.nix {};
   wrap-workspaces-prev = pkgs.callPackage ./scripts/wrap-workspaces-prev.nix {};
-  wrap-window-workspace-next = pkgs.callPackage ./scripts/wrap-windoww-workspace-next.nix {};
+  wrap-window-workspace-next = pkgs.callPackage ./scripts/wrap-window-workspace-next.nix {};
   wrap-window-workspace-prev = pkgs.callPackage ./scripts/wrap-window-workspace-prev.nix {};
   toggle-layout = pkgs.callPackage ./scripts/toggle-layout.nix {};
   toggle-kitty-quake = pkgs.callPackage ./scripts/toggle-kitty-quake.nix {};
