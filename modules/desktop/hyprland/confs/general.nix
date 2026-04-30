@@ -1,12 +1,8 @@
 { ctx }:
 
 let
-  inherit (ctx)
-    pkgs lib getExe getExe'
-    browser terminal fileManager bar
-    keybinds-yad toggle-layout wrap-workspaces-next
-    wrap-workspaces-prev zoom gamemode clipmanager
-    screen-record screenshot keyboardswitch fileManagerScript;
+inherit (ctx)
+  kbdLayout kbdVariant;
 in
 {
   input = {
@@ -71,7 +67,10 @@ in
     vrr = 2; # enable variable refresh rate (0=off, 1=on, 2=fullscreen only, 3 = fullscreen games/media)
   };
 
-  xwayland.force_zero_scaling = false;
+  xwayland = {
+    force_zero_scaling = false;
+  };
+
   gesture = [
     "3, horizontal, workspace"
   ];
