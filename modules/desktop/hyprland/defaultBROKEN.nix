@@ -134,9 +134,35 @@ in
           enable = true;
           variables = [ "--all" ];
         };
-
-        settings = conf.settings;
-
+        settings =
+          let
+            animations = import ./confs/animations.nix { inherit ctx; };
+            keybindings = import ./confs/keybindings.nix { inherit ctx; };
+            env = import ./confs/env.nix { inherit ctx; };
+            decorations = import ./confs/decorations.nix { inherit ctx; };
+            general = import ./confs/general.nix { inherit ctx; };
+            layerrules = import ./confs/layerrules.nix { inherit ctx; };
+            windowrules = import ./confs/windowrules.nix { inherit ctx; };
+            monitors = import ./confs/monitors.nix { inherit ctx; };
+            workspaces = import ./confs/workspaces.nix { inherit ctx; };
+            autostart = import ./confs/autostart.nix { inherit ctx; };
+          in
+          {
+            "$mainMod" = "SUPER";
+            "$term" = "${getExe pkgs.${terminal}}";
+            "$editor" = "code --disable-gpu";
+            "$browser" = browser;
+          }
+          // env
+          // autostart
+          // animations
+          // decorations
+          // keybindings
+          // monitors
+          // workspaces
+          // windowrules
+          // general
+          // layerrules;
       };
     }
   )
