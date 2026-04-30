@@ -34,6 +34,8 @@ let
   zoom = pkgs.callPackage ./scripts/zoom.nix { };
   wrap-workspaces-next = pkgs.callPackage ./scripts/wrap-workspaces-next.nix {};
   wrap-workspaces-prev = pkgs.callPackage ./scripts/wrap-workspaces-prev.nix {};
+  wrap-window-workspace-next = pkgs.callPackage ./scripts/wrap-windoww-workspace-next.nix {};
+  wrap-window-workspace-prev = pkgs.callPackage ./scripts/wrap-window-workspace-prev.nix {};
   toggle-layout = pkgs.callPackage ./scripts/toggle-layout.nix {};
 
   ctx = {
@@ -42,7 +44,8 @@ let
       kbdLayout kbdVariant defaultWallpaper;
 
     inherit keybinds-yad toggle-layout wrap-workspaces-next
-      wrap-workspaces-prev zoom gamemode clipmanager wallpaper
+      wrap-workspaces-prev wrap-window-workspace-next wrap-window-workspace-prev 
+      zoom gamemode clipmanager wallpaper
       batterynotify screen-record screenshot keyboardswitch fileManagerScript;
   };
 in
