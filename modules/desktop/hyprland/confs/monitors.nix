@@ -1,4 +1,9 @@
-{ lib, pkgs, getExe, getExe', browser, terminal, fileManager, ... }:
+{ ctx }:
+
+let
+  inherit (ctx)
+    pkgs lib getExe getExe';
+in
 {
   monitor = [
     # Easily plug in any monitor
