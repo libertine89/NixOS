@@ -7,20 +7,21 @@
   # Theme & Appearance
   bar = "waybar"; # waybar, hyprpanel, noctalia-shell, caelestia-shell
   waybarTheme = "minimal"; # stylish, minimal
-  sddmTheme = "astronaut"; # astronaut, black_hole, purple_leaves, jake_the_dog, hyprland_kath
-  defaultWallpaper = "galaxy.webp"; # Change with SUPER + SHIFT + W (Hyprland)
-  hyprlockWallpaper = "galaxy.webp";
+  sddmTheme = "black_hole"; # astronaut, black_hole, purple_leaves, jake_the_dog, hyprland_kath
+  defaultWallpaper = "escape-velocity.webp"; # Change with SUPER + SHIFT + W (Hyprland)
+  hyprlockWallpaper = "escape-velocity.webp"; 
 
   # Default Applications
   terminal = "kitty"; # kitty, alacritty
-  editor = "nixvim"; # nixvim, vscode, helix, doom-emacs, nvchad, neovim
-  browser = "zen-beta"; # zen-beta, firefox, floorp
+  editor = "nvchad"; # nixvim, vscode, helix, doom-emacs, nvchad, neovim
+  ide = "cursor"; # code, cursor
+  browser = "firefox"; # zen-beta, firefox, floorp
   fileManager = "yazi"; # yazi, lf, thunar
   shell = "zsh"; # zsh, bash
   games = true; # Enable/Disable gaming module
 
   # Hardware
-  hostname = "Singularity";
+  hostname = "Nixius";
   videoDriver = "nvidia"; # nvidia, amdgpu, intel
   nvidiaChannel = "legacy_580"; # stable, latest, beta, legacy_xxx
   bluetoothSupport = false; # Whether your motherboard supports bluetooth

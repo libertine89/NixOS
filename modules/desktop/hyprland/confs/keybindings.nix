@@ -13,9 +13,9 @@ in
   ### === Singluar Binds === ###
   bind = [
     # Rebuild/Update NixOS, Restart hyprland with a KeyBind
-    "$mainMod, CTRL, SHIFT, B, exec, $term -e rebuild"
-    "$mainMod, CTRL, SHIFT, U, exec, $term -e update"
-    "$mainMod, CTRL, SHIFT, R, exec, $term hyprctl reload"
+    "$mainMod CTRL SHIFT, B, exec, $term -e rebuild"
+    "$mainMod CTRL SHIFT, U, exec, $term -e update"
+    "$mainMod CTRL SHIFT, R, exec, $term hyprctl reload"
 
     # Keybinds help menu
     "$mainMod, question, exec, ${getExe keybinds-yad}"
