@@ -35,17 +35,16 @@ pkgs.writeShellScriptBin "keybinds-yad" ''
     --column=Command: \
     --timeout-indicator=bottom \
 
-    # === System ===
+
     "SUPER CTRL SHIFT B" "Rebuild system" "$_terminal -e rebuild" \
     "SUPER CTRL SHIFT U" "Update system" "$_terminal -e update" \
     "SUPER CTRL SHIFT R" "Reload Hyprland" "hyprctl reload" \
 
-    # === Help ===
+
     "SUPER /" "Keybinds menu" "keybinds-yad" \
     "SUPER ?" "Keybinds menu" "keybinds-yad" \
     "SUPER CTRL K" "Keybinds menu" "keybinds-yad" \
 
-    # === Applications ===
     "SUPER Return" "Launch terminal" "$_terminal" \
     "SUPER CTRL Return" "Toggle quake terminal" "togglespecialworkspace quake" \
     "SUPER E" "File manager" "$_fileManager" \
@@ -57,7 +56,6 @@ pkgs.writeShellScriptBin "keybinds-yad" ''
     "CTRL ALT M" "Microfetch" "$_terminal --class microfetch --hold -e microfetch" \
     "SUPER CTRL C" "Colour picker" "hyprpicker --autocopy --format=hex" \
 
-    # === Launchers ===
     "SUPER A" "App launcher" "launcher drun" \
     "SUPER SPACE" "App launcher" "launcher drun" \
     "SUPER SHIFT W" "Wallpaper menu" "launcher wallpaper" \
@@ -65,14 +63,12 @@ pkgs.writeShellScriptBin "keybinds-yad" ''
     "SUPER SHIFT T" "Tmux sessions" "launcher tmux" \
     "SUPER G" "Game launcher" "launcher games" \
 
-    # === System Toggles ===
     "SUPER F9" "Enable night mode" "hyprsunset --temperature 2500" \
     "SUPER F10" "Disable night mode" "pkill hyprsunset" \
     "CTRL L" "Lock screen" "hyprlock" \
     "SUPER Backspace" "Power menu" "wlogout -b 4" \
     "CTRL Escape" "Toggle bar" "pkill waybar|hyprpanel|noctalia-shell|caelestia-shell|.quickshell || waybar" \
 
-    # === Window Actions ===
     "SUPER Q" "Close window" "killactive" \
     "ALT F4" "Force close window" "forcekillactive" \
     "SUPER Delete" "Exit Hyprland" "exit" \
@@ -82,20 +78,17 @@ pkgs.writeShellScriptBin "keybinds-yad" ''
     "SUPER F" "Fullscreen" "fullscreen" \
     "SUPER M" "Maximise window" "fullscreen 1" \
 
-    # === Zoom ===
     "SUPER CTRL Mouse Down" "Zoom in" "zoom in" \
     "SUPER CTRL Mouse Up" "Zoom out" "zoom out" \
     "CTRL =" "Zoom in" "zoom in" \
     "CTRL -" "Zoom out" "zoom out" \
 
-    # === Notifications / Utils ===
     "SUPER SHIFT N" "Notifications panel" "swaync-client -t -sw" \
     "SUPER SHIFT Q" "Notifications panel" "swaync-client -t -sw" \
     "SUPER ALT K" "Keyboard layout" "keyboardswitch" \
     "SUPER ALT G" "Game mode" "gamemode" \
     "SUPER V" "Clipboard manager" "clipmanager" \
 
-    # === Screenshots ===
     "SUPER SHIFT R" "Record area" "screen-record a" \
     "SUPER CTRL R" "Record monitor" "screen-record m" \
     "SUPER P" "Screenshot area" "screenshot s" \
@@ -103,7 +96,6 @@ pkgs.writeShellScriptBin "keybinds-yad" ''
     "SUPER Print" "Screenshot monitor" "screenshot m" \
     "SUPER ALT P" "Screenshot all" "screenshot p" \
 
-    # === Media Keys ===
     "XF86AudioMicMute" "Mute mic" "pamixer --default-source -t" \
     "XF86AudioMute" "Mute audio" "pamixer -t" \
     "XF86AudioPlay" "Play/Pause" "playerctl play-pause" \
@@ -111,13 +103,11 @@ pkgs.writeShellScriptBin "keybinds-yad" ''
     "XF86AudioNext" "Next track" "playerctl next" \
     "XF86AudioPrev" "Previous track" "playerctl previous" \
 
-    # === Brightness / Volume (hold) ===
     "XF86MonBrightnessDown" "Brightness -" "brightnessctl set 2%-" \
     "XF86MonBrightnessUp" "Brightness +" "brightnessctl set +2%" \
     "XF86AudioLowerVolume" "Volume -" "pamixer -d 2" \
     "XF86AudioRaiseVolume" "Volume +" "pamixer -i 2" \
 
-    # === Focus Movement ===
     "SUPER ←" "Focus left" "movefocus l" \
     "SUPER →" "Focus right" "movefocus r" \
     "SUPER ↑" "Focus up" "movefocus u" \
@@ -128,7 +118,6 @@ pkgs.writeShellScriptBin "keybinds-yad" ''
     "SUPER J" "Focus down (vim)" "movefocus d" \
     "ALT Tab" "Focus down" "movefocus d" \
 
-    # === Window Movement ===
     "SUPER SHIFT ←" "Move window left" "movewindow l" \
     "SUPER SHIFT →" "Move window right" "movewindow r" \
     "SUPER SHIFT ↑" "Move window up" "movewindow u" \
@@ -138,31 +127,25 @@ pkgs.writeShellScriptBin "keybinds-yad" ''
     "SUPER SHIFT K" "Move window up (vim)" "movewindow u" \
     "SUPER SHIFT J" "Move window down (vim)" "movewindow d" \
 
-    # === Workspace Movement ===
     "SUPER CTRL →" "Next workspace" "wrap-workspaces-next" \
     "SUPER CTRL ←" "Previous workspace" "wrap-workspaces-prev" \
     "SUPER CTRL ↓" "Empty workspace" "workspace empty" \
     "SUPER 1-0" "Switch to workspace 1-10" "workspace 1-10" \
 
-    # === Move Window Workspace ===
     "SUPER CTRL SHIFT →" "Send window next workspace" "wrap-window-workspace-next" \
     "SUPER CTRL SHIFT ←" "Send window prev workspace" "wrap-window-workspace-prev" \
     "SUPER SHIFT 1-0" "Move to workspace 1-10" "movetoworkspace 1-10"
 
-    # === Special Workspace ===
     "SUPER CTRL S" "Send to scratchpad" "movetoworkspacesilent special" \
     "SUPER ALT S" "Send to scratchpad" "movetoworkspacesilent special" \
     "SUPER S" "Toggle scratchpad" "togglespecialworkspace" \
 
-    # === Layout / Misc ===
     "SUPER ." "Move column right" "layoutmsg move +col" \
     "SUPER ," "Move column left" "layoutmsg move -col" \
 
-    # === Window Cycling ===
     "SUPER Tab" "Next window" "cyclenext" \
     "SUPER Tab" "Bring to top" "bringactivetotop" \
 
-    # === Mouse ===
     "SUPER + Left Click" "Move window" "movewindow" \
     "SUPER + Right Click" "Resize window" "resizewindow"
 ''
