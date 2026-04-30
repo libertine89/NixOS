@@ -42,7 +42,7 @@ let
 
     inherit keybinds-yad toggle-layout wrap-workspaces-next
       wrap-workspaces-prev zoom gamemode clipmanager
-      screen-record screenshot keyboardswitch fileManagerScript;
+      batterynotify screen-record screenshot keyboardswitch fileManagerScript;
   };
 in
 {
