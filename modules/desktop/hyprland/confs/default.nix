@@ -8,7 +8,7 @@
   keybindings = import ./keybindings.nix { inherit ctx; };
   monitors = import ./monitors.nix { inherit ctx; };
   windowrules = import ./windowrules.nix { inherit ctx; };
-  windows = import ./windows.nix { inherit ctx; };
+  general = import ./general.nix { inherit ctx; };
   workspaces = import ./workspaces.nix { inherit ctx; };
   layerrules = import ./layerrules.nix { inherit ctx; };
 }
