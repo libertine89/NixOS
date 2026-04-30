@@ -93,7 +93,7 @@ in
           // conf.workspaces
           // conf.windowrules
           // conf.windows
-          // conf.layers;
+          // conf.layerrules;
       };
     })
   ];
