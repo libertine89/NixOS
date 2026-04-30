@@ -41,7 +41,7 @@ let
       browser terminal fileManager bar;
 
     inherit keybinds-yad toggle-layout wrap-workspaces-next
-      wrap-workspaces-prev zoom gamemode clipmanager
+      wrap-workspaces-prev zoom gamemode clipmanager wallpaper
       batterynotify screen-record screenshot keyboardswitch fileManagerScript;
   };
 in
