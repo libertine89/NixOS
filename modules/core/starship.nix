@@ -5,13 +5,9 @@
       programs.starship = {
         enable = true;
         settings = {
-          format = "[░▒▓](#a3aed2)[ 󱄅 ](bg:#a3aed2 fg:#090c0c)[](bg:#769ff0 fg:#a3aed2)$directory[](fg:#769ff0 bg:#394260)$fill[](fg:#4A567D)$git_branch$git_status[](fg:#394260)$nodejs$bun$rust$golang$php[](fg:#212736)$time[▓▒░](fg:#212736)\n$character";
-          #format = "[░▒▓](#a3aed2)[ 󱄅 ](bg:#a3aed2 fg:#090c0c)[](bg:#769ff0 fg:#a3aed2)$directory[](fg:#769ff0 bg:#394260)$fill[]$git_branch$git_status(fg:#5D6D9E bg:#4A567D)[]$nodejs$bun$rust$golang$php(fg:#4A567D bg:#394260)[]$time[▓▒░](fg:#212736)\n$character";
-          
-          #format = "[░▒▓](#a3aed2)[ 󱄅 ](bg:#a3aed2 fg:#090c0c)[](bg:#769ff0 fg:#a3aed2)$directory[](fg:#769ff0 bg:#394260)";
-          #right_format = "$git_branch$git_status(fg:#5D6D9E bg:#4A567D)$nodejs$bun$rust$golang$php(fg:#4A567D bg:#394260)$time[▓▒░](fg:#212736)\n$character";
+          format = "[░▒▓](#a3aed2)[ 󱄅 ](bg:#a3aed2 fg:#212736)[](bg:#769ff0 fg:#a3aed2)$directory[](fg:#769ff0)$fill[](fg:#788BC4 )$git_branch$git_status[](fg:#5D6D9E bg:#788BC4)$nodejs$bun$rust$golang$php[](fg:#4A567D bg:#5D6D9E)$time[▓▒░](fg:#4A567D)\n$character";
 
-          directory = {
+         directory = {
           style = "fg:#e3e5e5 bg:#769ff0";
           format = "[ $path ]($style)";
           truncation_length = 3;
@@ -25,52 +21,56 @@
           "Pictures" = " ";
           };
           
+          fill = {
+            symbol = " ";
+          };
+
           git_branch = {
           symbol = "";
-          style = "bg:#394260";
-          format = "[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)";
+          style = "bg:#788BC4";
+          format = "[[ $symbol $branch ](fg:#212736 bg:#788BC4)]($style)";
           };
 
           git_status = {
-          style = "bg:#394260";
-          format = "[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)";
+          style = "bg:#788BC4";
+          format = "[[($all_status$ahead_behind)](fg:#212736 bg:#788BC4)]($style)";
           };
 
           nodejs = {
           symbol = "";
-          style = "bg:#212736";
-          format = "[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)";
+          style = "bg:#5D6D9E";
+          format = "[[ $symbol ($version) ](fg:#394260 bg:##5D6D9E)]($style)";
           };
 
           bun = {
           symbol = "";
-          style = "bg:#212736";
-          format = "[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)";
+          style = "bg:#5D6D9E";
+          format = "[[ $symbol ($version) ](fg:#394260 bg:##5D6D9E)]($style)";
           };
 
           rust = {
           symbol = "";
-          style = "bg:#212736";
-          format = "[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)";
+          style = "bg:#5D6D9E";
+          format = "[[ $symbol ($version) ](fg:#394260 bg:##5D6D9E)]($style)";
           };
 
           golang = {
           symbol = "";
-          style = "bg:#212736";
-          format = "[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)";
+          style = "bg:#5D6D9E";
+          format = "[[ $symbol ($version) ](fg:#394260 bg:##5D6D9E)]($style)";
           };
           
           php = {
           symbol = "";
-          style = "bg:#212736";
-          format = "[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)";
+          style = "bg:#5D6D9E";
+          format = "[[ $symbol ($version) ](fg:#394260 bg:##5D6D9E)]($style)";
           };
           
           time = {
           disabled = false;
           time_format = "%R"; # Hour:Minute Format
-          style = "bg:#1d2230";
-          format = "[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)";
+          style = "bg:#4A567D";
+          format = "[[  $time ](fg:#a0a9cb bg:#4A567D)]($style)";
           };
           #username = {
           #  style_user = "green bold";
