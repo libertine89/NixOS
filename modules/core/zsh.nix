@@ -10,6 +10,11 @@
       {
         programs.zsh = {
           enable = true;
+          oh-my-zsh = {
+            enable = true;
+            theme = "robbyrussell";
+            plugins = ["git" "sudo" ];
+          };
           autosuggestion.enable = false; # Loaded lazily via zsh-defer
           syntaxHighlighting.enable = false; # Loaded lazily via zsh-defer
           enableCompletion = false; # Loaded lazily via zsh-defer
