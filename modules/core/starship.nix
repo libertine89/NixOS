@@ -6,9 +6,8 @@
         enable = true;
         settings = {
           
-          format = "[░▒▓](#a3aed2)[ 󱄅 ](bg:#a3aed2 fg:#090c0c)[](bg:#769ff0 fg:#a3aed2)$directory[](fg:#769ff0 bg:#394260)\n$character";
-#          right_format = "[]$git_branch$git_status[]$nodejs$bun$rust$golang$php[ ]$time$character";
-          right_format = "$git_branch$git_status(fg:#394260 bg:#212736)$nodejs$bun$rust$golang$php(fg:#212736 bg:#1d2230)$time(fg:#1d2230)";
+          format = "[░▒▓](#a3aed2)[ 󱄅 ](bg:#a3aed2 fg:#090c0c)[](bg:#769ff0 fg:#a3aed2)$directory[](fg:#769ff0 bg:#394260)";
+          right_format = "$git_branch$git_status(fg:#5D6D9E bg:#4A567D)$nodejs$bun$rust$golang$php(fg:#4A567D bg:#394260)$time[▓▒░](fg:#212736)\n$character";
 
           directory = {
           style = "fg:#e3e5e5 bg:#769ff0";
