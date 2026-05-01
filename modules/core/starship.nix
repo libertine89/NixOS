@@ -5,7 +5,7 @@
       programs.starship = {
         enable = true;
         settings = {
-          format = "[░▒▓](#0A0373)[ 󱄅 ](bg:#0A0373 fg:#E6E6FF)[](fg:#0A0373 bg:#1C1690)[](fg:#1C1690 bg:#3A36B5)$directory[](fg:#3A36B5)$fill[](fg:#2A2680 bg:#2A2680)$git_branch$git_status[](fg:#1C1970 bg:#1C1970)$nodejs$bun$rust$golang$php[](fg:#020152 bg:#020152)$time[▓▒░](fg:#020152)\n$character";
+          format = "[░▒▓](#0A0373)[ 󱄅 ](bg:#0A0373 fg:#E6E6FF)[](fg:#0A0373 bg:#1C1690)[](fg:#1C1690 bg:#3A36B5)$directory[](fg:#3A36B5)$fill[](fg:#2A2680)$git_branch$git_status[](fg:#1C1970 bg:#2A2680)$nodejs$bun$rust$golang$php[](fg:#020152 bg:#1C1970)$time[▓▒░](fg:#020152)\n$character";
 
           fill = {
             symbol = " ";
