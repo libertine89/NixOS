@@ -7,7 +7,7 @@
     dim_special = 0.3;
     blur = {
       enabled = true;
-      special = true;
+      special = false;
       size = 6; # 6
       passes = 2; # 3
       new_optimizations = true;
