@@ -7,22 +7,25 @@
         settings = {
           add_newline = false;
           scan_timeout = 10;
-          format = "$username$hostname$directory$git_branch$git_state$git_status$cmd_duration$python$nix_shell$character";
+          format = "$username$hostname$directory$fill$git_branch$git_state$git_status$cmd_duration$python$nix_shell$character";
           directory = {
             truncate_to_repo = false;
             read_only = " ro";
             style = "#57C7FF";
             # style = "bold italic bright-blue";
           };
-          /*
-               username = {
-              style_user = "green bold";
-              style_root = "red bold";
-              format = "[$user]($style)";
-              disabled = false;
-              show_always = true;
-            };
-          */
+          username = {
+            style_user = "green bold";
+            style_root = "red bold";
+            format = "[$user]($style)";
+            disabled = false;
+            show_always = true;
+          };
+          # hostname = {
+          #   ssh_only = false;
+          #   format = " on [$hostname](bold red)\n";
+          #   disabled = false;
+          # };
           character = {
             success_symbol = "[❯](#FF6AC1)";
             error_symbol = "[❯](#FF5C57)";
@@ -61,7 +64,6 @@
           bun = {
             symbol = "bun ";
           };
-
           cmake = {
             symbol = "cmake ";
           };
@@ -74,11 +76,6 @@
           golang = {
             symbol = "go ";
           };
-          # hostname = {
-          #   ssh_only = false;
-          #   format = " on [$hostname](bold red)\n";
-          #   disabled = false;
-          # };
           lua = {
             symbol = "lua ";
           };
@@ -91,7 +88,6 @@
           nim = {
             symbol = "nim ";
           };
-
           nix_shell = {
             symbol = "❄️ ";
             format = "[$symbol]($style)";
@@ -130,7 +126,7 @@
             MidnightBSD = "mid ";
             Mint = "mint ";
             NetBSD = "nbsd ";
-            NixOS = "nix ";
+            NixOS = "󱄅 ";
             OpenBSD = "obsd ";
             OpenCloudOS = "ocos ";
             openEuler = "oeul ";
