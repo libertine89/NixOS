@@ -5,22 +5,97 @@
       programs.starship = {
         enable = true;
         settings = {
-          add_newline = false;
-          scan_timeout = 10;
-          format = "$username$hostname$directory$fill$git_branch$git_state$git_status$cmd_duration$python$nix_shell$character";
-          directory = {
-            truncate_to_repo = false;
-            read_only = " ro";
-            style = "#57C7FF";
-            # style = "bold italic bright-blue";
-          };
-          username = {
-            style_user = "green bold";
-            style_root = "red bold";
-            format = "[$user]($style)";
-            disabled = false;
-            show_always = true;
-          };
+          "$schema" = 'https://starship.rs/config-schema.json'
+          
+          format = """
+          [░▒▓](#a3aed2)\
+          [ $os ](bg:#a3aed2 fg:#090c0c)\
+          [](bg:#769ff0 fg:#a3aed2)\
+          $directory\
+          [](fg:#769ff0 bg:#394260)\
+          $git_branch\
+          $git_status\
+          [](fg:#394260 bg:#212736)\
+          $nodejs\
+          $bun\
+          $rust\
+          $golang\
+          $php\
+          [](fg:#212736 bg:#1d2230)\
+          $time\
+          [ ](fg:#1d2230)\
+          \n$character"""
+          
+          [directory]
+          style = "fg:#e3e5e5 bg:#769ff0"
+          format = "[ $path ]($style)"
+          truncation_length = 3
+          truncation_symbol = "…/"
+          
+          [directory.substitutions]
+          "Documents" = "󰈙 "
+          "Downloads" = " "
+          "Music" = " "
+          "Pictures" = " "
+          
+          [git_branch]
+          symbol = ""
+          style = "bg:#394260"
+          format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
+          
+          [git_status]
+          style = "bg:#394260"
+          format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
+          
+          [nodejs]
+          symbol = ""
+          style = "bg:#212736"
+          format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+          
+          [bun]
+          symbol = ""
+          style = "bg:#212736"
+          format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+          
+          [rust]
+          symbol = ""
+          style = "bg:#212736"
+          format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+          
+          [golang]
+          symbol = ""
+          style = "bg:#212736"
+          format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+          
+          [php]
+          symbol = ""
+          style = "bg:#212736"
+          format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+          
+          [time]
+          disabled = false
+          time_format = "%R" # Hour:Minute Format
+          style = "bg:#1d2230"
+          format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+
+
+
+          #add_newline = false;
+          #scan_timeout = 10;
+          #format = "$username$hostname$directory$fill$git_branch$git_state$git_status$cmd_duration$python$nix_shell$character";
+          #directory = {
+          #  truncate_to_repo = false;
+          #  read_only = " ro";
+          #  style = "#57C7FF";
+          #  # style = "bold italic bright-blue";
+          #};
+          #username = {
+          #  style_user = "green bold";
+          #  style_root = "red bold";
+          #  format = "[$user]($style)";
+          #  disabled = false;
+          #  show_always = true;
+          #};
           # hostname = {
           #   ssh_only = false;
           #   format = " on [$hostname](bold red)\n";
@@ -31,30 +106,32 @@
             error_symbol = "[❯](#FF5C57)";
             vimcmd_symbol = "[❮](bright-green)";
           };
-          git_branch = {
-            format = "[$branch]($style)";
-            symbol = "git ";
-            style = "242";
-          };
-          git_status = {
-            format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)";
-            style = "cyan";
-            conflicted = "​";
-            untracked = "​";
-            modified = "​";
-            staged = "​";
-            renamed = "​";
-            deleted = "​";
-            stashed = "≡";
-          };
-          git_state = {
-            format = ''\([$state( $progress_current/$progress_total)]($style)\) '';
-            style = "bright-black";
-          };
+          #git_branch = {
+          #  format = "[$branch]($style)";
+          #  symbol = "git ";
+          #  style = "242";
+          #};
+          #git_status = {
+          #  format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)";
+          #  style = "cyan";
+          #  conflicted = "​";
+          #  untracked = "​";
+          #  modified = "​";
+          #  staged = "​";
+          #  renamed = "​";
+          #  deleted = "​";
+          #  stashed = "≡";
+          #};
+          #git_state = {
+          #  format = ''\([$state( $progress_current/$progress_total)]($style)\) '';
+          #  style = "bright-black";
+          #};
+
           cmd_duration = {
             format = "[$duration]($style) ";
             style = "yellow";
           };
+
           aws = {
             symbol = "aws ";
           };
@@ -78,9 +155,6 @@
           };
           lua = {
             symbol = "lua ";
-          };
-          nodejs = {
-            symbol = "nodejs ";
           };
           memory_usage = {
             symbol = "memory ";
