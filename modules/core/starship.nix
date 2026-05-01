@@ -5,10 +5,11 @@
       programs.starship = {
         enable = true;
         settings = {
-         # "$schema" = 'https://starship.rs/config-schema.json'
           
-          format = "[░▒▓](#a3aed2)[ $os ](bg:#a3aed2 fg:#090c0c)[](bg:#769ff0 fg:#a3aed2)$directory[](fg:#769ff0 bg:#394260)$git_branch$git_status[](fg:#394260 bg:#212736)$nodejs$bun$rust$golang$php[](fg:#212736 bg:#1d2230)$time[ ](fg:#1d2230)\n$character";
-          
+          format = "[░▒▓](#a3aed2)[ 󱄅 ](bg:#a3aed2 fg:#090c0c)[](bg:#769ff0 fg:#a3aed2)$directory[](fg:#769ff0 bg:#394260)\n$character";
+#          right_format = "[]$git_branch$git_status[]$nodejs$bun$rust$golang$php[ ]$time$character";
+          right_format = "$git_branch$git_status(fg:#394260 bg:#212736)$nodejs$bun$rust$golang$php(fg:#212736 bg:#1d2230)$time(fg:#1d2230)";
+
           directory = {
           style = "fg:#e3e5e5 bg:#769ff0";
           format = "[ $path ]($style)";
@@ -70,18 +71,6 @@
           style = "bg:#1d2230";
           format = "[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)";
           };
-
-
-
-          #add_newline = false;
-          #scan_timeout = 10;
-          #format = "$username$hostname$directory$fill$git_branch$git_state$git_status$cmd_duration$python$nix_shell$character";
-          #directory = {
-          #  truncate_to_repo = false;
-          #  read_only = " ro";
-          #  style = "#57C7FF";
-          #  # style = "bold italic bright-blue";
-          #};
           #username = {
           #  style_user = "green bold";
           #  style_root = "red bold";
@@ -99,32 +88,10 @@
             error_symbol = "[❯](#FF5C57)";
             vimcmd_symbol = "[❮](bright-green)";
           };
-          #git_branch = {
-          #  format = "[$branch]($style)";
-          #  symbol = "git ";
-          #  style = "242";
-          #};
-          #git_status = {
-          #  format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)";
-          #  style = "cyan";
-          #  conflicted = "​";
-          #  untracked = "​";
-          #  modified = "​";
-          #  staged = "​";
-          #  renamed = "​";
-          #  deleted = "​";
-          #  stashed = "≡";
-          #};
-          #git_state = {
-          #  format = ''\([$state( $progress_current/$progress_total)]($style)\) '';
-          #  style = "bright-black";
-          #};
-
           cmd_duration = {
             format = "[$duration]($style) ";
             style = "yellow";
           };
-
           aws = {
             symbol = "aws ";
           };
