@@ -5,7 +5,7 @@
       programs.starship = {
         enable = true;
         settings = {
-          format = "[░▒▓](#a3aed2)[ 󱄅 ](bg:#a3aed2 fg:#090c0c)[](bg:#769ff0 fg:#a3aed2)$directory[](fg:#769ff0 bg:#394260)$fill[ ]$git_branch$git_status(fg:#5D6D9E bg:#4A567D)[]$nodejs$bun$rust$golang$php(fg:#4A567D bg:#394260)[]$time[▓▒░](fg:#212736)\n$character";
+          format = "[░▒▓](#a3aed2)[ 󱄅 ](bg:#a3aed2 fg:#090c0c)[](bg:#769ff0 fg:#a3aed2)$directory[](fg:#769ff0 bg:#394260)$fill[]$git_branch$git_status(fg:#5D6D9E bg:#4A567D)[]$nodejs$bun$rust$golang$php(fg:#4A567D bg:#394260)[]$time[▓▒░](fg:#212736)\n$character";
           #format = "[░▒▓](#a3aed2)[ 󱄅 ](bg:#a3aed2 fg:#090c0c)[](bg:#769ff0 fg:#a3aed2)$directory[](fg:#769ff0 bg:#394260)";
           #right_format = "$git_branch$git_status(fg:#5D6D9E bg:#4A567D)$nodejs$bun$rust$golang$php(fg:#4A567D bg:#394260)$time[▓▒░](fg:#212736)\n$character";
 
