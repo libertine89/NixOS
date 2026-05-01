@@ -45,7 +45,9 @@ in
 
     # Applications/Programs
     "$mainMod, Return, exec, $term"
-    "$mainMod CTRL, Return, togglespecialworkspace, quake" # kitty --class kitty-quake"
+    #"$mainMod CTRL, Return, togglespecialworkspace, quake" # kitty --class kitty-quake"
+    "$mainMod CTRL, Return, togglespecialworkspace, quake"
+    "$mainMod CTRL, Return, exec, [workspace special:quake silent] $term --class kitty-quake"
     "$mainMod, E, exec, ${getExe fileManagerScript} ${fileManager}"
     "$mainMod, C, exec, $editor"
     "$mainMod, B, exec, $browser"
