@@ -75,6 +75,7 @@
                   echo "$N" |  figlet -c | lolcat &&  sleep 1
               done
             '';
+            c = 'clear';
             cls = "clear";
             tml = "tmux list-sessions";
             tma = "tmux attach";
@@ -86,17 +87,25 @@
             tree = "${pkgs.eza}/bin/eza --icons=auto --tree"; # dir tree
             vc = "code --disable-gpu"; # gui code editor
             nv = "nvim";
+            v = '$EDITOR';
+            vim = '$EDITOR';
             nf = "${pkgs.microfetch}/bin/microfetch";
             ff = "fastfetch";
+            nf = 'fastfetch';
+            pf = 'fastfetch';
             cp = "cp -iv";
             mv = "mv -iv";
             rm = "rm -vI";
             bc = "bc -ql";
             mkd = "mkdir -pv";
+            rmdir = "rm -ri";
+            df = "df -H";
             tp = "${pkgs.trash-cli}/bin/trash-put";
             tpr = "${pkgs.trash-cli}/bin/trash-restore";
             grep = "grep --color=always";
-            pokemon = "pokego --random 1-8 --no-title";
+            egrep = "egrep --color=auto";
+            fgrep = "fgrep --color=auto";
+            shutdown = 'systemctl poweroff';
 
             # Nixos
             list-gens = "nixos-rebuild list-generations";
@@ -112,16 +121,16 @@
             projects = "cd /mnt/work/Projects/";
             proj = "cd /mnt/work/Projects/";
             dev = "cd /mnt/work/Projects/";
-            # dev = "cd /mnt/work/dev/";
-            # nixdir = "cd /mnt/work/dev/nix/";
-            # cppdir = "cd /mnt/work/dev/C++/";
-            # zigdir = "cd /mnt/work/dev/Zig/";
-            # csdir = "cd /mnt/work/dev/C#/";
-            # rustdir = "cd /mnt/work/dev/Rust/";
-            # pydir = "cd /mnt/work/dev/Python/";
-            # javadir = "cd /mnt/work/dev/Java/";
-            # luadir = "cd /mnt/work/dev/lua/";
-            # webdir = "cd /mnt/work/dev/Website/";
+            root = "cd /";
+            home = "cd $HOME";
+           . = "cd ..";
+           .. = "cd ..";
+           ... = "cd ../..";
+           ..2 = "cd ../..";
+           ..3 = "cd ../../..";
+           ..4 = "cd ../../../..";
+           ..5 = "cd ../../../../..";
+
           };
         };
       }
