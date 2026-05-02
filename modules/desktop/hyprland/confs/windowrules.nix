@@ -6,10 +6,8 @@
     # Kitty Drop Down Term
     # =========================
     "float on, match:class ^(kitty-quake)$"
-    "size 70% 70%, match:class ^(kitty-quake)$"
-    "center on, match:class ^(kitty-quake)$"
+    "size 25% 25%, match:class ^(kitty-quake)$"
     "opacity 0.85 0.85, match:class ^(kitty-quake)$"
-    "workspace special:quake, silent, class:^(kitty-quake)$"
 
     # =========================
     # Browsers (full opacity)
