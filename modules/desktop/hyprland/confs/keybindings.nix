@@ -7,7 +7,8 @@ let
     keybinds-yad toggle-layout wrap-workspaces-next
     wrap-workspaces-prev wrap-window-workspace-next 
     wrap-window-workspace-prev zoom gamemode clipmanager
-    screen-record screenshot keyboardswitch fileManagerScript;
+    screen-record screenshot keyboardswitch fileManagerScript
+    exec-once-kitty-quake toggle-kitty-quake;
 in
 {
   ### === Singluar Binds === ###
@@ -31,7 +32,7 @@ in
     "ALT, F4, forcekillactive"
     "$mainMod, delete, exit" # kill hyperland session
     "$mainMod, W, togglefloating" # toggle the window on focus to float
-    "$mainMod SHIFT, G, togglegroup" # toggle the window on focus to float
+   "$mainMod SHIFT, G, togglegroup" # toggle the window on focus to float
     "$mainMod, T, exec, ${getExe toggle-layout}"
     "$mainMod, F, fullscreen" # toggle the window on focus to fullscreen
     "$mainMod, M, fullscreen, 1" # Set focus maximised
@@ -47,7 +48,8 @@ in
     "$mainMod, Return, exec, $term"
     #"$mainMod CTRL, Return, togglespecialworkspace, quake" # kitty --class kitty-quake"
     "$mainMod CTRL, Return, togglespecialworkspace, quake"
-    "$mainMod CTRL, Return, exec, [workspace special:quake silent] $term --class kitty-quake"
+    #"$mainMod CTRL, Return, exec, [workspace special:quake silent] $term --class kitty-quake"
+    "$mainMod CTRL, Return, exec, [workspace special:quake silent] ${getExe exec-once-kitty-quake}"
     "$mainMod, E, exec, ${getExe fileManagerScript} ${fileManager}"
     "$mainMod, C, exec, $editor"
     "$mainMod, B, exec, $browser"

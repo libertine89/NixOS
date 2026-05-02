@@ -37,6 +37,8 @@ let
   wrap-window-workspace-next = pkgs.callPackage ./scripts/wrap-window-workspace-next.nix {};
   wrap-window-workspace-prev = pkgs.callPackage ./scripts/wrap-window-workspace-prev.nix {};
   toggle-layout = pkgs.callPackage ./scripts/toggle-layout.nix {};
+  exec-once-kitty-quake = pkgs.callPackage ./scripts/exec-once-kitty-quake.nix {};
+  toggle-kitty-quake = pkgs.callPackage ./scripts/toggle-kitty-quake.nix {};
 
   ctx = {
     inherit pkgs lib getExe getExe'
@@ -46,7 +48,8 @@ let
     inherit keybinds-yad toggle-layout wrap-workspaces-next
       wrap-workspaces-prev wrap-window-workspace-next wrap-window-workspace-prev 
       zoom gamemode clipmanager wallpaper
-      batterynotify screen-record screenshot keyboardswitch fileManagerScript;
+      batterynotify screen-record screenshot keyboardswitch fileManagerScript
+      exec-once-kitty-quake toggle-kitty-quake;
   };
 in
 {
