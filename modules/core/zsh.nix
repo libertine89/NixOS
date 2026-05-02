@@ -141,8 +141,8 @@
                 do
                   echo "$N" |  figlet -c | lolcat &&  sleep 1
               done
-            '';
-            c = 'clear';
+            '';            
+            c = "clear";
             cls = "clear";
             tml = "tmux list-sessions";
             tma = "tmux attach";
@@ -154,12 +154,12 @@
             tree = "${pkgs.eza}/bin/eza --icons=auto --tree"; # dir tree
             vc = "code --disable-gpu"; # gui code editor
             nv = "nvim";
-            v = '$EDITOR';
-            vim = '$EDITOR';
+            v = "$EDITOR";
+            vim = "$EDITOR";
             nf = "${pkgs.microfetch}/bin/microfetch";
             ff = "fastfetch";
-            nf = 'fastfetch';
-            pf = 'fastfetch';
+            nf = "fastfetch";
+            pf = "fastfetch";
             cp = "cp -iv";
             mv = "mv -iv";
             rm = "rm -vI";
@@ -172,7 +172,7 @@
             grep = "grep --color=always";
             egrep = "egrep --color=auto";
             fgrep = "fgrep --color=auto";
-            shutdown = 'systemctl poweroff';
+            shutdown = "systemctl poweroff";
 
             # Nixos
             list-gens = "nixos-rebuild list-generations";
