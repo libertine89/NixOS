@@ -4,7 +4,8 @@ let
   inherit (ctx)
     pkgs lib getExe getExe'
     browser terminal fileManager bar 
-    batterynotify wallpaper;
+    batterynotify wallpaper
+    exec-once-kitty-quake;
 in
 {
   exec-once = [
@@ -24,5 +25,6 @@ in
     "rm '$XDG_CACHE_HOME/cliphist/db'" # Clear clipboard
     "${getExe batterynotify}" # battery notification
     "polkit-agent-helper-1"
+    "${getExe exec-once-kitty-quake}" # start scratch pad
   ];
 }
