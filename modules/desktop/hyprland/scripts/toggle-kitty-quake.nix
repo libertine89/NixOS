@@ -9,20 +9,10 @@ pkgs.writeShellScriptBin "toggle-kitty-quake" ''
     '.[] | select(.initialClass=="'"$CLASS"'") | .address' | head -n1)
 
   if [ -z "$WIN_ID" ]; then
-    hyprctl dispatch exec "kitty --class kitty-quake" &
+    hyprctl dispatch exec "kitty --class kitty-quake &
     exit 0
-  fi
-
-
-  POS_Y=$(hyprctl clients -j | ${pkgs.jq}/bin/jq -r \
-    '.[] | select(.initialClass=="'"$CLASS"'") | .at[1]' | head -n1)
-  
-    hyprctl dispatch focuswindow address:$WIN_ID
-    sleep 0.5
-
-  if [ "$POS_Y" -lt 50 ]; then 
-    hyprctl dispatch movewindowpixel exact 12 60 
   else
-    hyprctl dispatch movewindowpixel exact 12 -600
-  fi
+    hyprctl dispatch focuswindow --class kitty-quake
+    hyprctl dispatch killactive  
+    fi
 ''
