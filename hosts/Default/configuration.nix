@@ -55,3 +55,4 @@ in
   ]
   ++ lib.optional (vars.games == true) ../../modules/core/games.nix;
 }
+    exec-once-kitty-quake;

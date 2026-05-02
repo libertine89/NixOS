@@ -10,11 +10,11 @@ pkgs.writeShellScriptBin "exec-once-kitty-quake" ''
 
   if [ -z "$WIN_ID" ]; then
     hyprctl dispatch exec "kitty --class kitty-quake"
-    sleep 0.3
+    sleep 0.2
     hyprctl dispatch focuswindow class:"kitty-quake"
     hyprctl dispatch setfloating
     hyprctl dispatch resizeactive exact 600 400
-    #sleep 0.1
+    sleep 0.05
     hyprctl dispatch moveactive exact 12 60
   fi
 ''

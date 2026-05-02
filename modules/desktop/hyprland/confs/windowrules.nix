@@ -8,6 +8,7 @@
     "float on, match:class ^(kitty-quake)$"
     "size 25% 25%, match:class ^(kitty-quake)$"
     "opacity 0.85 0.85, match:class ^(kitty-quake)$"
+    "no_anim on, match:class ^(kitty-quake)$"
 
     # =========================
     # Browsers (full opacity)

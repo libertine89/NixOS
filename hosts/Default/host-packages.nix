@@ -1,10 +1,15 @@
 { pkgs, ... }:
+let
+  vars = import ./variables.nix;
+in
 {
+  ide = [
+      ${vars.ide}
+  ];
   environment.systemPackages = with pkgs; [
+    ide 
+
     obsidian
-    ludusavi # For game saves
-    proton-vpn # VPN
     github-desktop
-    # pokego # Overlayed
   ];
 }

@@ -11,6 +11,7 @@ let
 
   inherit (import ../../../hosts/${host}/variables.nix)
     bar
+    windowTheme
     browser
     terminal
     fileManager
@@ -41,7 +42,7 @@ let
 
   ctx = {
     inherit pkgs lib getExe getExe'
-      browser terminal fileManager bar
+      browser terminal fileManager bar windowTheme
       kbdLayout kbdVariant defaultWallpaper;
 
     inherit keybinds-yad toggle-layout wrap-workspaces-next
@@ -53,7 +54,7 @@ let
 in
 {
   imports = [
-    ../../themes/Catppuccin
+    ../../themes/${windowTheme}
     ./programs/${bar}
     ./programs/wlogout
     ./programs/rofi

@@ -7,6 +7,7 @@
   # Theme & Appearance
   bar = "waybar"; # waybar, hyprpanel, noctalia-shell, caelestia-shell
   waybarTheme = "minimal"; # stylish, minimal
+  windowTheme = "Catppuccin"; #Catppuccin, Dracula, rose-pine
   sddmTheme = "black_hole"; # astronaut, black_hole, purple_leaves, jake_the_dog, hyprland_kath
   defaultWallpaper = "escape_velocity.webp"; # Change with SUPER + SHIFT + W (Hyprland)
   hyprlockWallpaper = "escape_velocity.webp"; 
@@ -14,7 +15,7 @@
   # Default Applications
   terminal = "kitty"; # kitty, alacritty
   editor = "nvchad"; # nixvim, vscode, helix, doom-emacs, nvchad, neovim
-  ide = "cursor"; # code, cursor
+  ide = "code-cursor"; # vscode, code-cursor
   browser = "firefox"; # zen-beta, firefox, floorp
   fileManager = "yazi"; # yazi, lf, thunar
   shell = "zsh"; # zsh, bash
