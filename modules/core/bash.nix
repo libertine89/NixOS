@@ -89,7 +89,6 @@
             nv = "nvim";
             v = "$EDITOR";
             vim = "$EDITOR";
-            nf = "${pkgs.microfetch}/bin/microfetch";
             ff = "fastfetch";
             nf = "fastfetch";
             pf = "fastfetch";
