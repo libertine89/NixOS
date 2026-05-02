@@ -8,7 +8,7 @@ let
     wrap-workspaces-prev wrap-window-workspace-next 
     wrap-window-workspace-prev zoom gamemode clipmanager
     screen-record screenshot keyboardswitch fileManagerScript
-    exec-once-kitty-quake toggle-kitty-quake;
+    exec-once-kitty-quake;
 in
 {
   ### === Singluar Binds === ###
