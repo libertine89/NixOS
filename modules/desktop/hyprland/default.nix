@@ -59,7 +59,8 @@ in
     ./programs/rofi
     ./programs/hypridle
     ./programs/hyprlock
-  ];
+  ]
+  ++ lib.optional (bar != "hyprpanel") ./programs/swaync;
 
   environment.systemPackages = with pkgs; [
     pavucontrol
@@ -121,7 +122,6 @@ in
 
       # Set wallpaper
       services.awww.enable = true;
-
     
       wayland.windowManager.hyprland = {
         enable = true;
