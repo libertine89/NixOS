@@ -1,6 +1,6 @@
 { pkgs }:
 
-pkgs.writeShellScriptBin "toggle-kitty-quake" ''
+pkgs.writeShellScriptBin "exec-once-kitty-quake" ''
   #!${pkgs.bash}/bin/env bash
 
   CLASS="kitty-quake"
@@ -9,7 +9,7 @@ pkgs.writeShellScriptBin "toggle-kitty-quake" ''
     '.[] | select(.initialClass=="'"$CLASS"'") | .address' | head -n1)
 
   if [ -z "$WIN_ID" ]; then
-    hyprctl dispatch exec "kitty --class kitty-quake &
+    hyprctl dispatch exec "kitty --class kitty-quake" &
     exit 0
   fi
 ''

@@ -9,7 +9,7 @@
     "size 70% 70%, match:class ^(kitty-quake)$"
     "center on, match:class ^(kitty-quake)$"
     "opacity 0.85 0.85, match:class ^(kitty-quake)$"
-    #workspace = special:magic, gapsin:0, gapsout:0, border:false
+    "workspace special:quake, silent, class:^(kitty-quake)$"
 
     # =========================
     # Browsers (full opacity)
