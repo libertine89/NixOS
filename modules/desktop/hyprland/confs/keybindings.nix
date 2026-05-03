@@ -3,7 +3,7 @@
 let
   inherit (ctx)
     pkgs lib getExe getExe'
-    browser terminal fileManager bar
+    browser terminal ide fileManager bar
     keybinds-yad toggle-layout wrap-workspaces-next
     wrap-workspaces-prev wrap-window-workspace-next 
     wrap-window-workspace-prev zoom gamemode clipmanager
@@ -31,8 +31,8 @@ in
     "$mainMod, Q, killactive"
     "ALT, F4, forcekillactive"
     "$mainMod, delete, exit" # kill hyperland session
-    "$mainMod, W, togglefloating" # toggle the window on focus to float
-   "$mainMod SHIFT, G, togglegroup" # toggle the window on focus to float
+    "$mainMod, R, togglefloating" # toggle the window on focus to float
+    "$mainMod SHIFT, G, togglegroup" # toggle the window on focus to float
     "$mainMod, T, exec, ${getExe toggle-layout}"
     "$mainMod, F, fullscreen" # toggle the window on focus to fullscreen
     "$mainMod, M, fullscreen, 1" # Set focus maximised
@@ -46,26 +46,22 @@ in
 
     # Applications/Programs
     "$mainMod, Return, exec, $term"
-    #"$mainMod CTRL, Return, togglespecialworkspace, quake" # kitty --class kitty-quake"
     "$mainMod CTRL, Return, togglespecialworkspace, quake"
-    #"$mainMod CTRL, Return, exec, [workspace special:quake silent] $term --class kitty-quake"
     "$mainMod CTRL, Return, exec, ${getExe exec-once-kitty-quake}"
     "$mainMod, E, exec, ${getExe fileManagerScript} ${fileManager}"
-    "$mainMod, C, exec, $editor"
+    "$mainMod, C, exec, $ide"
     "$mainMod, B, exec, $browser"
     "$mainMod SHIFT, S, exec, spotify"
     "$mainMod SHIFT, Y, exec, youtube-music"
     "$CONTROL ALT, DELETE, exec, $term -e '${getExe pkgs.btop}'" # System Monitor
     "$CONTROL ALT, M, exec, $term --class \"microfetch\" --hold -e microfetch" # System Monitor
     "$mainMod CTRL, C, exec, ${getExe pkgs.hyprpicker} --autocopy --format=hex" # Colour Picker
-
     "$mainMod, A, exec, launcher drun" # launch desktop applications
     "$mainMod, SPACE, exec, launcher drun" # launch desktop applications
     "$mainMod SHIFT, W, exec, launcher wallpaper" # launch wallpaper switcher
     "$mainMod, Z, exec, launcher emoji" # launch emoji picker
     "$mainMod SHIFT, T, exec, launcher tmux" # launch tmux sessions
     "$mainMod, G, exec, launcher games" # game launcher
-    # "$mainMod, tab, exec, launcher window" # switch between desktop applications
 
     "$mainMod ALT, K, exec, ${getExe keyboardswitch}" # change keyboard layout
     "$mainMod SHIFT, N, exec, swaync-client -t -sw" # swayNC panel

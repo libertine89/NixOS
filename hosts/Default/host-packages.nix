@@ -3,12 +3,17 @@ let
   vars = import ./variables.nix;
 in
 {
-  ide = [
-      ${vars.ide}
-  ];
   environment.systemPackages = with pkgs; [
-    ide 
-
+    pkgs.${vars.ide}
+    libreoffice
+    bitwarden-desktop
+    asciiquarium
+    cmatrix
+    figlet
+    peazip
+    docker
+    pgadmin4
+    gnome-calculator
     obsidian
     github-desktop
   ];

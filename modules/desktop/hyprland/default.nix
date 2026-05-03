@@ -14,6 +14,7 @@ let
     windowTheme
     browser
     terminal
+    ide
     fileManager
     kbdLayout
     kbdVariant
@@ -39,6 +40,8 @@ let
   wrap-window-workspace-prev = pkgs.callPackage ./scripts/wrap-window-workspace-prev.nix {};
   toggle-layout = pkgs.callPackage ./scripts/toggle-layout.nix {};
   exec-once-kitty-quake = pkgs.callPackage ./scripts/exec-once-kitty-quake.nix {};
+
+  scrolloverview = pkgs.callPackage inputs.hyprlandScrollOverview {hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;};
 
   ctx = {
     inherit pkgs lib getExe getExe'
@@ -129,6 +132,7 @@ in
         package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 
         plugins = [
+          # scrolloverview # = inputs.hyprlandScrollOverview.packages.${pkgs.system}.default;
           # inputs.hyprland-plugins.packages.${pkgs.stdenv.hostPlatform.system}.hyprwinwrap
           # inputs.hyprsysteminfo.packages.${pkgs.stdenv.hostPlatform.system}.default
         ];
