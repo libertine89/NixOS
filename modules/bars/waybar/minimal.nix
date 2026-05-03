@@ -1,9 +1,9 @@
 { host, pkgs, ... }:
 let
-  inherit (import ../../../../../hosts/${host}/variables.nix) clock24h;
-  gpuinfo = pkgs.callPackage ../../scripts/gpuinfo.nix { };
-  keyboardswitch = pkgs.callPackage ../../scripts/keyboardswitch.nix { };
-  waybarcava = pkgs.callPackage ../../scripts/waybarcava.nix { };
+  inherit (import ../../../hosts/${host}/variables.nix) clock24h;
+  gpuinfo = pkgs.callPackage ../../desktop/scripts/gpuinfo.nix { };
+  keyboardswitch = pkgs.callPackage ../../desktop/scripts/keyboardswitch.nix { };
+  waybarcava = pkgs.callPackage ../../desktop/scripts/waybarcava.nix { };
 in
 {
   home-manager.sharedModules = [

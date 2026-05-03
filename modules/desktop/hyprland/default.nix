@@ -22,26 +22,24 @@ let
     ;
 
   # scripts (unchanged)
-  autoclicker = pkgs.callPackage ./scripts/autoclicker.nix { };
-  batterynotify = pkgs.callPackage ./scripts/batterynotify.nix { };
-  clipmanager = pkgs.callPackage ./scripts/clipmanager.nix { };
-  fileManagerScript = pkgs.callPackage ./scripts/file-manager.nix { inherit terminal; };
-  gamemode = pkgs.callPackage ./scripts/gamemode.nix { };
-  keyboardswitch = pkgs.callPackage ./scripts/keyboardswitch.nix { };
-  keybinds-yad = pkgs.callPackage ./scripts/keybinds-yad.nix { };
-  rofimusic = pkgs.callPackage ./scripts/rofimusic.nix { };
-  screen-record = pkgs.callPackage ./scripts/screen-record.nix { };
-  screenshot = pkgs.callPackage ./scripts/screenshot.nix { };
-  wallpaper = pkgs.callPackage ./scripts/wallpaper.nix { inherit defaultWallpaper; };
-  zoom = pkgs.callPackage ./scripts/zoom.nix { };
-  wrap-workspaces-next = pkgs.callPackage ./scripts/wrap-workspaces-next.nix {};
-  wrap-workspaces-prev = pkgs.callPackage ./scripts/wrap-workspaces-prev.nix {};
-  wrap-window-workspace-next = pkgs.callPackage ./scripts/wrap-window-workspace-next.nix {};
-  wrap-window-workspace-prev = pkgs.callPackage ./scripts/wrap-window-workspace-prev.nix {};
-  toggle-layout = pkgs.callPackage ./scripts/toggle-layout.nix {};
-  exec-once-kitty-quake = pkgs.callPackage ./scripts/exec-once-kitty-quake.nix {};
-
-  scrolloverview = pkgs.callPackage inputs.hyprlandScrollOverview {hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;};
+  autoclicker = pkgs.callPackage ../scripts/autoclicker.nix { };
+  batterynotify = pkgs.callPackage ../scripts/batterynotify.nix { };
+  clipmanager = pkgs.callPackage ../scripts/clipmanager.nix { };
+  fileManagerScript = pkgs.callPackage ../scripts/file-manager.nix { inherit terminal; };
+  gamemode = pkgs.callPackage ../scripts/gamemode.nix { };
+  keyboardswitch = pkgs.callPackage ../scripts/keyboardswitch.nix { };
+  keybinds-yad = pkgs.callPackage ../scripts/keybinds-yad.nix { };
+  rofimusic = pkgs.callPackage ../scripts/rofimusic.nix { };
+  screen-record = pkgs.callPackage ../scripts/screen-record.nix { };
+  screenshot = pkgs.callPackage ../scripts/screenshot.nix { };
+  wallpaper = pkgs.callPackage ../scripts/wallpaper.nix { inherit defaultWallpaper; };
+  zoom = pkgs.callPackage ../scripts/zoom.nix { };
+  wrap-workspaces-next = pkgs.callPackage ../scripts/wrap-workspaces-next.nix {};
+  wrap-workspaces-prev = pkgs.callPackage ../scripts/wrap-workspaces-prev.nix {};
+  wrap-window-workspace-next = pkgs.callPackage ../scripts/wrap-window-workspace-next.nix {};
+  wrap-window-workspace-prev = pkgs.callPackage ../scripts/wrap-window-workspace-prev.nix {};
+  toggle-layout = pkgs.callPackage ../scripts/toggle-layout.nix {};
+  exec-once-kitty-quake = pkgs.callPackage ../scripts/exec-once-kitty-quake.nix {};
 
   ctx = {
     inherit pkgs lib getExe getExe'
@@ -58,7 +56,7 @@ in
 {
   imports = [
     ../../themes/${windowTheme}
-    ./programs/${bar}
+    ../../bars/${bar}
     ./programs/wlogout
     ./programs/rofi
     ./programs/hypridle

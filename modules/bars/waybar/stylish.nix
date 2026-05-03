@@ -1,7 +1,7 @@
 { host, pkgs, ... }:
 let
-  inherit (import ../../../../../hosts/${host}/variables.nix) clock24h terminal;
-  gpuinfo = pkgs.callPackage ../../scripts/gpuinfo.nix { };
+  inherit (import ../../../hosts/${host}/variables.nix) clock24h terminal;
+  gpuinfo = pkgs.callPackage ../../desktop/scripts/gpuinfo.nix { };
 in
 {
   home-manager.sharedModules = [

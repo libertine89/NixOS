@@ -9,7 +9,7 @@ in
   imports = [
     ../../themes/Catppuccin
     ../hyprland/programs/rofi
-    ./polybar
+    ../../bars/polybar
     ./dunst.nix
   ];
 
