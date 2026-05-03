@@ -5,7 +5,7 @@
   desktop = "hyprland"; # hyprland, i3, gnome, plasma6
 
   # Theme & Appearance
-  bar = "waybar"; # waybar, hyprpanel, noctalia-shell, caelestia-shell
+  bar = "noctalia-shell"; # waybar, hyprpanel, noctalia-shell, caelestia-shell
   waybarTheme = "minimal"; # stylish, minimal
   windowTheme = "Catppuccin"; #Catppuccin, Dracula, rose-pine
   sddmTheme = "black_hole"; # astronaut, black_hole, purple_leaves, jake_the_dog, hyprland_kath

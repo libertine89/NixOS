@@ -23,161 +23,215 @@ in
         enable = true;
         systemd.enable = false;
         settings = {
-          bar = {
-            barType = "floating";
-            position = "top";
-            density = "default"; # compact, default, comfortable
-            showCapsule = false;
-            widgetSpacing = 5;
-            contentPadding = 2;
-            fontScale = 1.05;
-            floating = true;
-            marginVertical = 8;
-            marginHorizontal = 10;
-            frameRadius = 12;
-            widgets = {
-              left = [
-                {
-                  id = "ControlCenter";
-                  useDistroLogo = true;
-                }
-                {
-                  emptyColor = "secondary";
-                  focusedColor = "primary";
-                  followFocusedScreen = false;
-                  hideUnoccupied = false;
-                  id = "Workspace";
-                  labelMode = "none";
-                  showLabelsOnlyWhenOccupied = false;
-                }
-                {
-                  colorName = "primary";
-                  hideWhenIdle = false;
-                  id = "AudioVisualizer";
-                  width = 100;
-                }
-              ];
-              center = [
-                {
-                  iconColor = "none";
-                  id = "KeepAwake";
-                  textColor = "none";
-                }
-                {
-                  clockColor = "none";
-                  customFont = "";
-                  formatHorizontal = "ddd, dd MMM HH:mm";
-                  formatVertical = "HH mm";
-                  id = "Clock";
-                  tooltipFormat = "HH:mm ddd, MMM dd";
-                  useCustomFont = false;
-                }
-              ];
-              right = [
-                {
-                  blacklist = [
-                    "nm-applet"
-                  ];
-                  chevronColor = "none";
-                  colorizeIcons = false;
-                  drawerEnabled = true;
-                  hidePassive = false;
-                  id = "Tray";
-                  pinned = [ ];
-                }
-                {
-                  compactMode = false;
-                  diskPath = "/";
-                  iconColor = "primary";
-                  textColor = "none";
-                  id = "SystemMonitor";
-                  showCpuFreq = false;
-                  showCpuTemp = true;
-                  showCpuUsage = true;
-                  showDiskAvailable = false;
-                  showDiskUsage = false;
-                  showDiskUsageAsPercent = false;
-                  showGpuTemp = false;
-                  showLoadAverage = false;
-                  showMemoryAsPercent = false;
-                  showMemoryUsage = true;
-                  showNetworkStats = false;
-                  showSwapUsage = false;
-                  useMonospaceFont = true;
-                  usePadding = false;
-                }
-                {
-                  displayMode = "onhover";
-                  iconColor = "none";
-                  id = "Volume";
-                  middleClickCommand = "pwvucontrol || pavucontrol";
-                  textColor = "none";
-                }
-                /*
+          bars = [
+
+            ### Left Island
+            {
+              barType = "floating";
+              position = "top";
+              alignment = "left";
+              density = "default";
+              showCapsule = false;
+              widgetSpacing = 5;
+              contentPadding = 2;
+              fontScale = 1.05;
+              floating = true;
+              marginVertical = 8;
+              marginHorizontal = 10;
+              frameRadius = 12;
+
+              widgets = {
+                left = [
                   {
-                    hideWhenZero = false;
-                    hideWhenZeroUnread = false;
-                    iconColor = "none";
-                    id = "NotificationHistory";
-                    showUnreadBadge = true;
-                    unreadBadgeColor = "primary";
+                    id = "ControlCenter";
+                    useDistroLogo = true;
                   }
-                */
-                {
-                  applyToAllMonitors = false;
-                  displayMode = "onhover";
-                  iconColor = "none";
-                  id = "Brightness";
-                  textColor = "none";
-                }
-                {
-                  iconColor = "none";
-                  id = "NightLight";
-                }
-                {
-                  displayMode = "onhover";
-                  iconColor = "none";
-                  id = "KeyboardLayout";
-                  showIcon = true;
-                  textColor = "none";
-                }
-                {
-                  displayMode = "onhover";
-                  iconColor = "none";
-                  id = "Network";
-                  textColor = "none";
-                }
-                {
-                  displayMode = "onhover";
-                  iconColor = "none";
-                  id = "Bluetooth";
-                  textColor = "none";
-                }
-                {
-                  colorizeSystemIcon = "primary";
-                  enableColorization = false;
-                  generalTooltipText = "Notification Panel";
-                  hideMode = "alwaysExpanded";
-                  icon = "bell";
-                  id = "CustomButton";
-                  leftClickExec = "swaync-client -t -sw";
-                }
-                {
-                  deviceNativePath = "__default__";
-                  displayMode = "graphic";
-                  hideIfIdle = false;
-                  hideIfNotDetected = true;
-                  id = "Battery";
-                  showNoctaliaPerformance = true;
-                  showPowerProfiles = false;
-                }
-                {
-                  iconColor = "error";
-                  id = "SessionMenu";
-                }
-              ];
-            };
-          };
+                  {
+                    emptyColor = "secondary";
+                    focusedColor = "primary";
+                    followFocusedScreen = false;
+                    hideUnoccupied = false;
+                    id = "Workspace";
+                    labelMode = "none";
+                    showLabelsOnlyWhenOccupied = false;
+                  }
+                  {
+                    colorName = "primary";
+                    hideWhenIdle = false;
+                    id = "AudioVisualizer";
+                    width = 100;
+                  }
+                ];
+                center = [ ];
+                right = [ ];
+              };
+            }
+
+            ### Centre Island
+            {
+              barType = "floating";
+              position = "top";
+              alignment = "center";
+              density = "default";
+              showCapsule = false;
+              widgetSpacing = 5;
+              contentPadding = 2;
+              fontScale = 1.05;
+              floating = true;
+              marginVertical = 8;
+              marginHorizontal = 0; # none for middle bar
+              frameRadius = 12;
+
+              widgets = {
+                left = [ ];
+                center = [ 
+                  {
+                    id = "ActiveWindowTile";
+                    maxLength = 60;
+                  }
+                ];
+                right = [ ];
+              };
+            }
+
+            ### Right Island
+            {
+              barType = "floating";
+              position = "top";
+              alignment = "right";
+              density = "default";
+              showCapsule = false;
+              widgetSpacing = 5;
+              contentPadding = 2;
+              fontScale = 1.05;
+              floating = true;
+              marginVertical = 8;
+              marginHorizontal = 10;
+              frameRadius = 12;
+
+              widgets = {
+                left = [ ];
+                center = [ ];
+                right = [
+                  {                  
+                    blacklist = [
+                    "nm-applet"
+                    ];
+                    chevronColor = "none";
+                    colorizeIcons = false;
+                    drawerEnabled = true;
+                    hidePassive = false;
+                    id = "Tray";
+                    pinned = [ ];
+                  }
+                  {
+                    compactMode = false;
+                    diskPath = "/";
+                    iconColor = "primary";
+                    textColor = "none";
+                    id = "SystemMonitor";
+                    showCpuFreq = false;
+                    showCpuTemp = true;
+                    showCpuUsage = true;
+                    showDiskAvailable = false;
+                    showDiskUsage = false;
+                    showDiskUsageAsPercent = false;
+                    showGpuTemp = false;
+                    showLoadAverage = false;
+                    showMemoryAsPercent = false;
+                    showMemoryUsage = true;
+                    showNetworkStats = false;
+                    showSwapUsage = false;
+                    useMonospaceFont = true;
+                    usePadding = false;
+                  }
+                  {
+                    displayMode = "onhover";
+                    iconColor = "none";
+                    id = "Volume";
+                    middleClickCommand = "pwvucontrol || pavucontrol";
+                    textColor = "none";
+                  }
+                  /*
+                    {
+                      hideWhenZero = false;
+                      hideWhenZeroUnread = false;
+                      iconColor = "none";
+                      id = "NotificationHistory";
+                      showUnreadBadge = true;
+                      unreadBadgeColor = "primary";
+                    }
+                  */
+                  {
+                    applyToAllMonitors = false;
+                    displayMode = "onhover";
+                    iconColor = "none";
+                    id = "Brightness";
+                    textColor = "none";
+                  }
+                  {
+                    iconColor = "none";
+                    id = "NightLight";
+                  }
+                  {
+                    displayMode = "onhover";
+                    iconColor = "none";
+                    id = "KeyboardLayout";
+                    showIcon = true;
+                    textColor = "none";
+                  }
+                  {
+                    displayMode = "onhover";
+                    iconColor = "none";
+                    id = "Network";
+                    textColor = "none";
+                  }
+                  {
+                    displayMode = "onhover";
+                    iconColor = "none";
+                    id = "Bluetooth";
+                    textColor = "none";
+                  }
+                  {
+                    colorizeSystemIcon = "primary";
+                    enableColorization = false;
+                    generalTooltipText = "Notification Panel";
+                    hideMode = "alwaysExpanded";
+                    icon = "bell";
+                    id = "CustomButton";
+                    leftClickExec = "swaync-client -t -sw";
+                  }
+                  {
+                    deviceNativePath = "__default__";
+                    displayMode = "graphic";
+                    hideIfIdle = false;
+                    hideIfNotDetected = true;
+                    id = "Battery";
+                    showNoctaliaPerformance = true;
+                    showPowerProfiles = false;
+                  }
+                  {
+                    iconColor = "error";
+                    id = "SessionMenu";
+                  }
+                  {
+                    iconColor = "none";
+                    id = "KeepAwake";
+                    textColor = "none";
+                  }
+                  {
+                    clockColor = "none";
+                    customFont = "";
+                    formatHorizontal = "ddd, dd MMM HH:mm";
+                    formatVertical = "HH mm";
+                    id = "Clock";
+                    tooltipFormat = "HH:mm ddd, MMM dd";
+                    useCustomFont = false;
+                  }
+                ];
+              };
+            }
+          ];
           colorSchemes = {
             useWallpaperColors = false;
             predefinedScheme = "Catppuccin";
