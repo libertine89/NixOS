@@ -14,28 +14,40 @@ in
     brightnessctl
     # wf-recorder
   ];
+
   home-manager.sharedModules = [
     (_: {
       imports = [
         inputs.noctalia.homeModules.default
       ];
+
       programs.noctalia-shell = {
         enable = true;
         systemd.enable = false;
+
         settings = {
+          appLauncher = {
+            enableSessionSearch = false;
+            enableSettingsSearch = false;
+            enableWindowsSearch = false;
+          };
+
           bars = [
 
-            ### Left Island
+            ### LEFT ISLAND
             {
+              alignment = "left";
               barType = "floating";
               position = "top";
-              alignment = "left";
+              floating = true;
+
               density = "default";
               showCapsule = false;
+
               widgetSpacing = 5;
               contentPadding = 2;
               fontScale = 1.05;
-              floating = true;
+
               marginVertical = 8;
               marginHorizontal = 10;
               frameRadius = 12;
@@ -67,24 +79,27 @@ in
               };
             }
 
-            ### Centre Island
+            ### CENTRE ISLAND
             {
+              alignment = "center";
               barType = "floating";
               position = "top";
-              alignment = "center";
+              floating = true;
+
               density = "default";
               showCapsule = false;
+
               widgetSpacing = 5;
               contentPadding = 2;
               fontScale = 1.05;
-              floating = true;
+
               marginVertical = 8;
-              marginHorizontal = 0; # none for middle bar
+              marginHorizontal = 0;
               frameRadius = 12;
 
               widgets = {
                 left = [ ];
-                center = [ 
+                center = [
                   {
                     id = "ActiveWindowTile";
                     maxLength = 60;
@@ -94,17 +109,20 @@ in
               };
             }
 
-            ### Right Island
+            ### RIGHT ISLAND
             {
+              alignment = "right";
               barType = "floating";
               position = "top";
-              alignment = "right";
+              floating = true;
+
               density = "default";
               showCapsule = false;
+
               widgetSpacing = 5;
               contentPadding = 2;
               fontScale = 1.05;
-              floating = true;
+
               marginVertical = 8;
               marginHorizontal = 10;
               frameRadius = 12;
@@ -113,10 +131,9 @@ in
                 left = [ ];
                 center = [ ];
                 right = [
-                  {                  
-                    blacklist = [
-                    "nm-applet"
-                    ];
+
+                  {
+                    blacklist = [ "nm-applet" ];
                     chevronColor = "none";
                     colorizeIcons = false;
                     drawerEnabled = true;
@@ -124,6 +141,7 @@ in
                     id = "Tray";
                     pinned = [ ];
                   }
+
                   {
                     compactMode = false;
                     diskPath = "/";
@@ -145,6 +163,7 @@ in
                     useMonospaceFont = true;
                     usePadding = false;
                   }
+
                   {
                     displayMode = "onhover";
                     iconColor = "none";
@@ -152,16 +171,7 @@ in
                     middleClickCommand = "pwvucontrol || pavucontrol";
                     textColor = "none";
                   }
-                  /*
-                    {
-                      hideWhenZero = false;
-                      hideWhenZeroUnread = false;
-                      iconColor = "none";
-                      id = "NotificationHistory";
-                      showUnreadBadge = true;
-                      unreadBadgeColor = "primary";
-                    }
-                  */
+
                   {
                     applyToAllMonitors = false;
                     displayMode = "onhover";
@@ -169,10 +179,12 @@ in
                     id = "Brightness";
                     textColor = "none";
                   }
+
                   {
                     iconColor = "none";
                     id = "NightLight";
                   }
+
                   {
                     displayMode = "onhover";
                     iconColor = "none";
@@ -180,18 +192,21 @@ in
                     showIcon = true;
                     textColor = "none";
                   }
+
                   {
                     displayMode = "onhover";
                     iconColor = "none";
                     id = "Network";
                     textColor = "none";
                   }
+
                   {
                     displayMode = "onhover";
                     iconColor = "none";
                     id = "Bluetooth";
                     textColor = "none";
                   }
+
                   {
                     colorizeSystemIcon = "primary";
                     enableColorization = false;
@@ -201,6 +216,7 @@ in
                     id = "CustomButton";
                     leftClickExec = "swaync-client -t -sw";
                   }
+
                   {
                     deviceNativePath = "__default__";
                     displayMode = "graphic";
@@ -210,15 +226,18 @@ in
                     showNoctaliaPerformance = true;
                     showPowerProfiles = false;
                   }
+
                   {
                     iconColor = "error";
                     id = "SessionMenu";
                   }
+
                   {
                     iconColor = "none";
                     id = "KeepAwake";
                     textColor = "none";
                   }
+
                   {
                     clockColor = "none";
                     customFont = "";
@@ -232,11 +251,13 @@ in
               };
             }
           ];
+
           colorSchemes = {
             useWallpaperColors = false;
             predefinedScheme = "Catppuccin";
             darkMode = true;
           };
+
           general = {
             avatarImage = "${./profile-picture.jpg}";
             radiusRatio = 0.2;
@@ -246,6 +267,7 @@ in
             showChangelogOnStartup = false;
             telemetryEnabled = false;
           };
+
           location = {
             monthBeforeDay = true;
             name = "London, United Kingdom";
@@ -259,77 +281,40 @@ in
             hideWeatherTimezone = false;
             hideWeatherCityName = false;
           };
+
           wallpaper = {
             enabled = false;
             directory = "${../../../../themes/wallpapers}";
             setWallpaperOnAllMonitors = true;
           };
-          appLauncher = {
-            enableSettingsSearch = false;
-            enableWindowsSearch = false;
-            enableSessionSearch = false;
-          };
+
           controlCenter = {
             shortcuts = {
               left = [
-                {
-                  id = "Network";
-                }
-                {
-                  id = "Bluetooth";
-                }
-                {
-                  id = "AirplaneMode";
-                }
-                {
-                  id = "WallpaperSelector";
-                }
-                {
-                  id = "NoctaliaPerformance";
-                }
+                { id = "Network"; }
+                { id = "Bluetooth"; }
+                { id = "AirplaneMode"; }
+                { id = "WallpaperSelector"; }
+                { id = "NoctaliaPerformance"; }
               ];
               right = [
-                {
-                  id = "Notifications";
-                }
-                {
-                  id = "KeepAwake";
-                }
-                {
-                  id = "DarkMode";
-                }
-                {
-                  id = "NightLight";
-                }
+                { id = "Notifications"; }
+                { id = "KeepAwake"; }
+                { id = "DarkMode"; }
+                { id = "NightLight"; }
               ];
             };
+
             cards = [
-              {
-                enabled = true;
-                id = "profile-card";
-              }
-              {
-                enabled = true;
-                id = "shortcuts-card";
-              }
-              {
-                enabled = true;
-                id = "audio-card";
-              }
-              {
-                enabled = true;
-                id = "brightness-card";
-              }
-              {
-                enabled = true;
-                id = "weather-card";
-              }
-              {
-                enabled = true;
-                id = "media-sysmon-card";
-              }
+              { enabled = true; id = "profile-card"; }
+              { enabled = true; id = "shortcuts-card"; }
+              { enabled = true; id = "audio-card"; }
+              { enabled = true; id = "brightness-card"; }
+              { enabled = true; id = "weather-card"; }
+              { enabled = true; id = "media-sysmon-card"; }
             ];
           };
+
           systemMonitor = {
             cpuWarningThreshold = 80;
             cpuCriticalThreshold = 90;
@@ -353,65 +338,24 @@ in
             criticalColor = "";
             externalMonitor = "resources || missioncenter || jdsystemmonitor || corestats || system-monitoring-center || gnome-system-monitor || plasma-systemmonitor || mate-system-monitor || ukui-system-monitor || deepin-system-monitor || pantheon-system-monitor";
           };
+
           sessionMenu = {
             powerOptions = [
-              {
-                action = "lock";
-                command = "loginctl lock-session";
-                countdownEnabled = false;
-                enabled = true;
-                keybind = "1";
-              }
-              {
-                action = "suspend";
-                command = "";
-                countdownEnabled = false;
-                enabled = true;
-                keybind = "2";
-              }
-              {
-                action = "hibernate";
-                command = "";
-                countdownEnabled = false;
-                enabled = false;
-                keybind = "3";
-              }
-              {
-                action = "reboot";
-                command = "";
-                countdownEnabled = false;
-                enabled = true;
-                keybind = "4";
-              }
-              {
-                action = "logout";
-                command = "";
-                countdownEnabled = false;
-                enabled = true;
-                keybind = "5";
-              }
-              {
-                action = "shutdown";
-                command = "";
-                countdownEnabled = false;
-                enabled = true;
-                keybind = "6";
-              }
-              {
-                action = "rebootToUefi";
-                command = "";
-                countdownEnabled = false;
-                enabled = false;
-                keybind = "7";
-              }
+              { action = "lock"; command = "loginctl lock-session"; countdownEnabled = false; enabled = true; keybind = "1"; }
+              { action = "suspend"; command = ""; countdownEnabled = false; enabled = true; keybind = "2"; }
+              { action = "hibernate"; command = ""; countdownEnabled = false; enabled = false; keybind = "3"; }
+              { action = "reboot"; command = ""; countdownEnabled = false; enabled = true; keybind = "4"; }
+              { action = "logout"; command = ""; countdownEnabled = false; enabled = true; keybind = "5"; }
+              { action = "shutdown"; command = ""; countdownEnabled = false; enabled = true; keybind = "6"; }
+              { action = "rebootToUefi"; command = ""; countdownEnabled = false; enabled = false; keybind = "7"; }
             ];
           };
+
           notifications = {
             enabled = false;
             lowUrgencyDuration = 3;
             normalUrgencyDuration = 8;
             criticalUrgencyDuration = 15;
-
             enableMediaToast = false;
             enableKeyboardLayoutToast = true;
             enableBatteryToast = true;
@@ -421,15 +365,17 @@ in
               critical = true;
             };
           };
+
           brightness = {
             brightnessStep = true;
             enforceMinimum = true;
             enableDdcSupport = true;
           };
+
           nightLight = {
             nightTemp = "4000";
-            # dayTemp = "6500";
           };
+
           dock.enabled = false;
           idle.enabled = false;
         };
