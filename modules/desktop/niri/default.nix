@@ -68,6 +68,7 @@ in
       ];
 
       home.file.".config/niri/config.kdl".text = ''
+#  ${builtins.readFile ./confs/keybindings.kdl}
         binds {
           Mod+Return {
             spawn "kitty"
