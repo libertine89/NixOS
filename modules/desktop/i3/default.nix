@@ -9,8 +9,8 @@ in
   imports = [
     ../../themes/Catppuccin
     ../../utilities/rofi
+    ../../utilties/dunst
     ../../bars/polybar
-    ./dunst.nix
   ];
 
   services.xserver = {
