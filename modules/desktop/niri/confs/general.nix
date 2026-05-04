@@ -1,7 +1,7 @@
 { ctx, ... }:
 
-{
-  general = {
+''
+general {
 
-  };
 }
+''
