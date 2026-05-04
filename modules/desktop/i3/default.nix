@@ -2,8 +2,8 @@
 let
   inherit (lib) getExe getExe';
   inherit (import ../../../hosts/${host}/variables.nix) terminal browser defaultWallpaper;
-  monitors = pkgs.callPackage ./scripts/monitors.nix { };
-  wallpaper = pkgs.callPackage ./scripts/wallpaper.nix { };
+  monitors = pkgs.callPackage ../scripts/i3monitors.nix { };
+  wallpaper = pkgs.callPackage ../scripts/i3wallpaper.nix { };
 in
 {
   imports = [
