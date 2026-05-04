@@ -4,8 +4,10 @@
   # ─────────────────────────────
   # Niri compositor
   # ─────────────────────────────
-  environment.systemPackages = [
-    pkgs.niri
+  environment.systemPackages = with pkgs; [
+    niri
+    kitty
+    yazi
   ];
 
   # ─────────────────────────────
@@ -15,7 +17,7 @@
   services.xserver.displayManager.sddm.enable = true;
 
   # ─────────────────────────────
-  # Register Niri session
+  # Niri session
   # ─────────────────────────────
   services.displayManager.sessionPackages = [
     pkgs.niri
@@ -26,14 +28,28 @@
   # ─────────────────────────────
   services.dbus.enable = true;
 
-  xdg.portal = {
-    enable = true;
-  };
+  xdg.portal.enable = true;
 
-  # ─────────────────────────────
-  # Basic Wayland environment
-  # ─────────────────────────────
   environment.sessionVariables = {
     XDG_SESSION_TYPE = "wayland";
   };
+
+  # ─────────────────────────────
+  # Home Manager integration
+  # ─────────────────────────────
+  home-manager.sharedModules = [
+    ({ pkgs, ... }: {
+      home.packages = with pkgs; [
+        kitty
+        yazi
+      ];
+
+      home.file.".config/niri/config.kdl".text = ''
+        binds {
+            Mod+Return spawn "kitty"
+            Mod+y spawn "kitty" "-e" "yazi"
+        }
+      '';
+    })
+  ];
 }
