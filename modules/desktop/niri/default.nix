@@ -78,7 +78,7 @@ in
   home-manager.sharedModules = [
     ({ config, ... }:
     let
-      # Import modular hyprland config pieces
+      # Import modular config pieces
       conf = import ./confs { inherit ctx; };
     in
       {
