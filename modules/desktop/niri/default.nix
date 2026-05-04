@@ -11,12 +11,19 @@ let
   inherit (import ../../../hosts/${host}/variables.nix)
   bar
   windowTheme
+  browser
   terminal
   ide
   fileManager
   kbdLayout
   kbdVariant
   defaultWallpaper;
+
+ctx = {
+  inherit pkgs lib getExe getExe' ide
+  browser terminal fileManager bar windowTheme
+  kbdLayout kbdVariant defaultWallpaper;
+  };
 in 
 {
   imports = [
