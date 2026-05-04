@@ -1,104 +1,104 @@
 { ctx, ... }:
 
-{
-    input = {
-        keyboard = {
-            xkb = {
-                layout = ctx.kbdLayout;
-                variant = ctx.kbdVariant;
-                # options "compose:ralt,ctrl:nocaps"
-                # model ""
-                # rules ""
-                # file "~/.config/keymap.xkb"
-            };
+''
+input {
+    keyboard {
+        xkb {
+            layout "${ctx.kbdLayout}";
+            variant "${ctx.kbdVariant}";
+            // options "compose:ralt,ctrl:nocaps"
+            // model ""
+            // rules ""
+            // file "~/.config/keymap.xkb"
+        }
 
-            # repeat-delay 600
-            # repeat-rate 25
-            # track-layout "global"
-            numlock = true;
-        };
-
-        touchpad = {
-            # off
-            tap = true;
-            # dwt
-            # dwtp
-            # drag false
-            # drag-lock
-            natural-scroll = true;
-            # accel-speed 0.2
-            # accel-profile "flat"
-            # scroll-factor 1.0
-            # scroll-factor vertical=1.0 horizontal=-2.0
-            # scroll-method "two-finger"
-            # scroll-button 273
-            # scroll-button-lock
-            # tap-button-map "left-middle-right"
-            # click-method "clickfinger"
-            # left-handed
-            # disabled-on-external-mouse
-            # middle-emulation
-        };
-
-        mouse = {
-            # off
-            # natural-scroll
-            # accel-speed 0.2
-            # accel-profile "flat"
-            # scroll-factor 1.0
-            # scroll-factor vertical=1.0 horizontal=-2.0
-            # scroll-method "no-scroll"
-            # scroll-button 273
-            # scroll-button-lock
-            # left-handed
-            # middle-emulation
-        };
-
-        trackpoint = {
-            # off
-            # natural-scroll
-            # accel-speed 0.2
-            # accel-profile "flat"
-            # scroll-method "on-button-down"
-            # scroll-button 273
-            # scroll-button-lock
-            # left-handed
-            # middle-emulation
-        };
-
-        trackball = {
-            # off
-            # natural-scroll
-            # accel-speed 0.2
-            # accel-profile "flat"
-            # scroll-method "on-button-down"
-            # scroll-button 273
-            # scroll-button-lock
-            # left-handed
-            # middle-emulation
-        };
-
-        tablet = {
-            # off
-            map-to-output = "eDP-1";
-            # map-to-focused-output
-            # map-to-focused-window
-            # left-handed
-            # calibration-matrix 1.0 0.0 0.0 0.0 1.0 0.0
-        };
-
-        touch = {
-            # off
-            map-to-output = "eDP-1";
-            # calibration-matrix 1.0 0.0 0.0 0.0 1.0 0.0
-        };
-
-        # disable-power-key-handling
-        # warp-mouse-to-focus
-        # focus-follows-mouse max-scroll-amount="0%"
-        # workspace-auto-back-and-forth
-
-        # mod-key "Super"
-        # mod-key-nested "Alt"
+        // repeat-delay 600
+        // repeat-rate 25
+        // track-layout "global"
+        numlock
     }
+
+    touchpad {
+        // off
+        tap
+        // dwt
+        // dwtp
+        // drag false
+        // drag-lock
+        natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-factor 1.0
+        // scroll-factor vertical=1.0 horizontal=-2.0
+        // scroll-method "two-finger"
+        // scroll-button 273
+        // scroll-button-lock
+        // tap-button-map "left-middle-right"
+        // click-method "clickfinger"
+        // left-handed
+        // disabled-on-external-mouse
+        // middle-emulation
+    }
+
+    mouse {
+        // off
+        // natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-factor 1.0
+        // scroll-factor vertical=1.0 horizontal=-2.0
+        // scroll-method "no-scroll"
+        // scroll-button 273
+        // scroll-button-lock
+        // left-handed
+        // middle-emulation
+    }
+
+    trackpoint {
+        // off
+        // natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-method "on-button-down"
+        // scroll-button 273
+        // scroll-button-lock
+        // left-handed
+        // middle-emulation
+    }
+
+    trackball {
+        // off
+        // natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-method "on-button-down"
+        // scroll-button 273
+        // scroll-button-lock
+        // left-handed
+        // middle-emulation
+    }
+
+    tablet {
+        // off
+        map-to-output "eDP-1"
+        // map-to-focused-output
+        // map-to-focused-window
+        // left-handed
+        // calibration-matrix 1.0 0.0 0.0 0.0 1.0 0.0
+    }
+
+    touch {
+        // off
+        map-to-output "eDP-1"
+        // calibration-matrix 1.0 0.0 0.0 0.0 1.0 0.0
+    }
+
+    // disable-power-key-handling
+    // warp-mouse-to-focus
+    // focus-follows-mouse max-scroll-amount="0%"
+    // workspace-auto-back-and-forth
+
+    // mod-key "Super"
+    // mod-key-nested "Alt"
 }
+''
