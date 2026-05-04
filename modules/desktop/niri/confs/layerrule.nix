@@ -1,0 +1,9 @@
+{ ctx, ... }:
+
+{
+  layerrule = {
+    blur = [
+      "bar"
+    ];
+  };
+}
