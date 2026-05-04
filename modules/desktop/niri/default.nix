@@ -41,4 +41,25 @@ in
   services.dbus.enable = true;
 
   xdg.portal.enable = true;
+  # ─────────────────────────────
+  # NIRI CONFIG (KEY PART)
+  # ─────────────────────────────
+  home-manager.sharedModules = [
+    ({ pkgs, ... }:
+
+    {
+      home.file.".config/niri/config.kdl".text = ''
+        binds {
+
+            # ─────────────────────
+            # BASIC TEST BINDS
+            # ─────────────────────
+
+            Mod+T spawn "kitty"
+            Mod+Y spawn "kitty -e yazi"
+
+            # fallback exit (always useful)
+            Mod+Shift+E quit
+        }
+      '';
 }
