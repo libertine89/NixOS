@@ -45,6 +45,24 @@ let
       screen-record screenshot wallpaper zoom;
   };
 
+  # ─────────────────────────────────────────────
+  # 🔥 FIX #1: STOP USING "//" (this was WRONG)
+  # ─────────────────────────────────────────────
+  niriSettings =
+    (import ./confs/input.nix { inherit ctx; }) + "\n"
+    + (import ./confs/output.nix { inherit ctx; }) + "\n"
+    + (import ./confs/keybindings.nix { inherit ctx; }) + "\n"
+    + (import ./confs/switchevents.nix { inherit ctx; }) + "\n"
+    + (import ./confs/layout.nix { inherit ctx; }) + "\n"
+    + (import ./confs/general.nix { inherit ctx; }) + "\n"
+    + (import ./confs/windowrule.nix { inherit ctx; }) + "\n"
+    + (import ./confs/layerrule.nix { inherit ctx; }) + "\n"
+    + (import ./confs/animations.nix { inherit ctx; }) + "\n"
+    + (import ./confs/gestures.nix { inherit ctx; }) + "\n"
+    + (import ./confs/recentwindows.nix { inherit ctx; }) + "\n"
+    + (import ./confs/debug.nix { inherit ctx; }) + "\n"
+    + (import ./confs/autostart.nix { inherit ctx; });
+
 in
 {
   # ─────────────────────────────
@@ -70,35 +88,12 @@ in
   };
 
   # ─────────────────────────────
-  # HOME MANAGER (FULL NIRI MODULE HERE)
+  # HOME MANAGER
   # ─────────────────────────────
   home-manager.sharedModules = [
     ({ pkgs, ... }:
 
-    let
-      # ─────────────────────────────
-      # NIRI CONFIG MODULE IMPORTS
-      # ─────────────────────────────
-      niriSettings =
-        (import ./confs/input.nix { inherit ctx; })
-        // (import ./confs/output.nix { inherit ctx; })
-        // (import ./confs/keybindings.nix { inherit ctx; })
-        // (import ./confs/switchevents.nix { inherit ctx; })
-        // (import ./confs/layout.nix { inherit ctx; })
-        // (import ./confs/general.nix { inherit ctx; }) #top level options
-        // (import ./confs/windowrule.nix { inherit ctx; }) 
-        // (import ./confs/layerrule.nix { inherit ctx; })
-        // (import ./confs/animations.nix { inherit ctx; })
-        // (import ./confs/gestures.nix { inherit ctx; })
-        // (import ./confs/recentwindows.nix { inherit ctx; })
-        // (import ./confs/debug.nix { inherit ctx; })
-        // (import ./confs/autostart.nix { inherit ctx; });
-
-    in
     {
-      # ─────────────────────────────
-      # GENERAL HOME MANAGER SETTINGS
-      # ─────────────────────────────
       xdg.portal = {
         enable = true;
         extraPortals = [
@@ -106,10 +101,10 @@ in
         ];
       };
 
-      services.aww.enable = true;
+      # services.aww.enable = true;
 
       # ─────────────────────────────
-      # NIRI CONFIG ENTRYPOINT
+      # 🔥 FIX #2: this now expects STRING (KDL)
       # ─────────────────────────────
       programs.niri.settings = niriSettings;
     })
