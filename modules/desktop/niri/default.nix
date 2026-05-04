@@ -69,7 +69,6 @@ in
 
       home.file.".config/niri/config.kdl".text = ''
         ${import ./confs/keybindings.nix { inherit pkgs ctx; }}
-        #binds {
       '';
     })
   ];
