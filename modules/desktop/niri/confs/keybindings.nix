@@ -14,7 +14,7 @@ binds {
     // LAUNCHERS / APPS
     // ─────────────────────────────
 
-    Mod+T { hotkey-overlay-title "Open a Terminal: alacritty"; spawn "alacritty"; }
+    Mod+T { hotkey-overlay-title "Open a Terminal: kitty"; spawn "kitty"; }
 
     Mod+D { hotkey-overlay-title "Run an Application: fuzzel"; spawn "fuzzel"; }
 
