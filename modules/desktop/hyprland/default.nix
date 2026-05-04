@@ -57,8 +57,8 @@ in
   imports = [
     ../../themes/${windowTheme}
     ../../bars/${bar}
+    ../../utilities/rofi
     ./programs/wlogout
-    ./programs/rofi
     ./programs/hypridle
     ./programs/hyprlock
   ]

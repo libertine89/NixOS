@@ -8,7 +8,7 @@ in
 {
   imports = [
     ../../themes/Catppuccin
-    ../hyprland/programs/rofi
+    ../../utilities/rofi
     ../../bars/polybar
     ./dunst.nix
   ];
