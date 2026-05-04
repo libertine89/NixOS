@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (import ../../../../../hosts/${host}/variables.nix) clock24h bluetoothSupport;
+  inherit (import ../../../hosts/${host}/variables.nix) clock24h bluetoothSupport;
 in
 {
   # Optional Dependencies

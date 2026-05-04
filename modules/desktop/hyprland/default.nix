@@ -58,11 +58,11 @@ in
     ../../themes/${windowTheme}
     ../../bars/${bar}
     ../../utilities/rofi
-    ./programs/wlogout
-    ./programs/hypridle
-    ./programs/hyprlock
+    ../../utilities/wlogout
+    ../../utilities/hypridle
+    ../../utilities/hyprlock
   ]
-  ++ lib.optional (bar != "hyprpanel") ./programs/swaync;
+  ++ lib.optional (bar != "hyprpanel") ../../utilities/swaync;
 
   environment.systemPackages = with pkgs; [
     pavucontrol
