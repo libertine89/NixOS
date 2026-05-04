@@ -40,23 +40,4 @@ in
   services.dbus.enable = true;
 
   xdg.portal.enable = true;
-
-  # ─────────────────────────────
-  # HOME MANAGER CONFIG (CORRECTLY PLACED)
-  # ─────────────────────────────
-#  home-manager.sharedModules = [
-#    ({ pkgs, ... }:
-#    {
-#   # ─────────────────────────────
-#   # NIRI CONFIG VIA HOME MANAGER
-#   # ─────────────────────────────
-#      xdg.configFile."niri/config.kdl".text = ''
-#        binds {
-#          Mod+T spawn "kitty"
-#          Mod+Y spawn "kitty -e yazi"
-#          Mod+Shift+E quit
-#        }
-#      '';
-#    })
-#  ];
 }
