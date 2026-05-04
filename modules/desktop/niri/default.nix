@@ -46,9 +46,14 @@
 
       home.file.".config/niri/config.kdl".text = ''
         binds {
-            Mod+Return spawn "kitty"
-            Mod+y spawn "kitty" "-e" "yazi"
-        }
+    Mod+Return {
+        spawn "kitty"
+    }
+
+    Mod+y {
+        spawn "kitty" "-e" "yazi"
+    }
+}
       '';
     })
   ];
