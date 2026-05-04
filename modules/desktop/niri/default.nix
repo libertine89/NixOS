@@ -68,15 +68,8 @@ in
       ];
 
       home.file.".config/niri/config.kdl".text = ''
-#  ${builtins.readFile ./confs/keybindings.kdl}
-        binds {
-          Mod+Return {
-            spawn "kitty"
-          }
-          Mod+y {
-            spawn "kitty" "-e" "yazi"
-          }
-        }
+        ${import ./confs/keybindings.nix { inherit pkgs ctx; }}
+        #binds {
       '';
     })
   ];
