@@ -28,7 +28,6 @@ in
   # ─────────────────────────────
   # REQUIRED FOR WAYLAND (SDDM FIXES)
   # ─────────────────────────────
-
   environment.sessionVariables = {
     XDG_SESSION_TYPE = "wayland";
     WLR_BACKENDS = "drm";
@@ -41,25 +40,23 @@ in
   services.dbus.enable = true;
 
   xdg.portal.enable = true;
+
   # ─────────────────────────────
-  # NIRI CONFIG (KEY PART)
+  # HOME MANAGER CONFIG (CORRECTLY PLACED)
   # ─────────────────────────────
   home-manager.sharedModules = [
     ({ pkgs, ... }:
-
     {
-      home.file.".config/niri/config.kdl".text = ''
+   # ─────────────────────────────
+   # NIRI CONFIG VIA HOME MANAGER
+   # ─────────────────────────────
+      xdg.configFile."niri/config.kdl".text = ''
         binds {
-
-            # ─────────────────────
-            # BASIC TEST BINDS
-            # ─────────────────────
-
-            Mod+T spawn "kitty"
-            Mod+Y spawn "kitty -e yazi"
-
-            # fallback exit (always useful)
-            Mod+Shift+E quit
+          Mod+T spawn "kitty"
+          Mod+Y spawn "kitty -e yazi"
+          Mod+Shift+E quit
         }
       '';
+    })
+  ];
 }
