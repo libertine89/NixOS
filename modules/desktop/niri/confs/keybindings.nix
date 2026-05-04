@@ -3,69 +3,55 @@
 ''
 binds {
 
-    // ─────────────────────────────
     // HELP / OVERLAY
-    // ─────────────────────────────
-
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-
-    // ─────────────────────────────
     // LAUNCHERS / APPS
-    // ─────────────────────────────
+    Mod+T { hotkey-overlay-title="Open a Terminal: kitty"; spawn "kitty"; }
+    Mod+D { hotkey-overlay-title="Run an Application: fuzzel"; spawn "fuzzel"; }
 
-    Mod+T { hotkey-overlay-title "Open a Terminal: kitty"; spawn "kitty"; }
+    Super+Alt+L { hotkey-overlay-title="Lock the Screen: swaylock"; spawn "swaylock"; }
 
-    Mod+D { hotkey-overlay-title "Run an Application: fuzzel"; spawn "fuzzel"; }
+    Super+Alt+S allow-when-locked=true {
+        hotkey-overlay-title=null;
+        spawn-sh "pkill orca || exec orca";
+    }
 
-    Super+Alt+L { hotkey-overlay-title "Lock the Screen: swaylock"; spawn "swaylock"; }
+    // AUDIO CONTROL
+    XF86AudioRaiseVolume allow-when-locked=true {
+        spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0";
+    }
 
-    Super+Alt+S { allow-when-locked true; hotkey-overlay-title null; spawn-sh "pkill orca || exec orca"; }
+    XF86AudioLowerVolume allow-when-locked=true {
+        spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-";
+    }
 
+    XF86AudioMute allow-when-locked=true {
+        spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+    }
 
-    // ─────────────────────────────
-    // AUDIO CONTROL (PIPEWIRE / WPCTL)
-    // ─────────────────────────────
+    XF86AudioMicMute allow-when-locked=true {
+        spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+    }
 
-    XF86AudioRaiseVolume { allow-when-locked true; spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
+    // MEDIA CONTROL
+    XF86AudioPlay allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    XF86AudioStop allow-when-locked=true { spawn-sh "playerctl stop"; }
+    XF86AudioPrev allow-when-locked=true { spawn-sh "playerctl previous"; }
+    XF86AudioNext allow-when-locked=true { spawn-sh "playerctl next"; }
 
-    XF86AudioLowerVolume { allow-when-locked true; spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    // BRIGHTNESS
+    XF86MonBrightnessUp allow-when-locked=true {
+        spawn "brightnessctl" "--class=backlight" "set" "+10%";
+    }
 
-    XF86AudioMute { allow-when-locked true; spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    XF86MonBrightnessDown allow-when-locked=true {
+        spawn "brightnessctl" "--class=backlight" "set" "10%-";
+    }
 
-    XF86AudioMicMute { allow-when-locked true; spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
-
-
-    // ─────────────────────────────
-    // MEDIA CONTROL (PLAYERCTL)
-    // ─────────────────────────────
-
-    XF86AudioPlay { allow-when-locked true; spawn-sh "playerctl play-pause"; }
-
-    XF86AudioStop { allow-when-locked true; spawn-sh "playerctl stop"; }
-
-    XF86AudioPrev { allow-when-locked true; spawn-sh "playerctl previous"; }
-
-    XF86AudioNext { allow-when-locked true; spawn-sh "playerctl next"; }
-
-
-    // ─────────────────────────────
-    // BRIGHTNESS CONTROL
-    // ─────────────────────────────
-
-    XF86MonBrightnessUp { allow-when-locked true; spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
-
-    XF86MonBrightnessDown { allow-when-locked true; spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
-
-
-    // ─────────────────────────────
-    // WINDOW MANAGEMENT (BASIC)
-    // ─────────────────────────────
-
-    Mod+O { repeat false; toggle-overview; }
-
-    Mod+Q { repeat false; close-window; }
-
+    // WINDOW MANAGEMENT
+    Mod+O repeat=false { toggle-overview; }
+    Mod+Q repeat=false { close-window; }
 
     // Focus movement
     Mod+Left { focus-column-left; }
@@ -78,7 +64,6 @@ binds {
     Mod+K { focus-window-up; }
     Mod+J { focus-window-down; }
 
-
     // Move windows
     Mod+Ctrl+Left { move-column-left; }
     Mod+Ctrl+Right { move-column-right; }
@@ -90,18 +75,13 @@ binds {
     Mod+Ctrl+K { move-window-up; }
     Mod+Ctrl+J { move-window-down; }
 
-
-    // ─────────────────────────────
-    // COLUMN / WORKSPACE NAVIGATION
-    // ─────────────────────────────
-
+    // COLUMN NAVIGATION
     Mod+Home { focus-column-first; }
     Mod+End { focus-column-last; }
     Mod+Ctrl+Home { move-column-to-first; }
     Mod+Ctrl+End { move-column-to-last; }
 
-
-    // Monitor switching
+    // MONITORS
     Mod+Shift+Left { focus-monitor-left; }
     Mod+Shift+Right { focus-monitor-right; }
     Mod+Shift+Up { focus-monitor-up; }
@@ -112,15 +92,12 @@ binds {
     Mod+Shift+K { focus-monitor-up; }
     Mod+Shift+J { focus-monitor-down; }
 
-
-    // Move to monitor
     Mod+Shift+Ctrl+Left { move-column-to-monitor-left; }
     Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
     Mod+Shift+Ctrl+Up { move-column-to-monitor-up; }
     Mod+Shift+Ctrl+Down { move-column-to-monitor-down; }
 
-
-    // Workspaces
+    // WORKSPACES
     Mod+Page_Down { focus-workspace-down; }
     Mod+Page_Up { focus-workspace-up; }
     Mod+U { focus-workspace-down; }
@@ -136,16 +113,12 @@ binds {
     Mod+Shift+U { move-workspace-down; }
     Mod+Shift+I { move-workspace-up; }
 
+    // SCROLL
+    Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp cooldown-ms=150 { focus-workspace-up; }
 
-    // ─────────────────────────────
-    // SCROLL NAVIGATION
-    // ─────────────────────────────
-
-    Mod+WheelScrollDown { cooldown-ms 150; focus-workspace-down; }
-    Mod+WheelScrollUp { cooldown-ms 150; focus-workspace-up; }
-
-    Mod+Ctrl+WheelScrollDown { cooldown-ms 150; move-column-to-workspace-down; }
-    Mod+Ctrl+WheelScrollUp { cooldown-ms 150; move-column-to-workspace-up; }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollUp cooldown-ms=150 { move-column-to-workspace-up; }
 
     Mod+WheelScrollRight { focus-column-right; }
     Mod+WheelScrollLeft { focus-column-left; }
@@ -159,11 +132,7 @@ binds {
     Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
     Mod+Ctrl+Shift+WheelScrollUp { move-column-left; }
 
-
-    // ─────────────────────────────
-    // WORKSPACE SELECTION
-    // ─────────────────────────────
-
+    // WORKSPACE NUMBERS
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
     Mod+3 { focus-workspace 3; }
@@ -184,22 +153,13 @@ binds {
     Mod+Ctrl+8 { move-column-to-workspace 8; }
     Mod+Ctrl+9 { move-column-to-workspace 9; }
 
-
-    // ─────────────────────────────
-    // COLUMN OPERATIONS
-    // ─────────────────────────────
-
+    // COLUMN OPS
     Mod+BracketLeft { consume-or-expel-window-left; }
     Mod+BracketRight { consume-or-expel-window-right; }
-
     Mod+Comma { consume-window-into-column; }
     Mod+Period { expel-window-from-column; }
 
-
-    // ─────────────────────────────
-    // LAYOUT CONTROL
-    // ─────────────────────────────
-
+    // LAYOUT
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { switch-preset-column-width-back; }
 
@@ -208,7 +168,6 @@ binds {
 
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
-
     Mod+M { maximize-window-to-edges; }
 
     Mod+Ctrl+F { expand-column-to-available-width; }
@@ -222,36 +181,22 @@ binds {
     Mod+Shift+Minus { set-window-height "-10%"; }
     Mod+Shift+Equal { set-window-height "+10%"; }
 
-
-    // ─────────────────────────────
-    // FLOATING / TAB / LAYOUT MODE
-    // ─────────────────────────────
-
+    // FLOATING / TABS
     Mod+V { toggle-window-floating; }
     Mod+Shift+V { switch-focus-between-floating-and-tiling; }
-
     Mod+W { toggle-column-tabbed-display; }
 
-
-    // ─────────────────────────────
     // SCREENSHOT
-    // ─────────────────────────────
-
     Print { screenshot; }
     Ctrl+Print { screenshot-screen; }
     Alt+Print { screenshot-window; }
 
-
-    // ─────────────────────────────
-    // SYSTEM / EXIT
-    // ─────────────────────────────
-
-    Mod+Escape { allow-inhibiting false; toggle-keyboard-shortcuts-inhibit; }
+    // SYSTEM
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
 
     Mod+Shift+E { quit; }
     Ctrl+Alt+Delete { quit; }
 
     Mod+Shift+P { power-off-monitors; }
-
 }
 ''
