@@ -1,43 +1,39 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 
-let
-  unstablePkgs = inputs.nixpkgs.legacyPackages.${pkgs.system};
-in
 {
   # ─────────────────────────────
-  # Install Niri (UNSTABLE)
+  # Niri compositor
   # ─────────────────────────────
   environment.systemPackages = [
-    unstablePkgs.niri
+    pkgs.niri
   ];
 
   # ─────────────────────────────
-  # Enable X + SDDM
+  # SDDM login manager
   # ─────────────────────────────
   services.xserver.enable = true;
-
   services.xserver.displayManager.sddm.enable = true;
 
   # ─────────────────────────────
-  # Register Niri as a session
+  # Register Niri session
   # ─────────────────────────────
   services.displayManager.sessionPackages = [
-    unstablePkgs.niri
+    pkgs.niri
   ];
 
   # ─────────────────────────────
-  # REQUIRED FOR WAYLAND (SDDM FIXES)
+  # Wayland essentials
+  # ─────────────────────────────
+  services.dbus.enable = true;
+
+  xdg.portal = {
+    enable = true;
+  };
+
+  # ─────────────────────────────
+  # Basic Wayland environment
   # ─────────────────────────────
   environment.sessionVariables = {
     XDG_SESSION_TYPE = "wayland";
-    WLR_BACKENDS = "drm";
   };
-
-  environment.variables = {
-    WLR_RENDERER_ALLOW_SOFTWARE = "1";
-  };
-
-  services.dbus.enable = true;
-
-  xdg.portal.enable = true;
 }
