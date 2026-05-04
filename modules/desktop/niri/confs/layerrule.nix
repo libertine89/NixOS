@@ -2,8 +2,6 @@
 
 {
   layerrule = {
-    blur = [
-      "bar"
-    ];
+
   };
 }
