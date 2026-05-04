@@ -1,7 +1,7 @@
 { ctx, ... }:
 
-{
-  recent-windows = {
+''
+recent-windows {
 
-  };
 }
+''
