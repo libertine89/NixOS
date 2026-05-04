@@ -10,10 +10,9 @@ binds {
     Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }   
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
 
-    Super+Alt+L { hotkey-overlay-title="Lock the Screen: swaylock"; spawn "swaylock"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
-    Super+Alt+S allow-when-locked=true {
-        hotkey-overlay-title=null;
+    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null {
         spawn-sh "pkill orca || exec orca";
     }
 
