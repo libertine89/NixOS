@@ -1,6 +1,29 @@
-{ pkgs, ... }:
-
 {
+  host,
+  lib,
+  pkgs,
+  inputs,
+  ... 
+}:
+
+let
+  inherit (lib) getExe getExe';
+  inherit (import ../../../hosts/${host}/variables.nix)
+  bar
+  windowTheme
+  terminal
+  ide
+  fileManager
+  kbdLayout
+  kbdVariant
+  defaultWallpaper;
+in 
+{
+  imports = [
+    ../../bars/${bar}
+  ]
+  ++ lib.optional (bar != "hyprpanel") ../../utilities/swaync;
+
   # ─────────────────────────────
   # Niri compositor
   # ─────────────────────────────
@@ -46,14 +69,13 @@
 
       home.file.".config/niri/config.kdl".text = ''
         binds {
-    Mod+Return {
-        spawn "kitty"
-    }
-
-    Mod+y {
-        spawn "kitty" "-e" "yazi"
-    }
-}
+          Mod+Return {
+            spawn "kitty"
+          }
+          Mod+y {
+            spawn "kitty" "-e" "yazi"
+          }
+        }
       '';
     })
   ];
