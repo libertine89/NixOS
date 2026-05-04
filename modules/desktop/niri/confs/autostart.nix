@@ -1,7 +1,7 @@
 { ctx, ... }:
 
-{
-  autostart = [
-
-  ];
+''
+autostart {
+  spawn "${ctx.bar}"
 }
+''
