@@ -1,7 +1,7 @@
 { ctx, ... }:
 
-{
-  switch-events = {
+''
+switch-events {
 
-  };
 }
+''
