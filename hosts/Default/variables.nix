@@ -2,7 +2,7 @@
   username = "nixius"; # auto-set with install.sh, live-install.sh, and rebuild scripts.
 
   # Desktop Environment
-  desktop = "hyprland"; # hyprland, ,niri, i3, gnome, plasma6
+  desktop = "niri"; # hyprland, ,niri, i3, gnome, plasma6
 
   # Theme & Appearance
   bar = "noctalia-shell"; # waybar, hyprpanel, noctalia-shell, caelestia-shell
