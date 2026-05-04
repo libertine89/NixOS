@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
-  gamemode = pkgs.callPackage ../../desktop/scripts/gamemode.nix { };
-  togglepowermode = pkgs.callPackage ../../desktop/scripts/togglepowermode.nix { };
+  gamemode = pkgs.callPackage ../../desktop/scripts/hyprscripts/gamemode.nix { };
+  togglepowermode = pkgs.callPackage ../../desktop/scripts/hyprscripts/togglepowermode.nix { };
 in
 {
   #  use later
