@@ -26,7 +26,7 @@ let
   batterynotify = pkgs.callPackage ../scripts/hyprscripts/batterynotify.nix { };
   clipmanager = pkgs.callPackage ../scripts/hyprscripts/clipmanager.nix { };
   fileManagerScript = pkgs.callPackage ../scripts/hyprscripts/file-manager.nix { inherit terminal; };
-  gamemode = pkgs.callPackage ../scripts/hyprscripts/hyprscripts/gamemode.nix { };
+  gamemode = pkgs.callPackage ../scripts/hyprscripts/gamemode.nix { };
   keyboardswitch = pkgs.callPackage ../scripts/hyprscripts/keyboardswitch.nix { };
   keybinds-yad = pkgs.callPackage ../scripts/hyprscripts/keybinds-yad.nix { };
   rofimusic = pkgs.callPackage ../scripts/hyprscripts/rofimusic.nix { };
