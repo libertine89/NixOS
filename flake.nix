@@ -9,10 +9,6 @@
     hyprland.url = "github:hyprwm/hyprland";
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
     
-    #hyprlandScrollOverview = {
-    #  url = "github:yayuuu/hyprland-scroll-overview";
-    #  flake = false;
-    #};
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,15 +35,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     doom-config = {
-      url = "github:Sly-Harvey/doom";
+      url = "github:libertine89/doom";
       flake = false;
     };
     nixvim = {
-      url = "github:Sly-Harvey/nixvim";
+      url = "github:libertine89/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim = {
-      url = "github:Sly-Harvey/nvim";
+      url = "github:libertine89/nvim";
       flake = false;
     };
     plasma-manager = {

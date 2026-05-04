@@ -100,13 +100,13 @@
       "locked": {
         "lastModified": 1760317357,
         "narHash": "sha256-WfDg2DfdpQciesxrnkK+q9h8v1Zod+QEWXv9jQXDFzA=",
-        "owner": "Sly-Harvey",
+        "owner": "libertine89",
         "repo": "doom",
         "rev": "313f68746f68c6302b682203c95b0dc57fb78ba3",
         "type": "github"
       },
       "original": {
-        "owner": "Sly-Harvey",
+        "owner": "libertine89",
         "repo": "doom",
         "type": "github"
       }
@@ -613,13 +613,13 @@
       "locked": {
         "lastModified": 1756715888,
         "narHash": "sha256-0o1h27/xj+9u/noN4lsmQVk+YYFFUmdfmjwkqdWM650=",
-        "owner": "Sly-Harvey",
+        "owner": "libertine89",
         "repo": "nvim",
         "rev": "978d468def66f1626474cee1dbecfe463de82f3f",
         "type": "github"
       },
       "original": {
-        "owner": "Sly-Harvey",
+        "owner": "libertine89",
         "repo": "nvim",
         "type": "github"
       }
@@ -771,13 +771,13 @@
       "locked": {
         "lastModified": 1770631847,
         "narHash": "sha256-NfDPjEfvivwzVFmk0wUIA+tk8lK2PE0S7Wfh6lOU8hY=",
-        "owner": "Sly-Harvey",
+        "owner": "libertine89",
         "repo": "nixvim",
         "rev": "a6a9f5da5824eb2448d50b35ec34cc789d483ca8",
         "type": "github"
       },
       "original": {
-        "owner": "Sly-Harvey",
+        "owner": "libertine89",
         "repo": "nixvim",
         "type": "github"
       }
