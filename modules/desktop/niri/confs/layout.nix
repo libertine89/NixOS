@@ -27,9 +27,9 @@ layout {
         // off
         on
         width 4
-        active-color "#7fc8ff"
-        inactive-color "#505050"
-        urgent-color "#9b0000"
+        active-color "##59BDFF"
+        inactive-color "#CCCCCC"
+        urgent-color "#E80000"
         // active-gradient from="#80c8ff" to="#bbddff" angle=45
         // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
         // urgent-gradient from="#800" to="#a33" angle=45
@@ -39,21 +39,20 @@ layout {
         off
         // on
         width 4
-        active-color "#ffc87f"
-        inactive-color "#505050"
-        urgent-color "#9b0000"
+        active-color "##3B4BF5"
+        inactive-color "#CCCCCC"
+        urgent-color "#E80000"
         // active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
         // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view" in="srgb-linear"
         // urgent-gradient from="#800" to="#a33" angle=45
     }
 
     shadow {
-        off
-        // on
+        //off
         softness 30
         spread 5
         offset x=0 y=5
-        draw-behind-window true
+        // draw-behind-window true
         color "#00000070"
         // inactive-color "#00000054"
     }
