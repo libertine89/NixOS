@@ -1,5 +1,10 @@
 { ctx, ... }:
 
+let
+  inherit (ctx)
+  terminal fileManager browser ide
+  ide-launcher;
+in 
 ''
 binds {
 
@@ -10,10 +15,13 @@ binds {
     Ctrl+Alt+Delete hotkey-overlay-title="Show System Resource Manager: btop" { spawn "kitty" "-e" "btop"; }
 
     // LAUNCHERS / APPS
-    Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }   
-    Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "${terminal}"; }   
+    Mod+Space hotkey-overlay-title="Run an Application: launcher" { spawn "launcher" "drun"; }
     Ctrl+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
+    Mod+E hotkey-overlay-title="Open file explorer: ${fileManager}" { spawn "${terminal}" "-e" "${fileManager}"; }
+    Mod+B hotkey-overlay-title="Open a Browser: ${browser}" { spawn "${browser}"; }
+    Mod+C hotkey-overlay-title="Open an IDE: ${ide}" { spawn "${ide-launcher}" "${ide}"; }
 
     // WINDOW MANAGEMENT
     Mod+W repeat=false { toggle-overview; }
@@ -142,7 +150,7 @@ binds {
     Mod+M { maximize-window-to-edges; }
     Mod+Shift+M { maximize-column; }
 
-    Mod+C { center-column; }
+    Mod+Shift+C { center-column; }
     Mod+Ctrl+C { center-visible-columns; }
 
     Mod+Minus { set-column-width "-10%"; }

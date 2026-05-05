@@ -13,21 +13,27 @@ let
   windowTheme
   browser
   terminal
+  editor
   ide
   fileManager
   kbdLayout
   kbdVariant
   defaultWallpaper;
 
+  ide-launcher = pkgs.callPackage ../scripts/niriscripts/ide-launcher.nix { };
+  
 ctx = {
   inherit pkgs lib getExe getExe' ide
-  browser terminal fileManager bar windowTheme
-  kbdLayout kbdVariant defaultWallpaper;
+  editor browser terminal fileManager bar 
+  windowTheme kbdLayout kbdVariant defaultWallpaper;
+
+  inherit ide-launcher;
   };
 in 
 {
   imports = [
     ../../bars/${bar}
+    ../../utilities/rofi
   ]
   ++ lib.optional (bar != "hyprpanel") ../../utilities/swaync;
 
@@ -44,7 +50,7 @@ in
   # SDDM login manager
   # ─────────────────────────────
   services.xserver.enable = true;
-  services.xserver.displayManager.sddm.enable = true;
+  services.displayManager.sddm.enable = true;
 
   # ─────────────────────────────
   # Niri session
@@ -91,6 +97,7 @@ in
 
       home.file.".config/niri/config.kdl".text = ''
         ${import ./confs/keybindings.nix { inherit pkgs ctx; }}
+        ${import ./confs/autostart.nix { inherit pkgs ctx; }}
       '';
     })
   ];

@@ -1,7 +1,5 @@
 { ctx, ... }:
 
 ''
-autostart {
-  spawn "${ctx.bar}"
-}
+  spawn-at-startup "${ctx.bar}"
 ''
