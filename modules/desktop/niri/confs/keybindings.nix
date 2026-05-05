@@ -18,6 +18,7 @@ binds {
     // WINDOW MANAGEMENT
     Mod+W repeat=false { toggle-overview; }
     Mod+Q repeat=false { close-window; }
+    Alt+F4 repeat=false { close-window; }
 
     // Focus movement
     Mod+Left { focus-column-left; }
