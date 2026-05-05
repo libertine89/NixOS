@@ -98,6 +98,7 @@ in
       home.file.".config/niri/config.kdl".text = ''
         ${import ./confs/keybindings.nix { inherit pkgs ctx; }}
         ${import ./confs/autostart.nix { inherit pkgs ctx; }}
+        ${import ./confs/animations.nix { inherit pkgs ctx; }}
       '';
     })
   ];
