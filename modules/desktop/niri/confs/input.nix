@@ -1,5 +1,8 @@
 { ctx, ... }:
-
+let
+    inherit (ctx)
+    kbdLayout kbdVariant;
+in
 ''
 input {
     keyboard {
