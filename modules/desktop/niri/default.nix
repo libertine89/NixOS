@@ -58,7 +58,22 @@ in
   # ─────────────────────────────
   services.dbus.enable = true;
 
-  xdg.portal.enable = true;
+  # xdg.portal.enable = true;
+  
+  xdg.portal = {
+    enable = true;
+
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
+    ];
+
+    config = {
+      common = {
+        default = [ "gtk" ];
+      };
+    };
+  };
 
   environment.sessionVariables = {
     XDG_SESSION_TYPE = "wayland";
