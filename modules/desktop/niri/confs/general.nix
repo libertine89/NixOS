@@ -50,11 +50,12 @@ hotkey-overlay {
 //     disable-failed
 // }
 
-blur {
-    // off
-    passes 3
-    offset 3.0
-    noise 0.02
-    saturation 1.5
-}
+// Need 26.04 for this
+// blur {
+//    // off
+//    passes 3
+//    offset 3.0
+//    noise 0.02
+//    saturation 1.5
+// }
 ''

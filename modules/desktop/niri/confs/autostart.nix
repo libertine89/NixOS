@@ -1,7 +1,14 @@
 { ctx, ... }:
 
+let
+  inherit (ctx)
+  pkgs lib getExe
+  bar
+  wallpaper;
+in 
 ''
-  spawn-at-startup "${ctx.bar}"
+  spawn-at-startup "${bar}"
+  spawn-at-startup "${lib.getExe wallpaper}"
   // spawn-at-startup "swaylock"
   // spawn-at-startup "swayidle"
   // spawn-at-startup "swaync"

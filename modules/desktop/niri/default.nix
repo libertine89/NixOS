@@ -21,13 +21,14 @@ let
   defaultWallpaper;
 
   ide-launcher = pkgs.callPackage ../scripts/niriscripts/ide-launcher.nix { };
-  
+  wallpaper =  pkgs.callPackage ../scripts/niriscripts/wallpaper.nix { inherit defaultWallpaper; };
+
 ctx = {
   inherit pkgs lib getExe getExe' ide
   editor browser terminal fileManager bar 
   windowTheme kbdLayout kbdVariant defaultWallpaper;
 
-  inherit ide-launcher;
+  inherit ide-launcher wallpaper;
   };
 in 
 {
@@ -63,8 +64,6 @@ in
   # Wayland essentials
   # ─────────────────────────────
   services.dbus.enable = true;
-
-  # xdg.portal.enable = true;
   
   xdg.portal = {
     enable = true;
@@ -94,11 +93,27 @@ in
         kitty
         yazi
       ];
+      
+      # ─────────────────────────────
+      # Set Wallpaper
+      # ─────────────────────────────
+      services.awww.enable = true;
+ 
 
       home.file.".config/niri/config.kdl".text = ''
-        ${import ./confs/keybindings.nix { inherit pkgs ctx; }}
+        ${import ./confs/input.nix { inherit pkgs ctx; }}
+        ${import ./confs/gestures.nix { inherit pkgs ctx; }}
+        ${import ./confs/output.nix { inherit pkgs ctx; }}
         ${import ./confs/autostart.nix { inherit pkgs ctx; }}
+        ${import ./confs/general.nix { inherit pkgs ctx; }}
+        ${import ./confs/keybindings.nix { inherit pkgs ctx; }}
+        ${import ./confs/windowrule.nix { inherit pkgs ctx; }}
+        ${import ./confs/layout.nix { inherit pkgs ctx; }}
+        ${import ./confs/layerrule.nix { inherit pkgs ctx; }}
         ${import ./confs/animations.nix { inherit pkgs ctx; }}
+        ${import ./confs/switchevents.nix { inherit pkgs ctx; }}
+        ${import ./confs/recentwindows.nix { inherit pkgs ctx; }}
+        ${import ./confs/debug.nix { inherit pkgs ctx; }}
       '';
     })
   ];

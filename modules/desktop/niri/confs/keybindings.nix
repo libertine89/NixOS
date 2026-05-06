@@ -4,7 +4,7 @@ let
   inherit (ctx)
   pkgs lib getExe getExe'
   terminal fileManager browser ide
-  ide-launcher;
+  ide-launcher wallpaper;
 in 
 ''
 binds {
@@ -18,6 +18,7 @@ binds {
     // LAUNCHERS / APPS
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "${terminal}"; }   
     Mod+Space hotkey-overlay-title="Run an Application: launcher" { spawn "launcher" "drun"; }
+    Mod+Shift+W hotkey-overlay-title="Change Wallpaper: launcher" { spawn "launcher" "wallpaper"; }
     Ctrl+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
     Mod+E hotkey-overlay-title="Open file explorer: ${fileManager}" { spawn "${terminal}" "-e" "${fileManager}"; }

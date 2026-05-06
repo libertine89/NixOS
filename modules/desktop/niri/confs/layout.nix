@@ -27,7 +27,7 @@ layout {
         // off
         on
         width 4
-        active-color "##59BDFF"
+        active-color "#59BDFF"
         inactive-color "#CCCCCC"
         urgent-color "#E80000"
         // active-gradient from="#80c8ff" to="#bbddff" angle=45
@@ -39,7 +39,7 @@ layout {
         off
         // on
         width 4
-        active-color "##3B4BF5"
+        active-color "#3B4BF5"
         inactive-color "#CCCCCC"
         urgent-color "#E80000"
         // active-gradient from="#ffbb66" to="#ffc880" angle=45 relative-to="workspace-view"
