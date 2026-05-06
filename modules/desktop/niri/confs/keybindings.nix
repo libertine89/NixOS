@@ -149,8 +149,8 @@ binds {
 
     Mod+F { fullscreen-window; }
     Mod+Shift+F { expand-column-to-available-width; }
-    Mod+M { maximize-window-to-edges; }
-    Mod+Shift+M { maximize-column; }
+    Mod+Shift+M { maximize-window-to-edges; }
+    Mod+M { maximize-column; }
 
     Mod+Shift+C { center-column; }
     Mod+Ctrl+C { center-visible-columns; }
