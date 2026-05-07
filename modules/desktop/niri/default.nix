@@ -33,6 +33,7 @@ ctx = {
 in 
 {
   imports = [
+    ../../themes/${windowTheme}
     ../../bars/${bar}
     ../../utilities/rofi
   ]
