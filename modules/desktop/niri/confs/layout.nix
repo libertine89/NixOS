@@ -6,8 +6,8 @@ layout {
     center-focused-column "never"
     always-center-single-column
     empty-workspace-above-first
-    default-column-display "tabbed"
-    background-color "#003300"
+    default-column-display "normal" // normal or tabbed.
+    background-color "#000000"
 
     preset-column-widths {
         proportion 0.33333
