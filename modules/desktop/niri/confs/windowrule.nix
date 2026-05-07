@@ -17,6 +17,22 @@ window-rule {
 
 // ── Per-app fixes ───────────────────────────────────────────────────────────
 
+window-rule {
+    // Match by "dropdown" app ID.
+    // You need to set this app ID when running your terminal, e.g.:
+    // spawn "alacritty" "--class" "dropdown"
+    match app-id="^dropdown$"
+
+    // Open it as floating.
+    open-floating true
+    // Anchor to the top edge of the screen.
+    default-floating-position x=0 y=0 relative-to="top"
+    // Half of the screen high.
+    default-window-height { proportion 0.5; }
+    // 80% of the screen wide.
+    default-column-width { proportion 0.8; }
+}
+
 // WezTerm: work around initial configure bug (needs an empty default width).
 window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
