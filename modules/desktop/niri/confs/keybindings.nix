@@ -5,13 +5,15 @@ let
   pkgs lib getExe getExe'
   terminal fileManager browser ide
   ide-launcher wallpaper toggle-dropdown
+  showKeybindings
   ;
 in 
 ''
 binds {
 
     // HELP / OVERLAY
-    Mod+Slash { show-hotkey-overlay; }
+    // Mod+Slash { show-hotkey-overlay; }
+    Mod+Slash {spawn "${getExe showKeybindings}"; }
     Mod+Shift+Ctrl+B hotkey-overlay-title="Rebuild Nix Flake: kitty" { spawn "kitty" "-e" "rebuild"; }
     Mod+Shift+Ctrl+U hotkey-overlay-title="Update & Build Nix Flake: kitty" { spawn "kitty" "-e" "update"; }
     Ctrl+Alt+Delete hotkey-overlay-title="Show System Resource Manager: btop" { spawn "kitty" "-e" "btop"; }

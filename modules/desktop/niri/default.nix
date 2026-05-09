@@ -23,13 +23,15 @@ let
   ide-launcher = pkgs.callPackage ../scripts/niriscripts/ide-launcher.nix { };
   wallpaper =  pkgs.callPackage ../scripts/niriscripts/wallpaper.nix { inherit defaultWallpaper; };
   toggle-dropdown = pkgs.callPackage ../scripts/niriscripts/toggle-dropdown.nix { };
+  showKeybindings = pkgs.callPackage ../scripts/niriscripts/keybindings.nix { };
 
 ctx = {
   inherit pkgs lib getExe getExe' ide
   editor browser terminal fileManager bar 
   windowTheme kbdLayout kbdVariant defaultWallpaper;
 
-  inherit ide-launcher wallpaper toggle-dropdown;
+  inherit ide-launcher wallpaper toggle-dropdown
+  showKeybindings;
   };
 in 
 {
