@@ -2,43 +2,45 @@
 
 ''
 layout {
-    gaps 16
+    gaps 8
     center-focused-column "never"
     always-center-single-column
     empty-workspace-above-first
     default-column-display "normal" // normal or tabbed.
-    background-color "#000000"
+    background-color "#00000000"
+    default-column-width { proportion 0.5; }
 
     preset-column-widths {
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
+        proportion 0.99999
     }
-
-    default-column-width { proportion 0.5; }
 
     preset-window-heights {
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
+        proportion 0.99999
     }
 
     focus-ring {
         // off
         on
-        width 4
-        active-color "#59BDFF"
-        inactive-color "#CCCCCC"
-        urgent-color "#E80000"
-        // active-gradient from="#80c8ff" to="#bbddff" angle=45
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
-        // urgent-gradient from="#800" to="#a33" angle=45
+        width 2.5
+        // active-color "#3B4BF5" //"#59BDFF"
+        // inactive-color "#CCCCCC"
+        // urgent-color "#E80000"
+        // active-gradient from="#3B4BF5" to="#FFFFFF" angle=45 in="oklch shorter hue"
+        active-gradient from="#8000FF" to="#AFFFFF" angle=45 in="oklch shorter hue"
+        inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+        urgent-gradient from="#E80000" to="#E88000" angle=45
     }
 
     border {
         off
         // on
-        width 4
+        width 2.5
         active-color "#3B4BF5"
         inactive-color "#CCCCCC"
         urgent-color "#E80000"

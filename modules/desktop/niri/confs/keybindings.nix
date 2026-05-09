@@ -17,7 +17,7 @@ binds {
     Ctrl+Alt+Delete hotkey-overlay-title="Show System Resource Manager: btop" { spawn "kitty" "-e" "btop"; }
 
     // LAUNCHERS / APPS
-    Mod+Return hotkey-overlay-title="Open a Terminal: ${terminal} { spawn "${terminal}"; }   
+    Mod+Return hotkey-overlay-title="Open a Terminal: ${terminal}" { spawn "${terminal}"; }   
     Mod+Ctrl+Return hotkey-overlay-title="Open a drop in terminal: ${terminal}" { spawn "${getExe toggle-dropdown}"; }
     Mod+Space hotkey-overlay-title="Run an Application: launcher" { spawn "launcher" "drun"; }
     Mod+Shift+W hotkey-overlay-title="Change Wallpaper: launcher" { spawn "launcher" "wallpaper"; }
@@ -146,8 +146,8 @@ binds {
     Mod+R { switch-preset-column-width; }
     Mod+Shift+R { switch-preset-column-width-back; }
 
-    Mod+Ctrl+Shift+R { switch-preset-window-height; }
-    Mod+Ctrl+R { reset-window-height; }
+    Mod+Ctrl+R { switch-preset-window-height; }
+    Mod+Ctrl+Shift+R { reset-window-height; }
 
     Mod+F { fullscreen-window; }
     Mod+Shift+F { expand-column-to-available-width; }

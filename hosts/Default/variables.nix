@@ -19,7 +19,7 @@
   browser = "firefox"; # zen-beta, firefox, floorp
   fileManager = "yazi"; # yazi, lf, thunar
   shell = "zsh"; # zsh, bash
-  games = true; # Enable/Disable gaming module
+  games = false; # Enable/Disable gaming module
 
   # Hardware
   hostname = "Nixius";

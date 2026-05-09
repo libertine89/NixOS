@@ -21,7 +21,7 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 overview {
     zoom 0.5
-    backdrop-color "#262626"
+    // backdrop-color "#4c566a80" //irrelevant if you use wallaper
 
     workspace-shadow {
         // off
@@ -50,12 +50,11 @@ hotkey-overlay {
 //     disable-failed
 // }
 
-// Need 26.04 for this
-// blur {
-//    // off
-//    passes 3
-//    offset 3.0
-//    noise 0.02
-//    saturation 1.5
-// }
+blur {
+   // off
+   passes 3
+   offset 3.0
+   noise 0.02
+   saturation 1.5
+}
 ''

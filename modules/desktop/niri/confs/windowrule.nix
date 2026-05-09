@@ -5,14 +5,25 @@
 // Round every window's corners and clip content to match.
 // Works best with prefer-no-csd (set in config.kdl).
 window-rule {
-    geometry-corner-radius 16
+    geometry-corner-radius 12
     clip-to-geometry true
+    background-effect {
+      blur true
+    }
+}
+
+// Focused windows slightly transparent.
+// Go 0.2 lower than usual for blur
+window-rule {
+    match is-active=true
+    opacity 0.75
 }
 
 // Dim unfocused windows slightly for visual hierarchy.
+// Go 0.2 lower than usual for blur
 window-rule {
     match is-active=false
-    opacity 0.9
+    opacity 0.65
 }
 
 // ── Per-app fixes ───────────────────────────────────────────────────────────
@@ -26,11 +37,11 @@ window-rule {
     // Open it as floating.
     open-floating true
     // Anchor to the top edge of the screen.
-    default-floating-position x=0 y=0 relative-to="top"
+    default-floating-position x=12 y=12 relative-to="top-right"
     // Half of the screen high.
     default-window-height { proportion 0.5; }
     // 80% of the screen wide.
-    default-column-width { proportion 0.8; }
+    default-column-width { proportion 0.5; }
 }
 
 // WezTerm: work around initial configure bug (needs an empty default width).

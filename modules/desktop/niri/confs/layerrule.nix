@@ -13,4 +13,10 @@
 //     match namespace="some-private-overlay"
 //     block-out-from "screencast"
 // }
+
+// Put swaybg inside the overview backdrop.
+layer-rule {
+    match namespace="^awww-daemon$"
+    place-within-backdrop true
+}
 ''
