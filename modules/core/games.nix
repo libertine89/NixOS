@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgsStable,
   lib,
   ...
 }:
@@ -15,7 +16,7 @@
     enable = true;
     enable32Bit = true;
   };
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgsStable; [
     lutris
     heroic
     bottles

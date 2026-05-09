@@ -9,8 +9,8 @@
   waybarTheme = "minimal"; # stylish, minimal
   windowTheme = "Catppuccin"; #Catppuccin, Dracula, rose-pine
   sddmTheme = "black_hole"; # astronaut, black_hole, purple_leaves, jake_the_dog, hyprland_kath
-  defaultWallpaper = "escape_velocity.webp"; # Change with SUPER + SHIFT + W (Hyprland)
-  hyprlockWallpaper = "escape_velocity.webp"; 
+  defaultWallpaper = "abstract101.png"; # Change with SUPER + SHIFT + W (Hyprland)
+  hyprlockWallpaper = "abstract101.png"; 
 
   # Default Applications
   terminal = "kitty"; # kitty, alacritty
@@ -19,7 +19,7 @@
   browser = "firefox"; # zen-beta, firefox, floorp
   fileManager = "yazi"; # yazi, lf, thunar
   shell = "zsh"; # zsh, bash
-  games = false; # Enable/Disable gaming module
+  games = true; # Enable/Disable gaming module
 
   # Hardware
   hostname = "Nixius";

@@ -89,12 +89,18 @@
         "x86_64-linux"
         "aarch64-linux"
         ];
-        forAllSystems = nixpkgs.lib.genAttrs systems;
+        #forAllSystems = nixpkgs.lib.genAttrs systems;
       mkHost =
-        host:
+        host: system:
+        let
+pkgsStable = import inputs.nixpkgs-stable {
+  inherit system;
+  config.allowUnfree = true;
+};
+        in
         nixpkgs.lib.nixosSystem {
-          # inherit system;
-          system = forAllSystems (system: system);
+          inherit system;
+          #system = forAllSystems (system: system);
           modules = [
             ./hosts/${host}/configuration.nix
           ];
@@ -105,15 +111,23 @@
               inputs
               outputs
               host
-              ;
+              pkgsStable;
           };
         };
     in
     {
       templates = import ./dev-shells;
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
+      formatter = nixpkgs.lib.genAttrs systems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
       nixosConfigurations = {
-        Default = mkHost "Default";
-      };
+        Default = mkHost "Default" "x86_64-linux";
+        }; 
     };
+
+#    {
+#      templates = import ./dev-shells;
+#      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
+#      nixosConfigurations = {
+#        Default = mkHost "Default";
+#      };
+#    };
 }
