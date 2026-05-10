@@ -1,4 +1,5 @@
-{ lib,
+{
+  lib,
   pkgs,
   terminal,
   ...
@@ -23,15 +24,6 @@ let
           fi
         done
       '';
-
-  # Import keybindings script
-  keybindingsScript = import ./desktops/scripts/niriscripts/keybindings.nix {
-    pkgs = pkgs;
-    lib = lib;
-    rofi_theme = ''~/ .config/rofi/launchers/type-4/style-4.rasi'';
-    r_override = "entry{placeholder:'Search Keybindings...';}listview{lines:15;}";
-    terminal = terminal;
-  };
 in
 pkgs.writeShellScriptBin "launcher" ''
   # check if rofi is already running
@@ -42,23 +34,30 @@ pkgs.writeShellScriptBin "launcher" ''
 
   case $1 in
   drun)
-    rofi_theme="''${XDG_CONFIG_HOME:-~/.config}/rofi/launchers/type-2/style-2.rasi"
+    # rofi_theme="''${XDG_CONFIG_HOME:-$HOME/.config}/rofi/launchers/type-4/style-7.rasi"
+    # rofi_theme="''${XDG_CONFIG_HOME:-$HOME/.config}/rofi/launchers/type-4/style-3.rasi"
+    rofi_theme="''${XDG_CONFIG_HOME:-$HOME/.config}/rofi/launchers/type-2/style-2.rasi"
     r_override="entry{placeholder:'Search Applications...';}listview{lines:9;}"
+
     rofi -show drun -theme-str "$r_override" -theme "$rofi_theme"
     ;;
   window)
-    rofi_theme="''${XDG_CONFIG_HOME:-~/.config}/rofi/launchers/type-4/style-4.rasi"
+    # rofi_theme="''${XDG_CONFIG_HOME:-$HOME/.config}/rofi/launchers/type-2/style-2.rasi"
+    rofi_theme="''${XDG_CONFIG_HOME:-$HOME/.config}/rofi/launchers/type-4/style-4.rasi"
     r_override="entry{placeholder:'Search Windows...';}listview{lines:12;}"
+
     rofi -show window -theme-str "$r_override" -theme "$rofi_theme"
     ;;
   file)
-    rofi_theme="''${XDG_CONFIG_HOME:-~/.config}/rofi/launchers/type-2/style-2.rasi"
+    rofi_theme="''${XDG_CONFIG_HOME:-$HOME/.config}/rofi/launchers/type-2/style-2.rasi"
     r_override="entry{placeholder:'Search Files...';}listview{lines:8;}"
+
     rofi -show filebrowser -theme-str "$r_override" -theme "$rofi_theme"
     ;;
   tmux)
-    rofi_theme="''${XDG_CONFIG_HOME:-~/.config}/rofi/launchers/type-4/style-4.rasi"
+    rofi_theme="''${XDG_CONFIG_HOME:-$HOME/.config}/rofi/launchers/type-4/style-4.rasi"
     r_override="entry{placeholder:'Search Tmux Sessions...';}listview{lines:15;}"
+
     sessions=$(tmux ls -F '#{session_name}: #{session_path} (#{session_windows} windows)' |
       rofi -dmenu -i -theme-str "$r_override" -theme "$rofi_theme" | cut -d: -f1)
     if [[ $sessions ]]; then
@@ -66,8 +65,11 @@ pkgs.writeShellScriptBin "launcher" ''
     fi
     ;;
   wallpaper)
-    rofi_theme="''${XDG_CONFIG_HOME:-~/.config}/rofi/launchers/wallpaper-select.rasi"
+    rofi_theme="''${XDG_CONFIG_HOME:-$HOME/.config}/rofi/launchers/wallpaper-select.rasi"
     r_override="entry{placeholder:'Search Wallpapers...';}"
+    # rofi_theme="''${XDG_CONFIG_HOME:-$HOME/.config}/rofi/launchers/type-4/style-4.rasi"
+    # r_override="entry{placeholder:'Search Wallpapers...';}listview{lines:15;}"
+
     CACHE_DIR=${wallpaperThumbs}
     WALLPAPER_DIR="${wallpaperDir}"
 
@@ -87,17 +89,16 @@ pkgs.writeShellScriptBin "launcher" ''
     awww img "$WALLPAPER_DIR/$CHOICE" --transition-step 90 --transition-duration 1 --transition-fps 60 --transition-type wipe
     ;;
   emoji)
-    rofi_theme="''${XDG_CONFIG_HOME:-~/.config}/rofi/launchers/type-4/style-4.rasi"
+    rofi_theme="''${XDG_CONFIG_HOME:-$HOME/.config}/rofi/launchers/type-4/style-4.rasi"
     r_override="entry{placeholder:'Search Emojis...';}listview{lines:15;}"
+
     rofi -modi emoji -show emoji -theme "''${rofi_theme}" -theme-str "$r_override"
     ;;
   games)
     r_override="entry{placeholder:'Search Games...';}listview{lines:15;}"
-    rofi_theme="''${XDG_CONFIG_HOME:-~/.config}/rofi/launchers/type-1/style-5.rasi"
+    rofi_theme="''${XDG_CONFIG_HOME:-$HOME/.config}/rofi/launchers/type-1/style-5.rasi"
+
     rofi -show games -modi games -theme "''${rofi_theme}" -theme-str "$r_override"
-    ;;
-  keybindings)
-    ${keybindingsScript}
     ;;
   help | --help | -h)
     echo "Usage: launcher [ACTION]"
@@ -111,7 +112,6 @@ pkgs.writeShellScriptBin "launcher" ''
     echo "  wallpaper    Search and set wallpapers"
     echo "  emoji        Search and insert emojis"
     echo "  games        Launch games menu"
-    echo "  keybindings  Show keybindings menu"
     echo "  help         Display this help message"
     echo "  --help       Same as 'help'"
     echo ""
