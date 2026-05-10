@@ -25,7 +25,7 @@ let
       '';
 
   # Import keybindings script
-  keybindingsScript = import ./desktops/scripts/niriscripts/keybindings.nix {
+  keybindingsScript = import ../desktops/scripts/niriscripts/keybindings.nix {
     pkgs = pkgs;
     lib = lib;
     rofi_theme = ''~/ .config/rofi/launchers/type-4/style-4.rasi'';
