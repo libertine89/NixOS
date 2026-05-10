@@ -1,12 +1,13 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, rofi_theme, r_override, ... }:
 
-pkgs.writeShellScriptBin "keybindings" ''
+pkgs.writeShellScript "keybindings" ''
 CONFIG_FILE=~/.config/niri/config.kdl
 
-ROFI_THEME="''${XDG_CONFIG_HOME:-$HOME/.config}/rofi/launchers/type-2/style-2.rasi"
-R_OVERRIDE="entry{placeholder:'Search Keybinds...';}listview{lines:15;}"
+ROFI_THEME="${rofi_theme}"
+R_OVERRIDE="${r_override}"
 
 awk '
+
 function trim(s) { gsub(/^[ \t]+|[ \t]+$/, "", s); return s }
 function basename(path) { n = split(path, parts, "/"); return parts[n] }
 
@@ -53,6 +54,7 @@ brace_level > 0 {
         cmd = substr(line, RSTART + RLENGTH)
         gsub(/[{}]/, "", cmd)
         cmd = trim(cmd)
+
         sub(/[[:space:]]*;[[:space:]]*$/, "", cmd)
 
         if (cmd ~ /^spawn "\/nix\/store\//) {
@@ -68,5 +70,7 @@ brace_level > 0 {
         if (cmd != "") print key " → " cmd
     }
 }
-' "$CONFIG_FILE" | rofi -dmenu -i -theme-str "$R_OVERRIDE" -theme "$ROFI_THEME"
+' "$CONFIG_FILE" | rofi -dmenu -i \
+  -theme "$ROFI_THEME" \
+  -theme-str "$R_OVERRIDE"
 ''
