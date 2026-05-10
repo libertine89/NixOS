@@ -15,6 +15,7 @@ binds {
     Mod+Slash {spawn "launcher" "keybindings"; }
     Mod+Shift+Ctrl+B hotkey-overlay-title="Rebuild Nix Flake: kitty" { spawn "kitty" "-e" "rebuild"; }
     Mod+Shift+Ctrl+U hotkey-overlay-title="Update & Build Nix Flake: kitty" { spawn "kitty" "-e" "update"; }
+    Mod+Shift+Ctrl+G hotkey-overlay-title="Clear Garbage: kitty" { spawn "kitty" "-e" "garbage-collection"; }
     Ctrl+Alt+Delete hotkey-overlay-title="Show System Resource Manager: btop" { spawn "kitty" "-e" "btop"; }
 
     // LAUNCHERS / APPS

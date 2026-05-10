@@ -20,6 +20,8 @@ pkgs.writeShellScriptBin "rebuild" ''
   fi
   echo -e "''${GREEN}Flake: $flake''${NC}"
   echo -e "''${GREEN}Host: ${host}''${NC}"
+  echo -e "''${GREEN}Rebuilding $flake flake''${NC}"
+
   currentUser=$(logname)
 
   # replace username variable in variables.nix with $USER

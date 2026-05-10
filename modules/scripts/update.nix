@@ -1,5 +1,5 @@
 { host, pkgs, ... }:
-pkgs.writeShellScriptBin "rebuild" ''
+pkgs.writeShellScriptBin "update" ''
   # Colors for output
   RED='\033[0;31m'
   GREEN='\033[0;32m'
@@ -21,6 +21,7 @@ pkgs.writeShellScriptBin "rebuild" ''
 
   echo -e "''${GREEN}Flake: $flake''${NC}"
   echo -e "''${GREEN}Host: ${host}''${NC}"
+  echo -e "''${GREEN}Updating $flake flake lock''${NC}"
 
   currentUser=$(logname)
 
