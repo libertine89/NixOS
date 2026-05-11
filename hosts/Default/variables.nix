@@ -2,10 +2,10 @@
   username = "nixius"; # auto-set with install.sh, live-install.sh, and rebuild scripts.
 
   # Desktop Environment
-  desktop = "niri"; # hyprland, ,niri, i3, gnome, plasma6
+  desktop = "niri"; # hyprland, niri, i3, gnome, plasma6
 
   # Theme & Appearance
-  bar = "noctalia-shell"; # waybar, hyprpanel, noctalia-shell, caelestia-shell
+  bar = "dms-shell"; # waybar, hyprpanel, noctalia-shell, caelestia-shell, dms-shell
   waybarTheme = "minimal"; # stylish, minimal
   windowTheme = "Catppuccin"; #Catppuccin, Dracula, rose-pine
   sddmTheme = "black_hole"; # astronaut, black_hole, purple_leaves, jake_the_dog, hyprland_kath

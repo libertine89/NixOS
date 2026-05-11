@@ -34,6 +34,14 @@
       url = "github:caelestia-dots/shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };    
+    dms-plugin-registry = {
+      url = "github:AvengeMedia/dms-plugin-registry";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     doom-config = {
       url = "github:libertine89/doom";
       flake = false;
@@ -89,15 +97,16 @@
         "x86_64-linux"
         "aarch64-linux"
         ];
-        #forAllSystems = nixpkgs.lib.genAttrs systems;
+
       mkHost =
         host: system:
         let
-pkgsStable = import inputs.nixpkgs-stable {
-  inherit system;
-  config.allowUnfree = true;
-};
+          pkgsStable = import inputs.nixpkgs-stable {
+            inherit system;
+            config.allowUnfree = true;
+          };
         in
+
         nixpkgs.lib.nixosSystem {
           inherit system;
           #system = forAllSystems (system: system);
@@ -122,12 +131,4 @@ pkgsStable = import inputs.nixpkgs-stable {
         Default = mkHost "Default" "x86_64-linux";
         }; 
     };
-
-#    {
-#      templates = import ./dev-shells;
-#      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
-#      nixosConfigurations = {
-#        Default = mkHost "Default";
-#      };
-#    };
 }
