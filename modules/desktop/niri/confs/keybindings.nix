@@ -4,7 +4,7 @@ let
   inherit (ctx)
   pkgs lib getExe getExe'
   terminal fileManager browser ide
-  ide-launcher wallpaper toggle-dropdown
+  ide-launcher wallpaper toggle-dropdown overview-wallpaper
   ;
 in 
 ''
@@ -30,7 +30,8 @@ binds {
     Mod+C hotkey-overlay-title="Open an IDE: ${ide}" { spawn "${getExe ide-launcher}" "${ide}"; }
 
     // WINDOW MANAGEMENT
-    Mod+W repeat=false { toggle-overview; }
+    // Mod+W repeat=false { toggle-overview; }
+    Mod+W repeat=false { spawn "${getExe overview-wallpaper}"; }
     Mod+Q repeat=false { close-window; }
     Alt+F4 repeat=false { close-window; }
 

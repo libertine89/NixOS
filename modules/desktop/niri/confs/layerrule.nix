@@ -1,5 +1,10 @@
 { ctx, ... }:
 
+let
+  inherit (ctx)
+  pkgs lib getExe
+  bar;
+in 
 ''
 // ── Examples ────────────────────────────────────────────────────────────────
 // Make a specific layer surface semi-transparent:
@@ -14,9 +19,17 @@
 //     block-out-from "screencast"
 // }
 
-// Put swaybg inside the overview backdrop.
-layer-rule {
-    match namespace="^awww-daemon$"
-    place-within-backdrop true
-}
+// Set up what controls wallpaper
+${if bar != "dms-shell" then ''
+  layer-rule {
+      match namespace="^awww-daemon$"
+      place-within-backdrop true
+  }
+'' else ''
+  include "dms/wpblur.kdl"
+  layer-rule {
+      match namespace="^awww-daemon$"
+      place-within-backdrop true
+  }
+  ''}
 ''

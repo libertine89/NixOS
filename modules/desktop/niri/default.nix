@@ -24,16 +24,16 @@ let
   ide-launcher = pkgs.callPackage ../scripts/niriscripts/ide-launcher.nix { };
   wallpaper =  pkgs.callPackage ../scripts/niriscripts/wallpaper.nix { inherit defaultWallpaper; };
   toggle-dropdown = pkgs.callPackage ../scripts/niriscripts/toggle-dropdown.nix { };
+  overview-wallpaper = pkgs.callPackage ../scripts/niriscripts/overview-wallpaper.nix { };
 
-ctx = {
-  inherit pkgs lib getExe getExe' ide
-  editor browser terminal fileManager bar 
-  windowTheme kbdLayout kbdVariant defaultWallpaper;
-
-  inherit ide-launcher wallpaper toggle-dropdown;
-
-  inherit dmsWrapper;
-  };
+  ctx = {
+    inherit pkgs lib getExe getExe' ide
+    editor browser terminal fileManager bar 
+    windowTheme kbdLayout kbdVariant defaultWallpaper;
+  
+    inherit ide-launcher wallpaper toggle-dropdown overview-wallpaper;
+    }
+    // lib.optionalAttrs (bar == "dms-shell") { inherit dmsWrapper; };
 in 
 {
   imports = [
@@ -41,8 +41,9 @@ in
    ../../bars/${bar}
    ../../utilities/rofi
   ]
-  ++ lib.optional (bar != "hyprpanel") ../../utilities/swaync;  # ─────────────────────────────
+  ++ lib.optional (bar != "hyprpanel" && bar != "dms-shell") ../../utilities/swaync;
   
+  # ─────────────────────────────
   # Niri compositor
   # ─────────────────────────────
   environment.systemPackages = with pkgs; [
@@ -99,10 +100,10 @@ in
       ];
       
       # ─────────────────────────────
-      # Set Wallpaper
+      # Set Wallpaper if not using DMS
       # ─────────────────────────────
+      #services.awww.enable = bar != "dms-shell"; 
       services.awww.enable = true;
- 
 
       home.file.".config/niri/config.kdl".text = ''
         ${import ./confs/input.nix { inherit pkgs ctx; }}
