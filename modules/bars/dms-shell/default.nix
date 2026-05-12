@@ -1,23 +1,12 @@
-{ pkgs, inputs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
-  imports = [
-    inputs.dms.nixosModules.default
-    inputs.dms-plugin-registry.modules.default
-  ];
-
   programs.dms-shell = {
     enable = true;
+    package = pkgs.dms-shell;
+    systemd.enable = true;
+    systemd.restartIfChanged = true;
 
-    package =
-      inputs.dms.packages.${pkgs.stdenv.hostPlatform.system}.default;
-
-    systemd = {
-      enable = true;
-      restartIfChanged = true;
-    };
-
-    # Core features
     enableSystemMonitoring = true;
     enableVPN = true;
     enableDynamicTheming = true;
@@ -26,8 +15,15 @@
     enableClipboardPaste = true;
 
     plugins = {
-      # dankBatteryAlerts.enable = true;
       # dockerManager.enable = true;
     };
   };
+
+  environment.systemPackages = with pkgs; [
+  xwayland
+  ];
+
+  # Force power management
+  services.tlp.enable = lib.mkForce false;
+  services.power-profiles-daemon.enable = lib.mkForce true;
 }

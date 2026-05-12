@@ -34,13 +34,12 @@ ctx = {
 in 
 {
   imports = [
-    ../../themes/${windowTheme}
-    ../../bars/${bar}
-    ../../utilities/rofi
+   ../../themes/${windowTheme}
+   ../../bars/${bar}
+   ../../utilities/rofi
   ]
-  ++ lib.optional (bar != "hyprpanel") ../../utilities/swaync;
-
-  # ─────────────────────────────
+  ++ lib.optional (bar != "hyprpanel") ../../utilities/swaync;  # ─────────────────────────────
+  
   # Niri compositor
   # ─────────────────────────────
   environment.systemPackages = with pkgs; [
