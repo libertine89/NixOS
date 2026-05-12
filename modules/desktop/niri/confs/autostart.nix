@@ -3,10 +3,11 @@
 let
   inherit (ctx)
   pkgs lib getExe
-  bar
-  wallpaper;
+  bar wallpaper
+  dmsWrapper;
 in 
 ''
+  spawn-at-startup "${lib.getExe dmsWrapper}"
   spawn-at-startup "${bar}"
   spawn-at-startup "${lib.getExe wallpaper}"
   // spawn-at-startup "swaylock"

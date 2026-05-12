@@ -1,28 +1,13 @@
-{ config, pkgs, lib, ... }:
-
-let
-  dmsWrapper = pkgs.writeShellScriptBin "run-dms" ''
-    pgrep Xwayland || Xwayland :0 -rootless &
-
-    export DISPLAY=:0
-    export XDG_SESSION_TYPE=wayland
-    export GDK_BACKEND=x11
-
-    exec ${pkgs.dms}/bin/dms run
-  '';
-in
-{
-  options.dms.enable = lib.mkEnableOption "DMS";
-
-  config = lib.mkIf config.dms.enable {
-
-    # 🔥 This is the key part
-    programs.niri.settings.spawn-at-startup = [
-      {
-        command = "${dmsWrapper}/bin/run-dms";
-      }
-    ];
-
-    environment.systemPackages = [ dmsWrapper ];
-  };
+in niri module
+ctx = {
+  inherit pkgs lib bar wallpaper;
+  inherit ide-launcher toggle-dropdown;
 }
+// lib.optionalAttrs (bar == "dms") {
+  inherit dmsWrapper;
+};
+
+in autostar.nix
+lib.optionalString (bar == "dms") ''
+  spawn-at-startup "${lib.getExe dmsWrapper}"
+''

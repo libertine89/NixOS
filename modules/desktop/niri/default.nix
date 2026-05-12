@@ -3,6 +3,7 @@
   lib,
   pkgs,
   inputs,
+  dmsWrapper,
   ... 
 }:
 
@@ -30,6 +31,8 @@ ctx = {
   windowTheme kbdLayout kbdVariant defaultWallpaper;
 
   inherit ide-launcher wallpaper toggle-dropdown;
+
+  inherit dmsWrapper;
   };
 in 
 {
