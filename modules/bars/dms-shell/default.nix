@@ -47,9 +47,10 @@ in
   home-manager.sharedModules = [
     (_:       
       let
-        #lib = import <nixpkgs> {};
+        layoutSettings = import ./conf/layout.nix;
+        systemSettings = import ./conf/system.nix;
         themeSettings = import ./conf/theme.nix;
-        barSettings   = import ./conf/bar.nix;
+        widgetsSettings = import ./conf/widgets.nix;
       in
       {
       imports = [
@@ -59,7 +60,7 @@ in
       ];
 
       programs.dank-material-shell.enable = true;
-      programs.dank-material-shell.settings = pkgs.lib.recursiveUpdate themeSettings barSettings;
+      programs.dank-material-shell.settings = pkgs.lib.recursiveUpdate layoutSettings systemSettings themeSettings widgetsSettings;
       programs.dank-material-shell.session = { isLightMode = false; };
 
       programs.dank-material-shell.clipboardSettings = {
