@@ -24,14 +24,13 @@ let
   ide-launcher = pkgs.callPackage ../scripts/niriscripts/ide-launcher.nix { };
   wallpaper =  pkgs.callPackage ../scripts/niriscripts/wallpaper.nix { inherit defaultWallpaper; };
   toggle-dropdown = pkgs.callPackage ../scripts/niriscripts/toggle-dropdown.nix { };
-  overview-wallpaper = pkgs.callPackage ../scripts/niriscripts/overview-wallpaper.nix { };
 
   ctx = {
     inherit pkgs lib getExe getExe' ide
     editor browser terminal fileManager bar 
     windowTheme kbdLayout kbdVariant defaultWallpaper;
   
-    inherit ide-launcher wallpaper toggle-dropdown overview-wallpaper;
+    inherit ide-launcher wallpaper toggle-dropdown;
     }
     // lib.optionalAttrs (bar == "dms-shell") { inherit dmsWrapper; };
 in 

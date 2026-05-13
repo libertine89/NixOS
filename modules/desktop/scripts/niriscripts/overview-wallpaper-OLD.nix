@@ -7,4 +7,7 @@ pkgs.writeShellScriptBin "overview-wallpaper" ''
 
   # Update awww with the new image
   awww img "$CURRENT_WP" --transition-step 255 --transition-duration 0 --transition-type none
+  
+  # Toggle Overview
+  niri msg action toggle-overview
 ''

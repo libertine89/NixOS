@@ -4,7 +4,7 @@ let
   inherit (ctx)
   pkgs lib getExe getExe'
   bar terminal fileManager browser ide
-  ide-launcher wallpaper toggle-dropdown overview-wallpaper
+  ide-launcher wallpaper toggle-dropdown
   ;
 in 
 ''
@@ -12,7 +12,7 @@ binds {
   ${if bar == "dms-shell" then ''
   // Binds for DMS shell
     // WINDOW MANAGEMENT
-    Mod+W repeat=false { spawn "${getExe overview-wallpaper}"; }
+    
     // Application Launchers
     Mod+Space hotkey-overlay-title="Application Launcher" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
     Mod+V hotkey-overlay-title="Clipboard Manager" { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
@@ -27,7 +27,7 @@ binds {
   '' else ''
   // Conflicting binds for other shells
     // Window Management
-    Mod+W repeat=false { toggle-overview; }
+
     // Application Launchers
     Mod+Space hotkey-overlay-title="Run an Application: launcher" { spawn "launcher" "drun"; }
     Mod+Shift+W hotkey-overlay-title="Change Wallpaper: launcher" { spawn "launcher" "wallpaper"; }
@@ -42,6 +42,8 @@ binds {
     Mod+Shift+Ctrl+B hotkey-overlay-title="Rebuild Nix Flake: kitty" { spawn "kitty" "-e" "rebuild"; }
     Mod+Shift+Ctrl+U hotkey-overlay-title="Update & Build Nix Flake: kitty" { spawn "kitty" "-e" "update"; }
     Mod+Shift+Ctrl+G hotkey-overlay-title="Clear Garbage: kitty" { spawn "kitty" "-e" "garbage-collection"; }
+
+    Mod+W repeat=false { toggle-overview; }
 
     // LAUNCHERS / APPS
     Mod+Return hotkey-overlay-title="Open a Terminal: ${terminal}" { spawn "${terminal}"; }   
