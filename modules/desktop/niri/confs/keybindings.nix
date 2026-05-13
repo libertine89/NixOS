@@ -3,35 +3,55 @@
 let
   inherit (ctx)
   pkgs lib getExe getExe'
-  terminal fileManager browser ide
+  bar terminal fileManager browser ide
   ide-launcher wallpaper toggle-dropdown overview-wallpaper
   ;
 in 
 ''
 binds {
+  ${if bar == "dms-shell" then ''
+  // Binds for DMS shell
+    // WINDOW MANAGEMENT
+    Mod+W repeat=false { spawn "${getExe overview-wallpaper}"; }
+    // Application Launchers
+    Mod+Space hotkey-overlay-title="Application Launcher" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
+    Mod+V hotkey-overlay-title="Clipboard Manager" { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
+    Mod+N hotkey-overlay-title="Notification Center" { spawn "dms" "ipc" "call" "notifications" "toggle"; }
+    Mod+Shift+W hotkey-overlay-title="Browse Wallpapers" { spawn "dms" "ipc" "call" "dankdash" "wallpaper"; }
+    // Help/Overlay
+    Ctrl+Alt+Delete hotkey-overlay-title="Task Manager" { spawn "dms" "ipc" "call" "processlist" "focusOrToggle";}
+    Mod+Slash hotkey-overlay-title="Run an Application: launcher" { spawn "dms" "ipc" "call" "keybinds" "toggleWithPath" "niri" "~/.config/niri/config.kdl"; }
+    // Security
+    CTRL+L hotkey-overlay-title="Lock Screen" { spawn "dms" "ipc" "call" "lock" "lock"; }
+
+  '' else ''
+  // Conflicting binds for other shells
+    // Window Management
+    Mod+W repeat=false { toggle-overview; }
+    // Application Launchers
+    Mod+Space hotkey-overlay-title="Run an Application: launcher" { spawn "launcher" "drun"; }
+    Mod+Shift+W hotkey-overlay-title="Change Wallpaper: launcher" { spawn "launcher" "wallpaper"; }
+    // Help/Overlay
+    Ctrl+Alt+Delete hotkey-overlay-title="Show System Resource Manager: btop" { spawn "kitty" "-e" "btop"; }
+    Mod+Slash {spawn "launcher" "keybindings"; }
+    // Security
+    Ctrl+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+  ''}
 
     // HELP / OVERLAY
-    // Mod+Slash { show-hotkey-overlay; }
-    Mod+Slash {spawn "launcher" "keybindings"; }
     Mod+Shift+Ctrl+B hotkey-overlay-title="Rebuild Nix Flake: kitty" { spawn "kitty" "-e" "rebuild"; }
     Mod+Shift+Ctrl+U hotkey-overlay-title="Update & Build Nix Flake: kitty" { spawn "kitty" "-e" "update"; }
     Mod+Shift+Ctrl+G hotkey-overlay-title="Clear Garbage: kitty" { spawn "kitty" "-e" "garbage-collection"; }
-    Ctrl+Alt+Delete hotkey-overlay-title="Show System Resource Manager: btop" { spawn "kitty" "-e" "btop"; }
 
     // LAUNCHERS / APPS
     Mod+Return hotkey-overlay-title="Open a Terminal: ${terminal}" { spawn "${terminal}"; }   
     Mod+Ctrl+Return hotkey-overlay-title="Open a drop in terminal: ${terminal}" { spawn "${getExe toggle-dropdown}"; }
-    Mod+Space hotkey-overlay-title="Run an Application: launcher" { spawn "launcher" "drun"; }
-    Mod+Shift+W hotkey-overlay-title="Change Wallpaper: launcher" { spawn "launcher" "wallpaper"; }
-    Ctrl+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
     Mod+E hotkey-overlay-title="Open file explorer: ${fileManager}" { spawn "${terminal}" "-e" "${fileManager}"; }
     Mod+B hotkey-overlay-title="Open a Browser: ${browser}" { spawn "${browser}"; }
     Mod+C hotkey-overlay-title="Open an IDE: ${ide}" { spawn "${getExe ide-launcher}" "${ide}"; }
 
     // WINDOW MANAGEMENT
-    // Mod+W repeat=false { toggle-overview; }
-    Mod+W repeat=false { spawn "${getExe overview-wallpaper}"; }
     Mod+Q repeat=false { close-window; }
     Alt+F4 repeat=false { close-window; }
 
@@ -167,9 +187,9 @@ binds {
     Mod+Shift+Equal { set-window-height "+10%"; }
 
     // FLOATING / TABS
-    Mod+V { toggle-window-floating; }
-    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
-    Mod+Ctrl+V { toggle-column-tabbed-display; }
+    Mod+Ctrl+V { toggle-window-floating; }
+    Mod+Shift+V { toggle-column-tabbed-display; }
+    Mod+Ctrl+Shift+V { switch-focus-between-floating-and-tiling; }
 
     // SCREENSHOT
     Print { screenshot; }
@@ -178,7 +198,6 @@ binds {
 
     // SYSTEM
     Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
-
     Mod+Shift+E { quit; }
 
     // AUDIO CONTROL

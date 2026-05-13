@@ -100,9 +100,8 @@ in
       ];
       
       # ─────────────────────────────
-      # Set Wallpaper if not using DMS
+      # Set Wallpaper 
       # ─────────────────────────────
-      #services.awww.enable = bar != "dms-shell"; 
       services.awww.enable = true;
 
       home.file.".config/niri/config.kdl".text = ''

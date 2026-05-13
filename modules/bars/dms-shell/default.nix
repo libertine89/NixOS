@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 let
   dmsWrapper = pkgs.writeShellScriptBin "run-dms" ''
@@ -13,6 +13,10 @@ let
   '';
 in
 {
+  imports = [
+    #inputs.dms.homeModules.dank-material-shell
+    inputs.dms-plugin-registry.modules.default
+  ];
   programs.dms-shell = {
     enable = true;
     package = pkgs.dms-shell;
@@ -28,7 +32,10 @@ in
     enableClipboardPaste = true;
 
     plugins = {
+      dankActions.enable = true;
+      dankHooks.enable = true;
       # dockerManager.enable = true;
+      # nixMonitor.enable = true;
     };
   };
 
