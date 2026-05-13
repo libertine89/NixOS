@@ -20,20 +20,20 @@ pkgs.writeShellScriptBin "generate-color-variables" ''
               exit
           }
           in_section && $0 ~ /^}/ { in_section=0 }
-      ' "$DMS_COLORS"
+      ' $DMS_COLORS
   }
 
   generate_kdl() {
       cat > "$OUT_KDL" <<EOF
 colors {
-    border_active   "$(extract_color "border" "active-color")"
-    border_inactive "$(extract_color "border" "inactive-color")"
-    focus_active    "$(extract_color "focus-ring" "active-color")"
-    focus_inactive  "$(extract_color "focus-ring" "inactive-color")"
-    tab_active      "$(extract_color "tab-indicator" "active-color")"
-    tab_inactive    "$(extract_color "tab-indicator" "inactive-color")"
-    shadow          "$(extract_color "shadow" "color")"
-    insert_hint     "$(extract_color "insert-hint" "color")"
+    border_active   $(extract_color "border" "active-color")
+    border_inactive $(extract_color "border" "inactive-color")
+    focus_active    $(extract_color "focus-ring" "active-color")
+    focus_inactive  $(extract_color "focus-ring" "inactive-color")
+    tab_active      $(extract_color "tab-indicator" "active-color")
+    tab_inactive    $(extract_color "tab-indicator" "inactive-color")
+    shadow          $(extract_color "shadow" "color")
+    insert_hint     $(extract_color "insert-hint" "color")
 }
 EOF
   }

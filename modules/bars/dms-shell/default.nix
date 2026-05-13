@@ -1,21 +1,23 @@
 { config, pkgs, lib, inputs, ... }:
 
 let
-  # Your wrapper script
+  # === Get Bar to Display ===
   dmsWrapper = pkgs.writeShellScriptBin "run-dms" ''
     #!/usr/bin/env bash
     pgrep Xwayland || Xwayland :0 -rootless &
+
     export DISPLAY=:0
     export XDG_SESSION_TYPE=wayland
     export GDK_BACKEND=x11
+
     exec dms run
   '';
 
-  # Import the external script
-  onWallpaperChanged = pkgs.callPackage ../../modules/desktop/scripts/niriscripts/onWallpaperChanged.nix {};
+  # Import your scripts as derivations
+  onWallpaperChanged = pkgs.callPackage ../../desktop/scripts/niriscripts/onWallpaperChanged.nix {};
 in
 {
-  # === System-level configuration ===
+  # === System-level configuration (NixOS) ===
   environment.systemPackages = with pkgs; [
     xwayland
     dmsWrapper
@@ -41,24 +43,24 @@ in
 
   _module.args.dmsWrapper = dmsWrapper;
 
-  # === Home Manager configuration ===
+  # === Home Manager configuration (user-level) ===
   home-manager.sharedModules = [
-    (_: {
+    (_:       
+      let
+        #lib = import <nixpkgs> {};
+        themeSettings = import ./conf/theme.nix;
+        barSettings   = import ./conf/bar.nix;
+      in
+      {
       imports = [
         inputs.dms.homeModules.dank-material-shell
-        inputs.dms-plugin-registry.modules.default
+        inputs.dms-plugin-registry.modules.default  
+        inputs.danksearch.homeModules.dsearch
       ];
 
       programs.dank-material-shell.enable = true;
-
-      programs.dank-material-shell.settings = {
-        theme = "dark";
-        dynamicTheming = true;
-      };
-
-      programs.dank-material-shell.session = {
-        isLightMode = false;
-      };
+      programs.dank-material-shell.settings = pkgs.lib.recursiveUpdate themeSettings barSettings;
+      programs.dank-material-shell.session = { isLightMode = false; };
 
       programs.dank-material-shell.clipboardSettings = {
         maxHistory = 25;
@@ -71,16 +73,24 @@ in
       };
 
       programs.dank-material-shell.plugins = {
-        dankHooks = {
-          enable = true;
-          wallpaperPath = "${lib.getExe onWallpaperChanged}";  # absolute path to nix-store script
-        };
-        dankActions = {
-          enable = true;
-        };
+        dankActions = { enable = true; };
+        dankHooks = { enable = true; };
       };
 
-      programs.dank-material-shell.managePluginSettings = true;
+      programs.dank-material-shell.managePluginSettings = false;
+
+      programs.dsearch.enable = true;
+
+      # Generate plugin JSON
+      home.file.".config/DankMaterialShell/plugin_settings.json" = {
+        text = builtins.toJSON {
+          dankHooks = {
+            enabled = true;
+            wallpaperPath = "${onWallpaperChanged}";
+          };
+          dankActions = { enabled = true; };
+        };
+      };
 
       home.packages = [
         pkgs.xwayland

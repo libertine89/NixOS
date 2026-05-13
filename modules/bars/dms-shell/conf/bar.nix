@@ -1,0 +1,1 @@
+{ currentThemeName = "dynamic"; currentThemeCategory: "registry"; }

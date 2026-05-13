@@ -1,24 +1,20 @@
 { pkgs, ... }:
 
 let
-  overview-wallpaper = pkgs.callPackage ./overview-wallpaper.nix { };
-  overview-wallpaper-bin = pkgs.getExe overview-wallpaper;
-  generate-colour-variables = pkgs.callPackage ./colourVariables.nix { };
-  generate-colour-variables-bin = pkgs.getExe generate-colour-variables;
+  overview-wallpaper = pkgs.callPackage ./overview-wallpaper.nix {};
+  overview-wallpaper-bin = pkgs.lib.getExe overview-wallpaper;
+  generate-colour-variables = pkgs.callPackage ./colourVariables.nix {};
+  generate-colour-variables-bin = pkgs.lib.getExe generate-colour-variables;
 in
 
-pkgs.writeShellScriptBin "onWallpaperChanged" ''
+pkgs.writeShellScript "onWallpaperChanged" ''
   #!/usr/bin/env bash
-  # onWallpaperChanged - runs multiple scripts installed by Nix
 
-  SCRIPTS=(
-      "${overview-wallpaper-bin}"
-      "${generate-colour-variables-bin}"
-      # Add more scripts here
-  )
+  # Space-separated list of scripts
+  SCRIPTS="${overview-wallpaper-bin} ${generate-colour-variables-bin}"
 
-  for script in "${SCRIPTS[@]}"; do
-      if [[ -x "$script" ]]; then
+  for script in $SCRIPTS; do
+      if [ -x "$script" ]; then
           echo "Running $(basename "$script")..."
           "$script"
       else
