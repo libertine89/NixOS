@@ -4,10 +4,13 @@ let
   # === Get Bar to Display ===
   dmsWrapper = pkgs.writeShellScriptBin "run-dms" ''
     #!/usr/bin/env bash
-      home.file.".local/state/DankMaterialShell/session.json" = {
-        text = builtins.readFile ./session.json;
-        mode = "0600";
-      };
+    pgrep Xwayland || Xwayland :0 -rootless &
+
+    export DISPLAY=:0
+    export XDG_SESSION_TYPE=wayland
+    export GDK_BACKEND=x11
+
+    exec dms run
   '';
 
   # Import your scripts as derivations
@@ -100,7 +103,7 @@ in
 home.activation.dankSessionSeed = ''
   mkdir -p ~/.local/state/DankMaterialShell
   if [ ! -f ~/.local/state/DankMaterialShell/session.json ]; then
-    cat > ~/.local/state/DankMaterialShell/session.json <<'EOF'
+    cat > ~/.local/state/DankMaterialShell/session.json <<EOF
 ${builtins.toJSON sessionDefaults}
 EOF
     chmod 600 ~/.local/state/DankMaterialShell/session.json
