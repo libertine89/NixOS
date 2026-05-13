@@ -92,12 +92,12 @@
       rightWidgets = [
         { id = "cpuUsage"; enabled = true; }
         { id = "memUsage"; enabled = true; }
-        { id = "battery"; enabled = true }
-        { id = "controlCenterButton"; enabled = true }
-        { id = "clipboard"; enabled = true }
-        { id = "clock"; enabled = true }
-        { id = "notificationButton"; enabled = true }
-        { id = "powerMenuButton"; enabled = true }
+        { id = "battery"; enabled = true; }
+        { id = "controlCenterButton"; enabled = true; }
+        { id = "clipboard"; enabled = true; }
+        { id = "clock"; enabled = true; }
+        { id = "notificationButton"; enabled = true; }
+        { id = "powerMenuButton"; enabled = true; }
       ];
       spacing = 4;
       innerPadding = 4;

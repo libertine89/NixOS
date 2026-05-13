@@ -60,7 +60,12 @@ in
       ];
 
       programs.dank-material-shell.enable = true;
-      programs.dank-material-shell.settings = pkgs.lib.recursiveUpdate layoutSettings systemSettings themeSettings widgetsSettings;
+      programs.dank-material-shell.settings =
+        pkgs.lib.recursiveUpdate
+          (pkgs.lib.recursiveUpdate
+            (pkgs.lib.recursiveUpdate layoutSettings systemSettings)
+            themeSettings)
+          widgetsSettings;
       programs.dank-material-shell.session = { isLightMode = false; };
 
       programs.dank-material-shell.clipboardSettings = {
