@@ -4,13 +4,10 @@ let
   # === Get Bar to Display ===
   dmsWrapper = pkgs.writeShellScriptBin "run-dms" ''
     #!/usr/bin/env bash
-    pgrep Xwayland || Xwayland :0 -rootless &
-
-    export DISPLAY=:0
-    export XDG_SESSION_TYPE=wayland
-    export GDK_BACKEND=x11
-
-    exec dms run
+      home.file.".local/state/DankMaterialShell/session.json" = {
+        text = builtins.readFile ./session.json;
+        mode = "0600";
+      };
   '';
 
   # Import your scripts as derivations
@@ -51,6 +48,7 @@ in
         systemSettings = import ./conf/system.nix;
         themeSettings = import ./conf/theme.nix;
         widgetsSettings = import ./conf/widgets.nix;
+        sessionDefaults = import ./conf/session.nix;
       in
       {
       imports = [
@@ -66,7 +64,8 @@ in
             (pkgs.lib.recursiveUpdate layoutSettings systemSettings)
             themeSettings)
           widgetsSettings;
-      programs.dank-material-shell.session = { isLightMode = false; };
+      # Dont initial session so DMS can update wallpaper
+      #programs.dank-material-shell.session = { isLightMode = false; };
 
       programs.dank-material-shell.clipboardSettings = {
         maxHistory = 25;
@@ -98,6 +97,16 @@ in
         };
       };
 
+home.activation.dankSessionSeed = ''
+  mkdir -p ~/.local/state/DankMaterialShell
+  if [ ! -f ~/.local/state/DankMaterialShell/session.json ]; then
+    cat > ~/.local/state/DankMaterialShell/session.json <<'EOF'
+${builtins.toJSON sessionDefaults}
+EOF
+    chmod 600 ~/.local/state/DankMaterialShell/session.json
+  fi
+'';
+      
       home.packages = [
         pkgs.xwayland
         dmsWrapper
