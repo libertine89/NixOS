@@ -22,7 +22,7 @@ binds {
     Ctrl+Alt+Delete hotkey-overlay-title="Task Manager" { spawn "dms" "ipc" "call" "processlist" "focusOrToggle";}
     Mod+Slash hotkey-overlay-title="Run an Application: launcher" { spawn "dms" "ipc" "call" "keybinds" "toggleWithPath" "niri" "~/.config/niri/config.kdl"; }
     // Security
-    CTRL+L hotkey-overlay-title="Lock Screen" { spawn "dms" "ipc" "call" "lock" "lock"; }
+    Mod+Ctrl+L hotkey-overlay-title="Lock Screen" { spawn "dms" "ipc" "call" "lock" "lock"; }
 
   '' else ''
   // Conflicting binds for other shells
@@ -35,7 +35,7 @@ binds {
     Ctrl+Alt+Delete hotkey-overlay-title="Show System Resource Manager: btop" { spawn "kitty" "-e" "btop"; }
     Mod+Slash {spawn "launcher" "keybindings"; }
     // Security
-    Ctrl+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Mod+Ctrl+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
   ''}
 
     // HELP / OVERLAY

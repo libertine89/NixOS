@@ -38,7 +38,9 @@
       
       # Import Config files
       xdg.configFile."nvim/lua/options.lua".text =
-        import ./conf/options.nix { inherit lib; };
+        import ./conf/options.nix { };
+      xdg.configFile."nvim/lua/mappings.lua".text =
+        import ./conf/mappings.nix { };
     })
   ];
 }
