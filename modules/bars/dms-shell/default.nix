@@ -100,15 +100,15 @@ in
         };
       };
 
-home.activation.dankSessionSeed = ''
-  mkdir -p ~/.local/state/DankMaterialShell
-  if [ ! -f ~/.local/state/DankMaterialShell/session.json ]; then
-    cat > ~/.local/state/DankMaterialShell/session.json <<EOF
-${builtins.toJSON sessionDefaults}
+      home.activation.dankSessionSeed = ''
+        mkdir -p ~/.local/state/DankMaterialShell
+        if [ ! -f ~/.local/state/DankMaterialShell/session.json ]; then
+          cat > ~/.local/state/DankMaterialShell/session.json <<EOF
+            ${builtins.toJSON sessionDefaults}
 EOF
-    chmod 600 ~/.local/state/DankMaterialShell/session.json
-  fi
-'';
+          chmod 600 ~/.local/state/DankMaterialShell/session.json
+        fi
+      '';
       
       home.packages = [
         pkgs.xwayland

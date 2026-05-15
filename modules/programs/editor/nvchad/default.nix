@@ -1,5 +1,6 @@
 {
   inputs,
+  lib,
   pkgs,
   ...
 }:
@@ -34,6 +35,10 @@
         hm-activation = true;
         backup = false;
       };
+      
+      # Import Config files
+      xdg.configFile."nvim/lua/options.lua".text =
+        import ./conf/options.nix { inherit lib; };
     })
   ];
 }

@@ -1,4 +1,5 @@
 {
+  wallpaperPath = "/home/nixius/NixOS/modules/themes/wallpapers/4k_abstract_5.png";
   isLightMode = false;
   doNotDisturb = false;
   perMonitorWallpaper = false;

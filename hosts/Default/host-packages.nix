@@ -16,5 +16,8 @@ in
     gnome-calculator
     obsidian
     github-desktop
+    xournalpp
+    qview
+    snapper
   ];
 }
