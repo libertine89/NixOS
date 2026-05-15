@@ -45,21 +45,23 @@ in
 
   # === Home Manager configuration (user-level) ===
   home-manager.sharedModules = [
-    (_:       
+    (_:
       let
         layoutSettings = import ./conf/layout.nix;
         systemSettings = import ./conf/system.nix;
         themeSettings = import ./conf/theme.nix;
         widgetsSettings = import ./conf/widgets.nix;
         sessionDefaults = import ./conf/session.nix;
+        vimKeybinds = import ./cheatsheets/vim.nix;
       in
       {
       imports = [
         inputs.dms.homeModules.dank-material-shell
-        inputs.dms-plugin-registry.modules.default  
+        inputs.dms-plugin-registry.modules.default
         inputs.danksearch.homeModules.dsearch
       ];
 
+      # Set up DMS settings
       programs.dank-material-shell.enable = true;
       programs.dank-material-shell.settings =
         pkgs.lib.recursiveUpdate
@@ -89,7 +91,7 @@ in
 
       programs.dsearch.enable = true;
 
-      # Generate plugin JSON
+      # Set up plugin settings JSON
       home.file.".config/DankMaterialShell/plugin_settings.json" = {
         text = builtins.toJSON {
           dankHooks = {
@@ -99,7 +101,7 @@ in
           dankActions = { enabled = true; };
         };
       };
-
+      # Seed DMS session json
       home.activation.dankSessionSeed = ''
         mkdir -p ~/.local/state/DankMaterialShell
         if [ ! -f ~/.local/state/DankMaterialShell/session.json ]; then
@@ -109,7 +111,12 @@ EOF
           chmod 600 ~/.local/state/DankMaterialShell/session.json
         fi
       '';
-      
+
+      # Set up Cheatsheets
+      home.file.".config/DankMaterialShell/vim.json" = {
+        text = builtins.toJSON vimKeybinds;
+      };
+
       home.packages = [
         pkgs.xwayland
         dmsWrapper
