@@ -41,6 +41,8 @@
         import ./conf/options.nix { };
       xdg.configFile."nvim/lua/mappings.lua".text =
         import ./conf/mappings.nix { };
+      xdg.configFile."nvim/lua/autocmds.lua".text =
+        import ./conf/autocmds.nix { };
     })
   ];
 }
