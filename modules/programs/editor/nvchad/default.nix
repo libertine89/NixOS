@@ -19,23 +19,19 @@
           }
         '';
         extraPackages = with pkgs; [
-          nixd
-          # nodePackages.bash-language-server
-          # docker-compose-language-service
-          # dockerfile-language-server-nodejs
-          # emmet-language-server
-          /*
-             (python3.withPackages (ps:
-            with ps; [
-              python-lsp-server
-              flake8
-            ]))
-          */
+           nixd
+           vscode-langservers-extracted
+           lua-language-server
+           rust-analyzer
+           pyright
+           typescript-language-server
+           bash-language-server
+           gopls
         ];
         hm-activation = true;
         backup = false;
       };
-      
+
       # Import Config files
       xdg.configFile."nvim/lua/options.lua".text =
         import ./conf/options.nix { };
@@ -43,6 +39,8 @@
         import ./conf/mappings.nix { };
       xdg.configFile."nvim/lua/autocmds.lua".text =
         import ./conf/autocmds.nix { };
+      xdg.configFile."nvim/lua/configs/lspconfig.lua".text =
+        import ./conf/lspconfig.nix { };
     })
   ];
 }
