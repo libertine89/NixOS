@@ -3,16 +3,16 @@
 let
   inherit (ctx)
   pkgs lib getExe getExe'
-  bar terminal fileManager browser ide
+  bar terminal fileManager browser editor ide
   ide-launcher wallpaper toggle-dropdown
   ;
-in 
+in
 ''
 binds {
   ${if bar == "dms-shell" then ''
   // Binds for DMS shell
     // WINDOW MANAGEMENT
-    
+
     // Application Launchers
     Mod+Space hotkey-overlay-title="Application Launcher" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
     Mod+V hotkey-overlay-title="Clipboard Manager" { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
@@ -46,11 +46,12 @@ binds {
     Mod+W repeat=false { toggle-overview; }
 
     // LAUNCHERS / APPS
-    Mod+Return hotkey-overlay-title="Open a Terminal: ${terminal}" { spawn "${terminal}"; }   
+    Mod+Return hotkey-overlay-title="Open a Terminal: ${terminal}" { spawn "${terminal}"; }
     Mod+Ctrl+Return hotkey-overlay-title="Open a drop in terminal: ${terminal}" { spawn "${getExe toggle-dropdown}"; }
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
     Mod+E hotkey-overlay-title="Open file explorer: ${fileManager}" { spawn "${terminal}" "-e" "${fileManager}"; }
     Mod+B hotkey-overlay-title="Open a Browser: ${browser}" { spawn "${browser}"; }
+    Mod+Shift+C hotkey-overlay-title="Open an Editor: ${editor}" { spawn "${terminal}" "--override" "font_size=18" "nvim"; }
     Mod+C hotkey-overlay-title="Open an IDE: ${ide}" { spawn "${getExe ide-launcher}" "${ide}"; }
 
     // WINDOW MANAGEMENT
