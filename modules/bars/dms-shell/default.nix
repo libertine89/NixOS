@@ -47,12 +47,16 @@ in
   home-manager.sharedModules = [
     (_:
       let
-        layoutSettings = import ./conf/layout.nix;
-        systemSettings = import ./conf/system.nix;
-        themeSettings = import ./conf/theme.nix;
-        widgetsSettings = import ./conf/widgets.nix;
-        sessionDefaults = import ./conf/session.nix;
-        vimKeybinds = import ./cheatsheets/vim.nix;
+       # layoutSettings = import ./conf/layout.nix;
+       # barSettings = import ./conf/bar.nix
+       # dockSettings = import ./conf/dock.nix
+       # systemSettings = import ./conf/system.nix;
+       # themeSettings = import ./conf/theme.nix;
+       # widgetsSettings = import ./conf/widgets.nix;
+       # sessionDefaults = import ./conf/session.nix;
+       # vimKeybinds = import ./cheatsheets/vim.nix;
+        configFiles = builtins.attrValues (import ./conf/modules {});
+        dmsSettings = foldl pkgs.lib.recursiveUpdate {} configFiles;
       in
       {
       imports = [
@@ -63,12 +67,14 @@ in
 
       # Set up DMS settings
       programs.dank-material-shell.enable = true;
-      programs.dank-material-shell.settings =
-        pkgs.lib.recursiveUpdate
-          (pkgs.lib.recursiveUpdate
-            (pkgs.lib.recursiveUpdate layoutSettings systemSettings)
-            themeSettings)
-          widgetsSettings;
+      programs.dank-material-shell.settings = dmsSettings;
+      # programs.dank-material-shell.settings =
+      #   pkgs.lib.recursiveUpdate
+      #     (pkgs.lib.recursiveUpdate
+      #       (pkgs.lib.recursiveUpdate layoutSettings systemSettings)
+      #       themeSettings)
+      #     widgetsSettings;
+
       # Dont initial session so DMS can update wallpaper
       #programs.dank-material-shell.session = { isLightMode = false; };
 
@@ -113,7 +119,7 @@ EOF
       '';
 
       # Set up Cheatsheets
-      home.file.".config/DankMaterialShell/vim.json" = {
+      home.file.".config/DankMaterialShell/cheatsheets/vim.json" = {
         text = builtins.toJSON vimKeybinds;
       };
 
