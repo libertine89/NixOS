@@ -2,18 +2,18 @@
 
 ''
   require "nvchad.options"
-  -- cursor 
+  -- cursor
     vim.opt.cursorline = true
 
   -- line behaviour
     -- vim.opt.number = true
     vim.opt.relativenumber = true
     vim.opt.wrap = false
-  
+
   -- scrolling
     vim.opt.scrolloff = 8
     vim.opt.sidescrolloff = 8
-  
+
   -- indentation
     vim.opt.tabstop = 2
     vim.opt.shiftwidth = 2
@@ -30,4 +30,11 @@
   -- system
     vim.opt.undofile = true
     vim.opt.clipboard = "unnamedplus"
+
+  -- UI cleanup for custom statusline
+    vim.opt.laststatus = 3      -- global statusline (matches your lualine setup)
+    vim.opt.ruler = false       -- disables line/col in corner
+    vim.opt.showmode = false    -- removes INSERT/--MODE-- (you already replace it)
+    vim.opt.showcmd = false     -- removes command preview
+    vim.opt.statuscolumn = ""   -- disables side column text (important on newer Neovim)
 ''

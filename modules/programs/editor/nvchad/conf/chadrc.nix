@@ -12,6 +12,8 @@ require("configs.lualine")
 
 M.ui = {
   statusline = {
+
+    enabled = false,
     theme = "default",
     separator_style = "default",
     order = {},

@@ -202,7 +202,7 @@ require("lualine").setup({
     },
 
     icons_enabled = true,
-    globalstatus = false,
+    globalstatus = true,
     component_separators = "",
     section_separators = "",
   },
@@ -318,9 +318,6 @@ require("lualine").setup({
 
       mode_fade_out(),
     },
-
-    lualine_y = {},
-    lualine_z = {},
   },
 })
 ''

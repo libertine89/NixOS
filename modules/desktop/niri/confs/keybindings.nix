@@ -51,7 +51,7 @@ binds {
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
     Mod+E hotkey-overlay-title="Open file explorer: ${fileManager}" { spawn "${terminal}" "-e" "${fileManager}"; }
     Mod+B hotkey-overlay-title="Open a Browser: ${browser}" { spawn "${browser}"; }
-    Mod+V hotkey-overlay-title="Open an Editor: ${editor}" { spawn "${terminal}" "--override" "font_size=10" "nvim"; }
+    Mod+V hotkey-overlay-title="Open an Editor: ${editor}" { spawn "${terminal}" "--override" "font_size=10" "--title" "nvim" "nvim"; }
     Mod+C hotkey-overlay-title="Open an IDE: ${ide}" { spawn "${getExe ide-launcher}" "${ide}"; }
 
     // WINDOW MANAGEMENT
