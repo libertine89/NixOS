@@ -12,6 +12,11 @@ require "nvchad.autocmds"
     end,
   })
 
+-- Open new vertical split on dashboard
+  vim.api.nvim_create_user_command("nsp", function()
+    vim.cmd("vsp | Nvdash")
+  end, {})
+
 -- Highlight text after yank
   vim.api.nvim_create_autocmd("TextYankPost", {
     callback = function()
@@ -37,7 +42,7 @@ require "nvchad.autocmds"
       end,
   })
 
--- Remember Cursor Position  
+-- Remember Cursor Position
   vim.api.nvim_create_autocmd("BufReadPost", {
     pattern = "*",
       callback = function()

@@ -16,7 +16,12 @@
               "Sly-Harvey/radium.nvim",
               priority = 1000,
             },
+            {
+              "nvim-lualine/lualine.nvim",
+              dependencies = { "nvim-tree/nvim-web-devicons" },
+            },
           }
+
         '';
         extraPackages = with pkgs; [
            nixd
@@ -41,6 +46,10 @@
         import ./conf/autocmds.nix { };
       xdg.configFile."nvim/lua/configs/lspconfig.lua".text =
         import ./conf/lspconfig.nix { };
+      xdg.configFile."nvim/lua/chadrc.lua".text =
+        import ./conf/chadrc.nix { };
+      xdg.configFile."nvim/lua/configs/lualine.lua".text =
+        import ./conf/lualine.nix { };
     })
   ];
 }

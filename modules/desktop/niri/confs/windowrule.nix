@@ -44,6 +44,12 @@ window-rule {
     default-column-width { proportion 0.5; }
 }
 
+// Open Nvim Maximised
+window-rule {
+    match app-id="kitty" title="nvim"
+    open-maximized true
+}
+
 // WezTerm: work around initial configure bug (needs an empty default width).
 window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#

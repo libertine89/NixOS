@@ -15,7 +15,7 @@ binds {
 
     // Application Launchers
     Mod+Space hotkey-overlay-title="Application Launcher" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
-    Mod+V hotkey-overlay-title="Clipboard Manager" { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
+    Mod+P hotkey-overlay-title="Clipboard Manager" { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
     Mod+N hotkey-overlay-title="Notification Center" { spawn "dms" "ipc" "call" "notifications" "toggle"; }
     Mod+Shift+W hotkey-overlay-title="Browse Wallpapers" { spawn "dms" "ipc" "call" "dankdash" "wallpaper"; }
     // Help/Overlay
@@ -51,7 +51,7 @@ binds {
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
     Mod+E hotkey-overlay-title="Open file explorer: ${fileManager}" { spawn "${terminal}" "-e" "${fileManager}"; }
     Mod+B hotkey-overlay-title="Open a Browser: ${browser}" { spawn "${browser}"; }
-    Mod+Shift+C hotkey-overlay-title="Open an Editor: ${editor}" { spawn "${terminal}" "--override" "font_size=18" "nvim"; }
+    Mod+V hotkey-overlay-title="Open an Editor: ${editor}" { spawn "${terminal}" "--override" "font_size=10" "nvim"; }
     Mod+C hotkey-overlay-title="Open an IDE: ${ide}" { spawn "${getExe ide-launcher}" "${ide}"; }
 
     // WINDOW MANAGEMENT

@@ -7,6 +7,14 @@ local map = vim.keymap.set
 
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
+-- Unbind arrow keys
+  local modes = { "n", "i", "v", "x" }
+    for _, mode in ipairs(modes) do
+        vim.keymap.set(mode, "<Up>", "<Nop>")
+        vim.keymap.set(mode, "<Down>", "<Nop>")
+        vim.keymap.set(mode, "<Left>", "<Nop>")
+        vim.keymap.set(mode, "<Right>", "<Nop>")
+    end
 
   -- Cycle Modes
     local function cycle_modes()
