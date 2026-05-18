@@ -7,8 +7,8 @@ in
 input {
     keyboard {
         xkb {
-            layout "${ctx.kbdLayout}";
-            variant "${ctx.kbdVariant}";
+            layout "${kbdLayout}";
+            variant "${kbdVariant}";
             // options "compose:ralt,ctrl:nocaps"
             // model ""
             // rules ""
@@ -22,8 +22,8 @@ input {
     }
 
     touchpad {
-        // off
-        tap
+        off
+        // tap
         // dwt
         // dwtp
         // drag false

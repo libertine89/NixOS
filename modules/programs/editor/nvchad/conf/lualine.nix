@@ -1,13 +1,18 @@
 { ... }:
 
 ''
+local colors_ok, DMSColors = pcall(require, "configs.colourVariables")
+if not colors_ok then
+  vim.notify("Failed to load DMS colors, using fallback", vim.log.levels.WARN)
+  DMSColors = {}
+end
 local C = {
   -- =========================================================
   -- Background colours for Bars
   -- =========================================================
-  bg0 = "#0A0373",
-  bg1 = "#1C1690",
-  bg2 = "#3A36B5",
+  bg0 = DMSColors.border_active or "#0A0373",
+  bg1 = DMSColors.border_urgent or "#1C1690",
+  bg2 = DMSColors.border_inactive or "#3A36B5",
   bg3 = "#2A2680",
 
   bg_base = "#555555",

@@ -50,6 +50,8 @@
         import ./conf/chadrc.nix { };
       xdg.configFile."nvim/lua/configs/lualine.lua".text =
         import ./conf/lualine.nix { };
+      xdg.configFile."nvim/lua/plugins/init-1.lua".text =
+        import ./conf/init-1.nix { };
     })
   ];
 }

@@ -8,6 +8,8 @@ pkgs.writeShellScriptBin "generate-color-variables" ''
 
   DMS_COLORS="$HOME/.config/niri/dms/colors.kdl"
   OUT_KDL="$HOME/.config/niri/dms/colorVariables.kdl"
+  OUT_SH="$HOME/.config/niri/dms/colorVariables.sh"
+  OUT_LUA="$HOME/.config/nvim/lua/configs/colourVariables.lua"
 
   extract_color() {
       local section="$1"
@@ -38,46 +40,37 @@ colors {
 EOF
   }
 
+  generate_sh() {
+      cat > "$OUT_SH" <<EOF
+    border_active   $(extract_color "border" "active-color")
+    border_inactive $(extract_color "border" "inactive-color")
+    focus_active    $(extract_color "focus-ring" "active-color")
+    focus_inactive  $(extract_color "focus-ring" "inactive-color")
+    tab_active      $(extract_color "tab-indicator" "active-color")
+    tab_inactive    $(extract_color "tab-indicator" "inactive-color")
+    shadow          $(extract_color "shadow" "color")
+    insert_hint     $(extract_color "insert-hint" "color")
+EOF
+  }
+
+generate_lua() {
+    cat > "$OUT_LUA" <<EOF
+return {
+    border_active   = $(extract_color "border" "active-color"),
+    border_inactive = $(extract_color "border" "inactive-color"),
+    border_urgent   = $(extract_color "border" "urgent-color"),
+    focus_active    = $(extract_color "focus-ring" "active-color"),
+    focus_inactive  = $(extract_color "focus-ring" "inactive-color"),
+    tab_active      = $(extract_color "tab-indicator" "active-color"),
+    tab_inactive    = $(extract_color "tab-indicator" "inactive-color"),
+    shadow          = $(extract_color "shadow" "color"),
+    insert_hint     = $(extract_color "insert-hint" "color"),
+}
+EOF
+}
   # Generate once at startup
+  generate_lua
+  generate_sh
   generate_kdl
 ''
-#
-# HOW TO USE, 
-# set up script above in nix, let into dms.nix
-# file is generated below at location set in script
-# set up conditional section in layout.nix for niri
-# include colourVariables.kdl
-# set new condition layouts with those colours in one branch
-# set old layout in other branch
-# set this script to spawn at start in autostart.nix
-#
-# Generated file: colorVariables.kdl
-# colors {
-#     border_active   "#eac300"
-#     border_inactive "#98907c"
-#     focus_active    "#eac300"
-#     focus_inactive  "#98907c"
-#     tab_active      "#eac300"
-#     tab_inactive    "#98907c"
-#     shadow          "#00000070"
-#     insert_hint     "#eac30080"
-# }
-# Each “variable” is just a key/value pair.
-# Think of it as a dictionary of colors.
-# Main config.kdl using it
-# include "dms/colorVariables.kdl"
-#
-# layout {
-#     border {
-#         active-color colors.border_active
-#         inactive-color colors.border_inactive
-#     }
-#     focus-ring {
-#         active-color colors.focus_active
-#         inactive-color colors.focus_inactive
-#     }
-#     tab-indicator {
-#         active-color colors.tab_active
-#         inactive-color colors.tab_inactive
-#     }
-# }
+
