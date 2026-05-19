@@ -4,7 +4,8 @@ let
   inherit (ctx)
   pkgs lib getExe getExe'
   bar terminal fileManager browser editor ide
-  ide-launcher wallpaper toggle-dropdown
+  ide-launcher wallpaper toggle-dropdown Overview
+  overviewCommands
   ;
 in
 ''
@@ -59,15 +60,26 @@ binds {
     Alt+F4 repeat=false { close-window; }
 
     // Focus movement
-    Mod+Left { focus-column-left; }
-    Mod+Right { focus-column-right; }
-    Mod+Up { focus-window-up; }
-    Mod+Down { focus-window-down; }
+ //   Mod+Left { focus-column-left; }
+ //   Mod+Right { focus-column-right; }
+ //   Mod+Up { focus-window-up; }
+ //   Mod+Down { focus-window-down; }
 
-    Mod+H { focus-column-left; }
-    Mod+L { focus-column-right; }
-    Mod+K { focus-window-up; }
-    Mod+J { focus-window-down; }
+ //   Mod+H { focus-column-left; }
+ //   Mod+L { focus-column-right; }
+ //   Mod+K { focus-window-up; }
+ //   Mod+J { focus-window-down; }
+
+    // Focus Movement (Overview: Niri Tweeks)
+    Mod+Left {spawn "${getExe overviewCommands}" "focus-column-left" "focus-column-left"; }
+    Mod+Right {spawn "${getExe overviewCommands}" "focus-column-right" "focus-column-right"; }
+    Mod+Up {spawn "${getExe overviewCommands}" "focus-column-up" "focus-column-up"; }
+    Mod+Down {spawn "${getExe overviewCommands}" "focus-column-down" "focus-column-down"; }
+
+    Mod+H {spawn "${getExe overviewCommands}" "focus-column-left" "focus-column-left"; }
+    Mod+L {spawn "${getExe overviewCommands}" "focus-column-right" "focus-column-right"; }
+    Mod+K {spawn "${getExe overviewCommands}" "focus-column-up" "focus-column-up"; }
+    Mod+J {spawn "${getExe overviewCommands}" "focus-column-down" "focus-column-down"; }
 
     // Move windows
     Mod+Shift+Left { move-column-left; }
@@ -87,26 +99,57 @@ binds {
     Mod+Ctrl+End { move-column-to-last; }
 
     // MONITORS
-    // Mod+Shift+Left { focus-monitor-left; }
-    // Mod+Shift+Right { focus-monitor-right; }
-    // Mod+Shift+Up { focus-monitor-up; }
-    // Mod+Shift+Down { focus-monitor-down; }
 
-    // Mod+Shift+H { focus-monitor-left; }
-    // Mod+Shift+L { focus-monitor-right; }
-    // Mod+Shift+K { focus-monitor-up; }
-    // Mod+Shift+J { focus-monitor-down; }
+      // Move Monitor Focus
+    Mod+Alt+Left { focus-monitor-left; }
+    Mod+Alt+Right { focus-monitor-right; }
+    Mod+Alt+Up { focus-monitor-up; }
+    Mod+Alt+Down { focus-monitor-down; }
 
-    // Mod+Shift+Ctrl+Left { move-column-to-monitor-left; }
-    // Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
-    // Mod+Shift+Ctrl+Up { move-column-to-monitor-up; }
-    // Mod+Shift+Ctrl+Down { move-column-to-monitor-down; }
+    Mod+Alt+H { focus-monitor-left; }
+    Mod+Alt+L { focus-monitor-right; }
+    Mod+Alt+K { focus-monitor-up; }
+    Mod+Alt+J { focus-monitor-down; }
+
+      // Move Column to Monitor
+    Mod+Alt+Shift+Left { move-column-to-monitor-left; }
+    Mod+Alt+Shift+Right { move-column-to-monitor-right; }
+    Mod+Alt+Shift+Up { move-column-to-monitor-up; }
+    Mod+Alt+Shift+Down { move-column-to-monitor-down; }
+
+    Mod+Alt+Shift+H { move-column-to-monitor-left; }
+    Mod+Alt+Shift+L { move-column-to-monitor-right; }
+    Mod+Alt+Shift+K { move-column-to-monitor-up; }
+    Mod+Alt+Shift+J { move-column-to-monitor-down; }
+
+    Mod+Alt+Shift+1 { move-column-to-monitor "one"; }
+    Mod+Alt+Shift+2 { move-column-to-monitor "two"; }
+    Mod+Alt+Shift+3 { move-column-to-monitor "three"; }
+    Mod+Alt+Shift+4 { move-column-to-monitor "four"; }
+    Mod+Alt+Shift+5 { move-column-to-monitor "five"Move; }
+
+      // Move Workspace to Monitor
+    Mod+Alt+Ctrl+Left { move-workspace-to-monitor-left; }
+    Mod+Alt+Ctrl+Right { move-workspace-to-monitor-right; }
+    Mod+Alt+Ctrl+Up { move-workspace-to-monitor-up; }
+    Mod+Alt+Ctrl+Down { move-workspace-to-monitor-down; }
+
+    Mod+Alt+Ctrl+H { move-workspace-to-monitor-left; }
+    Mod+Alt+Ctrl+L { move-workspace-to-monitor-right; }
+    Mod+Alt+Ctrl+K { move-workspace-to-monitor-up; }
+    Mod+Alt+Ctrl+J { move-workspace-to-monitor-down; }
+
+    Mod+Alt+Ctrl+1 { move-workspace-to-monitor "one"; }
+    Mod+Alt+Ctrl+2 { move-workspace-to-monitor "two"; }
+    Mod+Alt+Ctrl+3 { move-workspace-to-monitor "three"; }
+    Mod+Alt+Ctrl+4 { move-workspace-to-monitor "four"; }
+    Mod+Alt+Ctrl+5 { move-workspace-to-monitor "five"; }
 
     // WORKSPACES
     Mod+Page_Down { focus-workspace-down; }
     Mod+Page_Up { focus-workspace-up; }
-    Mod+Ctrl+Up { focus-workspace-down; }
-    Mod+Ctrl+Down { focus-workspace-up; }
+    Mod+Ctrl+Down { focus-workspace-down; }
+    Mod+Ctrl+Up { focus-workspace-up; }
     Mod+Ctrl+J { focus-workspace-down; }
     Mod+Ctrl+K { focus-workspace-up; }
 

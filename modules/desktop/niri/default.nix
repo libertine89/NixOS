@@ -26,13 +26,15 @@ let
   toggle-dropdown = pkgs.callPackage ../scripts/niriscripts/toggle-dropdown.nix { };
   colourVariables = pkgs.callPackage ../scripts/niriscripts/colourVariables.nix { };
   windowBehaviour = pkgs.callPackage ../scripts/niriscripts/window-behaviour.nix { };
+  overviewCommands = pkgs.callPackage ../scripts/niriscripts/overview-commands.nix { };
 
   ctx = {
     inherit pkgs lib getExe getExe' ide
     editor browser terminal fileManager bar
-    windowTheme kbdLayout kbdVariant defaultWallpaper windowBehaviour;
+    windowTheme kbdLayout kbdVariant defaultWallpaper;
 
-    inherit ide-launcher wallpaper toggle-dropdown colourVariables;
+    inherit ide-launcher wallpaper toggle-dropdown
+    colourVariables windowBehaviour overviewCommands;
     }
     // lib.optionalAttrs (bar == "dms-shell") { inherit dmsWrapper; };
 in

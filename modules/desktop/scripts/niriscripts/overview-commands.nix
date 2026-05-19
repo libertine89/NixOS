@@ -1,6 +1,6 @@
 { pkgs, ... }:
 
-pkgs.WriteShellScriptBin "overview-commands" ''
+pkgs.writeShellScriptBin "overview-commands" ''
   #!/bin/bash
 
   # Use: niri_overview_bind.sh 'command with overview open' 'command with overview closed'
