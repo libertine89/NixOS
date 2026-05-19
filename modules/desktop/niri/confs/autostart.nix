@@ -3,17 +3,18 @@
 let
   inherit (ctx)
   pkgs lib getExe
-  bar wallpaper;
+  bar wallpaper colourVariables;
 
   dmsWrapper = ctx.dmsWrapper or null;
-in 
+in
 ''
   ${lib.optionalString (dmsWrapper != null) ''
     spawn-at-startup "${lib.getExe dmsWrapper}"
+    spawn-at-startup "${lib.getExe colourVariables}"
   ''}
   ${lib.optionalString (bar != "dms-shell") ''
     spawn-at-startup "${bar}"
-    spawn-at-startup "${lib.getExe wallpaper}" 
+    spawn-at-startup "${lib.getExe wallpaper}"
   ''}
 
   // spawn-at-startup "swaylock"

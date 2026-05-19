@@ -4,7 +4,7 @@
   pkgs,
   inputs,
   dmsWrapper,
-  ... 
+  ...
 }:
 
 let
@@ -24,16 +24,18 @@ let
   ide-launcher = pkgs.callPackage ../scripts/niriscripts/ide-launcher.nix { };
   wallpaper =  pkgs.callPackage ../scripts/niriscripts/wallpaper.nix { inherit defaultWallpaper; };
   toggle-dropdown = pkgs.callPackage ../scripts/niriscripts/toggle-dropdown.nix { };
+  colourVariables = pkgs.callPackage ../scripts/niriscripts/colourVariables.nix { };
+  windowBehaviour = pkgs.callPackage ../scripts/niriscripts/window-behaviour.nix { };
 
   ctx = {
     inherit pkgs lib getExe getExe' ide
-    editor browser terminal fileManager bar 
-    windowTheme kbdLayout kbdVariant defaultWallpaper;
-  
-    inherit ide-launcher wallpaper toggle-dropdown;
+    editor browser terminal fileManager bar
+    windowTheme kbdLayout kbdVariant defaultWallpaper windowBehaviour;
+
+    inherit ide-launcher wallpaper toggle-dropdown colourVariables;
     }
     // lib.optionalAttrs (bar == "dms-shell") { inherit dmsWrapper; };
-in 
+in
 {
   imports = [
    ../../themes/${windowTheme}
@@ -41,7 +43,7 @@ in
    ../../utilities/rofi
   ]
   ++ lib.optional (bar != "hyprpanel" && bar != "dms-shell") ../../utilities/swaync;
-  
+
   # ─────────────────────────────
   # Niri compositor
   # ─────────────────────────────
@@ -49,6 +51,7 @@ in
     niri
     kitty
     yazi
+    python3
   ];
 
   # ─────────────────────────────
@@ -68,7 +71,7 @@ in
   # Wayland essentials
   # ─────────────────────────────
   services.dbus.enable = true;
-  
+
   xdg.portal = {
     enable = true;
 
@@ -97,9 +100,9 @@ in
         kitty
         yazi
       ];
-      
+
       # ─────────────────────────────
-      # Set Wallpaper 
+      # Set Wallpaper
       # ─────────────────────────────
       services.awww.enable = true;
 
