@@ -42,9 +42,28 @@ map("i", "jk", "<ESC>")
       vim.cmd("bp | bd #")
     end, { desc = "Close current buffer (Ctrl-Q)" })
 
-  -- Normal mode line navigation
-    map("n", "<C-b>", "0", { desc = "Go to start of line" })
-    map("n", "<C-e>", "$", { desc = "Go to end of line" })
+  -- Unified line navigation keybindings for NVChad
+    local map = vim.api.nvim_set_keymap
+    local opts = { noremap = true, silent = true }
+
+  -- Normal mode
+    map("n", "<C-b>", "0", opts)   -- Go to start of line
+    map("n", "<C-e>", "$", opts)   -- Go to end of line
+
+  -- Insert mode
+    map("i", "<C-b>", "<ESC>I", opts)  -- Go to start of line and stay in insert mode
+    map("i", "<C-e>", "<End>", opts)   -- Go to end of line in insert mode
+
+  -- Visual modes: character-wise, line-wise, block-wise
+  -- Using 'x' covers character-wise ('v') and select mode, and we add line/block separately
+    map("v", "<C-b>", "0", opts)      -- character-wise visual
+    map("v", "<C-e>", "$", opts)
+
+    map("V", "<C-b>", "0", opts)      -- line-wise visual (Shift+v)
+    map("V", "<C-e>", "$", opts)
+
+    map("<C-v>", "<C-b>", "0", opts)  -- block-wise visual (Ctrl+v)
+    map("<C-v>", "<C-e>", "$", opts)
 
   -- Insert mode paste
     map("i", "<C-p>", "<C-r>+", { desc = "Paste from clipboard" })

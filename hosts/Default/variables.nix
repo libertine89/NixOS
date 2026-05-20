@@ -10,7 +10,7 @@
   windowTheme = "Catppuccin"; #Catppuccin, Dracula, rose-pine
   sddmTheme = "black_hole"; # astronaut, black_hole, purple_leaves, jake_the_dog, hyprland_kath
   defaultWallpaper = "abstract101.png"; # Change with SUPER + SHIFT + W (Hyprland)
-  hyprlockWallpaper = "abstract101.png"; 
+  hyprlockWallpaper = "abstract101.png";
 
   # Default Applications
   terminal = "kitty"; # kitty, alacritty
@@ -19,6 +19,7 @@
   browser = "firefox"; # zen-beta, firefox, floorp
   fileManager = "yazi"; # yazi, lf, thunar
   shell = "zsh"; # zsh, bash
+  shellPrompt = "starship"; # oh-my-posh, starship
   games = true; # Enable/Disable gaming module
 
   # Hardware
