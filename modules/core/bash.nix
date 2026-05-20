@@ -1,4 +1,4 @@
-{ self, pkgs, ... }:
+{ self, lib, pkgs, ... }:
 {
   home-manager.sharedModules = [
     (

@@ -1,5 +1,6 @@
 {
   self,
+  lib,
   pkgs,
   ...
 }:
@@ -23,6 +24,7 @@
             }
           ];
           initContent = ''
+
             fpath=(${pkgs.nix-zsh-completions}/share/zsh/site-functions $fpath)
 
             # Source zsh-defer first, then use it for lazy loading
@@ -141,7 +143,7 @@
                 do
                   echo "$N" |  figlet -c | lolcat &&  sleep 1
               done
-            '';            
+            '';
             c = "clear";
             cls = "clear";
             tml = "tmux list-sessions";

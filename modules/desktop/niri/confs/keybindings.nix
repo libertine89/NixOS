@@ -126,7 +126,7 @@ binds {
     Mod+Alt+Shift+2 { move-column-to-monitor "two"; }
     Mod+Alt+Shift+3 { move-column-to-monitor "three"; }
     Mod+Alt+Shift+4 { move-column-to-monitor "four"; }
-    Mod+Alt+Shift+5 { move-column-to-monitor "five"Move; }
+    Mod+Alt+Shift+5 { move-column-to-monitor "five"; }
 
       // Move Workspace to Monitor
     Mod+Alt+Ctrl+Left { move-workspace-to-monitor-left; }

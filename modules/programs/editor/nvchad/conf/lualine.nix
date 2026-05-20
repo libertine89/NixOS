@@ -10,9 +10,9 @@ local C = {
   -- =========================================================
   -- Background colours for Bars
   -- =========================================================
-  bg0 = DMSColors.border_active or "#0A0373",
-  bg1 = DMSColors.border_urgent or "#1C1690",
-  bg2 = DMSColors.border_inactive or "#3A36B5",
+  bg0 = DMSColors.darkOnPrimary or "#0A0373",
+  bg1 = DMSColors.darkOnPrimaryFixedVariant or "#1C1690",
+  bg2 = DMSColors.darkInversePrimary or "#3A36B5",
   bg3 = "#2A2680",
 
   bg_base = "#555555",
