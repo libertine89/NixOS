@@ -6,6 +6,7 @@ in
   imports = [
     ./hardware-configuration.nix
     ./host-packages.nix
+    ./users.nix
 
     # Core Modules (Don't change unless you know what you're doing)
     ../../modules/scripts
@@ -27,8 +28,6 @@ in
     ../../modules/core/system.nix
     ../../modules/core/users.nix
     # ../../modules/core/flatpak.nix
-    # ../../modules/core/virtualisation.nix
-    # ../../modules/core/dlna.nix
 
     # Optional
     ../../modules/hardware/drives # Automatically mount extra external/internal drives
@@ -46,9 +45,6 @@ in
     ../../modules/programs/cli/btop
     ../../modules/programs/media/discord
     ../../modules/programs/media/spicetify
-    # ../../modules/programs/media/youtube-music
-    # ../../modules/programs/media/thunderbird
-    # ../../modules/programs/media/obs-studio
     ../../modules/programs/media/mpv
     ../../modules/programs/misc/tlp
     ../../modules/programs/misc/lact # GPU fan, clock and power configuration
