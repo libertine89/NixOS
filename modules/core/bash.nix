@@ -13,7 +13,10 @@
             if command -v starship &>/dev/null; then
               eval "$(starship init bash)"
             fi
-
+            # Oh-My-Posh Prompt
+            if command -v oh-my-posh &>/dev/null; then
+              eval "$(oh-my-posh init bash --config ~/.config/oh-my-posh/default.omp.json)"
+            fi
             # Direnv Hook
             if command -v direnv &>/dev/null; then
               eval "$(direnv hook bash)"

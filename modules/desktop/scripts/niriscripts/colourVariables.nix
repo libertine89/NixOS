@@ -11,6 +11,7 @@ pkgs.writeShellScriptBin "generate-color-variables" ''
   OUT_KDL="$HOME/.config/niri/dms/colourVariables.kdl"
   OUT_SH="$HOME/.config/niri/dms/colourVariables.sh"
   OUT_LUA="$HOME/.config/nvim/lua/configs/colourVariables.lua"
+  OUT_YAML="$HOME/.config/oh-my-posh/colourVariables.omp.yaml"
 
   extract_color() {
       local path="$1"
@@ -383,6 +384,188 @@ generate_sh() {
 EOF
 }
 
+generate_omp_yaml() {
+      cat > "$OUT_YAML" <<EOF
+version: 4
+blocks:
+  - type: prompt
+    alignment: left
+    segments:
+      - type: text
+        template: " "   # minimal dummy segment
+        foreground: "#ffffff"
+palette:
+  # Dark Theme Colors
+  dark-background: "$(extract_color '.colors.dark.background')"
+  dark-error: "$(extract_color '.colors.dark.error')"
+  dark-error_container: "$(extract_color '.colors.dark.error_container')"
+  dark-inverse_on_surface: "$(extract_color '.colors.dark.inverse_on_surface')"
+  dark-inverse_primary: "$(extract_color '.colors.dark.inverse_primary')"
+  dark-inverse_surface: "$(extract_color '.colors.dark.inverse_surface')"
+  dark-on_background: "$(extract_color '.colors.dark.on_background')"
+  dark-on_error: "$(extract_color '.colors.dark.on_error')"
+  dark-on_error_container: "$(extract_color '.colors.dark.on_error_container')"
+  dark-on_primary: "$(extract_color '.colors.dark.on_primary')"
+  dark-on_primary_container: "$(extract_color '.colors.dark.on_primary_container')"
+  dark-on_primary_fixed: "$(extract_color '.colors.dark.on_primary_fixed')"
+  dark-on_primary_fixed_variant: "$(extract_color '.colors.dark.on_primary_fixed_variant')"
+  dark-on_secondary: "$(extract_color '.colors.dark.on_secondary')"
+  dark-on_secondary_container: "$(extract_color '.colors.dark.on_secondary_container')"
+  dark-on_secondary_fixed: "$(extract_color '.colors.dark.on_secondary_fixed')"
+  dark-on_secondary_fixed_variant: "$(extract_color '.colors.dark.on_secondary_fixed_variant')"
+  dark-on_surface: "$(extract_color '.colors.dark.on_surface')"
+  dark-on_surface_variant: "$(extract_color '.colors.dark.on_surface_variant')"
+  dark-on_tertiary: "$(extract_color '.colors.dark.on_tertiary')"
+  dark-on_tertiary_container: "$(extract_color '.colors.dark.on_tertiary_container')"
+  dark-on_tertiary_fixed: "$(extract_color '.colors.dark.on_tertiary_fixed')"
+  dark-on_tertiary_fixed_variant: "$(extract_color '.colors.dark.on_tertiary_fixed_variant')"
+  dark-outline: "$(extract_color '.colors.dark.outline')"
+  dark-outline_variant: "$(extract_color '.colors.dark.outline_variant')"
+  dark-primary: "$(extract_color '.colors.dark.primary')"
+  dark-primary_container: "$(extract_color '.colors.dark.primary_container')"
+  dark-primary_fixed: "$(extract_color '.colors.dark.primary_fixed')"
+  dark-primary_fixed_dim: "$(extract_color '.colors.dark.primary_fixed_dim')"
+  dark-scrim: "$(extract_color '.colors.dark.scrim')"
+  dark-secondary: "$(extract_color '.colors.dark.secondary')"
+  dark-secondary_container: "$(extract_color '.colors.dark.secondary_container')"
+  dark-secondary_fixed: "$(extract_color '.colors.dark.secondary_fixed')"
+  dark-secondary_fixed_dim: "$(extract_color '.colors.dark.secondary_fixed_dim')"
+  dark-shadow: "$(extract_color '.colors.dark.shadow')"
+  dark-source_color: "$(extract_color '.colors.dark.source_color')"
+  dark-surface: "$(extract_color '.colors.dark.surface')"
+  dark-surface_bright: "$(extract_color '.colors.dark.surface_bright')"
+  dark-surface_container: "$(extract_color '.colors.dark.surface_container')"
+  dark-surface_container_high: "$(extract_color '.colors.dark.surface_container_high')"
+  dark-surface_container_highest: "$(extract_color '.colors.dark.surface_container_highest')"
+  dark-surface_container_low: "$(extract_color '.colors.dark.surface_container_low')"
+  dark-surface_container_lowest: "$(extract_color '.colors.dark.surface_container_lowest')"
+  dark-surface_dim: "$(extract_color '.colors.dark.surface_dim')"
+  dark-surface_tint: "$(extract_color '.colors.dark.surface_tint')"
+  dark-surface_variant: "$(extract_color '.colors.dark.surface_variant')"
+  dark-tertiary: "$(extract_color '.colors.dark.tertiary')"
+  dark-tertiary_container: "$(extract_color '.colors.dark.tertiary_container')"
+  dark-tertiary_fixed: "$(extract_color '.colors.dark.tertiary_fixed')"
+  dark-tertiary_fixed_dim: "$(extract_color '.colors.dark.tertiary_fixed_dim')"
+
+    # Light Theme Colors
+  light-background: "$(extract_color '.colors.light.background')"
+  light-error: "$(extract_color '.colors.light.error')"
+  light-error_container: "$(extract_color '.colors.light.error_container')"
+  light-inverse_on_surface: "$(extract_color '.colors.light.inverse_on_surface')"
+  light-inverse_primary: "$(extract_color '.colors.light.inverse_primary')"
+  light-inverse_surface: "$(extract_color '.colors.light.inverse_surface')"
+  light-on_background: "$(extract_color '.colors.light.on_background')"
+  light-on_error: "$(extract_color '.colors.light.on_error')"
+  light-on_error_container: "$(extract_color '.colors.light.on_error_container')"
+  light-on_primary: "$(extract_color '.colors.light.on_primary')"
+  light-on_primary_container: "$(extract_color '.colors.light.on_primary_container')"
+  light-on_primary_fixed: "$(extract_color '.colors.light.on_primary_fixed')"
+  light-on_primary_fixed_variant: "$(extract_color '.colors.light.on_primary_fixed_variant')"
+  light-on_secondary: "$(extract_color '.colors.light.on_secondary')"
+  light-on_secondary_container: "$(extract_color '.colors.light.on_secondary_container')"
+  light-on_secondary_fixed: "$(extract_color '.colors.light.on_secondary_fixed')"
+  light-on_secondary_fixed_variant: "$(extract_color '.colors.light.on_secondary_fixed_variant')"
+  light-on_surface: "$(extract_color '.colors.light.on_surface')"
+  light-on_surface_variant: "$(extract_color '.colors.light.on_surface_variant')"
+  light-on_tertiary: "$(extract_color '.colors.light.on_tertiary')"
+  light-on_tertiary_container: "$(extract_color '.colors.light.on_tertiary_container')"
+  light-on_tertiary_fixed: "$(extract_color '.colors.light.on_tertiary_fixed')"
+  light-on_tertiary_fixed_variant: "$(extract_color '.colors.light.on_tertiary_fixed_variant')"
+  light-outline: "$(extract_color '.colors.light.outline')"
+  light-outline_variant: "$(extract_color '.colors.light.outline_variant')"
+  light-primary: "$(extract_color '.colors.light.primary')"
+  light-primary_container: "$(extract_color '.colors.light.primary_container')"
+  light-primary_fixed: "$(extract_color '.colors.light.primary_fixed')"
+  light-primary_fixed_dim: "$(extract_color '.colors.light.primary_fixed_dim')"
+  light-scrim: "$(extract_color '.colors.light.scrim')"
+  light-secondary: "$(extract_color '.colors.light.secondary')"
+  light-secondary_container: "$(extract_color '.colors.light.secondary_container')"
+  light-secondary_fixed: "$(extract_color '.colors.light.secondary_fixed')"
+  light-secondary_fixed_dim: "$(extract_color '.colors.light.secondary_fixed_dim')"
+  light-shadow: "$(extract_color '.colors.light.shadow')"
+  light-source_color: "$(extract_color '.colors.light.source_color')"
+  light-surface: "$(extract_color '.colors.light.surface')"
+  light-surface_bright: "$(extract_color '.colors.light.surface_bright')"
+  light-surface_container: "$(extract_color '.colors.light.surface_container')"
+  light-surface_container_high: "$(extract_color '.colors.light.surface_container_high')"
+  light-surface_container_highest: "$(extract_color '.colors.light.surface_container_highest')"
+  light-surface_container_low: "$(extract_color '.colors.light.surface_container_low')"
+  light-surface_container_lowest: "$(extract_color '.colors.light.surface_container_lowest')"
+  light-surface_dim: "$(extract_color '.colors.light.surface_dim')"
+  light-surface_tint: "$(extract_color '.colors.light.surface_tint')"
+  light-surface_variant: "$(extract_color '.colors.light.surface_variant')"
+  light-tertiary: "$(extract_color '.colors.light.tertiary')"
+  light-tertiary_container: "$(extract_color '.colors.light.tertiary_container')"
+  light-tertiary_fixed: "$(extract_color '.colors.light.tertiary_fixed')"
+  light-tertiary_fixed_dim: "$(extract_color '.colors.light.tertiary_fixed_dim')"
+
+    # Dank16 Colors
+  color0Default: "$(extract_color '.dank16.color0.default')"
+  color0Light: "$(extract_color '.dank16.color0.light')"
+  color0Dark: "$(extract_color '.dank16.color0.dark')"
+
+  color1Default: "$(extract_color '.dank16.color1.default')"
+  color1Light: "$(extract_color '.dank16.color1.light')"
+  color1Dark: "$(extract_color '.dank16.color1.dark')"
+
+  color2Default: "$(extract_color '.dank16.color2.default')"
+  color2Light: "$(extract_color '.dank16.color2.light')"
+  color2Dark: "$(extract_color '.dank16.color2.dark')"
+
+  color3Default: "$(extract_color '.dank16.color3.default')"
+  color3Light: "$(extract_color '.dank16.color3.light')"
+  color3Dark: "$(extract_color '.dank16.color3.dark')"
+
+  color4Default: "$(extract_color '.dank16.color4.default')"
+  color4Light: "$(extract_color '.dank16.color4.light')"
+  color4Dark: "$(extract_color '.dank16.color4.dark')"
+
+  color5Default: "$(extract_color '.dank16.color5.default')"
+  color5Light: "$(extract_color '.dank16.color5.light')"
+  color5Dark: "$(extract_color '.dank16.color5.dark')"
+
+  color6Default: "$(extract_color '.dank16.color6.default')"
+  color6Light: "$(extract_color '.dank16.color6.light')"
+  color6Dark: "$(extract_color '.dank16.color6.dark')"
+
+  color7Default: "$(extract_color '.dank16.color7.default')"
+  color7Light: "$(extract_color '.dank16.color7.light')"
+  color7Dark: "$(extract_color '.dank16.color7.dark')"
+
+  color8Default: "$(extract_color '.dank16.color8.default')"
+  color8Light: "$(extract_color '.dank16.color8.light')"
+  color8Dark: "$(extract_color '.dank16.color8.dark')"
+
+  color9Default: "$(extract_color '.dank16.color9.default')"
+  color9Light: "$(extract_color '.dank16.color9.light')"
+  color9Dark: "$(extract_color '.dank16.color9.dark')"
+
+  color10Default: "$(extract_color '.dank16.color10.default')"
+  color10Light: "$(extract_color '.dank16.color10.light')"
+  color10Dark: "$(extract_color '.dank16.color10.dark')"
+
+  color11Default: "$(extract_color '.dank16.color11.default')"
+  color11Light: "$(extract_color '.dank16.color11.light')"
+  color11Dark: "$(extract_color '.dank16.color11.dark')"
+
+  color12Default: "$(extract_color '.dank16.color12.default')"
+  color12Light: "$(extract_color '.dank16.color12.light')"
+  color12Dark: "$(extract_color '.dank16.color12.dark')"
+
+  color13Default: "$(extract_color '.dank16.color13.default')"
+  color13Light: "$(extract_color '.dank16.color13.light')"
+  color13Dark: "$(extract_color '.dank16.color13.dark')"
+
+  color14Default: "$(extract_color '.dank16.color14.default')"
+  color14Light: "$(extract_color '.dank16.color14.light')"
+  color14Dark: "$(extract_color '.dank16.color14.dark')"
+
+  color15Default: "$(extract_color '.dank16.color15.default')"
+  color15Light: "$(extract_color '.dank16.color15.light')"
+  color15Dark: "$(extract_color '.dank16.color15.dark')"
+EOF
+}
+
 generate_lua() {
     cat > "$OUT_LUA" <<EOF
 return {
@@ -570,5 +753,6 @@ EOF
   # Generate once at startup
   generate_lua
   generate_sh
+  generate_omp_yaml
   generate_kdl
 ''

@@ -1,3 +1,4 @@
+
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "version": 4,
@@ -18,7 +19,7 @@
           "type": "os",
           "style": "plain",
           "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}}  ",
-          "foreground": "p:text-light",
+          "foreground": "#FFFFFF",
           "background": "#0A0373"
         },
         {
@@ -52,7 +53,7 @@
         {
           "type": "path",
           "style": "plain",
-          "foreground": "p:text-light",
+          "foreground": "#FFFFFF",
           "background": "#3A36B5",
           "template": " {{ if eq .Path \"~\" }} Home{{ else if eq .Path \"/\" }}󰌽 Root{{ else }}{{ .Path }}{{ end }} ",
           "options": {
@@ -104,7 +105,7 @@
         {
           "type": "git",
           "style": "plain",
-          "foreground": "p:text-light",
+          "foreground": "#FFFFFF",
           "background": "#3A36B5",
           "template": " {{ .HEAD }} {{ if gt .Ahead 0 }} ↑{{ .Ahead }} {{ end }}{{ if gt .Behind 0 }} ↓{{ .Behind }} {{ end }}{{ if .Working.Changed }} ! {{ end }}{{ if .Staging.Changed }} + {{ end }}",
           "options": {
@@ -126,7 +127,7 @@
           "options": {
             "display_mode": "files"
           },
-          "foreground": "p:text-light",
+          "foreground": "#FFFFFF",
           "background": "#1C1970"
         },
         {
@@ -140,7 +141,7 @@
             "duration": "168h",
             "strategy": "folder"
           },
-          "foreground": "p:text-light",
+          "foreground": "#FFFFFF",
           "background": "#1C1970"
         },
         {
@@ -154,7 +155,7 @@
             "duration": "168h",
             "strategy": "folder"
           },
-          "foreground": "p:text-light",
+          "foreground": "#FFFFFF",
           "background": "#1C1970"
         },
         {
@@ -168,7 +169,7 @@
             "duration": "168h",
             "strategy": "folder"
           },
-          "foreground": "p:text-light",
+          "foreground": "#FFFFFF",
           "background": "#1C1970"
         },
         {
@@ -182,7 +183,7 @@
             "duration": "168h",
             "strategy": "folder"
           },
-          "foreground": "p:text-light",
+          "foreground": "#FFFFFF",
           "background": "#1C1970"
         },
         {
@@ -224,14 +225,14 @@
           "type": "text",
           "style": "plain",
           "template": "❯",
-          "foreground": "p:text"
+          "foreground": "#FFFFFF"
         }
       ]
     }
   ],
   "palette": {
-    "text-light": "#ffffff",
-    "path-bg": "#61AFEF",
-    "git-bg": "#98C379"
+    "primary": "#FFFFFF",
+    "secondary": "#1C1690",
+    "accent": "#0A0373"
   }
 }
