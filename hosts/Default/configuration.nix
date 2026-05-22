@@ -6,7 +6,7 @@ in
   imports = [
     ./hardware-configuration.nix
     ./host-packages.nix
-
+    ./users.nix
     # Core Modules (Don't change unless you know what you're doing)
     ../../modules/scripts
     ../../modules/core/boot.nix
