@@ -26,6 +26,7 @@ in
     ../../modules/core/system.nix
     ../../modules/core/users.nix
     ../../modules/core/${vars.shellPrompt}/${vars.shellPrompt}.nix
+    ../../modules/core/symlinks.nix
     # ../../modules/core/flatpak.nix
 
     # Optional
