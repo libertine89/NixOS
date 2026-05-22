@@ -2,6 +2,7 @@
   pkgs,
   inputs,
   host,
+  config,
   ...
 }:
 let
@@ -42,6 +43,8 @@ in
           TERMINAL = "${terminal}";
         };
       };
+      home.file.".config/starship.toml".source =
+        config.lib.file.mkOutOfStoreSymlink ./starship/starship.toml;
     };
   };
   users = {

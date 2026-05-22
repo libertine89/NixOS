@@ -6,14 +6,12 @@ in
   imports = [
     ./hardware-configuration.nix
     ./host-packages.nix
-    ./users.nix
 
     # Core Modules (Don't change unless you know what you're doing)
     ../../modules/scripts
     ../../modules/core/boot.nix
     ../../modules/core/bash.nix
     ../../modules/core/zsh.nix
-    ../../modules/core/${vars.shellPrompt}.nix
     ../../modules/core/fonts.nix
     ../../modules/core/hardware.nix
     ../../modules/core/network.nix
@@ -27,6 +25,7 @@ in
     ../../modules/core/syncthing.nix
     ../../modules/core/system.nix
     ../../modules/core/users.nix
+    ../../modules/core/${vars.shellPrompt}/${vars.shellPrompt}.nix
     # ../../modules/core/flatpak.nix
 
     # Optional
