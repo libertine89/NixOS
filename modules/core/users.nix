@@ -2,6 +2,7 @@
   pkgs,
   inputs,
   host,
+  lib,
   config,
   ...
 }:
@@ -22,30 +23,7 @@ in
     useUserPackages = true;
     overwriteBackup = true;
     backupFileExtension = "backup";
-    users.${username} = {
-      # Let Home Manager install and manage itself.
-      programs.home-manager.enable = true;
-      xdg.enable = true;
-
-      home = {
-        username = "${username}";
-        homeDirectory = "/home/${username}";
-        stateVersion = "26.05"; # Do not change!
-        sessionVariables = {
-          EDITOR =
-            if (editor == "nixvim" || editor == "neovim" || editor == "nvchad") then
-              "nvim"
-            else if editor == "vscode" then
-              "code"
-            else
-              "nano";
-          BROWSER = "${browser}";
-          TERMINAL = "${terminal}";
-        };
-      };
-      home.file.".config/starship.toml".source =
-        config.lib.file.mkOutOfStoreSymlink ./starship/starship.toml;
-    };
+    users.${username} = import ../../users/nixius.nix;
   };
   users = {
     mutableUsers = true;
