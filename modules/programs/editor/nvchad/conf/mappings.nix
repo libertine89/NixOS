@@ -59,8 +59,8 @@ map("i", "jk", "<ESC>")
     map("v", "<C-b>", "0", opts)      -- character-wise visual
     map("v", "<C-e>", "$", opts)
 
-    map("V", "<C-b>", "0", opts)      -- line-wise visual (Shift+v)
-    map("V", "<C-e>", "$", opts)
+    map("x", "<C-b>", "0", opts)      -- line-wise visual (Shift+v)
+    map("x", "<C-e>", "$", opts)
 
     map("<C-v>", "<C-b>", "0", opts)  -- block-wise visual (Ctrl+v)
     map("<C-v>", "<C-e>", "$", opts)

@@ -24,7 +24,8 @@ let
   ide-launcher = pkgs.callPackage ../scripts/niriscripts/ide-launcher.nix { };
   wallpaper =  pkgs.callPackage ../scripts/niriscripts/wallpaper.nix { inherit defaultWallpaper; };
   toggle-dropdown = pkgs.callPackage ../scripts/niriscripts/toggle-dropdown.nix { };
-  colourVariables = pkgs.callPackage ../scripts/niriscripts/colourVariables.nix { };
+  colourVariablesNvim = pkgs.callPackage ../scripts/niriscripts/colourVariablesNvim.nix { };
+  colourVariablesPrompt = pkgs.callPackage ../scripts/niriscripts/colourVariablesPrompt.nix { };
   windowBehaviour = pkgs.callPackage ../scripts/niriscripts/window-behaviour.nix { };
   overviewCommands = pkgs.callPackage ../scripts/niriscripts/overview-commands.nix { };
 
@@ -34,7 +35,7 @@ let
     windowTheme kbdLayout kbdVariant defaultWallpaper;
 
     inherit ide-launcher wallpaper toggle-dropdown
-    colourVariables windowBehaviour overviewCommands;
+    colourVariablesNvim colourVariablesPrompt windowBehaviour overviewCommands;
     }
     // lib.optionalAttrs (bar == "dms-shell") { inherit dmsWrapper; };
 in

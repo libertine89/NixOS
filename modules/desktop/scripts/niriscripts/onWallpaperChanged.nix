@@ -4,7 +4,7 @@ let
   overview-wallpaper = pkgs.callPackage ./overview-wallpaper.nix {};
   overview-wallpaper-bin = pkgs.lib.getExe overview-wallpaper;
   generate-colour-variables-nvim = pkgs.callPackage ./colourVariablesNvim.nix {};
-  generate-colour-variables-nvim-bin = pkgs.lib.getExe generate-colour-variables;
+  generate-colour-variables-nvim-bin = pkgs.lib.getExe generate-colour-variables-nvim;
   generate-colour-variables-prompt = pkgs.callPackage ./colourVariablesPrompt.nix {};
   generate-colour-variables-prompt-bin = pkgs.lib.getExe generate-colour-variables-prompt;
 in
