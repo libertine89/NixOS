@@ -1,4 +1,3 @@
-
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "version": 4,
@@ -12,7 +11,7 @@
           "type": "text",
           "style": "plain",
            "template": "\u2591\u2592\u2593",
-          "foreground": "#0A0373",
+          "foreground": "p:darkOnPrimary",
           "background": "#00000000"
         },
         {
@@ -20,13 +19,13 @@
           "style": "plain",
           "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}}  ",
           "foreground": "#FFFFFF",
-          "background": "#0A0373"
+          "background": "p:darkOnPrimary"
         },
         {
           "type": "text",
           "style": "plain",
           "template": "\ue0bc",
-          "foreground": "#0A0373",
+          "foreground": "p:darkOnPrimary",
           "background": "#FFFFFF"
         },
         {
@@ -34,27 +33,27 @@
           "style": "plain",
           "template": "\ue0bc",
           "foreground": "#FFFFFF",
-          "background": "#1C1690"
+          "background": "p:darkOnPrimaryFixedVariant"
         },
         {
           "type": "text",
           "style": "plain",
           "template": ",",
-          "foreground": "#1C1690",
-          "background": "#1C1690"
+          "foreground": "p:darkOnPrimaryFixedVariant",
+          "background": "p:darkOnPrimaryFixedVariant"
         },
         {
           "type": "text",
           "style": "plain",
           "template": "\ue0bc",
-          "foreground": "#1C1690",
-          "background": "#3A36B5"
+          "foreground": "p:darkOnPrimaryFixedVariant",
+          "background": "p:darkInversePrimary"
         },
         {
           "type": "path",
           "style": "plain",
           "foreground": "#FFFFFF",
-          "background": "#3A36B5",
+          "background": "p:darkInversePrimary",
           "template": " {{ if eq .Path \"~\" }} Home{{ else if eq .Path \"/\" }}󰌽 Root{{ else }}{{ .Path }}{{ end }} ",
           "options": {
             "style": "full",
@@ -79,7 +78,7 @@
           "type": "text",
           "style": "plain",
           "template": "",
-          "foreground": "#3A36B5",
+          "foreground": "p:darkInversePrimary",
           "background": "#00000000"
         }
       ]
@@ -92,21 +91,21 @@
           "type": "text",
           "style": "plain",
           "template": "",
-          "foreground": "#3A36B5",
+          "foreground": "p:darkInversePrimary",
           "background": "#00000000"
         },
         {
           "type": "text",
           "style": "plain",
           "template": "",
-          "foreground": "#3A36B5",
-          "background": "#3A36B5"
+          "foreground": "p:darkInversePrimary",
+          "background": "p:darkInversePrimary"
         },
         {
           "type": "git",
           "style": "plain",
           "foreground": "#FFFFFF",
-          "background": "#3A36B5",
+          "background": "p:darkInversePrimary",
           "template": " {{ .HEAD }} {{ if gt .Ahead 0 }} ↑{{ .Ahead }} {{ end }}{{ if gt .Behind 0 }} ↓{{ .Behind }} {{ end }}{{ if .Working.Changed }} ! {{ end }}{{ if .Staging.Changed }} + {{ end }}",
           "options": {
             "fetch_status": true,
@@ -117,8 +116,8 @@
           "type": "text",
           "style": "plain",
           "template": " ",
-          "foreground": "#3A36B5",
-          "background": "#1C1670"
+          "foreground": "p:darkInversePrimary",
+          "background": "p:darkOnPrimaryFixedVariant"
         },
         {
           "type": "go",
@@ -128,7 +127,7 @@
             "display_mode": "files"
           },
           "foreground": "#FFFFFF",
-          "background": "#1C1970"
+          "background": "p:darkOnPrimaryFixedVariant"
         },
         {
           "type": "lua",
@@ -142,7 +141,7 @@
             "strategy": "folder"
           },
           "foreground": "#FFFFFF",
-          "background": "#1C1970"
+          "background": "p:darkOnPrimaryFixedVariant"
         },
         {
           "type": "python",
@@ -156,7 +155,7 @@
             "strategy": "folder"
           },
           "foreground": "#FFFFFF",
-          "background": "#1C1970"
+          "background": "p:darkOnPrimaryFixedVariant"
         },
         {
           "type": "rust",
@@ -170,7 +169,7 @@
             "strategy": "folder"
           },
           "foreground": "#FFFFFF",
-          "background": "#1C1970"
+          "background": "p:darkOnPrimaryFixedVariant"
         },
         {
           "type": "node",
@@ -184,13 +183,13 @@
             "strategy": "folder"
           },
           "foreground": "#FFFFFF",
-          "background": "#1C1970"
+          "background": "p:darkOnPrimaryFixedVariant"
         },
         {
           "type": "text",
           "style": "plain",
           "template": "",
-          "foreground": "#1C1670",
+          "foreground": "p:darkOnPrimaryFixedVariant",
           "background": "#FFFFFF"
         },
         {
@@ -198,20 +197,20 @@
           "style": "plain",
           "template": "",
           "foreground": "#FFFFFF",
-          "background": "#020152"
+          "background": "p:darkOnPrimary"
         },
         {
           "type": "time",
           "style": "plain",
           "template": " \uf017 {{ .CurrentDate | date \"15:04\" }} ",
           "foreground": "#FFFFFF",
-          "background": "#020152"
+          "background": "p:darkOnPrimary"
         },
         {
           "type": "text",
           "style": "plain",
           "template": "\u2593\u2592\u2591",
-          "foreground": "#020152",
+          "foreground": "p:darkOnPrimary",
           "background": "#00000000"
         }
       ]
@@ -231,8 +230,9 @@
     }
   ],
   "palette": {
-    "primary": "#FFFFFF",
-    "secondary": "#1C1690",
-    "accent": "#0A0373"
+    "darkOnPrimary": "#0A0373",
+    "darkOnPrimaryFixedVariant": "#1C1690",
+    "darkInversePrimary": "#3A36B5"
   }
 }
+

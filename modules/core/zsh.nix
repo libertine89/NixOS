@@ -24,6 +24,11 @@
             }
           ];
           initContent = ''
+            if command -v starship >/dev/null 2>&1; then
+              eval "$(starship init zsh)"
+            elif command -v oh-my-posh >/dev/null 2>&1; then
+              eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/oh-my-posh.omp.json)"
+            fi
 
             fpath=(${pkgs.nix-zsh-completions}/share/zsh/site-functions $fpath)
 

@@ -10,7 +10,7 @@ pkgs.writeShellScriptBin "generate-color-variables-starship" ''
 
   DMS_COLORS="$HOME/.cache/DankMaterialShell/dms-colors.json"
 
-  OUT_OMP="$HOME/NixOS/modules/core/starship/colourVariables.txt"
+  OUT_STARSHIP="$HOME/NixOS/modules/core/starship/colourVariables.txt"
 
   extract_color() {
       local path="$1"

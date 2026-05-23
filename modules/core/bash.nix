@@ -15,7 +15,7 @@
             fi
             # Oh-My-Posh Prompt
             if command -v oh-my-posh &>/dev/null; then
-              eval "$(oh-my-posh init bash --config ~/.config/oh-my-posh/default.omp.json)"
+              eval "$(oh-my-posh init bash --config ~/.config/oh-my-posh/oh-my-posh.omp.json)"
             fi
             # Direnv Hook
             if command -v direnv &>/dev/null; then
