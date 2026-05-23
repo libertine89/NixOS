@@ -3,18 +3,13 @@ palette = "dms"
 format = """
 [░▒▓](fg:color1)\
 [ 󱄅 ](fg:color4 bg:color1)\
-[](fg:color2 bg:color1)\
-[](fg:color3 bg:color2)\
-$directory\
-[](fg:color3)\
-$fill\
-[](fg:color3)\
-$git_branch\
-$git_status\
-[](fg:color3 bg:color2)\
-$nodejs\
+[](fg:color4 bg:color1)\
+[](fg:color2 bg:color4)\
+${custom.javascript}\
+${custom.typescript}\
 $bun\
 $lua\
+${custom.nix}\
 $rust\
 $golang\
 $php\
@@ -29,18 +24,36 @@ $elixir\
 $terraform\
 $nix_shell\
 $docker_context\
-[](fg:color2 bg:color1)\
+${custom.docker}\
+${custom.toml}\
+${custom.yaml}\
+${custom.json}\
+[](fg:color3 bg:color2)\
+$directory\
+[](fg:color3)\
+$fill\
+[](fg:color3)\
+$git_branch$git_status\
+[](fg:color3 bg:color2)\
+$git_metrics\
+[](fg:color2 bg:color4)\
+[](fg:color4 bg:color1)\
 $time\
 [▓▒░](fg:color1)\
 \n$character
 """
 
 [palettes.dms]
-color1 = "#0A0373"
-color2 = "#1C1690"
-color3 = "#3A36B5"
-color4 = "#FFFFFF"
-
+color1 = "#0A0373"  # Darkest Bar Color
+color2 = "#1C1690"  # Middle Bar Color
+color3 = "#3A36B5"  # Lightest Bar Color
+color4 = "#FFFFFF"  # Text & Static Sperator Color
+color5 = "#60FF60" # Git Lines Added Color
+color6 = "#FF6060" # Git Lines Removed Color
+color7 = "#000000"# Spare
+cursor1 = "#FF5C57"
+cursor2 = "#FFFFFF"
+cursor3 = "#6905F7"
 # ─────────────────────────────
 # DIRECTORY
 # ─────────────────────────────
@@ -50,10 +63,18 @@ truncation_length = 3
 truncation_symbol = "…/"
 
 [directory.substitutions]
-Documents = "󰈙 "
-Downloads = " "
-Music = " "
-Pictures = " "
+"~/Desktop" = " Desktop"
+"~/Documents" = "󰈙 Documents"
+"~/Downloads" = " Downloads"
+"~/Pictures" = " Pictures"
+"~/Videos" = " Videos"
+"~/Music" = " Music"
+"~/Projects" = "󰲋 Projects"
+"~/Dev" = "󰅨 Dev"
+"~/Code" = "󰨞 Code"
+"~/Git" = "󰊢 Git"
+"~/NixOS" = " NixOS"
+"~/Workspace" = "󰙅 Workspace"
 
 # ─────────────────────────────
 # GIT
@@ -63,14 +84,47 @@ format = "[ $symbol $branch ](fg:color4 bg:color3)"
 symbol = ""
 
 [git_status]
-format = "[($all_status$ahead_behind )](fg:color4 bg:color3)"
+format = "([$all_status $ahead_behind ](fg:color4 bg:color3))"
+
+conflicted = "🏳"
+untracked = "?"
+stashed = "📦"
+modified = "!"
+staged = "+"
+renamed = "»"
+deleted = "✘"
+typechanged = ""
+
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count} ⇣${behind_count}"
+up_to_date = "✓"
+
+style = "fg:color4 bg:color3"
+
+[git_metrics]
+disabled = false
+format = "([ +$added ]($added_style)[-$deleted ]($deleted_style))"
+
+added_style = "fg:color5 bg:color2 bold"
+deleted_style = "fg:color6 bg:color2 bold"
+
+only_nonzero_diffs = true
+ignore_submodules = false
 
 # ─────────────────────────────
 # LANGUAGES
 # ─────────────────────────────
-[nodejs]
-format = "[ $symbol ($version) ](fg:color4 bg:color2)"
-symbol = ""
+
+[custom.javascript]
+command = "echo  "
+detect_extensions = ["js", "mjs", "cjs", "!node_modules"]
+format = "[ $output ](fg:color4 bg:color2)"
+
+[custom.typescript]
+command = "echo   "
+detect_extensions = ["ts", "tsx", "!node_modules"]
+format = "[ $output ](fg:color4 bg:color2)"
 
 [bun]
 format = "[ $symbol ($version) ](fg:color4 bg:color2)"
@@ -79,6 +133,11 @@ symbol = ""
 [lua]
 format = "[ $symbol ($version) ](fg:color4 bg:color2)"
 symbol = ""
+
+[custom.nix]
+command = "echo nix "
+detect_extensions = ["nix", "!NixOS"]
+format = "[ $output ](fg:color4 bg:color2)"
 
 [rust]
 format = "[ $symbol ($version) ](fg:color4 bg:color2)"
@@ -136,6 +195,28 @@ symbol = ""
 format = "[ $symbol $context ](fg:color4 bg:color2)"
 symbol = ""
 
+[custom.docker]
+command = "echo  "
+detect_files = ["Dockerfile", "docker-compose.yml", "compose.yml", "compose.yaml"]
+format = "[ $output ](fg:color4 bg:color2)"
+
+[custom.toml]
+command = "echo "
+detect_extensions = ["toml"]
+format = "[ $output ](fg:color4 bg:color2)"
+
+[custom.yaml]
+command = "echo \ue8eb"
+detect_extensions = ["yml", "yaml"]
+format = "[ $output ](fg:color4 bg:color2)"
+
+[custom.json]
+command = "echo  "
+detect_extensions = ["json"]
+format = "[ $output ](fg:color4 bg:color2)"
+
+
+
 # ─────────────────────────────
 # TIME
 # ─────────────────────────────
@@ -154,6 +235,6 @@ symbol = " "
 # CHARACTER
 # ─────────────────────────────
 [character]
-error_symbol = "[❯](#FF5C57)"
-success_symbol = "[❯](#E6E6FF)"
-vimcmd_symbol = "[❮](#6905F7)"
+error_symbol = "[❯](cursor1)"
+success_symbol = "[❯](cursor2)"
+vimcmd_symbol = "[❮](cursor3)"
