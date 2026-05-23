@@ -1,7 +1,8 @@
 
+
 { pkgs, ... }:
 
-pkgs.writeShellScriptBin "generate-color-variables-shell" ''
+pkgs.writeShellScriptBin "generate-color-variables-starship" ''
   #!/usr/bin/env bash
   # Generate colour variable files from DankMaterialShell JSON
 
@@ -9,15 +10,15 @@ pkgs.writeShellScriptBin "generate-color-variables-shell" ''
 
   DMS_COLORS="$HOME/.cache/DankMaterialShell/dms-colors.json"
 
-  OUT_LUA="$HOME/NixOS/modules/core/starship/colourVariables.txt"
+  OUT_STARSHIP="$HOME/NixOS/modules/core/oh-my-posh/colourVariables.txt"
 
   extract_color() {
       local path="$1"
       jq -r "$path" "$DMS_COLORS"
   }
 
-generate_lua() {
-    cat > "$OUT_LUA" <<EOF
+generate_STARSHIP() {
+    cat > "$OUT_STARSHIP" <<EOF
 return {
 
     -- =========================
@@ -201,5 +202,5 @@ return {
 EOF
 }
   # Generate once at startup
-  generate_lua
+  generate_STARSHIP
 ''

@@ -3,7 +3,8 @@
 let
   inherit (ctx)
   pkgs lib getExe
-  bar wallpaper colourVariablesNvim colourVariablesPrompt windowBehaviour;
+  bar wallpaper windowBehaviour
+  colourVariablesNvim colourVariablesOhMyPosh colourVariablesStarship;
 
   dmsWrapper = ctx.dmsWrapper or null;
 in
@@ -11,7 +12,8 @@ in
   ${lib.optionalString (dmsWrapper != null) ''
     spawn-at-startup "${lib.getExe dmsWrapper}"
     spawn-at-startup "${lib.getExe colourVariablesNvim}"
-    spawn-at-startup "${lib.getExe colourVariablesPrompt}"
+    spawn-at-startup "${lib.getExe colourVariablesOhMyPosh}"
+    spawn-at-startup "${lib.getExe colourVariablesStarship}"
     spawn-at-startup "${lib.getExe windowBehaviour}"
   ''}
   ${lib.optionalString (bar != "dms-shell") ''
