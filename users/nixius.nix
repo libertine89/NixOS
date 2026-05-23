@@ -10,7 +10,7 @@ in
 
   xdg.enable = true;
 
-  sessionVariables = {
+  home.sessionVariables = {
     EDITOR =
       if (vars.editor == "nixvim" || vars.editor == "neovim" || vars.editor == "nvchad") then
         "nvim"
