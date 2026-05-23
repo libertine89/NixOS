@@ -1,7 +1,7 @@
 
 { pkgs, ... }:
 
-pkgs.writeShellScriptBin "generate-color-variables" ''
+pkgs.writeShellScriptBin "generate-color-variables-shell" ''
   #!/usr/bin/env bash
   # Generate colour variable files from DankMaterialShell JSON
 
@@ -9,7 +9,7 @@ pkgs.writeShellScriptBin "generate-color-variables" ''
 
   DMS_COLORS="$HOME/.cache/DankMaterialShell/dms-colors.json"
 
-  OUT_LUA="$HOME/.config/colourVariables.lua"
+  OUT_LUA="$HOME/NixOS/modules/core/starship/colourVariables.txt"
 
   extract_color() {
       local path="$1"

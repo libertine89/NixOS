@@ -56,14 +56,8 @@ map("i", "jk", "<ESC>")
 
   -- Visual modes: character-wise, line-wise, block-wise
   -- Using 'x' covers character-wise ('v') and select mode, and we add line/block separately
-    map("v", "<C-b>", "0", opts)      -- character-wise visual
+    map("v", "<C-b>", "0", opts)
     map("v", "<C-e>", "$", opts)
-
-    map("x", "<C-b>", "0", opts)      -- line-wise visual (Shift+v)
-    map("x", "<C-e>", "$", opts)
-
-    map("<C-v>", "<C-b>", "0", opts)  -- block-wise visual (Ctrl+v)
-    map("<C-v>", "<C-e>", "$", opts)
 
   -- Insert mode paste
     map("i", "<C-p>", "<C-r>+", { desc = "Paste from clipboard" })

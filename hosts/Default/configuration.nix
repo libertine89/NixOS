@@ -4,10 +4,10 @@ let
 in
 {
   imports = [
-    {
-      home-manager.users.nixius =
-        import ../../users/nixius.nix;
-    }
+    # {
+    #   home-manager.users.nixius =
+    #     import ../../users/nixius.nix;
+    # }
 
     ./hardware-configuration.nix
     ./host-packages.nix
@@ -29,7 +29,7 @@ in
     ../../modules/core/services.nix
     ../../modules/core/syncthing.nix
     ../../modules/core/system.nix
-    ../../modules/core/users.nix
+    ../../modules/core/home-manager.nix
     ../../modules/core/${vars.shellPrompt}/${vars.shellPrompt}.nix
     # ../../modules/core/flatpak.nix
 

@@ -1,6 +1,6 @@
 { pkgs, ... }:
 
-pkgs.writeShellScriptBin "generate-color-variables" ''
+pkgs.writeShellScriptBin "generate-color-variables-nvim" ''
   #!/usr/bin/env bash
   # Generate colour variable files from DankMaterialShell JSON
 

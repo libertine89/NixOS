@@ -116,6 +116,7 @@
           #system = forAllSystems (system: system);
           modules = [
             ./hosts/${host}/configuration.nix
+            ./hosts/${host}/users.nix
           ];
           specialArgs = {
             overlays = import ./overlays { inherit inputs host; };
