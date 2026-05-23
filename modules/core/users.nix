@@ -44,8 +44,6 @@ in
           TERMINAL = "${terminal}";
         };
       };
-      home.file.".config/starship.toml".source =
-        config.lib.filesystem.mkOutOfStoreSymlink ./starship/starship.toml;
     };
   };
   users = {
