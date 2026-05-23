@@ -29,8 +29,8 @@ in
         "${config.home.homeDirectory}/NixOS/modules/core/starship/starship.toml";
   }
   // lib.optionalAttrs (vars.shellPrompt == "oh-my-posh") {
-    ".config/oh-my-posh/config.toml".source =
+    ".config/oh-my-posh/oh-my-posh.omp.json".source =
       config.lib.file.mkOutOfStoreSymlink
-        "${config.home.homeDirectory}/NixOS/modules/core/oh-my-posh/config.toml";
+        "${config.home.homeDirectory}/NixOS/modules/core/oh-my-posh/oh-my-posh.omp.json";
   };
 }
