@@ -1,4 +1,4 @@
-{ host, config, pkgs, lib ... }:
+{ host, config, pkgs, lib, ... }:
 
 let
   vars = import ../hosts/${host}/variables.nix;
@@ -22,7 +22,7 @@ in
     BROWSER = vars.browser;
     TERMINAL = vars.terminal;
   };
-  
+
   home.file = lib.optionalAttrs (vars.shellPrompt == "starship") {
     ".config/starship.toml".source =
       config.lib.file.mkOutOfStoreSymlink

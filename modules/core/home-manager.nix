@@ -21,5 +21,8 @@ in
     overwriteBackup = true;
     backupFileExtension = "backup";
 
+    extraSpecialArgs = {
+      inherit inputs host;
+    };
   };
 }

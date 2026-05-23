@@ -13,6 +13,7 @@ in
   # home-manager.users.alice.imports = [
   #   ../../users/alice.nix
   # ];
+
   users = {
     mutableUsers = true;
     users.${username} = {
