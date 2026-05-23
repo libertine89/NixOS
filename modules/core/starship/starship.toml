@@ -1,22 +1,51 @@
-format = "[░▒▓](#0A0373)[ 󱄅 ](bg:#0A0373 fg:#E6E6FF)[](bg:#0A0373 fg:#1C1690)[](bg:#1C1690 fg:#3A36B5)$directory[](fg:#3A36B5)$fill[](fg:#2A2680)$git_branch$git_status[](bg:#1C1970 fg:#2A2680)$nodejs$bun$rust$golang$php[](bg:#020152 fg:#1C1970)$time[▓▒░](fg:#020152)\n$character"
+palette = "dms"
 
-[bun]
-format = "[[ $symbol ($version) ](fg:#9FA8FF bg:#1C1970)]($style)"
-style = "bg:#1C1970"
-symbol = ""
+format = """
+[░▒▓](fg:color1)\
+[ 󱄅 ](fg:color4 bg:color1)\
+[](fg:color2 bg:color1)\
+[](fg:color3 bg:color2)\
+$directory\
+[](fg:color3)\
+$fill\
+[](fg:color3)\
+$git_branch\
+$git_status\
+[](fg:color3 bg:color2)\
+$nodejs\
+$bun\
+$lua\
+$rust\
+$golang\
+$php\
+$python\
+$java\
+$kotlin\
+$c\
+$cpp\
+$zig\
+$haskell\
+$elixir\
+$terraform\
+$nix_shell\
+$docker_context\
+[](fg:color2 bg:color1)\
+$time\
+[▓▒░](fg:color1)\
+\n$character
+"""
 
-[character]
-error_symbol = "[❯](#FF5C57)"
-success_symbol = "[❯](#E6E6FF)"
-vimcmd_symbol = "[❮](#6905F7)"
+[palettes.dms]
+color1 = "#0A0373"
+color2 = "#1C1690"
+color3 = "#3A36B5"
+color4 = "#FFFFFF"
 
-[cmd_duration]
-format = "[$duration]($style) "
-style = "yellow"
-
+# ─────────────────────────────
+# DIRECTORY
+# ─────────────────────────────
 [directory]
-format = "[ $path ]($style)"
-style = "fg:#E6E6FF bg:#3A36B5"
+format = "[ $path ](fg:color4 bg:color3)"
 truncation_length = 3
 truncation_symbol = "…/"
 
@@ -26,50 +55,105 @@ Downloads = " "
 Music = " "
 Pictures = " "
 
-[fill]
-symbol = " "
-
+# ─────────────────────────────
+# GIT
+# ─────────────────────────────
 [git_branch]
-format = "[[ $symbol $branch ](fg:#AFAFFF bg:#2A2680)]($style)"
-style = "bg:#2A2680"
+format = "[ $symbol $branch ](fg:color4 bg:color3)"
 symbol = ""
 
 [git_status]
-format = "[[($all_status$ahead_behind )](fg:#AFAFFF bg:#2A2680)]($style)"
-style = "bg:#2A2680"
+format = "[($all_status$ahead_behind )](fg:color4 bg:color3)"
 
-[golang]
-format = "[[ $symbol ($version) ](fg:#9FA8FF bg:#1C1970)]($style)"
-style = "bg:#1C1970"
-symbol = ""
-
-[nix_shell]
-format = "[$symbol]($style)"
-symbol = "❄️ "
-
+# ─────────────────────────────
+# LANGUAGES
+# ─────────────────────────────
 [nodejs]
-format = "[[ $symbol ($version) ](fg:#9FA8FF bg:#1C1970)]($style)"
-style = "bg:#1C1970"
+format = "[ $symbol ($version) ](fg:color4 bg:color2)"
 symbol = ""
 
-[php]
-format = "[[ $symbol ($version) ](fg:#9FA8FF bg:#1C1970)]($style)"
-style = "bg:#1C1970"
-symbol = ""
+[bun]
+format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+symbol = ""
+
+[lua]
+format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+symbol = ""
 
 [rust]
-format = "[[ $symbol ($version) ](fg:#9FA8FF bg:#1C1970)]($style)"
-style = "bg:#1C1970"
+format = "[ $symbol ($version) ](fg:color4 bg:color2)"
 symbol = ""
 
-[shell]
-bash_indicator = ""
-disabled = false
-powershell_indicator = ""
-style = "cyan"
+[golang]
+format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+symbol = ""
 
+[php]
+format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+symbol = ""
+
+[python]
+format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+symbol = ""
+
+[java]
+format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+symbol = ""
+
+[kotlin]
+format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+symbol = ""
+
+[c]
+format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+symbol = ""
+
+[cpp]
+format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+symbol = ""
+
+[zig]
+format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+symbol = ""
+
+[haskell]
+format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+symbol = ""
+
+[elixir]
+format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+symbol = ""
+
+[terraform]
+format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+symbol = "󱁢"
+
+[nix_shell]
+format = "[ $symbol ](fg:color4 bg:color2)"
+symbol = ""
+
+[docker_context]
+format = "[ $symbol $context ](fg:color4 bg:color2)"
+symbol = ""
+
+# ─────────────────────────────
+# TIME
+# ─────────────────────────────
 [time]
 disabled = false
-format = "[[  $time ](fg:#E6E6FF bg:#020152)]($style)"
-style = "bg:#020152"
+format = "[  $time ](fg:color4 bg:color1)"
 time_format = "%R"
+
+# ─────────────────────────────
+# FILL
+# ─────────────────────────────
+[fill]
+symbol = " "
+
+# ─────────────────────────────
+# CHARACTER
+# ─────────────────────────────
+[character]
+error_symbol = "[❯](#FF5C57)"
+success_symbol = "[❯](#E6E6FF)"
+vimcmd_symbol = "[❮](#6905F7)"

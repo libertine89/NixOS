@@ -19,7 +19,7 @@
   browser = "firefox"; # zen-beta, firefox, floorp
   fileManager = "yazi"; # yazi, lf, thunar
   shell = "zsh"; # zsh, bash
-  shellPrompt = "oh-my-posh"; # oh-my-posh, starship
+  shellPrompt = "starship"; # oh-my-posh, starship
   games = true; # Enable/Disable gaming module
 
   # Hardware
