@@ -11,7 +11,6 @@ in
     docker
     pgadmin4
     gnome-calculator
-    obsidian
     github-desktop
     xournalpp
     qview
