@@ -7,9 +7,6 @@ in
     pkgs.${vars.ide}
     libreoffice
     bitwarden-desktop
-    asciiquarium
-    cmatrix
-    figlet
     peazip
     docker
     pgadmin4

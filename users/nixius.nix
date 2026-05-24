@@ -4,6 +4,18 @@ let
   vars = import ../hosts/${host}/variables.nix;
 in
 {
+  # Import User specific Modules
+  imports = [
+    # ../modules/user/nixius-pkg.nix
+  ];
+
+  # User Specific Pakcages
+  home.packages = with pkgs; [
+    asciiquarium
+    cmatrix
+    figlet
+  ];
+
   home.username = vars.username;
   home.homeDirectory = "/home/${vars.username}";
   home.stateVersion = "26.05";
