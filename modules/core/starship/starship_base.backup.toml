@@ -2,9 +2,9 @@ palette = "dms"
 
 format = """
 [░▒▓](fg:color1)\
-[ 󱄅 ](fg:color4 bg:color1)\
-[](fg:color4 bg:color1)\
-[](fg:color2 bg:color4)\
+$os\
+[](fg:color5 bg:color1)\
+[](fg:color2 bg:color5)\
 ${custom.javascript}\
 ${custom.typescript}\
 $bun\
@@ -36,8 +36,8 @@ $fill\
 $git_branch$git_status\
 [](fg:color3 bg:color2)\
 $git_metrics\
-[](fg:color2 bg:color4)\
-[](fg:color4 bg:color1)\
+[](fg:color2 bg:color5)\
+[](fg:color5 bg:color1)\
 $time\
 [▓▒░](fg:color1)\
 \n$character
@@ -47,18 +47,74 @@ $time\
 color1 = "#0A0373"  # Darkest Bar Color
 color2 = "#1C1690"  # Middle Bar Color
 color3 = "#3A36B5"  # Lightest Bar Color
-color4 = "#FFFFFF"  # Text & Static Sperator Color
-color5 = "#60FF60" # Git Lines Added Color
-color6 = "#FF6060" # Git Lines Removed Color
-color7 = "#000000"# Spare
-cursor1 = "#FF5C57"
-cursor2 = "#FFFFFF"
-cursor3 = "#6905F7"
+color4 = "#000000"  # Spare
+color5 = "#FFFFFF"  # Static Seperator Color
+color6 = "#60FF60"  # Git Lines Added Color
+color7 = "#FF6060"  # Git Lines Removed Color
+color8 = "#FFFFFF"  # Text Color
+cursor1 = "#FF5C57" # Error Symbol
+cursor2 = "#FFFFFF" # Sucess Symbol
+cursor3 = "#6905F7" # Vim CMD Symbol
+os = "#6905F7"         # OS Symbol Color
+
+# ─────────────────────────────
+# OS
+# ─────────────────────────────
+[os]
+disabled = false
+format = "[ $symbol ](fg:os bg:color1)"
+style = "bg:color1"
+
+[os.symbols]
+AIX = "➿ "
+AlmaLinux = " "
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = "󰣇 "
+Artix = " "
+CachyOS = " "
+CentOS = " "
+Debian = "󰣚 "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = "󰣛 "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = "󰣨 "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Kali = " "
+Linux = "󰌽 "
+Mabox = "󰆦 "
+Macos = "󰀵 "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = "󰣭 "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = "󰐿 "
+Redhat = "󱄛 "
+RedHatEnterprise = "󱄛 "
+RockyLinux = " "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = "󰕈 "
+Unknown = " "
+Void = " "
+Windows = "󰍲 "
+
 # ─────────────────────────────
 # DIRECTORY
 # ─────────────────────────────
 [directory]
-format = "[ $path ](fg:color4 bg:color3)"
+format = "[ $path ](fg:color8 bg:color3)"
 truncation_length = 3
 truncation_symbol = "…/"
 
@@ -80,11 +136,11 @@ truncation_symbol = "…/"
 # GIT
 # ─────────────────────────────
 [git_branch]
-format = "[ $symbol $branch ](fg:color4 bg:color3)"
+format = "[ $symbol $branch ](fg:color8 bg:color3)"
 symbol = ""
 
 [git_status]
-format = "([$all_status $ahead_behind ](fg:color4 bg:color3))"
+format = "([$all_status $ahead_behind ](fg:color8 bg:color3))"
 
 conflicted = "🏳"
 untracked = "?"
@@ -100,14 +156,14 @@ behind = "⇣${count}"
 diverged = "⇕⇡${ahead_count} ⇣${behind_count}"
 up_to_date = "✓"
 
-style = "fg:color4 bg:color3"
+style = "fg:color8 bg:color3"
 
 [git_metrics]
 disabled = false
 format = "([ +$added ]($added_style)[-$deleted ]($deleted_style))"
 
-added_style = "fg:color5 bg:color2 bold"
-deleted_style = "fg:color6 bg:color2 bold"
+added_style = "fg:color6 bg:color2 bold"
+deleted_style = "fg:color7 bg:color2 bold"
 
 only_nonzero_diffs = true
 ignore_submodules = false
@@ -119,110 +175,108 @@ ignore_submodules = false
 [custom.javascript]
 command = "echo  "
 detect_extensions = ["js", "mjs", "cjs", "!node_modules"]
-format = "[ $output ](fg:color4 bg:color2)"
+format = "[ $output ](fg:color8 bg:color2)"
 
 [custom.typescript]
 command = "echo   "
 detect_extensions = ["ts", "tsx", "!node_modules"]
-format = "[ $output ](fg:color4 bg:color2)"
+format = "[ $output ](fg:color8 bg:color2)"
 
 [bun]
-format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+format = "[ $symbol ($version) ](fg:color8 bg:color2)"
 symbol = ""
 
 [lua]
-format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+format = "[ $symbol ($version) ](fg:color8 bg:color2)"
 symbol = ""
 
 [custom.nix]
 command = "echo nix "
 detect_extensions = ["nix", "!NixOS"]
-format = "[ $output ](fg:color4 bg:color2)"
+format = "[ $output ](fg:color8 bg:color2)"
 
 [rust]
-format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+format = "[ $symbol ($version) ](fg:color8 bg:color2)"
 symbol = ""
 
 [golang]
-format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+format = "[ $symbol ($version) ](fg:color8 bg:color2)"
 symbol = ""
 
 [php]
-format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+format = "[ $symbol ($version) ](fg:color8 bg:color2)"
 symbol = ""
 
 [python]
-format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+format = "[ $symbol ($version) ](fg:color8 bg:color2)"
 symbol = ""
 
 [java]
-format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+format = "[ $symbol ($version) ](fg:color8 bg:color2)"
 symbol = ""
 
 [kotlin]
-format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+format = "[ $symbol ($version) ](fg:color8 bg:color2)"
 symbol = ""
 
 [c]
-format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+format = "[ $symbol ($version) ](fg:color8 bg:color2)"
 symbol = ""
 
 [cpp]
-format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+format = "[ $symbol ($version) ](fg:color8 bg:color2)"
 symbol = ""
 
 [zig]
-format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+format = "[ $symbol ($version) ](fg:color8 bg:color2)"
 symbol = ""
 
 [haskell]
-format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+format = "[ $symbol ($version) ](fg:color8 bg:color2)"
 symbol = ""
 
 [elixir]
-format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+format = "[ $symbol ($version) ](fg:color8 bg:color2)"
 symbol = ""
 
 [terraform]
-format = "[ $symbol ($version) ](fg:color4 bg:color2)"
+format = "[ $symbol ($version) ](fg:color8 bg:color2)"
 symbol = "󱁢"
 
 [nix_shell]
-format = "[ $symbol ](fg:color4 bg:color2)"
+format = "[ $symbol ](fg:color8 bg:color2)"
 symbol = ""
 
 [docker_context]
-format = "[ $symbol $context ](fg:color4 bg:color2)"
+format = "[ $symbol $context ](fg:color8 bg:color2)"
 symbol = ""
 
 [custom.docker]
 command = "echo  "
 detect_files = ["Dockerfile", "docker-compose.yml", "compose.yml", "compose.yaml"]
-format = "[ $output ](fg:color4 bg:color2)"
+format = "[ $output ](fg:color8 bg:color2)"
 
 [custom.toml]
 command = "echo "
 detect_extensions = ["toml"]
-format = "[ $output ](fg:color4 bg:color2)"
+format = "[ $output ](fg:color8 bg:color2)"
 
 [custom.yaml]
 command = "echo \ue8eb"
 detect_extensions = ["yml", "yaml"]
-format = "[ $output ](fg:color4 bg:color2)"
+format = "[ $output ](fg:color8 bg:color2)"
 
 [custom.json]
 command = "echo  "
 detect_extensions = ["json"]
-format = "[ $output ](fg:color4 bg:color2)"
-
-
+format = "[ $output ](fg:color8 bg:color2)"
 
 # ─────────────────────────────
 # TIME
 # ─────────────────────────────
 [time]
 disabled = false
-format = "[  $time ](fg:color4 bg:color1)"
+format = "[  $time ](fg:color8 bg:color1)"
 time_format = "%R"
 
 # ─────────────────────────────
@@ -238,3 +292,4 @@ symbol = " "
 error_symbol = "[❯](cursor1)"
 success_symbol = "[❯](cursor2)"
 vimcmd_symbol = "[❮](cursor3)"
+
