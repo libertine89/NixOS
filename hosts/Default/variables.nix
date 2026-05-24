@@ -9,6 +9,8 @@
   waybarTheme = "minimal"; # stylish, minimal
   windowTheme = "Catppuccin"; #Catppuccin, Dracula, rose-pine
   sddmTheme = "black_hole"; # astronaut, black_hole, purple_leaves, jake_the_dog, hyprland_kath
+  plymouthTheme = "motion"; # angular_alt, blockchain, connect, cubes, dark_planet, deus_ex, dna
+                            # flame, glowing, green_blocks, hexagon_dots_alt, hud_2, motion, square
   defaultWallpaper = "abstract101.png"; # Change with SUPER + SHIFT + W (Hyprland)
   hyprlockWallpaper = "abstract101.png";
 
