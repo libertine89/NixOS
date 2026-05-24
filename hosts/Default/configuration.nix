@@ -4,34 +4,32 @@ let
 in
 {
   imports = [
-    # {
-    #   home-manager.users.nixius =
-    #     import ../../users/nixius.nix;
-    # }
-
     ./hardware-configuration.nix
     ./host-packages.nix
 
     # Core Modules (Don't change unless you know what you're doing)
     ../../modules/scripts
-    ../../modules/core/boot.nix
     ../../modules/core/bash.nix
     ../../modules/core/zsh.nix
     ../../modules/core/fonts.nix
-    ../../modules/core/hardware.nix
-    ../../modules/core/network.nix
-    ../../modules/core/dns.nix
     ../../modules/core/nh.nix
     ../../modules/core/packages.nix
     ../../modules/core/printing.nix
-    ../../modules/core/sddm.nix
-    ../../modules/core/security.nix
-    ../../modules/core/services.nix
     ../../modules/core/syncthing.nix
-    ../../modules/core/system.nix
     ../../modules/core/home-manager.nix
     ../../modules/core/${vars.shellPrompt}/${vars.shellPrompt}.nix
     # ../../modules/core/flatpak.nix
+
+    # System Modules
+    ../../modules/system/boot.nix
+    ../../modules/system/dns.nix
+    ../../modules/system/hardware.nix
+    ../../modules/system/network.nix
+    ../../modules/system/plymouth.nix
+    ../../modules/system/sddm.nix
+    ../../modules/system/security.nix
+    ../../modules/system/services.nix
+    ../../modules/system/system.nix
 
     # Optional
     ../../modules/hardware/drives # Automatically mount extra external/internal drives
