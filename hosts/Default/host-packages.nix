@@ -15,5 +15,6 @@ in
     xournalpp
     qview
     snapper
+    bat
   ];
 }

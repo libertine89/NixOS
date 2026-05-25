@@ -44,6 +44,7 @@
             zsh-defer -c 'eval "$(direnv hook zsh)"' 2>/dev/null
             zsh-defer -c 'eval "$(zoxide init zsh)"' 2>/dev/null
 
+            ### === ZLE Widgets & Binds
             # Sudo widget (double ESC to prepend sudo - replaces oh-my-zsh sudo plugin)
             sudo-command-line() {
               [[ -z $BUFFER ]] && zle up-history
@@ -56,7 +57,14 @@
             zle -N sudo-command-line
             bindkey '\e\e' sudo-command-line
 
-            # Key Bindings
+            git-commit-widget() {
+              LBUFFER+="git add . && git commit -m \"\""
+              zle backward-char
+            }
+
+            zle -N git-commit-widget
+            bindkey '^gc' git-commit-widget
+
             bindkey '^a' beginning-of-line
             bindkey '^e' end-of-line
 
