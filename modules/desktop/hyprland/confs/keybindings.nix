@@ -5,7 +5,7 @@ let
     pkgs lib getExe getExe'
     browser terminal ide fileManager bar
     keybinds-yad toggle-layout wrap-workspaces-next
-    wrap-workspaces-prev wrap-window-workspace-next 
+    wrap-workspaces-prev wrap-window-workspace-next
     wrap-window-workspace-prev zoom gamemode clipmanager
     screen-record screenshot keyboardswitch fileManagerScript
     exec-once-kitty-quake;
@@ -46,8 +46,8 @@ in
 
     # Applications/Programs
     "$mainMod, Return, exec, $term"
-    "$mainMod CTRL, Return, togglespecialworkspace, quake"
-    "$mainMod CTRL, Return, exec, ${getExe exec-once-kitty-quake}"
+    "$mainMod SHIFT, Return, togglespecialworkspace, quake"
+    "$mainMod SHIFT, Return, exec, ${getExe exec-once-kitty-quake}"
     "$mainMod, E, exec, ${getExe fileManagerScript} ${fileManager}"
     "$mainMod, C, exec, $ide"
     "$mainMod, B, exec, $browser"
@@ -68,7 +68,7 @@ in
     "$mainMod SHIFT, Q, exec, swaync-client -t -sw" # swayNC panel
     "$mainMod ALT, G, exec, ${getExe gamemode}" # disable hypr effects for gamemode
     "$mainMod, V, exec, ${getExe clipmanager}" # Clipboard Manager
-  
+
     # Screenshot/Screencapture
     "$mainMod SHIFT, R, exec, ${getExe screen-record} a" # Screen Record (area select)
     "$mainMod CTRL, R, exec, ${getExe screen-record} m" # Screen Record (monitor select)
@@ -123,16 +123,16 @@ in
     "$mainMod SHIFT, J, movewindow, d"
 
     # Move window to workspace by number with mainMod + Shift + number
-    "$mainMod SHIFT, 1, movetoworkspace, 1"                                            
-    "$mainMod SHIFT, 2, movetoworkspace, 2"                                                 
-    "$mainMod SHIFT, 3, movetoworkspace, 3"                                                 
-    "$mainMod SHIFT, 4, movetoworkspace, 4"                                                 
-    "$mainMod SHIFT, 5, movetoworkspace, 5"                                                  
-    "$mainMod SHIFT, 6, movetoworkspace, 6"                                                   
-    "$mainMod SHIFT, 7, movetoworkspace, 7"                                                 
-    "$mainMod SHIFT, 8, movetoworkspace, 8"                                                
-    "$mainMod SHIFT, 9, movetoworkspace, 9"                                                   
-    "$mainMod SHIFT, 0, movetoworkspace, 10"   
+    "$mainMod SHIFT, 1, movetoworkspace, 1"
+    "$mainMod SHIFT, 2, movetoworkspace, 2"
+    "$mainMod SHIFT, 3, movetoworkspace, 3"
+    "$mainMod SHIFT, 4, movetoworkspace, 4"
+    "$mainMod SHIFT, 5, movetoworkspace, 5"
+    "$mainMod SHIFT, 6, movetoworkspace, 6"
+    "$mainMod SHIFT, 7, movetoworkspace, 7"
+    "$mainMod SHIFT, 8, movetoworkspace, 8"
+    "$mainMod SHIFT, 9, movetoworkspace, 9"
+    "$mainMod SHIFT, 0, movetoworkspace, 10"
 
     # Move window to workspaces relative to the active workspace with mainMod + CTRL + SHIFT + [←→]
     "$mainMod CTRL SHIFT, right, exec, ${getExe wrap-window-workspace-next}"
@@ -146,17 +146,17 @@ in
 
     ### === Workspace Movement === ###
     # Switch to workspace by number with mainMod + number
-    "$mainMod, 1, workspace, 1"                                                            
-    "$mainMod, 2, workspace, 2"                                                            
-    "$mainMod, 3, workspace, 3"                                                            
-    "$mainMod, 4, workspace, 4"                                                            
-    "$mainMod, 5, workspace, 5"                                                           
-    "$mainMod, 6, workspace, 6"                                                            
-    "$mainMod, 7, workspace, 7"                                                            
-    "$mainMod, 8, workspace, 8"                                                            
-    "$mainMod, 9, workspace, 9"                                                            
-    "$mainMod, 0, workspace, 10"                                                           
-    
+    "$mainMod, 1, workspace, 1"
+    "$mainMod, 2, workspace, 2"
+    "$mainMod, 3, workspace, 3"
+    "$mainMod, 4, workspace, 4"
+    "$mainMod, 5, workspace, 5"
+    "$mainMod, 6, workspace, 6"
+    "$mainMod, 7, workspace, 7"
+    "$mainMod, 8, workspace, 8"
+    "$mainMod, 9, workspace, 9"
+    "$mainMod, 0, workspace, 10"
+
     # Switch workspaces relative to the active workspace with mainMod + CTRL + [←→]
     "$mainMod CTRL, right, exec, ${getExe wrap-workspaces-next}"
     "$mainMod CTRL, left, exec, ${getExe wrap-workspaces-prev}"
@@ -172,7 +172,7 @@ in
     "$mainMod, S, togglespecialworkspace,"
   ];
 
-  ### === Repeating Binds === ###          
+  ### === Repeating Binds === ###
   binde = [
     # Resize windows Tiling
     "$mainMod, equal, resizeactive, 10 0"

@@ -12,8 +12,7 @@ in
   boot = {
     plymouth = {
       enable = true;
-      logo = ./nix-os.png;
-      theme = "${plymouthTheme}";
+      theme = "motion"; # ${plymouthTheme}";
       themePackages = with pkgs; [
         # By default we would install all themes
         (adi1090x-plymouth-themes.override {

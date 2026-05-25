@@ -11,8 +11,8 @@
     vim.opt.wrap = false
 
   -- scrolling
-    vim.opt.scrolloff = 8
-    vim.opt.sidescrolloff = 8
+    vim.opt.scrolloff = 12
+    vim.opt.sidescrolloff = 30
 
   -- indentation
     vim.opt.tabstop = 2
@@ -36,5 +36,5 @@
     vim.opt.ruler = false       -- disables line/col in corner
     vim.opt.showmode = false    -- removes INSERT/--MODE-- (you already replace it)
     vim.opt.showcmd = false     -- removes command preview
-    vim.opt.statuscolumn = ""   -- disables side column text (important on newer Neovim)
+    vim.opt.statuscolumn = ""   -- disables side column text (important on newer Neovim) vim.opt.statuscolumn = ""   -- disables side column text (important on newer Neovim)
 ''

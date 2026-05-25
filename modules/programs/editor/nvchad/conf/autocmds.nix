@@ -3,6 +3,15 @@
 ''
 require "nvchad.autocmds"
 
+-- Show tree on start up
+  vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function()
+      if vim.fn.isdirectory(vim.fn.argv(0)) == 1 or vim.fn.argc() == 0 then
+        vim.cmd("NvimTreeFocus")
+      end
+    end,
+  })
+
 -- Show dashboard on startup (nofile)
   vim.api.nvim_create_autocmd("VimEnter", {
     callback = function()
@@ -13,7 +22,7 @@ require "nvchad.autocmds"
   })
 
 -- Open new vertical split on dashboard
-  vim.api.nvim_create_user_command("nsp", function()
+  vim.api.nvim_create_user_command("Nsp", function()
     vim.cmd("vsp | Nvdash")
   end, {})
 

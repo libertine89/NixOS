@@ -48,11 +48,12 @@ binds {
 
     // LAUNCHERS / APPS
     Mod+Return hotkey-overlay-title="Open a Terminal: ${terminal}" { spawn "${terminal}"; }
-    Mod+Ctrl+Return hotkey-overlay-title="Open a drop in terminal: ${terminal}" { spawn "${getExe toggle-dropdown}"; }
+    Mod+Shift+Return hotkey-overlay-title="Open a drop in terminal: ${terminal}" { spawn "${getExe toggle-dropdown}"; }
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
     Mod+E hotkey-overlay-title="Open file explorer: ${fileManager}" { spawn "${terminal}" "-e" "${fileManager}"; }
     Mod+B hotkey-overlay-title="Open a Browser: ${browser}" { spawn "${browser}"; }
     Mod+V hotkey-overlay-title="Open an Editor: ${editor}" { spawn "${terminal}" "--override" "font_size=10" "--title" "nvim" "nvim"; }
+    Mod+D { spawn "kitty" "--override" "font_size=10" "--title" "nvim" "sh" "-c" "cd /home/nixius/NixOS && exec nvim"; }
     Mod+C hotkey-overlay-title="Open an IDE: ${ide}" { spawn "${getExe ide-launcher}" "${ide}"; }
 
     // WINDOW MANAGEMENT

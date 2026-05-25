@@ -64,5 +64,12 @@ map("i", "jk", "<ESC>")
 
   -- Save in Insert mode
     vim.keymap.set('i', '<C-s>', '<Esc>:w<CR>a', { desc = "Save file in Insert mode" })
-  ''
+
+  -- Indent for Insert mode
+    map("i", "<S-Tab>", "<C-d>", {})
+
+  -- Indent for Visual mode
+    map("v", "<Tab>", ">gv", {})
+    map("v", "<S-Tab>", "<gv", {})
+''
 

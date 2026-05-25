@@ -52,6 +52,8 @@
         import ./conf/lualine.nix { };
       xdg.configFile."nvim/lua/plugins/init-1.lua".text =
         import ./conf/init-1.nix { };
+      xdg.configFile."nvim/lua/themes/onedark_neon.lua".text =
+        import ./conf/onedark_neon.nix { };
     })
   ];
 }

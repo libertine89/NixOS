@@ -9,6 +9,7 @@
           name = "monospace";
         };
         themeFile = "Catppuccin-Mocha";
+        shellIntegration.mode = "no-title";
         settings = {
           # shell = "${getExe pkgs.tmux}";
           cursor_trail = 3; # Fancy cursor movements (especially in nixvim)
@@ -34,28 +35,56 @@
           active_tab_background = "#cba6f7";
           inactive_tab_foreground = "#bac2de";
           inactive_tab_background = "#313244";
+
+          # Pane Layout
+          enabled_layouts = "tall";
+
         };
-        # shellIntegration.mode = "no-sudo";
         keybindings = {
-          "ctrl+alt+n" = "launch --cwd=current";
-          "alt+w" = "copy_and_clear_or_interrupt";
-          "ctrl+y" = "paste_from_clipboard";
-          "alt+1" = "goto_tab 1";
-          "alt+2" = "goto_tab 2";
-          "alt+3" = "goto_tab 3";
-          "alt+4" = "goto_tab 4";
-          "alt+5" = "goto_tab 5";
-          "alt+6" = "goto_tab 6";
-          "alt+7" = "goto_tab 7";
-          "alt+8" = "goto_tab 8";
-          "alt+9" = "goto_tab 9";
-          "alt+0" = "goto_tab 10";
+          # Clipboard
+          "ctrl+c" = "copy_or_interrupt";
+          "ctrl+x" = "copy_and_clear_or_interrupt";
+          "ctrl+p" = "paste_from_clipboard";
+
+          # Tab Management
+          "ctrl+return" = "new_tab";
+          "super+ctrl+q" = "close_tab";
+          "ctrl+1" = "goto_tab 1";
+          "ctrl+2" = "goto_tab 2";
+          "ctrl+3" = "goto_tab 3";
+          "ctrl+4" = "goto_tab 4";
+          "ctrl+5" = "goto_tab 5";
+          "ctrl+tab" = "next_tab";
+
+          # Pane Management
+          "ctrl+shift+return" = "launch --cwd=current";
+          "ctrl+shift+v" = "launch --location=vsplit --cwd=current";
+          "ctrl+shift+s" = "launch --location=hsplit --cwd=current";
+          "super+ctrl+shift+q" = "close_window";
+          "ctrl+shift+tab" = "move_window_forward";
+          "ctrl+shift+h" = "neighboring_window left";
+          "ctrl+shift+l" = "neighboring_window right";
+          "ctrl+shift+k" = "neighboring_window up";
+          "ctrl+shift+j" = "neighboring_window down";
+          "ctrl+shift+left" = "neighboring_window left";
+          "ctrl+shift+right" = "neighboring_window right";
+          "ctrl+shift+up" = "neighboring_window up";
+          "ctrl+shift+down" = "neighboring_window down";
+
+          # Scrolling
+          "alt+up" = "scroll_line_up";
+          "alt+k" = "scroll_line_up";
+          "alt+down" = "scroll_line_down";
+          "alt+j" = "scroll_line_down";
+
+          "alt+shift+up" = "scroll_page_up";
+          "alt+shift+k" = "scroll_page_up";
+          "alt+shift+down" = "scroll_page_down";
+          "alt+shift+j" = "scroll_page_down";
 
           # Tmux
           "ctrl+t" = "launch --cwd=current --type=overlay tmux-sessionizer";
           # "ctrl+t" = "launch --cwd=current --title tmux-sessionizer tmux-sessionizer";
-          "ctrl+shift+left" = "no_op";
-          "ctrl+shift+right" = "no_op";
         };
       };
       xdg.configFile."kitty/quick-access-terminal.conf".text = ''
