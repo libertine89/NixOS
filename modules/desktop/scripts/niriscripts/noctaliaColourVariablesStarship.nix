@@ -12,7 +12,7 @@ pkgs.writeShellScriptBin "generate-color-variables-noctalia-starship" ''
 
   extract_color() {
       local path="$1"
-      jq -r "$path" "$DMS_COLORS"
+      jq -r "$path" "$NOC_COLORS"
   }
 
   darken() {
@@ -38,9 +38,9 @@ pkgs.writeShellScriptBin "generate-color-variables-noctalia-starship" ''
       local palette_block
       palette_block=$(cat <<EOF
 [palettes.dms]
-color1 = "$(darken "$(extract_color '.mPrimary')" 0.90)",
-color2 = "$(darken "$(extract_color '.mPrimary')" 0.70)",
-color3 = "$(darken "$(extract_color '.mPrimary')" 0.50)",
+color1 = "$(darken "$(extract_color '.mPrimary')" 0.90)"
+color2 = "$(darken "$(extract_color '.mPrimary')" 0.70)"
+color3 = "$(darken "$(extract_color '.mPrimary')" 0.50)"
 color4 = "#000000" # Spare
 color5 = "$(extract_color '.mOnSurfaceVariant')"  # Static Seperator Color
 color6 = "#60FF60"  # Git Lines Added Color
