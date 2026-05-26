@@ -18,7 +18,8 @@ in
   ''}
   ${lib.optionalString (bar != "dms-shell") ''
     spawn-at-startup "${bar}"
-    spawn-at-startup "${lib.getExe wallpaper}"
+    //spawn-at-startup "${lib.getExe wallpaper}"
+    spawn-at-startup "${lib.getExe windowBehaviour}"
   ''}
 
   // spawn-at-startup "swaylock"
@@ -29,5 +30,5 @@ in
   workspace "1"
   workspace "2"
   workspace "3"
-  // workspace "4"
+  workspace "4"
 ''

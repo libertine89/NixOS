@@ -54,6 +54,9 @@ in
   # ─────────────────────────────
   environment.systemPackages = with pkgs; [
     niri
+    xwayland-satellite
+    gtk4
+    libadwaita
     kitty
     yazi
     python3
@@ -94,6 +97,11 @@ in
 
   environment.sessionVariables = {
     XDG_SESSION_TYPE = "wayland";
+    GDK_BACKEND = "wayland";
+    QT_QPA_PLATFORM = "wayland";
+    SDL_VIDEODRIVER = "wayland";
+    CLUTTER_BACKEND = "wayland";
+    NIXOS_OZONE_WL = "1";
   };
 
   # ─────────────────────────────
@@ -109,7 +117,7 @@ in
       # ─────────────────────────────
       # Set Wallpaper
       # ─────────────────────────────
-      services.awww.enable = true;
+      # services.awww.enable = true;
 
       home.file.".config/niri/config.kdl".text = ''
         ${import ./confs/input.nix { inherit pkgs ctx; }}

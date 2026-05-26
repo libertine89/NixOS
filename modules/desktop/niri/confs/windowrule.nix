@@ -5,7 +5,7 @@
 // Round every window's corners and clip content to match.
 // Works best with prefer-no-csd (set in config.kdl).
 window-rule {
-    geometry-corner-radius 12
+    geometry-corner-radius 8
     clip-to-geometry true
     background-effect {
       blur true

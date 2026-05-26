@@ -4,7 +4,7 @@ let
   inherit (ctx)
   pkgs lib getExe
   bar;
-in 
+in
 ''
 // ── Examples ────────────────────────────────────────────────────────────────
 // Make a specific layer surface semi-transparent:
@@ -20,13 +20,20 @@ in
 // }
 
 // Set up what controls wallpaper
-${if bar != "dms-shell" then ''
+  ${if bar == "noctalia-shell" then ''
+  layer-rule {
+      match namespace="^noctalia-overview-Virtual-1"
+      place-within-backdrop true
+  }
+  ''
+  else if bar == "dms-shell" then ''
+  include "dms/wpblur.kdl"
   layer-rule {
       match namespace="^awww-daemon$"
       place-within-backdrop true
   }
-'' else ''
-  include "dms/wpblur.kdl"
+  ''
+  else ''
   layer-rule {
       match namespace="^awww-daemon$"
       place-within-backdrop true

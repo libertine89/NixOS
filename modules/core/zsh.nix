@@ -57,13 +57,27 @@
             zle -N sudo-command-line
             bindkey '\e\e' sudo-command-line
 
+            # Git Commit Widget
             git-commit-widget() {
               LBUFFER+="git add . && git commit -m \"\""
               zle backward-char
             }
-
             zle -N git-commit-widget
             bindkey '^gc' git-commit-widget
+
+            # Git Push Widget
+            git-push-widget() {
+              LBUFFER+="git push "
+            }
+            zle -N git-push-widget
+            bindkey '^gp' git-push-widget
+
+            # Git Pull Widget
+            git-pull-widget() {
+              LBUFFER+="git pull "
+            }
+            zle -N git-pull-widget
+            bindkey '^gpl' git-pull-widget
 
             bindkey '^a' beginning-of-line
             bindkey '^e' end-of-line
@@ -187,6 +201,16 @@
             egrep = "egrep --color=auto";
             fgrep = "fgrep --color=auto";
             shutdown = "systemctl poweroff";
+            gs="git status";
+            ga="git add";
+            gc="git commit -m";
+            gp="git push";
+            gpl="git pull";
+            gst="git stash";
+            gsp="git stash; git pull";
+            gfo="git fetch origin";
+            gcheck="git checkout";
+            gcredential="git config credential.helper store";
 
             # Nixos
             list-gens = "nixos-rebuild list-generations";

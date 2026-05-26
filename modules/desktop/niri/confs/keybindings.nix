@@ -18,13 +18,26 @@ binds {
     Mod+Space hotkey-overlay-title="Application Launcher" { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
     Mod+P hotkey-overlay-title="Clipboard Manager" { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
     Mod+N hotkey-overlay-title="Notification Center" { spawn "dms" "ipc" "call" "notifications" "toggle"; }
-    Mod+Shift+W hotkey-overlay-title="Browse Wallpapers" { spawn "dms" "ipc" "call" "dankdash" "wallpaper"; }
-    // Help/Overlay
+    Mod+Shift+W hotkey-overlay-title="Browse Wallpapers" { spawn "dms" "ipc" "call" "dankdash" "wallpaper"; } // Help/Overlay
     Ctrl+Alt+Delete hotkey-overlay-title="Task Manager" { spawn "dms" "ipc" "call" "processlist" "focusOrToggle";}
     Mod+Slash hotkey-overlay-title="Run an Application: launcher" { spawn "dms" "ipc" "call" "keybinds" "toggleWithPath" "niri" "~/.config/niri/config.kdl"; }
     // Security
     Mod+Ctrl+L hotkey-overlay-title="Lock Screen" { spawn "dms" "ipc" "call" "lock" "lock"; }
 
+  '' else if bar == "noctalia-shell" then ''
+  // Binds for Noctalia
+    // WINDOW MANAGEMENT
+
+    // Application Launchers
+    Mod+Space hotkey-overlay-title="Application Launcher" { spawn "noctalia-shell" "ipc" "call" "launcher" "toggle"; }
+    Mod+P hotkey-overlay-title="Clipboard Manager" { spawn "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
+    Mod+N hotkey-overlay-title="Notification Center" { spawn "noctalia-shell" "ipc" "call" "notifications" "toggleHistory"; }
+    Mod+Shift+W hotkey-overlay-title="Browse Wallpapers" { spawn "noctalia-shell" "ipc" "call" "wallpaper" "toggle"; } // Help/Overlay
+    Mod+S hotkey-overlay-title="Control Centre" { spawn "noctalia-shell" "ipc" "call" "controlCenter" "toggle"; }
+    Ctrl+Alt+Delete hotkey-overlay-title="Task Manager" { spawn "noctalia-shell" "ipc" "call" "systemMonitor" "toggle"; }
+    Mod+Slash {spawn "launcher" "keybindings"; }
+    // Security
+    Mod+Ctrl+L hotkey-overlay-title="Lock Screen" { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "lock"; }
   '' else ''
   // Conflicting binds for other shells
     // Window Management

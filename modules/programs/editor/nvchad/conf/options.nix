@@ -30,6 +30,7 @@
   -- system
     vim.opt.undofile = true
     vim.opt.clipboard = "unnamedplus"
+    vim.opt.swapfile = false
 
   -- UI cleanup for custom statusline
     vim.opt.laststatus = 3      -- global statusline (matches your lualine setup)

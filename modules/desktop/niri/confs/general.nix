@@ -14,14 +14,14 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 // cursor {
 //     xcursor-theme "breeze_cursors"
 //     xcursor-size 48
-// 
+//
 //     hide-when-typing
 //     hide-after-inactive-ms 1000
 // }
 
 overview {
     zoom 0.5
-    // backdrop-color "#4c566a80" //irrelevant if you use wallaper
+    backdrop-color "#00000000"  // set black to match boot screen
 
     workspace-shadow {
         // off
@@ -33,8 +33,8 @@ overview {
 }
 
 xwayland-satellite {
-    off
-    // path "xwayland-satellite"
+    //off
+    path "xwayland-satellite"
 }
 
 clipboard {

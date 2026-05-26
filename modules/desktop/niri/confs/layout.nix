@@ -2,10 +2,10 @@
 
 ''
 layout {
-    gaps 8
+    gaps 4
     center-focused-column "never"
     always-center-single-column
-    empty-workspace-above-first
+    // empty-workspace-above-first
     default-column-display "normal" // normal or tabbed.
     background-color "#00000000"
     default-column-width { proportion 0.5; }
@@ -40,7 +40,7 @@ layout {
     border {
         off
         // on
-        width 2.5
+        width 1.5
         active-color "#3B4BF5"
         inactive-color "#CCCCCC"
         urgent-color "#E80000"
