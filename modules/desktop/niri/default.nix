@@ -27,6 +27,7 @@ let
   colourVariablesNvim = pkgs.callPackage ../scripts/niriscripts/colourVariablesNvim.nix { };
   colourVariablesOhMyPosh = pkgs.callPackage ../scripts/niriscripts/colourVariablesOhMyPosh.nix { };
   colourVariablesStarship = pkgs.callPackage ../scripts/niriscripts/colourVariablesStarship.nix { };
+  noctaliaOnWallpaperChanged = pkgs.callPackage ../scripts/niriscripts/noctaliaOnWallpaperChanged.nix { };
   windowBehaviour = pkgs.callPackage ../scripts/niriscripts/window-behaviour.nix { };
   overviewCommands = pkgs.callPackage ../scripts/niriscripts/overview-commands.nix { };
 
@@ -37,7 +38,7 @@ let
 
     inherit ide-launcher wallpaper toggle-dropdown
     colourVariablesNvim colourVariablesOhMyPosh colourVariablesStarship
-    windowBehaviour overviewCommands;
+    noctaliaOnWallpaperChanged windowBehaviour overviewCommands;
     }
     // lib.optionalAttrs (bar == "dms-shell") { inherit dmsWrapper; };
 in

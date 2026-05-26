@@ -15,6 +15,23 @@ pkgs.writeShellScriptBin "generate-color-variables-nvim" ''
       jq -r "$path" "$DMS_COLORS"
   }
 
+darken() {
+    local hex
+    hex=$(echo "$1" | sed 's/^#//' | tr '[:lower:]' '[:upper:]')
+
+    local factor="$2"
+
+    local r=$((16#''${hex:0:2}))
+    local g=$((16#''${hex:2:2}))
+    local b=$((16#''${hex:4:2}))
+
+    r=$(awk "BEGIN { printf \"%d\", $r * $factor }")
+    g=$(awk "BEGIN { printf \"%d\", $g * $factor }")
+    b=$(awk "BEGIN { printf \"%d\", $b * $factor }")
+
+    printf "#%02X%02X%02X\n" "$r" "$g" "$b"
+}
+
 generate_lua() {
     cat > "$OUT_LUA" <<EOF
 return {
@@ -48,7 +65,12 @@ return {
     darkOnTertiaryFixedVariant = "$(extract_color '.colors.dark.on_tertiary_fixed_variant')",
     darkOutline = "$(extract_color '.colors.dark.outline')",
     darkOutlineVariant = "$(extract_color '.colors.dark.outline_variant')",
+
     darkPrimary = "$(extract_color '.colors.dark.primary')",
+    darkPrimaryDim1 = "$(darken "$(extract_color '.colors.dark.primary')" 0.90)",
+    darkPrimaryDim2 = "$(darken "$(extract_color '.colors.dark.primary')" 0.70)",
+    darkPrimaryDim3 = "$(darken "$(extract_color '.colors.dark.primary')" 0.50)",
+
     darkPrimaryContainer = "$(extract_color '.colors.dark.primary_container')",
     darkPrimaryFixed = "$(extract_color '.colors.dark.primary_fixed')",
     darkPrimaryFixedDim = "$(extract_color '.colors.dark.primary_fixed_dim')",

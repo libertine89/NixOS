@@ -6,13 +6,18 @@ if not colors_ok then
   vim.notify("Failed to load DMS colors, using fallback", vim.log.levels.WARN)
   DMSColors = {}
 end
+local colors_ok, NOCColors = pcall(require, "configs.noctaliaColourVariables")
+if not colors_ok then
+  vim.notify("Failed to load Noctalia colors, using fallback", vim.log.levels.WARN)
+  NOCColors = {}
+end
 local C = {
   -- =========================================================
   -- Background colours for Bars
   -- =========================================================
-  bg0 = DMSColors.darkOnPrimary or "#0A0373",
-  bg1 = DMSColors.darkOnPrimaryFixedVariant or "#1C1690",
-  bg2 = DMSColors.darkInversePrimary or "#3A36B5",
+  bg0 = NOCColors.darkPrimaryDim3 or DMSColors.darkPrimaryDim3 or "#0A0373",
+  bg1 = NOCColors.darkPrimaryDim2 or DMSColors.darkPrimaryDim2 or "#1C1690",
+  bg2 = NOCColors.darkPrimaryDim1 or DMSColors.darkPrimaryDim1 or "#3A36B5",
   bg3 = "#2A2680",
 
   bg_base = "#555555",
