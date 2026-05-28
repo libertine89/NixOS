@@ -53,7 +53,7 @@ window-rule {
 }
 
 window-rule {
-    match app-id="kitty-dev"
+    match app-id="kitty" title="dev"
     open-maximized true
     open-on-workspace "2"
     open-focused false

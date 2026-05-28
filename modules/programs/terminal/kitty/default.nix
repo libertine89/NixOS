@@ -99,5 +99,6 @@
       enable_audio_bell no
     '';
     })
+    (import ./kitty-sessions.nix)
   ];
 }

@@ -5,8 +5,7 @@ let
   pkgs lib getExe getExe'
   bar terminal fileManager browser editor ide
   ide-launcher toggle-dropdown
-  overviewCommands devEnv
-  ;
+  overviewCommands;
 in
 ''
 binds {
@@ -67,9 +66,9 @@ binds {
     Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
     Mod+E hotkey-overlay-title="Open file explorer: ${fileManager}" { spawn "${terminal}" "-e" "${fileManager}"; }
     Mod+B hotkey-overlay-title="Open a Browser: ${browser}" { spawn "${browser}"; }
-    Mod+V hotkey-overlay-title="Open an Editor: ${editor}" { spawn "${terminal}" "--override" "font_size=10" "--title" "nvim" "nvim"; }
-    // Mod+D { spawn "${terminal}" "--override" "font_size=10" "--title" "nvim" "sh" "-c" "cd ${config.home.homeDirectory}/NixOS && exec nvim"; }
- //   Mod+D hotkey-overlay-title="Open Dev Environment" { spawn "${getExe devEnv}" "${config.home.homeDirectory}/NixOS" "" "${config.home.homeDirectory}/NixOS/modules" "" "${config.home.homeDirectory}/NixOS/modules" ""; }
+    Mod+V hotkey-overlay-title="Open Editor (${editor})" { spawn "${terminal}" "--override" "font_size=10" "--title" "nvim" "nvim"; }
+    Mod+D hotkey-overlay-title="Open Nvim Dev Environment" { spawn "${terminal}" "--override" "font_size=10" "--title" "nvim" "--session" "${config.home.homeDirectory}/.config/kitty/sessions/nvim.session"; }
+    Mod+Shift+D hotkey-overlay-title="Open Kitty Dev Environment" { spawn "${terminal}" "--title" "dev" "--session" "${config.home.homeDirectory}/.config/kitty/sessions/dev.session"; }
     Mod+C hotkey-overlay-title="Open an IDE: ${ide}" { spawn "${getExe ide-launcher}" "${ide}"; }
     Mod+Shift+Q hotkey-overlay-title="Launch Calculator" { spawn "${getExe toggle-dropdown}" "echo '# === Qalculate === #'; qalc"; }
 

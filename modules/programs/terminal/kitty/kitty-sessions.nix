@@ -10,9 +10,14 @@ in
   home.file = builtins.listToAttrs [
     (mkKittySession "dev" ''
       new_tab dev
-      launch --cwd $HOME/NixOS
-      launch --location=vsplit --cwd $HOME/NixOS/modules/
-      launch --location=hsplit --cwd $HOME/NixOS/hosts/
+      launch --cwd $HOME/NixOS yazi
+      launch --location=vsplit --cwd $HOME/NixOS/modules/ yazi
+      launch --location=hsplit --cwd $HOME/NixOS/hosts/ yazi
+    '')
+
+    (mkKittySession "nvim" ''
+    new_tab nvim
+    launch --cwd $HOME/NixOS/ nvim
     '')
 
     (mkKittySession "niri" ''

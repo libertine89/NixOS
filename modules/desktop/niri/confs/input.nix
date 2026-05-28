@@ -9,6 +9,7 @@ input {
         xkb {
             layout "${kbdLayout}";
             variant "${kbdVariant}";
+            options "caps:swapescape";
             // options "compose:ralt,ctrl:nocaps"
             // model ""
             // rules ""
