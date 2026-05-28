@@ -12,6 +12,8 @@
         shellIntegration.mode = "no-title";
         settings = {
           # shell = "${getExe pkgs.tmux}";
+          allow_remote_control = "yes";
+          listen_on = "unix:/tmp/kitty.sock";
           cursor_trail = 3; # Fancy cursor movements (especially in nixvim)
           cursor_trail_decay = "0.08 0.3"; # Animation speed
           cursor_trail_start_threshold = "4";
@@ -48,7 +50,7 @@
 
           # Tab Management
           "ctrl+return" = "new_tab";
-          "super+ctrl+q" = "close_tab";
+          # "super+ctrl+q" = "close_tab"; # Aliased in ZSH.nix
           "ctrl+1" = "goto_tab 1";
           "ctrl+2" = "goto_tab 2";
           "ctrl+3" = "goto_tab 3";
@@ -60,7 +62,7 @@
           "ctrl+shift+return" = "launch --cwd=current";
           "ctrl+shift+v" = "launch --location=vsplit --cwd=current";
           "ctrl+shift+s" = "launch --location=hsplit --cwd=current";
-          "super+ctrl+shift+q" = "close_window";
+          # "super+ctrl+shift+q" = "close_window"; # Aliased in ZSH.nix
           "ctrl+shift+tab" = "move_window_forward";
           "ctrl+shift+h" = "neighboring_window left";
           "ctrl+shift+l" = "neighboring_window right";

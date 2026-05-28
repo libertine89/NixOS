@@ -1,20 +1,18 @@
-
 { pkgs, ... }:
 
 let
-  generate-colour-variables-noctalia-nvim = pkgs.callPackage ./noctaliaColourVariablesNvim.nix {};
-  generate-colour-variables-noctalia-nvim-bin = pkgs.lib.getExe generate-colour-variables-noctalia-nvim;
-  # generate-colour-variables-ohmyposh = pkgs.callPackage ./colourVariablesOhMyPosh.nix {};
-  # generate-colour-variables-ohmyposh-bin = pkgs.lib.getExe generate-colour-variables-ohmyposh;
-  generate-colour-variables-noctalia-starship = pkgs.callPackage ./noctaliaColourVariablesStarship.nix {};
-  generate-colour-variables-noctalia-starship-bin = pkgs.lib.getExe generate-colour-variables-noctalia-starship;
+  generate-colour-variables-noctalia-nvim =
+    pkgs.callPackage ./noctaliaColourVariablesNvim.nix {};
+
+  generate-colour-variables-noctalia-starship =
+    pkgs.callPackage ./noctaliaColourVariablesStarship.nix {};
 in
 
 pkgs.writeShellScript "noctaliaOnWallpaperChanged" ''
   #!/usr/bin/env bash
 
   # Space-separated list of scripts
-  SCRIPTS="${generate-colour-variables-noctalia-nvim-bin} ${generate-colour-variables-noctalia-starship-bin}"
+  SCRIPTS="${pkgs.lib.getExe generate-colour-variables-noctalia-nvim} ${pkgs.lib.getExe generate-colour-variables-noctalia-starship}"
 
   for script in $SCRIPTS; do
       if [ -x "$script" ]; then

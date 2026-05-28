@@ -15,7 +15,7 @@ in
   ];
 
   home-manager.sharedModules = [
-    (_: {
+    ( { config, ... }: {
       imports = [
         inputs.noctalia.homeModules.default
       ];
@@ -173,7 +173,7 @@ in
             screenOverrides = [];
           };
           general = {
-            avatarImage = "/nix/store/5xrq5h04dm306fqa1lfy0n3db3dpyxnz-profile-picture.jpg";
+            avatarImage = "${config.home.homeDirectory}/NixOS/modules/bars/noctalia-shell/profile-picture.jpg";
             dimmerOpacity = 0.2;
             showScreenCorners = false;
             forceBlackScreenCorners = false;
@@ -276,7 +276,7 @@ in
           wallpaper = {
             enabled = true;
             overviewEnabled = true;
-            directory = "/home/nixius/NixOS/modules/themes/wallpapers";
+            directory = "${config.home.homeDirectory}/NixOS/modules/themes/wallpapers";
             monitorDirectories = [];
             enableMultiMonitorDirectories = false;
             showHiddenFiles = false;

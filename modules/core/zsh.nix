@@ -57,6 +57,14 @@
             zle -N sudo-command-line
             bindkey '\e\e' sudo-command-line
 
+            # Qalculate Widget
+            qalculate-widget() {
+              LBUFFER+="qalc \"\""
+              zle backward-char
+            }
+            zle -N qalculate-widget
+            bindkey '^gq' qalculate-widget
+
             # Git Commit Widget
             git-commit-widget() {
               LBUFFER+="git add . && git commit -m \"\""
@@ -211,6 +219,10 @@
             gfo="git fetch origin";
             gcheck="git checkout";
             gcredential="git config credential.helper store";
+
+            # Kitty
+            pclo = "kitty @ close-window";
+            tclo = "kitty @ close-tab";
 
             # Nixos
             list-gens = "nixos-rebuild list-generations";

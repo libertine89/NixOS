@@ -16,5 +16,6 @@ in
     qview
     snapper
     bat
+    libqalculate
   ];
 }

@@ -33,29 +33,31 @@ binds {
     Mod+P hotkey-overlay-title="Clipboard Manager" { spawn "noctalia-shell" "ipc" "call" "launcher" "clipboard"; }
     Mod+N hotkey-overlay-title="Notification Center" { spawn "noctalia-shell" "ipc" "call" "notifications" "toggleHistory"; }
     Mod+Shift+W hotkey-overlay-title="Browse Wallpapers" { spawn "noctalia-shell" "ipc" "call" "wallpaper" "toggle"; } // Help/Overlay
+    Mod+Ctrl+Shift+W hotkey-overlay-title="Random Wallpaper" { "spawn" "noctalia-shell" "ipc" "call" "wallpaper" "random"; }
     Mod+S hotkey-overlay-title="Control Centre" { spawn "noctalia-shell" "ipc" "call" "controlCenter" "toggle"; }
     Ctrl+Alt+Delete hotkey-overlay-title="Task Manager" { spawn "noctalia-shell" "ipc" "call" "systemMonitor" "toggle"; }
     Mod+Slash {spawn "launcher" "keybindings"; }
+    Mod+Shift+B hotkey-overlay-title="Toggle Noctalia Bar" { spawn "noctalia-shell" "ipc" "call" "bar" "toggle"; }
     // Security
-    Mod+Ctrl+L hotkey-overlay-title="Lock Screen" { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "lock"; }
+    Mod+Ctrl+L hotkey-overlay-title="Lock Screen" { spawn "noctalia-shell" "ipc" "call" "sessionMenu" "toggle"; }
   '' else ''
   // Conflicting binds for other shells
     // Window Management
 
     // Application Launchers
-    Mod+Space hotkey-overlay-title="Run an Application: launcher" { spawn "launcher" "drun"; }
-    Mod+Shift+W hotkey-overlay-title="Change Wallpaper: launcher" { spawn "launcher" "wallpaper"; }
+    Mod+Space hotkey-overlay-title="Run an Application: launcher" { spawn "${terminal}" "drun"; }
+    Mod+Shift+W hotkey-overlay-title="Change Wallpaper: launcher" { spawn "${terminal}" "wallpaper"; }
     // Help/Overlay
-    Ctrl+Alt+Delete hotkey-overlay-title="Show System Resource Manager: btop" { spawn "kitty" "-e" "btop"; }
+    Ctrl+Alt+Delete hotkey-overlay-title="Show System Resource Manager: btop" { spawn "${terminal}" "-e" "btop"; }
     Mod+Slash {spawn "launcher" "keybindings"; }
     // Security
     Mod+Ctrl+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
   ''}
 
     // HELP / OVERLAY
-    Mod+Shift+Ctrl+B hotkey-overlay-title="Rebuild Nix Flake: kitty" { spawn "kitty" "-e" "rebuild"; }
-    Mod+Shift+Ctrl+U hotkey-overlay-title="Update & Build Nix Flake: kitty" { spawn "kitty" "-e" "update"; }
-    Mod+Shift+Ctrl+G hotkey-overlay-title="Clear Garbage: kitty" { spawn "kitty" "-e" "garbage-collection"; }
+    Mod+Shift+Ctrl+B hotkey-overlay-title="Rebuild Nix Flake: ${terminal}" { spawn "${terminal}" "-e" "rebuild"; }
+    Mod+Shift+Ctrl+U hotkey-overlay-title="Update & Build Nix Flake: ${terminal}" { spawn "${terminal}" "-e" "update"; }
+    Mod+Shift+Ctrl+G hotkey-overlay-title="Clear Garbage: ${terminal}" { spawn "${terminal}" "-e" "garbage-collection"; }
 
     Mod+W repeat=false { toggle-overview; }
 
@@ -66,8 +68,9 @@ binds {
     Mod+E hotkey-overlay-title="Open file explorer: ${fileManager}" { spawn "${terminal}" "-e" "${fileManager}"; }
     Mod+B hotkey-overlay-title="Open a Browser: ${browser}" { spawn "${browser}"; }
     Mod+V hotkey-overlay-title="Open an Editor: ${editor}" { spawn "${terminal}" "--override" "font_size=10" "--title" "nvim" "nvim"; }
-    Mod+D { spawn "kitty" "--override" "font_size=10" "--title" "nvim" "sh" "-c" "cd /home/nixius/NixOS && exec nvim"; }
+    Mod+D { spawn "${terminal}" "--override" "font_size=10" "--title" "nvim" "sh" "-c" "cd /home/nixius/NixOS && exec nvim"; }
     Mod+C hotkey-overlay-title="Open an IDE: ${ide}" { spawn "${getExe ide-launcher}" "${ide}"; }
+    Mod+Shift+Q hotkey-overlay-title="Launch Calculator" { spawn "${getExe toggle-dropdown}" "echo '# === Qalculate === #'; qalc"; }
 
     // WINDOW MANAGEMENT
     Mod+Q repeat=false { close-window; }

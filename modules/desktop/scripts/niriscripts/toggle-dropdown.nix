@@ -1,10 +1,11 @@
 { pkgs }:
- 
-  pkgs.writeShellScriptBin "toggle-dropdown.nix" 
+
+  pkgs.writeShellScriptBin "toggle-dropdown.nix"
   ''
 #!/usr/bin/env bash
 
 APP_ID="dropdown"
+CMD="$*"  # Collect all arguments as the command
 
 # Get window info
 WINDOWS="$(niri msg windows)"
@@ -24,13 +25,24 @@ FOCUSED=$(echo "$WINDOWS" | awk '
 
 if [ -z "$WIN_ID" ]; then
     # Launch dropdown terminal
-    kitty --class dropdown &
+    if [ -z "$CMD" ]; then
+        kitty --class dropdown &
+    else
+        kitty --class dropdown -e bash -c "$CMD" &
+    fi
 elif [ "$WIN_ID" = "$FOCUSED" ]; then
     # Hide it (close window)
     niri msg action close-window
 else
     # Focus existing dropdown
     niri msg action focus-window --id "$WIN_ID"
-fi  
-
+fi
 ''
+# # Open blank dropdown terminal
+# ./toggle-dropdown.nix
+#
+# # Open dropdown terminal and run 'htop'
+# ./toggle-dropdown.nix htop
+#
+# # Run multiple commands
+# ./toggle-dropdown.nix "echo hello; sleep 5"

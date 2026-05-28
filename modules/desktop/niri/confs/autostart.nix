@@ -18,9 +18,10 @@ in
   ''}
   ${lib.optionalString (bar == "noctalia-shell") ''
     spawn-at-startup "${bar}"
-    spawn-at-startup "${lib.getExe noctaliaOnWallpaperChanged}"
+    spawn-at-startup "noctalia-shell" "ipc" "call" "wallpaper" "random"
+    spawn-at-startup "${noctaliaOnWallpaperChanged}"
   ''}
-  ${lib.optionalString (bar != "dms-shell" || bar != "noctalia-shell") ''
+  ${lib.optionalString (bar != "dms-shell" && bar != "noctalia-shell") ''
     spawn-at-startup "${bar}"
     spawn-at-startup "${lib.getExe wallpaper}"
   ''}

@@ -118,7 +118,8 @@ in
       # ─────────────────────────────
       # Set Wallpaper
       # ─────────────────────────────
-      # services.awww.enable = true;
+      services.awww.enable =
+        bar != "dms-shell" && bar != "noctalia-shell";
 
       home.file.".config/niri/config.kdl".text = ''
         ${import ./confs/input.nix { inherit pkgs ctx; }}
