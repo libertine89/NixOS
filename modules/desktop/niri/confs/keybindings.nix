@@ -69,7 +69,7 @@ binds {
     Mod+B hotkey-overlay-title="Open a Browser: ${browser}" { spawn "${browser}"; }
     Mod+V hotkey-overlay-title="Open an Editor: ${editor}" { spawn "${terminal}" "--override" "font_size=10" "--title" "nvim" "nvim"; }
     // Mod+D { spawn "${terminal}" "--override" "font_size=10" "--title" "nvim" "sh" "-c" "cd ${config.home.homeDirectory}/NixOS && exec nvim"; }
-    Mod+D hotkey-overlay-title="Open Dev Environment" {soawn "${getExe devEnv}"; }
+ //   Mod+D hotkey-overlay-title="Open Dev Environment" { spawn "${getExe devEnv}" "${config.home.homeDirectory}/NixOS" "" "${config.home.homeDirectory}/NixOS/modules" "" "${config.home.homeDirectory}/NixOS/modules" ""; }
     Mod+C hotkey-overlay-title="Open an IDE: ${ide}" { spawn "${getExe ide-launcher}" "${ide}"; }
     Mod+Shift+Q hotkey-overlay-title="Launch Calculator" { spawn "${getExe toggle-dropdown}" "echo '# === Qalculate === #'; qalc"; }
 
