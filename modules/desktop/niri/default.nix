@@ -30,6 +30,7 @@ let
   noctaliaOnWallpaperChanged = pkgs.callPackage ../scripts/niriscripts/noctaliaOnWallpaperChanged.nix { };
   windowBehaviour = pkgs.callPackage ../scripts/niriscripts/window-behaviour.nix { };
   overviewCommands = pkgs.callPackage ../scripts/niriscripts/overview-commands.nix { };
+  devEnv = pkgs.callPackage ../scripts/niriscripts/devenv.nix { };
 
   ctx = {
     inherit pkgs lib getExe getExe' ide
@@ -38,7 +39,8 @@ let
 
     inherit ide-launcher wallpaper toggle-dropdown
     colourVariablesNvim colourVariablesOhMyPosh colourVariablesStarship
-    noctaliaOnWallpaperChanged windowBehaviour overviewCommands;
+    noctaliaOnWallpaperChanged windowBehaviour overviewCommands
+    devEnv;
     }
     // lib.optionalAttrs (bar == "dms-shell") { inherit dmsWrapper; };
 in
@@ -109,7 +111,7 @@ in
   # Home Manager integration
   # ─────────────────────────────
   home-manager.sharedModules = [
-    ({ pkgs, ... }: {
+    ({ config, pkgs, ... }: {
       home.packages = with pkgs; [
         kitty
         yazi
@@ -127,7 +129,7 @@ in
         ${import ./confs/output.nix { inherit pkgs ctx; }}
         ${import ./confs/autostart.nix { inherit pkgs ctx; }}
         ${import ./confs/general.nix { inherit pkgs ctx; }}
-        ${import ./confs/keybindings.nix { inherit pkgs ctx; }}
+        ${import ./confs/keybindings.nix { inherit config pkgs ctx; }}
         ${import ./confs/windowrule.nix { inherit pkgs ctx; }}
         ${import ./confs/layout.nix { inherit pkgs ctx; }}
         ${import ./confs/layerrule.nix { inherit pkgs ctx; }}

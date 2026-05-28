@@ -24,12 +24,11 @@ in
   ${lib.optionalString (bar != "dms-shell" && bar != "noctalia-shell") ''
     spawn-at-startup "${bar}"
     spawn-at-startup "${lib.getExe wallpaper}"
+    spawn-at-startup "swaylock"
+    spawn-at-startup "swayidle"
+    spawn-at-startup "swaync"
+    spawn-at-startup "waypaper" "--restore"
   ''}
-
-  // spawn-at-startup "swaylock"
-  // spawn-at-startup "swayidle"
-  // spawn-at-startup "swaync"
-  // spawn-at-startup "waypaper" "--restore"
 
   spawn-at-startup "${lib.getExe windowBehaviour}"
 

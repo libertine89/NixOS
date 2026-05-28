@@ -48,6 +48,15 @@ window-rule {
 window-rule {
     match app-id="kitty" title="nvim"
     open-maximized true
+    open-on-workspace 2
+    focus-follows true
+}
+
+window-rule {
+    match app-id="kitty-dev"
+    open-maximized true
+    open-on-workspace 2
+    focus-follows false
 }
 
 // WezTerm: work around initial configure bug (needs an empty default width).
