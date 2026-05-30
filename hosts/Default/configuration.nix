@@ -21,6 +21,7 @@ in
     # ../../modules/core/flatpak.nix
 
     # System Modules
+    ../../modules/system/docker
     ../../modules/system/boot.nix
     ../../modules/system/dns.nix
     ../../modules/system/hardware.nix

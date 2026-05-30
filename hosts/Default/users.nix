@@ -27,7 +27,6 @@ in
         "audio"
         "libvirtd"
         "kvm"
-        "docker"
         "disk"
         "adbusers"
         "lp"

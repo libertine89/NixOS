@@ -8,8 +8,7 @@ in
     libreoffice
     bitwarden-desktop
     peazip
-    docker
-    pgadmin4
+    fnm
     gnome-calculator
     github-desktop
     xournalpp

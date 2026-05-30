@@ -4,10 +4,6 @@
   virtualisation = {
     spiceUSBRedirection.enable = true;
 
-    docker = {
-      enable = true;
-    };
-
     podman.enable = false;
 
     libvirtd = {
@@ -81,8 +77,5 @@
     spice-vdagent
     win-virtio
     win-spice
-
-    lazydocker
-    docker-client
   ];
 }

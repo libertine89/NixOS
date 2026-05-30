@@ -30,6 +30,10 @@
               eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/oh-my-posh.omp.json)"
             fi
 
+            if command -v fnm >/dev/null 2>&1; then
+              eval "$(fnm env --use-on-cd --shell zsh)"
+            fi
+
             fpath=(${pkgs.nix-zsh-completions}/share/zsh/site-functions $fpath)
 
             # Source zsh-defer first, then use it for lazy loading

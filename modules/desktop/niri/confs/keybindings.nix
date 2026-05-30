@@ -67,7 +67,8 @@ binds {
     Mod+E hotkey-overlay-title="Open file explorer: ${fileManager}" { spawn "${terminal}" "-e" "${fileManager}"; }
     Mod+B hotkey-overlay-title="Open a Browser: ${browser}" { spawn "${browser}"; }
     Mod+V hotkey-overlay-title="Open Editor (${editor})" { spawn "${terminal}" "--override" "font_size=10" "--title" "nvim" "nvim"; }
-    Mod+D hotkey-overlay-title="Open Nvim Dev Environment" { spawn "${terminal}" "--override" "font_size=10" "--title" "nvim" "--session" "${config.home.homeDirectory}/.config/kitty/sessions/nvim.session"; }
+    Mod+D hotkey-overlay-title="Open Nvim Dots Environment" { spawn "${terminal}" "--override" "font_size=10" "--title" "nvim" "--session" "${config.home.homeDirectory}/.config/kitty/sessions/dots.session"; }
+    Mod+A hotkey-overlay-title="Open Nvim Algo Dev Environment" { spawn "${terminal}" "--override" "font_size=10" "--title" "nvim" "--session" "${config.home.homeDirectory}/.config/kitty/sessions/algo.session"; }
     Mod+Shift+D hotkey-overlay-title="Open Kitty Dev Environment" { spawn "${terminal}" "--title" "dev" "--session" "${config.home.homeDirectory}/.config/kitty/sessions/dev.session"; }
     Mod+C hotkey-overlay-title="Open an IDE: ${ide}" { spawn "${getExe ide-launcher}" "${ide}"; }
     Mod+Shift+Q hotkey-overlay-title="Launch Calculator" { spawn "${getExe toggle-dropdown}" "echo '# === Qalculate === #'; qalc"; }

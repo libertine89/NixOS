@@ -22,7 +22,7 @@ in
 // Set up what controls wallpaper
   ${if bar == "noctalia-shell" then ''
   layer-rule {
-      match namespace="^noctalia-overview-Virtual-1"
+      match namespace="^noctalia-overview-DP-4"
       place-within-backdrop true
   }
   ''

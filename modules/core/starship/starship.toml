@@ -44,11 +44,11 @@ $time\
 """
 
 [palettes.dms]
-color1 = "#7F54D5"
-color2 = "#6341A5"
-color3 = "#472F76"
+color1 = "#955CCD"
+color2 = "#74489F"
+color3 = "#533372"
 color4 = "#000000" # Spare
-color5 = "#b1afb6"  # Static Seperator Color
+color5 = "#b2afb6"  # Static Seperator Color
 color6 = "#60FF60"  # Git Lines Added Color
 color7 = "#FF6060"  # Git Lines Removed Color
 color8 =  "#f2f2f3" # Text Color
