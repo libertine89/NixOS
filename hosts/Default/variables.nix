@@ -29,7 +29,7 @@
   videoDriver = "amdgpu"; # nvidia, amdgpu, intel
   nvidiaChannel = "legacy_580"; # stable, latest, beta, legacy_xxx
   bluetoothSupport = false; # Whether your motherboard supports bluetooth
-
+### HELLO
   # Localization
   timezone = "Europe/London";
   locale = "en_GB.UTF-8";
