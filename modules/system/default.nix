@@ -12,5 +12,6 @@
     ./users.nix
     ./plymouth.nix
     # ./virtualisation.nix
+    # ./snapper.nix
   ];
 }

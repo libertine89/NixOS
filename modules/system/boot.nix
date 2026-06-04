@@ -1,6 +1,10 @@
 { pkgs, ... }:
 {
   boot = {
+
+    #LVM in initrd (fixes boot)
+    initrd.services.lvm.enable = true;
+
     # Filesystems support
     supportedFilesystems = [
       "ntfs"

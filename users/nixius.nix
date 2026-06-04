@@ -11,6 +11,11 @@ in
 
   # User Specific Pakcages
   home.packages = with pkgs; [
+    pkgs.${vars.ide}
+    lsof
+    fnm # run nvm install ... from root of repo
+    github-desktop
+    bat
     asciiquarium
     cmatrix
     figlet

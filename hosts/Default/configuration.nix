@@ -31,6 +31,7 @@ in
     ../../modules/system/security.nix
     ../../modules/system/services.nix
     ../../modules/system/system.nix
+    #../../modules/system/snapper.nix
 
     # Optional
     ../../modules/hardware/drives # Automatically mount extra external/internal drives

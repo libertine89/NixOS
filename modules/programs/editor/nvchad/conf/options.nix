@@ -38,4 +38,8 @@
     vim.opt.showmode = false    -- removes INSERT/--MODE-- (you already replace it)
     vim.opt.showcmd = false     -- removes command preview
     vim.opt.statuscolumn = ""   -- disables side column text (important on newer Neovim) vim.opt.statuscolumn = ""   -- disables side column text (important on newer Neovim)
+
+  -- DiffView deleted line fills
+    vim.opt.fillchars:append { diff = "/" }
 ''
+

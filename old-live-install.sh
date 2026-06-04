@@ -876,46 +876,14 @@ if [ -n "$part_swap" ]; then
   }
 fi
 
+# Mount filesystems
 info "Mounting filesystems..."
 
-if [ "$filesystem" = "btrfs" ]; then
-  echo "Mounting root partition for subvolume setup..."
-
-  mount "$root_device" /mnt || {
-    error "Failed to mount root device"
-    exit 1
-  }
-
-  btrfs subvolume create /mnt/@ || true
-  btrfs subvolume create /mnt/@nix || true
-  btrfs subvolume create /mnt/@log || true
-
-  if [ -z "$home_mapped_device" ]; then
-    btrfs subvolume create /mnt/@home || true
-  fi
-
-  umount /mnt
-
-  mount -o subvol=@ "$root_device" /mnt
-
-  mkdir -p /mnt/nix
-  mkdir -p /mnt/nix /mnt/var/log
-
-  mount -o subvol=@nix "$root_device" /mnt/nix
-  mount -o subvol=@log "$root_device" /mnt/var/log
-
-  if [ -z "$home_mapped_device" ]; then
-    mkdir -p /mnt/home
-    mount -o subvol=@home "$root_device" /mnt/home
-  fi
-
-else
-  echo "Mounting root partition..."
-  mount "$root_device" /mnt || {
-    error "Failed to mount root partition"
-    exit 1
-  }
-fi
+echo "Mounting root partition..."
+mount "$root_device" /mnt || {
+  error "Failed to mount root partition."
+  exit 1
+}
 
 echo "Creating and mounting boot partition..."
 mkdir -p /mnt/boot

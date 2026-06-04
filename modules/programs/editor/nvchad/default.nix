@@ -20,8 +20,42 @@
               "nvim-lualine/lualine.nvim",
               dependencies = { "nvim-tree/nvim-web-devicons" },
             },
+            {
+              "sindrets/diffview.nvim",
+              dependencies = { "nvim-tree/nvim-web-devicons" },
+              keys = {
+                {
+                  "<leader>mt",
+                  function()
+                    local view = require("diffview.lib").get_current_view()
+                    if view then
+                      vim.cmd("DiffviewClose")
+                    else
+                      vim.cmd("DiffviewOpen")
+                        end
+                        end,
+                  desc = "Toggle Diffview",
+                },
+              },
+            },
+            {
+              "NeogitOrg/neogit",
+              dependencies = {
+                "sindrets/diffview.nvim",
+              },
+              cmd = "Neogit",
+              keys = {
+                {
+                  "<leader>sc",
+                  "<cmd>Neogit<cr>",
+                  desc = "Toggle Neogit",
+                }
+              },
+              config = function()
+                require("neogit").setup({})
+              end,
+            },
           }
-
         '';
         extraPackages = with pkgs; [
            nixd
