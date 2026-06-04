@@ -7,7 +7,7 @@ in
   # Import User specific Modules
   imports = [
     # ../modules/user/nixius-pkg.nix
-#    ../modules/user/nixius/git.nix
+    ../modules/user/nixius/git.nix
   ];
 
   # User Specific Pakcages

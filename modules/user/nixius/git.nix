@@ -4,11 +4,16 @@
 {
   programs.git = {
     enable = true;
-    userName = "Chris";      # replace or override in user file
-    userEmail = "cdraper_electrical@hotmail.co.uk"; # replace or override in user file
 
-    extraConfig = {
-      "pull.rebase" = "false";
+    settings = {
+      user = {
+        name = "Chriss";
+        email = "cdraper_electrical@hotmail.co.uk";
+      };
+
+      pull = {
+        rebase = "false";   # ✅ must be string, not boolean
+      };
     };
   };
 }

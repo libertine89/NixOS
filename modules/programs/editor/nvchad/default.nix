@@ -32,11 +32,21 @@
                       vim.cmd("DiffviewClose")
                     else
                       vim.cmd("DiffviewOpen")
-                        end
-                        end,
+                    end
+                  end,
                   desc = "Toggle Diffview",
                 },
               },
+              config = function()
+                require("diffview").setup({
+                    view = {
+                      merge_tool = {
+                        layout = "diff3_mixed",
+                        disable_diagnostics = true,
+                      },
+                    },
+                  })
+                end,
             },
             {
               "NeogitOrg/neogit",

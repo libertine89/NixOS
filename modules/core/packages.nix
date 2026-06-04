@@ -25,7 +25,6 @@
     kdePackages.qtvirtualkeyboard # Sddm Dependency
     fzf # Fuzzy Finder
     fd # Better Find
-   git
     zoxide # Fast directory jumping (z/cd replacement)
     gh # Github Authentication Client
     libjxl # Support for JXL Images
