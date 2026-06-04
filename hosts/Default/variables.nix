@@ -23,7 +23,7 @@
   shell = "zsh"; # zsh, bash
   shellPrompt = "starship"; # oh-my-posh, starship
   games = true; # Enable/Disable gaming module
-
+### GOODBYE
   # Hardware
   hostname = "Nixius";
   videoDriver = "amdgpu"; # nvidia, amdgpu, intel
