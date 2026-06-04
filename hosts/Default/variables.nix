@@ -18,12 +18,12 @@
   terminal = "kitty"; # kitty, alacritty
   editor = "nvchad"; # nixvim, vscode, helix, doom-emacs, nvchad, neovim
   ide = "code-cursor"; # vscode, code-cursor
-  browser = "firefox"; # zen-beta, firefox, floorp
+  browser = "zen-beta"; # zen-beta, firefox, floorp
   fileManager = "yazi"; # yazi, lf, thunar
   shell = "zsh"; # zsh, bash
   shellPrompt = "starship"; # oh-my-posh, starship
-  games = true; # Enable/Disable gaming module
-
+  games = false ; # Enable/Disable gaming module
+### HELLO
   # Hardware
   hostname = "Nixius";
   videoDriver = "amdgpu"; # nvidia, amdgpu, intel
