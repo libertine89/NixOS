@@ -36,16 +36,21 @@
                   end,
                   desc = "Toggle Diffview",
                 },
+
+                -- Accept All Changes Binds are leader co, ct, cb
+                -- Diff Ours
                 {
-                  "<leader>dl",
-                  "<cmd>diffget LOCAL<cr>",
+                  "<leader>do",
+                  "<cmd>diffget OURS<cr>",
                   desc = "Diff Get Local (Ours)",
                 },
+                -- Diff Theirs
                 {
-                  "<leader>dr",
-                  "<cmd>diffget REMOTE<cr>",
+                  "<leader>dt",
+                  "<cmd>diffget THIERS<cr>",
                   desc = "Diff Get Remote (Theirs)",
                 },
+                -- Diff Base
                 {
                   "<leader>db",
                   "<cmd>diffget BASE<cr>",

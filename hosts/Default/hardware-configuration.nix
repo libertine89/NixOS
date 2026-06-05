@@ -21,16 +21,16 @@
 
   boot.initrd.luks.devices."luks-root".device = "/dev/disk/by-uuid/8fd3bd4c-7530-476c-b670-d65c23bac78c";
 
-  fileSystems."/nix" =
-    { device = "/dev/mapper/luks-root";
-      fsType = "btrfs";
-      options = [ "subvol=@nix" ];
-    };
-
   fileSystems."/var/log" =
     { device = "/dev/mapper/luks-root";
       fsType = "btrfs";
       options = [ "subvol=@log" ];
+    };
+
+  fileSystems."/nix" =
+    { device = "/dev/mapper/luks-root";
+      fsType = "btrfs";
+      options = [ "subvol=@nix" ];
     };
 
   fileSystems."/home" =
