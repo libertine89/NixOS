@@ -3,7 +3,7 @@
 
   # Desktop Environment
   desktop = "niri"; # hyprland, niri, i3, gnome, plasma6
-### GOODBYE
+### GOODBYE HELLO
   # Theme & Appearance
   bar = "noctalia-shell"; # waybar, hyprpanel, noctalia-shell, caelestia-shell, dms-shell
   waybarTheme = "minimal"; # stylish, minimal
@@ -13,7 +13,7 @@
                             # flame, glowing, green_blocks, hexagon_dots_alt, hud_2, motion, square
   defaultWallpaper = "abstract101.png"; # Change with SUPER + SHIFT + W (Hyprland)
   hyprlockWallpaper = "abstract101.png";
-### GOODBYE
+### GOODBYE HELLO
   # Default Applications
   terminal = "kitty"; # kitty, alacritty
   editor = "nvchad"; # nixvim, vscode, helix, doom-emacs, nvchad, neovim
@@ -23,7 +23,7 @@
   shell = "zsh"; # zsh, bash
   shellPrompt = "starship"; # oh-my-posh, starship
   games = false ; # Enable/Disable gaming module
-### GOODBYE
+### GOODBYE HELLO
   # Hardware
   hostname = "Nixius";
   videoDriver = "amdgpu"; # nvidia, amdgpu, intel
