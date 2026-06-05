@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  vars = import ./variables.nix;
+  vars = import ./variables.nix; ### HELLO
 in
 {
   environment.systemPackages = with pkgs; [

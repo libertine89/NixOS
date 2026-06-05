@@ -73,6 +73,7 @@ in
     };
     optimise.automatic = true;
     package = pkgs.nix;
+
   };
   time.timeZone = "${timezone}";
   i18n.defaultLocale = "${locale}";
