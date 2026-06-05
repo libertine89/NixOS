@@ -36,7 +36,24 @@
                   end,
                   desc = "Toggle Diffview",
                 },
+                {
+                  "<leader>dl",
+                  "<cmd>diffget LOCAL<cr>",
+                  desc = "Diff Get Local (Ours)",
+                },
+                {
+                  "<leader>dr",
+                  "<cmd>diffget REMOTE<cr>",
+                  desc = "Diff Get Remote (Theirs)",
+                },
+                {
+                  "<leader>db",
+                  "<cmd>diffget BASE<cr>",
+                  desc = "Diff Get Base",
+                },
               },
+
+              -- Settings for DiffView Layout
               config = function()
                 require("diffview").setup({
                     view = {
