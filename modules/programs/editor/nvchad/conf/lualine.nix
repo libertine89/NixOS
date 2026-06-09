@@ -121,7 +121,7 @@ local function mode_fade_in()
   return {
     function() return "░▒▓" end,
     color = function()
-      return { fg = mode_color(), bg = C.bg_base }
+      return { fg = mode_color(), bg = "NONE" }
     end,
     padding = 0,
   }
@@ -131,7 +131,7 @@ local function mode_fade_out()
   return {
     function() return "▓▒░" end,
     color = function()
-      return { fg = mode_color(), bg = C.bg_base }
+      return { fg = mode_color(), bg = "NONE" }
     end,
     padding = 0,
   }
@@ -261,7 +261,7 @@ require("lualine").setup({
 
       {
         function() return "" end,
-        color = { fg = C.bg2, bg = C.bg_base },
+        color = { fg = C.bg2, bg = "NONE" },
         padding = 0,
       },
     },
@@ -276,7 +276,7 @@ require("lualine").setup({
     lualine_x = {
       {
         function() return "" end,
-        color = { fg = C.bg2, bg = C.bg_base },
+        color = { fg = C.bg2, bg = "NONE" },
         padding = 0,
       },
 

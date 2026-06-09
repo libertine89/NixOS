@@ -21,6 +21,32 @@
               dependencies = { "nvim-tree/nvim-web-devicons" },
             },
             {
+              "vimpostor/vim-tpipeline",
+              lazy = false,
+              config = function()
+              -- Automatically embed nvim status bar in tmux
+                vim.g.tpipeline_autoembed = 1
+                vim.g.tpipeline_restore = 1
+                vim.g.tpipeline_clearstl = 1
+              end,
+            },
+            {
+              "folke/noice.nvim",
+              event = "VeryLazy",
+              dependencies = {
+                "MunifTanjim/nui.nvim",
+                "rcarriga/nvim-notify",
+              },
+              opts = {
+                messages = {
+                  enabled = true,
+                },
+                notify = {
+                  enabled = true,
+                },
+              },
+            },
+            {
               "sindrets/diffview.nvim",
               dependencies = { "nvim-tree/nvim-web-devicons" },
               keys = {

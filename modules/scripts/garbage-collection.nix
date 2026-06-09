@@ -24,7 +24,8 @@ pkgs.writeShellScriptBin "garbage-collection" ''
   echo -e "''${GREEN}Host: ${host}''${NC}"
 
   echo -e "''${GREEN}Cleaning everything before the last: $PERIOD''${NC}"
-  sudo nix-collect-garbage --delete-older-than "$PERIOD"
+  sudo nh clean all --keep-since 14d --keep 7
+  # sudo nix-collect-garbage --delete-older-than "$PERIOD"
 
   echo
   read -rsn1 -p"$(echo -e "''${GREEN}Press any key to continue''${NC}")"

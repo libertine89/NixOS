@@ -1,11 +1,11 @@
 { pkgs, ... }:
 let
-  vars = import ./variables.nix; # SHE
+  vars = import ./variables.nix;
 in
 {
   environment.systemPackages = with pkgs; [
     libreoffice
-    bitwarden-desktop
+    #bitwarden-desktop
     peazip
     gnome-calculator
     xournalpp
