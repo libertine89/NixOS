@@ -51,6 +51,8 @@ in
           set -g prefix C-Space
           bind C-Space send-prefix
 
+          set-option -g automatic-rename off
+
           # Vim Bridge Setup
           set -g focus-events on
           set -g status-left '#(cat #{socket_path}-\#{session_id}-vimbridge)'
