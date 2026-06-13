@@ -8,7 +8,7 @@ in
   imports = [
     # ../modules/user/nixius-pkg.nix
     ../modules/user/nixius/git.nix
-    ../modules/user/nixius/zed.nix
+    ../modules/user/nixius/zed/zed.nix
   ];
 
   # User Specific Pakcages
