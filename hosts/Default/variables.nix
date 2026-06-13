@@ -10,7 +10,7 @@
   # Default Applications
   terminal = "kitty"; # kitty, alacritty
   editor = "nvchad"; # nixvim, vscode, helix, doom-emacs, nvchad, neovim
-  # ide = "zed-editor"; # vscode, code-cursor, zed-editor
+  ide = "zed-editor"; # vscode, code-cursor, zed-editor
   windowTheme = "Catppuccin"; #Catppuccin, Dracula, rose-pine
   plymouthTheme = "motion"; # angular_alt, blockchain, connect, cubes, dark_planet, deus_ex, dna
                             # flame, glowing, green_blocks, hexagon_dots_alt, hud_2, motion, square
