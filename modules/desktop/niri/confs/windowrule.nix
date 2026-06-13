@@ -52,6 +52,14 @@ window-rule {
     open-focused true
 }
 
+// Open Zed Maximised
+window-rule {
+    match app-id="dev.zed.Zed"
+    open-maximized true
+    open-on-workspace "1"
+    open-focused true
+}
+
 window-rule {
     match app-id="kitty" title="dev"
     open-maximized true

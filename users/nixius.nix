@@ -8,11 +8,11 @@ in
   imports = [
     # ../modules/user/nixius-pkg.nix
     ../modules/user/nixius/git.nix
+    ../modules/user/nixius/zed.nix
   ];
 
   # User Specific Pakcages
   home.packages = with pkgs; [
-    pkgs.${vars.ide}
     lsof
     fnm # run nvm install ... from root of repo
     github-desktop
