@@ -1,4 +1,10 @@
-{ host, config, pkgs, lib, ... }:
+{
+  host,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 let
   vars = import ../hosts/${host}/variables.nix;
@@ -9,6 +15,7 @@ in
     # ../modules/user/nixius-pkg.nix
     ../modules/user/nixius/git.nix
     ../modules/user/nixius/zed/zed.nix
+    ../modules/user/nixius/cursor/cursor.nix
   ];
 
   # User Specific Pakcages
@@ -41,14 +48,13 @@ in
     TERMINAL = vars.terminal;
   };
 
-  home.file = lib.optionalAttrs (vars.shellPrompt == "starship") {
-    ".config/starship.toml".source =
-      config.lib.file.mkOutOfStoreSymlink
-        "${config.home.homeDirectory}/NixOS/modules/core/starship/starship.toml";
-  }
-  // lib.optionalAttrs (vars.shellPrompt == "oh-my-posh") {
-    ".config/oh-my-posh/oh-my-posh.omp.json".source =
-      config.lib.file.mkOutOfStoreSymlink
-        "${config.home.homeDirectory}/NixOS/modules/core/oh-my-posh/oh-my-posh.omp.json";
-  };
+  home.file =
+    lib.optionalAttrs (vars.shellPrompt == "starship") {
+      ".config/starship.toml".source =
+        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/NixOS/modules/core/starship/starship.toml";
+    }
+    // lib.optionalAttrs (vars.shellPrompt == "oh-my-posh") {
+      ".config/oh-my-posh/oh-my-posh.omp.json".source =
+        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/NixOS/modules/core/oh-my-posh/oh-my-posh.omp.json";
+    };
 }
