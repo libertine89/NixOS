@@ -12,14 +12,20 @@
   relative_line_numbers = "wrapped";
   theme = "Catppuccin Mocha";
   icon_theme = "Catppuccin Mocha";
-  cursor_blink = true;
+  cursor_blink = false;
   hover_popover_enabled = true;
   hover_popover_delay = 300;
   autosave = "on_focus_change";
   format_on_save = "on";
   current_line_highlight = "all";
+  remove_trailing_whitespace = true;
+  extend_comment_on_newline = true;
+  multi_cursor_modifier = "alt";
   active_pane_modifiers = {
     inactive_opacity = 0.8;
+  };
+  search = {
+    case_sensitive = false;
   };
   which_key = {
     enabled = true;
@@ -59,7 +65,7 @@
     thumb = "always";
     show = "always";
   };
-
+  # Agent
   agent = {
     sidebar_side = "right";
     dock = "right";
@@ -72,9 +78,10 @@
       type = "registry";
     };
   };
-
+  # Layout
   project_panel = {
     dock = "left";
+    git_status = true;
   };
 
   git_panel = {
@@ -83,13 +90,14 @@
   };
 
   tabs = {
+    file_icons = false;
     git_status = true;
   };
 
   title_bar = {
     show_branch_status_icon = true;
   };
-
+  # Languages
   languages = {
     TypeScript = {
       formatter = {

@@ -11,6 +11,14 @@
       "ctrl-space shift-e" = "project_panel::Toggle";
       "ctrl-space /" = "buffer_search::DeployReplace";
       "ctrl-q" = "pane::CloseActiveItem";
+      "shift-alt-k" = [
+        "editor::AddSelectionAbove"
+        { "skip_soft_wrap" = true; }
+      ]; # Insert Cursor Above
+      "shift-alt-j" = [
+        "editor::AddSelectionBelow"
+        { "skip_soft_wrap" = true; }
+      ]; # Insert Cursor Below
     };
   }
 
