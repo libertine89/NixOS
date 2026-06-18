@@ -11,6 +11,7 @@
   };
   relative_line_numbers = "wrapped";
   theme = "Catppuccin Mocha";
+  theme_overrides = import ./zed-theme-overrides.nix;
   icon_theme = "Catppuccin Mocha";
   cursor_blink = false;
   hover_popover_enabled = true;
