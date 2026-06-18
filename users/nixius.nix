@@ -15,7 +15,7 @@ in
     # ../modules/user/nixius-pkg.nix
     ../modules/user/nixius/git.nix
     ../modules/user/nixius/zed/zed.nix
-    ../modules/user/nixius/cursor/cursor.nix
+    # ../modules/user/nixius/cursor/cursor.nix
   ];
 
   # User Specific Pakcages
