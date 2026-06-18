@@ -17,10 +17,10 @@
           userTasks = {
             tasks = [{}];
           };
-          enableMcpIntergration = true;
+          enableMcpIntegration = true;
           userMcp = {};
         };
-      }
+      };
     };
   };
 
