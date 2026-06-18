@@ -32,12 +32,14 @@
       "ctrl-b" = "workspace::ToggleLeftDock";
       "ctrl-shift-e" = "project_panel::ToggleFocus";
       "ctrl-p" = "file_finder::Toggle";
+      "ctrl-shift-f" = "project_search::ToggleFocus";
     };
 
     bindings = {
       "F8 e" = "project_panel::ToggleFocus";
       "F8 f" = "file_finder::Toggle";
       "F8 s c" = "git_panel::Toggle";
+      "F8 ?" = "project_search::ToggleFocus";
     };
   }
 
@@ -134,3 +136,4 @@
     };
   }
 ]
+#### TEST
