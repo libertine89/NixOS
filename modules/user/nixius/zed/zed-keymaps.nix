@@ -1,3 +1,4 @@
+### GOODBYE
 [
   {
     unbind = {
@@ -8,8 +9,8 @@
 
     bindings = {
       "ctrl-t" = "terminal_panel::Toggle";
-      "ctrl-space shift-e" = "project_panel::Toggle";
-      "ctrl-space /" = "buffer_search::DeployReplace";
+      "F8 shift-e" = "project_panel::Toggle";
+      "F8 /" = "buffer_search::DeployReplace";
       "ctrl-q" = "pane::CloseActiveItem";
       "shift-alt-k" = [
         "editor::AddSelectionAbove"
@@ -32,9 +33,9 @@
     };
 
     bindings = {
-      "ctrl-space e" = "project_panel::ToggleFocus";
-      "ctrl-space f" = "file_finder::Toggle";
-      "ctrl-space s c" = "git_panel::Toggle";
+      "F8 e" = "project_panel::ToggleFocus";
+      "F8 f" = "file_finder::Toggle";
+      "F8 s c" = "git_panel::Toggle";
     };
   }
 
@@ -42,7 +43,7 @@
     context = "vim_mode == normal || vim_mode == insert || vim_mode == visual";
 
     bindings = {
-      "ctrl-space p" = [
+      "F8 p" = [
         "editor::Paste"
         {
           preserve_clipboard = true;
@@ -83,7 +84,7 @@
     context = "(vim_mode == helix_normal || vim_mode == helix_select) && !menu";
 
     bindings = {
-      "ctrl-space p" = "editor::Paste";
+      "F8 p" = "editor::Paste";
     };
   }
 
@@ -103,7 +104,7 @@
     };
 
     bindings = {
-      "ctrl-space e" = "vim::ToggleProjectPanelFocus";
+      "F8 e" = "vim::ToggleProjectPanelFocus";
     };
   }
 
@@ -115,7 +116,7 @@
     };
 
     bindings = {
-      "ctrl-space e" = "project_panel::ToggleFocus";
+      "F8 e" = "project_panel::ToggleFocus";
     };
   }
 
@@ -127,7 +128,8 @@
     };
 
     bindings = {
-      "ctrl-space /" = "search::ToggleReplace";
+      "F8 /" = "search::ToggleReplace";
     };
   }
 ]
+### HELLO
