@@ -68,6 +68,21 @@
   }
 
   {
+    context = "GitPanel";
+    bindings = {
+      "F8 f" = "git::Fetch";
+      "F8 k" = "git::Push";
+      "F8 j" = "git::Pull";
+      "F8 shift-j" = "git::PullRebase";
+      "F8 shift-k" = "git::ForcePush";
+      "F8 d" = "git::Diff";
+      "F8 space" = "git::StageAll";
+      "F8 shift-space" = "git::UnstageAll";
+      "F8 c" = "git::Commit";
+    };
+  }
+
+  {
     context = "vim_mode == normal || vim_mode == insert || vim_mode == visual";
 
     bindings = {
