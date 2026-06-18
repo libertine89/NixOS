@@ -7,7 +7,7 @@ in
     enable = true;
     clean = {
       enable = true;
-      extraArgs = "--keep-since 7d --keep 3";
+      extraArgs = "--keep-since 14d --keep 7";
     };
     flake = "/home/${username}/NixOS";
   };

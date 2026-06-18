@@ -21,7 +21,7 @@ pkgs.writeShellScriptBin "update" ''
 
   echo -e "''${GREEN}Flake: $flake''${NC}"
   echo -e "''${GREEN}Host: ${host}''${NC}"
-  echo -e "''${GREEN}Updating $flake flake lock''${NC}"
+  echo -e "''${GREEN}Updating $flake Flake lock & Rebuilding''${NC}"
 
   currentUser=$(logname)
 
@@ -34,10 +34,15 @@ pkgs.writeShellScriptBin "update" ''
     sudo nixos-generate-config --show-hardware-config > "$flake/hosts/${host}/hardware-configuration.nix"
   fi
 
-  sudo git -C "$flake" add hosts/${host}/hardware-configuration.nix
+  git -C "$flake" add hosts/${host}/hardware-configuration.nix
 
-  # Rebuild system
-  sudo nixos-rebuild switch --flake "$flake#${host}" --update
+  # Update flake inputs
+  cd "$flake"
+  echo "$flake"
+  nix flake update
+
+  # Rebuild the system
+  sudo nixos-rebuild switch --flake "$flake#${host}"
 
   echo
   read -rsn1 -p"$(echo -e "''${GREEN}Press any key to continue''${NC}")"

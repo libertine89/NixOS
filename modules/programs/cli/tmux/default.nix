@@ -22,8 +22,8 @@ in
         # terminal = "tmux-256color";
         historyLimit = 100000;
         plugins = with pkgs.tmuxPlugins; [
-          dreamsofcode-io-catppuccin-tmux
-          # catppuccin
+          #dreamsofcode-io-catppuccin-tmux
+          catppuccin
           sensible
           vim-tmux-navigator
 
@@ -48,14 +48,24 @@ in
         ];
         extraConfig = ''
           unbind C-b
-          set -g prefix C-a
-          bind C-a send-prefix
+          set -g prefix C-Space
+          bind C-Space send-prefix
+
+          set-option -g automatic-rename off
+
+          # Vim Bridge Setup
+          set -g focus-events on
+          set -g status-left '#(cat #{socket_path}-\#{session_id}-vimbridge)'
+          set -g status-left-length 99
+          set -g status-right '#(cat #{socket_path}-\#{session_id}-vimbridge-R)'
+          set -g status-right-length 99
+          set -g status-justify centre
+          set -g status-position bottom
 
           # Options
           set -g @catppuccin_flavour 'mocha'
           set -g mouse on
           set -g allow-rename off
-          set -g status-position top
           set -g base-index 1
           set -g pane-base-index 1
           set -g renumber-windows on

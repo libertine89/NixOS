@@ -30,6 +30,7 @@ let
   noctaliaOnWallpaperChanged = pkgs.callPackage ../scripts/niriscripts/noctaliaOnWallpaperChanged.nix { };
   windowBehaviour = pkgs.callPackage ../scripts/niriscripts/window-behaviour.nix { };
   overviewCommands = pkgs.callPackage ../scripts/niriscripts/overview-commands.nix { };
+  tmux-dev = pkgs.callPackage ../scripts/niriscripts/tmux-dev.nix { };
 
   ctx = {
     inherit pkgs lib getExe getExe' ide
@@ -38,7 +39,7 @@ let
 
     inherit ide-launcher wallpaper toggle-dropdown
     colourVariablesNvim colourVariablesOhMyPosh colourVariablesStarship
-    noctaliaOnWallpaperChanged windowBehaviour overviewCommands;
+    noctaliaOnWallpaperChanged windowBehaviour overviewCommands tmux-dev;
     }
     // lib.optionalAttrs (bar == "dms-shell") { inherit dmsWrapper; };
 in

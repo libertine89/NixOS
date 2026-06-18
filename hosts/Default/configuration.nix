@@ -43,7 +43,7 @@ in
     ../../modules/programs/file-manager/${vars.fileManager} # Set file-manager defined in variables.nix
     ../../modules/programs/cli/tmux
     ../../modules/programs/cli/direnv
-    ../../modules/programs/cli/lazygit
+    #../../modules/programs/cli/lazygit
     ../../modules/programs/cli/cava
     ../../modules/programs/cli/fastfetch
     ../../modules/programs/cli/btop

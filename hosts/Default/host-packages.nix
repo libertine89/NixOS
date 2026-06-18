@@ -5,7 +5,7 @@ in
 {
   environment.systemPackages = with pkgs; [
     libreoffice
-    bitwarden-desktop
+    #bitwarden-desktop
     peazip
     gnome-calculator
     xournalpp

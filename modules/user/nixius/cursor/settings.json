@@ -1,0 +1,73 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "workbench.colorTheme": "Abyss",
+
+  "editor.semanticHighlighting.enabled": true,
+  "editor.semanticTokenColorCustomizations": {
+    "rules": {
+      "type": { "foreground": "#00E8C6" },
+      "interface": { "foreground": "#00E8C6" },
+      "class": { "foreground": "#5CB3FF" },
+      "enum": { "foreground": "#5CB3FF" },
+      "typeParameter": { "foreground": "#00E8C6", "fontStyle": "italic" },
+      "function": { "foreground": "#FFE566" },
+      "method": { "foreground": "#FFE566" },
+      "variable": { "foreground": "#9CDCFE" },
+      "parameter": { "foreground": "#9CDCFE" },
+      "property": { "foreground": "#9CDCFE" },
+      "string": { "foreground": "#FF6B6B" },
+      "string.literal": { "foreground": "#FF6B6B" },
+      "string.template": { "foreground": "#FF6B6B" },
+      "number": { "foreground": "#B5CEA8" },
+      "keyword": { "foreground": "#C792EA" },
+      "comment": { "foreground": "#6A9955", "fontStyle": "italic" },
+      "namespace": { "foreground": "#4FC1FF" },
+      "macro": { "foreground": "#C792EA" },
+    },
+  },
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": [
+          "entity.name.type",
+          "support.type",
+          "support.type.primitive.ts",
+          "entity.name.type.alias",
+        ],
+        "settings": { "foreground": "#00E8C6" },
+      },
+      {
+        "scope": [
+          "entity.name.function",
+          "meta.function-call entity.name.function",
+          "support.function",
+        ],
+        "settings": { "foreground": "#FFE566" },
+      },
+      {
+        "scope": [
+          "string",
+          "string.quoted",
+          "string.quoted.single",
+          "string.quoted.double",
+          "string.template",
+          "punctuation.definition.string",
+        ],
+        "settings": { "foreground": "#FF6B6B" },
+      },
+      {
+        "scope": ["keyword", "storage.type", "storage.modifier"],
+        "settings": { "foreground": "#C792EA" },
+      },
+      {
+        "scope": ["constant.numeric"],
+        "settings": { "foreground": "#B5CEA8" },
+      },
+      {
+        "scope": ["comment", "punctuation.definition.comment"],
+        "settings": { "foreground": "#6A9955", "fontStyle": "italic" },
+      },
+    ],
+  },
+}

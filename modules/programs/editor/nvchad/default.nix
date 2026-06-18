@@ -21,6 +21,32 @@
               dependencies = { "nvim-tree/nvim-web-devicons" },
             },
             {
+              "vimpostor/vim-tpipeline",
+              lazy = false,
+              config = function()
+              -- Automatically embed nvim status bar in tmux
+                vim.g.tpipeline_autoembed = 1
+                vim.g.tpipeline_restore = 1
+                vim.g.tpipeline_clearstl = 1
+              end,
+            },
+            {
+              "folke/noice.nvim",
+              event = "VeryLazy",
+              dependencies = {
+                "MunifTanjim/nui.nvim",
+                "rcarriga/nvim-notify",
+              },
+              opts = {
+                messages = {
+                  enabled = true,
+                },
+                notify = {
+                  enabled = true,
+                },
+              },
+            },
+            {
               "sindrets/diffview.nvim",
               dependencies = { "nvim-tree/nvim-web-devicons" },
               keys = {
@@ -32,11 +58,43 @@
                       vim.cmd("DiffviewClose")
                     else
                       vim.cmd("DiffviewOpen")
-                        end
-                        end,
+                    end
+                  end,
                   desc = "Toggle Diffview",
                 },
+
+                -- Accept All Changes Binds are leader co, ct, cb
+                -- Diff Ours
+                {
+                  "<leader>do",
+                  "<cmd>diffget OURS<cr>",
+                  desc = "Diff Get Local (Ours)",
+                },
+                -- Diff Theirs
+                {
+                  "<leader>dt",
+                  "<cmd>diffget THIERS<cr>",
+                  desc = "Diff Get Remote (Theirs)",
+                },
+                -- Diff Base
+                {
+                  "<leader>db",
+                  "<cmd>diffget BASE<cr>",
+                  desc = "Diff Get Base",
+                },
               },
+
+              -- Settings for DiffView Layout
+              config = function()
+                require("diffview").setup({
+                    view = {
+                      merge_tool = {
+                        layout = "diff3_mixed",
+                        disable_diagnostics = true,
+                      },
+                    },
+                  })
+                end,
             },
             {
               "NeogitOrg/neogit",
