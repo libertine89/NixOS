@@ -1,4 +1,4 @@
-# ##
+# ## CHANGE
 # F8 has been rebound to Tap And Hold for Space in Kanata Service
 #
 [
@@ -136,4 +136,4 @@
     };
   }
 ]
-#### TEST
+#### TEST ###
