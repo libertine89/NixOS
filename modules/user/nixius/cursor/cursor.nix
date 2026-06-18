@@ -4,21 +4,24 @@
   programs = {
     cursor = {
       enable = true;
+      package = pkgs.code-cursor;
       mutableExtensionsDir = true;
-      argvSettings = {};
+      argvSettings = { };
 
       profiles = {
         default = {
-          extensions = [
-            "prettier"
+          enableUpdateCheck = true;
+          extensions = with pkgs; [
+            vscode-extensions.esbenp.prettier-vscode
           ];
+          enableExtensionUpdateCheck = true;
           userSettings = import ./cursor-settings.nix;
           keybindings = import ./cursor-keybindings.nix;
           userTasks = {
-            tasks = [{}];
+            tasks = [ { } ];
           };
           enableMcpIntegration = true;
-          userMcp = {};
+          userMcp = { };
         };
       };
     };
