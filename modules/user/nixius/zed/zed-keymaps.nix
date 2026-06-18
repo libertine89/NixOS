@@ -11,9 +11,12 @@
 
     bindings = {
       "ctrl-t" = "terminal_panel::Toggle";
+      "F8 t" = "terminal_panel::Toggle";
       "F8 shift-e" = "project_panel::Toggle";
       "F8 /" = "buffer_search::DeployReplace";
+      "F8 f" = "project_search::ToggleFocus";
       "ctrl-q" = "pane::CloseActiveItem";
+      "F8 q" = "pane::CloseActiveItem";
       "shift-alt-k" = [
         "editor::AddSelectionAbove"
         { "skip_soft_wrap" = true; }
@@ -39,7 +42,28 @@
       "F8 e" = "project_panel::ToggleFocus";
       "F8 f" = "file_finder::Toggle";
       "F8 s c" = "git_panel::Toggle";
-      "F8 ?" = "project_search::ToggleFocus";
+    };
+  }
+
+  {
+    context = "GitPanel";
+    bindings = {
+      "F8 f" = "git::Fetch";
+      "F8 k" = "git::Push";
+      "F8 j" = "git::Pull";
+      "F8 shift-j" = "git::PullRebase";
+      "F8 shift-k" = "git::ForcePush";
+      "F8 d" = "git::Diff";
+      "F8 space" = "git::StageAll";
+      "F8 shift-space" = "git::UnstageAll";
+      "F8 c" = "git::Commit";
+    };
+  }
+
+  {
+    context = "CommitEditor > Editor";
+    bindings = {
+      "F8 c" = "git::Commit";
     };
   }
 
