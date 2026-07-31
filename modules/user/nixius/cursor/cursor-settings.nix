@@ -2,9 +2,11 @@
   "editor.formatOnSave" = true;
   "editor.defaultFormatter" = "esbenp.prettier-vscode";
   "workbench.colorTheme" = "Abyss";
-
+  "terminal.integrated.defaultProfile.linux" = "zsh";
+  "terminal.integrated.profiles.linux" = {
+    zsh.path = "/etc/profiles/per-user/nixius/bin/zsh";
+  };
   "editor.semanticHighlighting.enabled" = true;
-
   "editor.semanticTokenColorCustomizations" = {
     rules = {
       type = {

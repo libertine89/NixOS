@@ -60,6 +60,23 @@ window-rule {
     open-focused true
 }
 
+// Open Cursor Maximised
+window-rule {
+    match app-id="cursor"
+    open-maximized true
+    open-on-workspace "1"
+    open-focused true
+}
+
+//Open Zed Maximised
+window-rule {
+    match app-id="zen-beta"
+    open-maximized true
+    open-on-workspace "1"
+    open-focused true
+}
+
+// Open Kitten Layout Maximised
 window-rule {
     match app-id="kitty" title="dev"
     open-maximized true

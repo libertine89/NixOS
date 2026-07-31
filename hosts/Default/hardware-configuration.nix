@@ -26,6 +26,16 @@
       options = [ "fmask=0022" "dmask=0022" ];
     };
 
+  fileSystems."/var/lib/docker/rootfs/overlayfs/544f44de4903c4590a96ced52fe9403f448afba85ba29da149a6a96b3bc01981" =
+    { device = "overlay";
+      fsType = "overlay";
+    };
+
+  fileSystems."/var/lib/docker/rootfs/overlayfs/0e0918e8c7c736cd435581740ad41bd10986c56c6b900d3b83f159f547638fb4" =
+    { device = "overlay";
+      fsType = "overlay";
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/979234ae-8a46-4a49-9e83-99ad21bcfd61"; }
     ];

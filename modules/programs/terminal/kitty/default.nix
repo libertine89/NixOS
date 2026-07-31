@@ -12,8 +12,9 @@
         shellIntegration.mode = "no-title";
         settings = {
           # shell = "${getExe pkgs.tmux}";
-          allow_remote_control = "yes";
-          listen_on = "unix:/tmp/kitty.sock";
+          watch_config_files = "no";
+          #allow_remote_control = "yes";
+          #listen_on = "unix:/tmp/kitty.sock";
           cursor_trail = 3; # Fancy cursor movements (especially in nixvim)
           cursor_trail_decay = "0.08 0.3"; # Animation speed
           cursor_trail_start_threshold = "4";

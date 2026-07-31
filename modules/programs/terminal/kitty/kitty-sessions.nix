@@ -10,9 +10,9 @@ in
   home.file = builtins.listToAttrs [
     (mkKittySession "dev" ''
       new_tab dev
-      launch --cwd $HOME/Git/algo/graph-server/
-      launch --location=vsplit --cwd $HOME/Git/algo/graph/
-      launch --location=hsplit --cwd $HOME/Git/algo/graph-sdk/
+      launch --cwd $HOME/Git/algo/graph-coding/graph-server/
+      launch --location=vsplit --cwd $HOME/Git/algo/graph-coding/graph/
+      launch --location=hsplit --cwd $HOME/Git/algo/graph-coding/graph-sdk/
     '')
 
     (mkKittySession "algo" ''

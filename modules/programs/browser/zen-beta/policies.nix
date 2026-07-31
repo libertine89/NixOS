@@ -74,6 +74,12 @@
     SkipOnboarding = true;
   };
   ExtensionSettings = {
+    "{94ed9bbf-a1e2-4e58-81ae-cd16dad818d8}" = {
+      private_browsing = true;
+      default_area = "navbar";
+      installation_mode = "force_installed";
+      install_url = "https://addons.mozilla.org/firefox/downloads/latest/veepn-free-fast-security-vpn/latest.xpi";
+    };
     "*" = {
       blocked_install_message = "Addon is not added in the nix config";
       installation_mode = "blocked";

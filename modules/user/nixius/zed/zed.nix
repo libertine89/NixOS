@@ -27,6 +27,9 @@
   };
 
   home.packages = with pkgs; [
+    # Agents
+    cursor-cli
+
     # Formatters
     prettier # JS & TS
     shfmt # Shell script formatting

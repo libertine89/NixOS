@@ -8,6 +8,7 @@
 
 let
   vars = import ../hosts/${host}/variables.nix;
+  secrets = import ./nixius-secrets.nix;
 in
 {
   # Import User specific Modules
@@ -15,11 +16,20 @@ in
     # ../modules/user/nixius-pkg.nix
     ../modules/user/nixius/git.nix
     ../modules/user/nixius/zed/zed.nix
-    # ../modules/user/nixius/cursor/cursor.nix
+    ../modules/user/nixius/cursor/cursor.nix
   ];
 
   # User Specific Pakcages
   home.packages = with pkgs; [
+    (factorio.override {
+      username = secrets.factorio.username;
+      token = secrets.factorio.token;
+    })
+
+    (factorio-space-age.override {
+      username = secrets.factorio.username;
+      token = secrets.factorio.token;
+    })
     lsof
     fnm # run nvm install ... from root of repo
     github-desktop
