@@ -34,7 +34,7 @@ in
     #../../modules/system/snapper.nix
 
     # Optional
-    ../../modules/hardware/drives # Automatically mount extra external/internal drives
+    #../../modules/hardware/drives # Automatically mount extra external/internal drives
     ../../modules/hardware/video/${vars.videoDriver}.nix # Enable gpu drivers defined in variables.nix
     ../../modules/desktop/${vars.desktop} # Set window manager defined in variables.nix
     ../../modules/programs/browser/${vars.browser} # Set browser defined in variables.nix
