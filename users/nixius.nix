@@ -21,11 +21,10 @@ in
 
   # User Specific Pakcages
   home.packages = with pkgs; [
-    (factorio.override {
-      username = secrets.factorio.username;
-      token = secrets.factorio.token;
-    })
-
+    # (factorio.override {
+    #   username = secrets.factorio.username;
+    #   token = secrets.factorio.token;
+    # }
     (factorio-space-age.override {
       username = secrets.factorio.username;
       token = secrets.factorio.token;
