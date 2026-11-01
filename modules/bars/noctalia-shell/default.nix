@@ -1,9 +1,26 @@
-{ inputs, host, pkgs, ... }:
+{
+  inputs,
+  host,
+  pkgs,
+  ...
+}:
 
 let
   inherit (import ../../../hosts/${host}/variables.nix) clock24h bluetoothSupport;
 
-  noctaliaOnWallpaperChanged = pkgs.callPackage ../../desktop/scripts/niriscripts/noctaliaOnWallpaperChanged.nix {};
+  noctaliaOnWallpaperChanged =
+    pkgs.callPackage ../../desktop/scripts/niriscripts/noctaliaOnWallpaperChanged.nix
+      { };
+
+  noctaliaQs = inputs.noctalia-qs.packages.${pkgs.system}.default.overrideAttrs (old: {
+    cmakeFlags = (old.cmakeFlags or [ ]) ++ [
+      "-DHYPRLAND=OFF"
+    ];
+  });
+
+  noctaliaPackage = inputs.noctalia.packages.${pkgs.system}.default.override {
+    quickshell = noctaliaQs;
+  };
 in
 {
   # Optional Dependencies
@@ -15,7 +32,7 @@ in
   ];
 
   home-manager.sharedModules = [
-    ( { config, ... }: {
+    ({ config, ... }: {
       imports = [
         inputs.noctalia.homeModules.default
       ];
@@ -23,6 +40,7 @@ in
       programs.noctalia-shell = {
         enable = true;
         systemd.enable = false;
+        package = noctaliaPackage;
 
         settings = {
           settingsVersion = 59;
@@ -30,7 +48,7 @@ in
           bar = {
             barType = "simple";
             position = "top";
-            monitors = [];
+            monitors = [ ];
             density = "compact";
             showOutline = false;
             showCapsule = false;
@@ -116,7 +134,7 @@ in
                   drawerEnabled = true;
                   hidePassive = false;
                   id = "Tray";
-                  pinned = [];
+                  pinned = [ ];
                 }
                 {
                   compactMode = false;
@@ -170,7 +188,7 @@ in
             rightClickAction = "controlCenter";
             rightClickFollowMouse = true;
             rightClickCommand = "";
-            screenOverrides = [];
+            screenOverrides = [ ];
           };
           general = {
             avatarImage = "${config.home.homeDirectory}/NixOS/modules/bars/noctalia-shell/profile-picture.jpg";
@@ -206,7 +224,7 @@ in
             clockStyle = "custom";
             clockFormat = "hh\\nmm";
             passwordChars = false;
-            lockScreenMonitors = [];
+            lockScreenMonitors = [ ];
             lockScreenBlur = 0.3;
             lockScreenTint = 0.2;
 
@@ -215,7 +233,10 @@ in
               keyDown = [ "Down" ];
               keyLeft = [ "Left" ];
               keyRight = [ "Right" ];
-              keyEnter = [ "Return" "Enter" ];
+              keyEnter = [
+                "Return"
+                "Enter"
+              ];
               keyEscape = [ "Esc" ];
               keyRemove = [ "Del" ];
             };
@@ -277,7 +298,7 @@ in
             enabled = true;
             overviewEnabled = true;
             directory = "${config.home.homeDirectory}/NixOS/modules/themes/wallpapers";
-            monitorDirectories = [];
+            monitorDirectories = [ ];
             enableMultiMonitorDirectories = false;
             showHiddenFiles = false;
             viewMode = "single";
@@ -291,7 +312,14 @@ in
             wallpaperChangeMode = "random";
             randomIntervalSec = 300;
             transitionDuration = 1500;
-            transitionType = [ "fade" "disc" "stripes" "wipe" "pixelate" "honeycomb" ];
+            transitionType = [
+              "fade"
+              "disc"
+              "stripes"
+              "wipe"
+              "pixelate"
+              "honeycomb"
+            ];
             skipStartupTransition = false;
             transitionEdgeSmoothness = 0.05;
             panelPosition = "follow_bar";
@@ -311,7 +339,7 @@ in
             wallhavenResolutionWidth = "";
             wallhavenResolutionHeight = "";
             sortOrder = "name";
-            favorites = [];
+            favorites = [ ];
           };
 
           appLauncher = {
@@ -324,7 +352,7 @@ in
             clipboardWatchTextCommand = "wl-paste --type text --watch cliphist store";
             clipboardWatchImageCommand = "wl-paste --type image --watch cliphist store";
             position = "center";
-            pinnedApps = [];
+            pinnedApps = [ ];
             sortByMostUsed = true;
             terminalCommand = "alacritty -e";
             customLaunchPrefixEnabled = false;
@@ -363,12 +391,30 @@ in
             };
 
             cards = [
-              { enabled = true; id = "profile-card"; }
-              { enabled = true; id = "shortcuts-card"; }
-              { enabled = true; id = "audio-card"; }
-              { enabled = true; id = "brightness-card"; }
-              { enabled = true; id = "weather-card"; }
-              { enabled = true; id = "media-sysmon-card"; }
+              {
+                enabled = true;
+                id = "profile-card";
+              }
+              {
+                enabled = true;
+                id = "shortcuts-card";
+              }
+              {
+                enabled = true;
+                id = "audio-card";
+              }
+              {
+                enabled = true;
+                id = "brightness-card";
+              }
+              {
+                enabled = true;
+                id = "weather-card";
+              }
+              {
+                enabled = true;
+                id = "media-sysmon-card";
+              }
             ];
           };
 
@@ -411,8 +457,8 @@ in
             floatingRatio = 1;
             size = 1;
             onlySameOutput = true;
-            monitors = [];
-            pinnedApps = [];
+            monitors = [ ];
+            pinnedApps = [ ];
             colorizeIcons = false;
             showLauncherIcon = false;
             launcherPosition = "end";
@@ -518,7 +564,7 @@ in
             enabled = false;
             enableMarkdown = false;
             density = "default";
-            monitors = [];
+            monitors = [ ];
             location = "top_right";
             overlayLayer = true;
             backgroundOpacity = 1;
@@ -557,8 +603,12 @@ in
             autoHideMs = 2000;
             overlayLayer = true;
             backgroundOpacity = 1;
-            enabledTypes = [ 0 1 2 ];
-            monitors = [];
+            enabledTypes = [
+              0
+              1
+              2
+            ];
+            monitors = [ ];
           };
 
           audio = {
@@ -567,7 +617,7 @@ in
             spectrumFrameRate = 30;
             visualizerType = "linear";
             spectrumMirrored = true;
-            mprisBlacklist = [];
+            mprisBlacklist = [ ];
             preferredPlayer = "";
             volumeFeedback = false;
             volumeFeedbackSoundFile = "";
@@ -577,7 +627,7 @@ in
             brightnessStep = 1;
             enforceMinimum = true;
             enableDdcSupport = true;
-            backlightDeviceMappings = [];
+            backlightDeviceMappings = [ ];
           };
 
           colorSchemes = {
@@ -593,7 +643,7 @@ in
           };
 
           templates = {
-            activeTemplates = [];
+            activeTemplates = [ ];
             enableUserTheming = false;
           };
 
@@ -645,7 +695,7 @@ in
             overviewEnabled = true;
             gridSnap = false;
             gridSnapScale = false;
-            monitorWidgets = [];
+            monitorWidgets = [ ];
           };
         };
       };

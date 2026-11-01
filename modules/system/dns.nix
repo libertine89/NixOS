@@ -75,13 +75,13 @@
     };
     adguardhome = {
       enable = true;
-      host = "0.0.0.0";
-      port = 3005;
       mutableSettings = true;
       openFirewall = true;
+      # Renamed from `host`/`port` - the listen address is now set via
+      # settings.http.address as "host:port".
       settings = {
         http = {
-          address = "127.0.0.1:3005";
+          address = "0.0.0.0:3005";
         };
         dns = {
           bind_host = "0.0.0.0";

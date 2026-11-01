@@ -20,7 +20,13 @@ in
 // }
 
 // Set up what controls wallpaper
-  ${if bar == "noctalia-shell" then ''
+  ${if bar == "noctalia-v5" then ''
+  layer-rule {
+      match namespace="^noctalia-backdrop"
+      place-within-backdrop true
+  }
+  ''
+  else if bar == "noctalia-shell" then ''
   layer-rule {
       match namespace="^noctalia-overview-DP-4"
       place-within-backdrop true

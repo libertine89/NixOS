@@ -4,7 +4,7 @@
   # Desktop Environment
   desktop = "niri"; # hyprland, niri, i3, gnome, plasma6
   # Theme & Appearance
-  bar = "noctalia-shell"; # waybar, hyprpanel, noctalia-shell, caelestia-shell, dms-shell
+  bar = "noctalia-v5"; # waybar, hyprpanel, noctalia-shell, noctalia-v5, caelestia-shell, dms-shell
   waybarTheme = "minimal"; # stylish, minimal
   sddmTheme = "black_hole"; # astronaut, black_hole, purple_leaves, jake_the_dog, hyprland_kath
   # Default Applications

@@ -2,11 +2,12 @@
 
 let
   inherit (import ../../hosts/${host}/variables.nix)
-    plymouthTheme;
+    plymouthTheme
+    ;
   # Adi1090 Good themes
-    # angular_alt, blockchain, connect, cubes, dark_planet, deus_ex, dna
-    # flame, glowing, green_blocks, hexagon_dots_alt, hud_2, motion, square
-    # More - https://github.com/adi1090x/plymouth-themes/
+  # angular_alt, blockchain, connect, cubes, dark_planet, deus_ex, dna
+  # flame, glowing, green_blocks, hexagon_dots_alt, hud_2, motion, square
+  # More - https://github.com/adi1090x/plymouth-themes/
 in
 {
   boot = {
@@ -23,7 +24,6 @@ in
 
     # Enable "Silent boot"
     consoleLogLevel = 3;
-    initrd.verbose = false;
     kernelParams = [
       "quiet"
       "splash"

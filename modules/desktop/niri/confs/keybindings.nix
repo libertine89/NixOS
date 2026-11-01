@@ -23,6 +23,22 @@ binds {
     // Security
     Mod+Ctrl+L hotkey-overlay-title="Lock Screen" { spawn "dms" "ipc" "call" "lock" "lock"; }
 
+  '' else if bar == "noctalia-v5" then ''
+  // Binds for Noctalia v5
+    // WINDOW MANAGEMENT
+
+    // Application Launchers
+    Mod+Space hotkey-overlay-title="Application Launcher" { spawn "noctalia" "msg" "panel-toggle" "launcher"; }
+    Mod+P hotkey-overlay-title="Clipboard Manager" { spawn "noctalia" "msg" "panel-toggle" "clipboard"; }
+    Mod+N hotkey-overlay-title="Notification Center" { spawn "noctalia" "msg" "panel-toggle" "control-center" "notifications"; }
+    Mod+Shift+W hotkey-overlay-title="Browse Wallpapers" { spawn "noctalia" "msg" "panel-toggle" "wallpaper"; } // Help/Overlay
+    Mod+Ctrl+Shift+W hotkey-overlay-title="Random Wallpaper" { "spawn" "noctalia" "msg" "wallpaper-random"; }
+    Mod+S hotkey-overlay-title="Control Centre" { spawn "noctalia" "msg" "panel-toggle" "control-center"; }
+    Ctrl+Alt+Delete hotkey-overlay-title="Task Manager" { spawn "noctalia" "msg" "panel-toggle" "control-center" "system"; }
+    Mod+Slash {spawn "launcher" "keybindings"; }
+    Mod+Shift+B hotkey-overlay-title="Toggle Noctalia Bar" { spawn "noctalia" "msg" "bar-toggle"; }
+    // Security
+    Mod+Ctrl+L hotkey-overlay-title="Lock Screen" { spawn "noctalia" "msg" "panel-toggle" "session"; }
   '' else if bar == "noctalia-shell" then ''
   // Binds for Noctalia
     // WINDOW MANAGEMENT

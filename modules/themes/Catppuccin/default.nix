@@ -14,7 +14,8 @@ in
 
         qt = {
           enable = true;
-          platformTheme.name = "gtk";
+          # "gtk3" = modern native Qt GTK3 plugin ("gtk" was deprecated)
+          platformTheme.name = "gtk3";
           style.name = "kvantum";
         };
         gtk = {
@@ -53,6 +54,7 @@ in
         };
 
         home.pointerCursor = {
+          enable = true; # explicitly enable - "enable indirectly" is deprecated
           gtk.enable = true;
           x11.enable = true;
           package = pkgs.bibata-cursors;

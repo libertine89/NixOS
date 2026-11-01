@@ -25,10 +25,15 @@ in
     #   username = secrets.factorio.username;
     #   token = secrets.factorio.token;
     # }
-    (factorio-space-age.override {
+    # (factorio-space-age.override {
+    #   username = secrets.factorio.username;
+    #   token = secrets.factorio.token;
+    # })
+    (factorio-space-age-experimental.override {
       username = secrets.factorio.username;
       token = secrets.factorio.token;
     })
+    opencode-desktop
     lsof
     fnm # run nvm install ... from root of repo
     github-desktop

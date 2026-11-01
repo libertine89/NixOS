@@ -16,12 +16,16 @@ in
     spawn-at-startup "${lib.getExe colourVariablesOhMyPosh}"
     spawn-at-startup "${lib.getExe colourVariablesStarship}"
   ''}
+  ${lib.optionalString (bar == "noctalia-v5") ''
+    spawn-at-startup "noctalia"
+    spawn-at-startup "sh" "-c" "sleep 2; noctalia msg wallpaper-random"
+  ''}
   ${lib.optionalString (bar == "noctalia-shell") ''
     spawn-at-startup "${bar}"
     spawn-at-startup "noctalia-shell" "ipc" "call" "wallpaper" "random"
     spawn-at-startup "${noctaliaOnWallpaperChanged}"
   ''}
-  ${lib.optionalString (bar != "dms-shell" && bar != "noctalia-shell") ''
+  ${lib.optionalString (bar != "dms-shell" && bar != "noctalia-shell" && bar != "noctalia-v5") ''
     spawn-at-startup "${bar}"
     spawn-at-startup "${lib.getExe wallpaper}"
     spawn-at-startup "swaylock"

@@ -24,9 +24,16 @@
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.noctalia-qs.follows = "noctalia-qs";
     };
     noctalia-qs = {
       url = "github:noctalia-dev/noctalia-qs";
+      inputs.nixpkgs.url = "github:nixos/nixpkgs/61b7c44c4073f0b827768aff0049561b5110ea5a";
+    };
+    # Noctalia v5 - native C++ shell (no Quickshell). Coexists with the v4
+    # (noctalia-shell + noctalia-qs) inputs so both bars stay available.
+    noctalia-v5 = {
+      url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     caelestia-shell = {
@@ -99,7 +106,7 @@
       systems = [
         "x86_64-linux"
         "aarch64-linux"
-        ];
+      ];
 
       mkHost =
         host: system:
@@ -124,7 +131,8 @@
               inputs
               outputs
               host
-              pkgsStable;
+              pkgsStable
+              ;
           };
         };
     in
@@ -133,6 +141,6 @@
       formatter = nixpkgs.lib.genAttrs systems (system: nixpkgs.legacyPackages.${system}.nixfmt-tree);
       nixosConfigurations = {
         Default = mkHost "Default" "x86_64-linux";
-        };
+      };
     };
 }

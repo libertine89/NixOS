@@ -44,14 +44,14 @@ $time\
 """
 
 [palettes.dms]
-color1 = "#57B6D2"
-color2 = "#438EA3"
-color3 = "#306575"
+color1 = "#CA46E3"
+color2 = "#9D36B1"
+color3 = "#70277E"
 color4 = "#000000" # Spare
-color5 = "#afb5b6"  # Static Seperator Color
+color5 = "#b5afb6"  # Static Seperator Color
 color6 = "#60FF60"  # Git Lines Added Color
 color7 = "#FF6060"  # Git Lines Removed Color
-color8 =  "#f2f3f3" # Text Color
+color8 =  "#f3f2f3" # Text Color
 cursor1 = "#FF5C57" # Error Symbol
 cursor2 = "#FFFFFF" # Sucess Symbol
 cursor3 = "#6905F7" # Vim CMD Symbol
